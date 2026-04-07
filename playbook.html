@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecretCoach — Полный маркетинговый плейбук</title>
+<style>
+  :root {
+    --plum: #2D1F42; --rose: #C4856A; --blush: #E8C5B5;
+    --mauve: #7B5C74; --cream: #FAF7F4; --lite: #F0EBE6;
+    --dark: #1E1428; --mid: #D0C8C0; --green: #3A9A6A;
+    --red: #C03030; --amber: #C87D20; --teal: #2A7A7A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Calibri, sans-serif; background: var(--cream); color: var(--dark); font-size: 14px; line-height: 1.65; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--dark); display: flex; align-items: center;
+    padding: 0 16px; overflow-x: auto; scrollbar-width: none;
+    border-bottom: 2px solid var(--rose);
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav a { color: var(--blush); text-decoration: none; font-size: 11px; padding: 10px 10px; white-space: nowrap; border-bottom: 2px solid transparent; transition: .2s; }
+  nav a:hover { border-color: var(--rose); color: white; }
+
+  .hero { background: var(--plum); padding: 60px 24px 48px; text-align: center; }
+  .hero h1 { color: white; font-size: 38px; max-width: 800px; margin: 0 auto 10px; }
+  .hero p { color: var(--blush); font-size: 16px; max-width: 600px; margin: 0 auto; }
+  .hero .tag { display: inline-block; background: var(--rose); color: white; padding: 5px 16px; border-radius: 20px; font-size: 12px; margin-top: 14px; }
+
+  section { max-width: 1100px; margin: 0 auto; padding: 52px 24px 44px; border-bottom: 1px solid var(--mid); }
+  .dark-sec { background: var(--plum); padding: 52px 0; }
+  .dark-sec .inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  h2 { font-size: 24px; font-weight: 700; color: var(--plum); margin-bottom: 4px; }
+  h2::after { content: ''; display: block; width: 48px; height: 3px; background: var(--rose); margin-top: 5px; margin-bottom: 20px; }
+  .dark-sec h2 { color: white; }
+  .dark-sec h2::after { background: var(--rose); }
+  h3 { font-size: 15px; font-weight: 700; color: var(--plum); margin-bottom: 8px; }
+  .dark-sec h3, .card-dark h3, .card-plum h3, .card-rose h3, .card-mauve h3 { color: white; }
+  .sub { font-size: 13px; color: var(--mauve); margin-bottom: 24px; }
+  .dark-sec .sub { color: var(--blush); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+  @media(max-width:800px) { .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr; } }
+
+  .card { background: white; border-radius: 8px; padding: 18px; border: 1px solid var(--mid); }
+  .card-plum { background: var(--plum); color: white; border: none; }
+  .card-rose  { background: var(--rose); color: white; border: none; }
+  .card-mauve { background: var(--mauve); color: white; border: none; }
+  .card-dark  { background: #1E1428; color: white; border: none; }
+  .card-teal  { background: var(--teal); color: white; border: none; }
+  .card-green { background: var(--green); color: white; border: none; }
+  .card-amber { background: var(--amber); color: white; border: none; }
+  .card-lite  { background: var(--lite); border: 1px solid var(--mid); }
+
+  .card-accent { border-top: 3px solid var(--rose); }
+  .card-accent-plum { border-top: 3px solid var(--plum); }
+  .card-accent-green { border-top: 3px solid var(--green); }
+
+  .badge { display: inline-block; background: var(--rose); color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-bottom: 8px; }
+  .badge-plum  { background: var(--plum); }
+  .badge-green { background: var(--green); }
+  .badge-amber { background: var(--amber); }
+  .badge-mauve { background: var(--mauve); }
+
+  /* SCRIPT BOX */
+  .script {
+    background: #1A1030; border-radius: 8px; padding: 18px 20px;
+    border-left: 4px solid var(--rose); margin: 12px 0;
+    font-family: 'Courier New', monospace; font-size: 12.5px;
+    color: #E8D8F0; line-height: 1.75;
+  }
+  .script .meta { color: var(--blush); font-size: 11px; font-family: inherit; margin-bottom: 8px; font-style: normal; }
+  .script .trigger { color: #90EE90; }
+  .script .cta { color: #FFD700; font-weight: 700; }
+  .script em { color: var(--blush); font-style: normal; }
+
+  /* TIMELINE */
+  .tl { position: relative; padding-left: 32px; }
+  .tl::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: var(--mid); }
+  .tl-item { position: relative; margin-bottom: 22px; }
+  .tl-item::before { content: ''; position: absolute; left: -26px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--rose); border: 2px solid white; box-shadow: 0 0 0 2px var(--rose); }
+  .tl-item h4 { font-size: 13px; font-weight: 700; color: var(--plum); }
+  .tl-item p, .tl-item li { font-size: 12.5px; }
+
+  /* FUNNEL STEPS */
+  .funnel-v { display: flex; flex-direction: column; gap: 0; }
+  .fv-step { display: grid; grid-template-columns: 140px 1fr; align-items: start; margin-bottom: 0; }
+  .fv-label { background: var(--plum); color: white; padding: 10px 14px; font-size: 12px; font-weight: 700; text-align: right; position: relative; }
+  .fv-label::after { content: '▶'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); color: var(--plum); font-size: 16px; z-index:1; }
+  .fv-step:nth-child(2) .fv-label { background: var(--mauve); }
+  .fv-step:nth-child(2) .fv-label::after { color: var(--mauve); }
+  .fv-step:nth-child(3) .fv-label { background: var(--rose); }
+  .fv-step:nth-child(3) .fv-label::after { color: var(--rose); }
+  .fv-step:nth-child(4) .fv-label { background: var(--teal); }
+  .fv-step:nth-child(4) .fv-label::after { color: var(--teal); }
+  .fv-step:nth-child(5) .fv-label { background: var(--green); }
+  .fv-step:nth-child(5) .fv-label::after { color: var(--green); }
+  .fv-content { background: white; border: 1px solid var(--mid); border-left: none; padding: 10px 14px; font-size: 12.5px; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th { background: var(--plum); color: white; padding: 9px 12px; text-align: left; font-weight: 600; }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--mid); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--lite); }
+
+  /* RISK */
+  .risk { display: grid; grid-template-columns: 1fr 1fr; border-radius: 8px; overflow: hidden; border: 1px solid var(--mid); margin-bottom: 12px; }
+  .risk-l { background: #FFF0F0; padding: 14px; border-right: 1px solid var(--mid); }
+  .risk-r { background: #F0FFF4; padding: 14px; }
+  .risk-l h4 { color: var(--red); font-size: 12px; margin-bottom: 6px; }
+  .risk-r h4 { color: var(--green); font-size: 12px; margin-bottom: 6px; }
+  .risk-l p, .risk-r p { font-size: 12.5px; }
+  @media(max-width:600px) { .risk { grid-template-columns: 1fr; } }
+
+  /* PLATFORM TAG */
+  .platform { display: inline-flex; align-items: center; gap: 4px; background: var(--lite); border: 1px solid var(--mid); border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin: 2px; }
+
+  ul.check { list-style: none; padding: 0; }
+  ul.check li { padding: 3px 0; font-size: 13px; }
+  ul.check li::before { content: '✓ '; color: var(--rose); font-weight: 700; }
+
+  ul.arrow { list-style: none; padding: 0; }
+  ul.arrow li { padding: 3px 0; font-size: 13px; }
+  ul.arrow li::before { content: '→ '; color: var(--rose); font-weight: 600; }
+
+  .divider { height: 1px; background: var(--mid); margin: 16px 0; }
+  .note { font-size: 11.5px; color: var(--mauve); font-style: italic; margin-top: 8px; }
+  .highlight { background: var(--rose); color: white; padding: 12px 18px; border-radius: 6px; font-size: 13px; font-weight: 600; margin: 14px 0; }
+  .highlight-green { background: var(--green); color: white; padding: 12px 18px; border-radius: 6px; font-size: 13px; font-weight: 600; margin: 14px 0; }
+  .highlight-plum { background: var(--plum); color: white; padding: 12px 18px; border-radius: 6px; font-size: 13px; font-weight: 600; margin: 14px 0; }
+
+  footer { background: var(--dark); color: var(--blush); text-align: center; padding: 24px; font-size: 12px; }
+
+  /* number circles */
+  .num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--rose); color: white; font-weight: 700; font-size: 13px; margin-right: 8px; flex-shrink: 0; }
+
+  .step-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; }
+  .step-row .body { flex: 1; }
+
+  /* URGENCY */
+  .urgent { border: 2px solid var(--rose); border-radius: 8px; padding: 14px 18px; margin: 12px 0; }
+  .urgent-label { font-size: 10px; font-weight: 700; color: var(--rose); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Полный маркетинговый плейбук<br>SecretCoach</h1>
+  <p>Скрипты прогревов, воронки, триггеры, сегменты, дожимы — всё что нужно для $15,000</p>
+  <span class="tag">Апрель – Май 2026 | Конфиденциально</span>
+</div>
+
+<nav>
+  <a href="#blogger">Блогер сегодня</a>
+  <a href="#warmup">Прогрев 48ч</a>
+  <a href="#segments">Сегменты</a>
+  <a href="#funnels">Воронки</a>
+  <a href="#content-factory">Контент-завод</a>
+  <a href="#scripts">Скрипты</a>
+  <a href="#webinar-before">До вебинара</a>
+  <a href="#webinar-after">После вебинара</a>
+  <a href="#targeting">Таргет</a>
+  <a href="#conversion">Конверсия</a>
+  <a href="#risks">Риски</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 1: БЛОГЕР СЕГОДНЯ -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="blogger">
+  <h2>Реклама у блогера вышла сегодня — что делать прямо сейчас</h2>
+  <p class="sub">7 апреля. У тебя 48 часов до вебинара. Каждый новый подписчик — потенциальный клиент.</p>
+
+  <div class="urgent">
+    <div class="urgent-label">⚡ Критично сегодня</div>
+    <p>Новая аудитория с рекламы — <strong>холодная</strong>. Она знает только то, что увидела у блогера. Задача следующих 48 часов: <strong>прогреть → вызвать доверие → зарегистрировать на вебинар.</strong></p>
+  </div>
+
+  <div class="grid-3" style="margin-top:20px">
+    <div class="card card-accent">
+      <span class="badge">Шаг 1 — сегодня</span>
+      <h3>Welcome-история для новых</h3>
+      <p>Сразу после выхода рекламы у блогера — запустить серию из 3 Stories для тех, кто только подписался. Они должны понять КТО ты и ПОЧЕМУ ты им нужна.</p>
+    </div>
+    <div class="card card-accent">
+      <span class="badge badge-mauve">Шаг 2 — сегодня</span>
+      <h3>Ценностный Reel или Story</h3>
+      <p>Один быстрый инсайт из темы вебинара. Не продажа — польза. Формат: «Одна причина почему пропало либидо, о которой никто не говорит». 30–45 секунд.</p>
+    </div>
+    <div class="card card-accent">
+      <span class="badge badge-amber">Шаг 3 — сегодня вечером</span>
+      <h3>Анонс вебинара</h3>
+      <p>Story с провокационным вопросом + кнопка «Зарегистрироваться». Ссылка в шапке профиля. Закреплённая история с анонсом.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 2: ПРОГРЕВ 48 ЧАСОВ -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="warmup">
+  <h2>Прогрев: 48 часов до вебинара — пошаговый сценарий</h2>
+  <p class="sub">Конкретные скрипты с временем выхода, триггерами и призывом к действию</p>
+
+  <!-- ДЕНЬ 1 -->
+  <h3 style="margin-bottom:16px; margin-top:8px">📅 7 апреля (сегодня) — День знакомства</h3>
+
+  <div class="step-row">
+    <span class="num">1</span>
+    <div class="body">
+      <strong>Stories 1–3: Welcome-серия</strong>
+      <span class="platform">📸 Instagram Stories</span>
+      <p class="note">Время: сразу после выхода рекламы у блогера, 12:00–14:00</p>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="meta">▶ Story 1 из 3 | Триггер: новый подписчик видит первой</div>
+    <em>«Привет, если ты пришла от [имя блогера] — я рада 🌸»</em><br><br>
+    <em>«Я — Екатерина. Психолог-сексолог. 10 лет помогаю женщинам вернуть желание, возбуждение и оргазмы — без стыда и неловкости.»</em><br><br>
+    <span class="trigger">Фото: спокойное, уверенное. Не эксплицитное. Текст на фото.</span>
+  </div>
+
+  <div class="script">
+    <div class="meta">▶ Story 2 из 3 | Триггер: идентификация</div>
+    <em>«Ты когда-нибудь ловила себя на мысли:»</em><br>
+    <em>«→ "Только не сегодня..."»</em><br>
+    <em>«→ "Раньше же хотела, куда всё делось?"»</em><br>
+    <em>«→ "Я вроде и стараюсь, но внутри пусто"»</em><br><br>
+    <em>«Если хоть один пункт — ты по адресу.»</em><br><br>
+    <span class="trigger">Опрос: "Тебе знакомо?" — ДА / НЕТ</span>
+  </div>
+
+  <div class="script">
+    <div class="meta">▶ Story 3 из 3 | Триггер: интрига + CTA</div>
+    <em>«Послезавтра я провожу закрытый эфир для девочек.»</em><br><br>
+    <em>«Будем разбирать: почему пропало либидо, как возвращать возбуждение и почему оргазм с партнёром — это навык, а не удача.»</em><br><br>
+    <em>«Бесплатно. Только для тех, кто успеет зарегистрироваться.»</em><br><br>
+    <span class="cta">👆 Ссылка в шапке профиля — зарегистрируйся сейчас</span>
+  </div>
+
+  <div class="step-row" style="margin-top:24px">
+    <span class="num">2</span>
+    <div class="body">
+      <strong>Reel или Story-видео: быстрый инсайт</strong>
+      <span class="platform">📱 Reels / Stories</span>
+      <p class="note">Время: 17:00–19:00. Цель: показать экспертность, дать ценность, вызвать «ВАУ» реакцию.</p>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="meta">▶ Reels 30–45 сек | Тема: «Почему пропало желание» | Триггер: боль сегмента А</div>
+    <em>«Знаешь почему большинство советов "расслабься и думай о хорошем" не работают?»</em><br><br>
+    <em>«Потому что дело не в голове. И не в усталости.»</em><br><br>
+    <em>«Есть одна конкретная причина, о которой не говорят — это психология разрешения.»</em><br><br>
+    <em>«Нас с детства учили: секс это стыдно. Желание — неприлично. "Хорошие девочки так не думают."»</em><br><br>
+    <em>«И тело буквально выключает желание — не потому что что-то сломано, а потому что так "правильнее".»</em><br><br>
+    <em>«Послезавтра разбираю это подробно — ссылка в шапке 👆»</em><br><br>
+    <span class="trigger">Крючок с первой секунды. Текст поверх видео с лицом эксперта. Субтитры обязательны.</span>
+  </div>
+
+  <div class="step-row" style="margin-top:24px">
+    <span class="num">3</span>
+    <div class="body">
+      <strong>Вечерняя Story: анонс + ссылка</strong>
+      <span class="platform">📸 Instagram Stories</span>
+      <p class="note">Время: 20:00–22:00. Когда люди листают перед сном.</p>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="meta">▶ Story | Вечер 7 апреля | Триггер: срочность + социальное доказательство</div>
+    <em>«Уже 47 человек зарегистрировались на завтра.»</em><br>
+    <em>«(или: уже 100+, когда будет правда)»</em><br><br>
+    <em>«Эфир бесплатный. Но места ограничены — платформа вмещает определённое количество.»</em><br><br>
+    <em>«Тема: Либидо, возбуждение, оргазм. То, что обычно не обсуждают.»</em><br><br>
+    <span class="cta">👆 Жми на ссылку в шапке — пока есть место</span>
+  </div>
+
+  <!-- ДЕНЬ 2 -->
+  <div class="divider"></div>
+  <h3 style="margin-bottom:16px">📅 8 апреля — День прогрева. За 24 часа до вебинара.</h3>
+
+  <div class="step-row">
+    <span class="num">4</span>
+    <div class="body">
+      <strong>Утренняя Story: напоминание + ценность</strong>
+      <span class="platform">📸 Stories</span>
+      <p class="note">Время: 9:00–10:00</p>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="meta">▶ Story | Утро 8 апреля | Триггер: любопытство + боль</div>
+    <em>«Завтра на эфире разберём кое-что важное.»</em><br><br>
+    <em>«Ты знаешь, что 73% женщин симулируют оргазм хотя бы раз в жизни?»</em><br><br>
+    <em>«Не потому что хотят обмануть. А потому что не знают, как получить настоящий — и боятся разочаровать.»</em><br><br>
+    <em>«Завтра расскажу что с этим делать. И дам конкретные техники.»</em><br><br>
+    <span class="cta">Опрос: «Ты зарегистрировалась?» — ДА / ЕЩЁ НЕТ</span><br>
+    <span class="trigger">По тем кто ответил «ЕЩЁ НЕТ» — ответить в директ с ссылкой.</span>
+  </div>
+
+  <div class="step-row" style="margin-top:20px">
+    <span class="num">5</span>
+    <div class="body">
+      <strong>Дневной Reel: кейс ученицы (социальное доказательство)</strong>
+      <span class="platform">📱 Reels</span>
+      <p class="note">Время: 14:00–16:00. Самый важный контент для тёплых.</p>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="meta">▶ Reels 45–60 сек | Тема: результат ученицы | Триггер: идентификация + трансформация</div>
+    <em>«Оля написала мне 3 месяца назад.»</em><br><br>
+    <em>«"Катя, у нас с мужем есть секс. Но я не помню когда последний раз действительно хотела. Просто делаю потому что надо."»</em><br><br>
+    <em>«Ей 34. Двое детей. Нормальная семья. Внешне — всё хорошо.»</em><br><br>
+    <em>«Через 5 недель она написала снова: "Я не знала, что со мной всё ОК. Просто никто никогда не объяснял как это работает."»</em><br><br>
+    <em>«Вот об этом — завтра на эфире. Бесплатно.»</em><br><br>
+    <span class="cta">Ссылка в шапке. Реальная история. Без имен — анонимно.</span>
+  </div>
+
+  <div class="step-row" style="margin-top:20px">
+    <span class="num">6</span>
+    <div class="body">
+      <strong>Вечерняя серия Stories: финальный прогрев перед вебинаром</strong>
+      <span class="platform">📸 Stories</span>
+      <p class="note">Время: 20:00–22:00</p>
+    </div>
+  </div>
+
+  <div class="script">
+    <div class="meta">▶ Stories серия 4 шт | Вечер 8 апреля | Триггер: интрига + дедлайн</div>
+    <em>Story 1: «Завтра в [время] эфир. Я готовлюсь — и немного нервничаю, если честно. Буду говорить о вещах, о которых обычно молчат.»</em><br><br>
+    <em>Story 2: «На эфире будем разбирать: 5 причин почему пропадает либидо. Самые частые психоблоки. И техники — которые работают без "расслабься и думай о хорошем".»</em><br><br>
+    <em>Story 3: «Для тех кто досмотрит до конца — подарю кое-что особенное. Скажу что именно прямо на эфире.» (интрига вокруг Red Room)</em><br><br>
+    <em>Story 4: «Осталось [X] мест. Регистрация закрывается в полночь.»</em><br>
+    <span class="cta">👆 Ссылка в шапке</span>
+  </div>
+
+  <!-- ДЕНЬ 3 -->
+  <div class="divider"></div>
+  <h3 style="margin-bottom:16px">📅 9 апреля — День вебинара</h3>
+
+  <div class="script">
+    <div class="meta">▶ Stories утро | 10:00–11:00 | Триггер: предвкушение</div>
+    <em>«Сегодня. Эфир в [время].»</em><br>
+    <em>«Если ещё не зарегистрировалась — последний шанс: 👆»</em><br>
+    <em>«Увидимся сегодня вечером, мои прекрасные 🌸»</em>
+  </div>
+
+  <div class="script">
+    <div class="meta">▶ Story за 1 час до вебинара | Триггер: срочность</div>
+    <em>«1 час до эфира. Вот ссылка для входа: [прямая ссылка на Zoom/платформу]»</em><br>
+    <em>«Приходи — не пожалеешь.»</em>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 3: ДОПОЛНИТЕЛЬНЫЕ СЕГМЕНТЫ -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="segments">
+  <h2>Расширенные сегменты аудитории</h2>
+  <p class="sub">Помимо трёх базовых — ещё 5 сегментов с конкретными офферами</p>
+
+  <div class="grid-3">
+    <div class="card card-accent-plum">
+      <span class="badge badge-plum">Сегмент А — 48%</span>
+      <h3>«Жёны» 26–40 лет</h3>
+      <p><strong>Боль:</strong> секс как долг. Желания нет, но надо.</p>
+      <p><strong>Оффер:</strong> «Верни страсть — не для него, для себя»</p>
+      <p><strong>Контент-триггер:</strong> психология желания, либидо после детей</p>
+      <p><strong>Канал:</strong> таргет, Reels</p>
+    </div>
+    <div class="card card-accent">
+      <span class="badge">Сегмент Б — 39%</span>
+      <h3>«Свободные» 18–30</h3>
+      <p><strong>Боль:</strong> не знаю своё тело, стыжусь, неуверенна.</p>
+      <p><strong>Оффер:</strong> «Узнай себя — и ты станешь неотразимой»</p>
+      <p><strong>Контент-триггер:</strong> эрогенные зоны, уверенность, первый оргазм</p>
+      <p><strong>Канал:</strong> Reels, TikTok-стиль</p>
+    </div>
+    <div class="card card-accent-plum">
+      <span class="badge badge-mauve">Сегмент В — 13%</span>
+      <h3>«Жёны военных»</h3>
+      <p><strong>Боль:</strong> разлука, тревога, муж вернётся другим.</p>
+      <p><strong>Оффер:</strong> «Сохрани близость — даже через расстояние»</p>
+      <p><strong>Контент-триггер:</strong> сексуальность и стресс, воссоединение</p>
+      <p><strong>Канал:</strong> Telegram, Stories</p>
+    </div>
+    <div class="card card-accent-green">
+      <span class="badge badge-green">Сегмент Г — новый</span>
+      <h3>«После родов» 25–38</h3>
+      <p><strong>Боль:</strong> тело изменилось, больно, не узнаю себя, партнёр отдалился.</p>
+      <p><strong>Оффер:</strong> «Твоё тело не сломано — просто изменилось. Я объясню как»</p>
+      <p><strong>Контент-триггер:</strong> боль после родов — норма? Либидо после ГВ.</p>
+      <p><strong>Канал:</strong> Reels, тематические группы</p>
+    </div>
+    <div class="card card-accent-green">
+      <span class="badge badge-green">Сегмент Д — новый</span>
+      <h3>«Одиночки» 22–35</h3>
+      <p><strong>Боль:</strong> нет партнёра, но хочу понять своё тело. Стыдно.</p>
+      <p><strong>Оффер:</strong> «Познай себя — партнёр не нужен для старта»</p>
+      <p><strong>Контент-триггер:</strong> самостоятельный оргазм — это норма и полезно.</p>
+      <p><strong>Канал:</strong> Reels с мягкой подачей, анонимный Telegram</p>
+    </div>
+    <div class="card card-accent-green">
+      <span class="badge badge-green">Сегмент Е — новый</span>
+      <h3>«Пременопауза» 40–52</h3>
+      <p><strong>Боль:</strong> гормоны меняются, либидо упало до нуля, сухость, боль.</p>
+      <p><strong>Оффер:</strong> «Сексуальность не заканчивается в 40 — я докажу»</p>
+      <p><strong>Контент-триггер:</strong> гормоны и либидо, секс после 40.</p>
+      <p><strong>Канал:</strong> Facebook-таргет, Telegram-каналы ЗОЖ/психология</p>
+    </div>
+    <div class="card card-accent">
+      <span class="badge badge-amber">Сегмент Ж — партнёрский</span>
+      <h3>«Мужья и партнёры»</h3>
+      <p><strong>Боль:</strong> жена не хочет, не понимаю что делать, боюсь обидеть.</p>
+      <p><strong>Оффер:</strong> «Подари ей курс — и ваша жизнь изменится»</p>
+      <p><strong>Контент-триггер:</strong> «Купи жене», подарочный сертификат на курс.</p>
+      <p><strong>Канал:</strong> мужская аудитория в таргете (LAL партнёров)</p>
+    </div>
+    <div class="card card-accent">
+      <span class="badge badge-amber">Сегмент З — новый</span>
+      <h3>«Новые отношения» 20–32</h3>
+      <p><strong>Боль:</strong> новый партнёр, хочу быть лучшей, боюсь разочаровать.</p>
+      <p><strong>Оффер:</strong> «Стань незабываемой — с первой ночи»</p>
+      <p><strong>Контент-триггер:</strong> уверенность, техники, первые разы.</p>
+      <p><strong>Канал:</strong> Reels, блогеры по отношениям</p>
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:20px">
+    💡 Для каждого сегмента — свой крючок в первых 3 секундах Reels. Один контент не может работать на всех. Минимум 2 версии каждого ролика.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 4: ВОРОНКИ -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="funnels">
+  <h2>Дополнительные воронки продаж</h2>
+  <p class="sub">Помимо основной «трафик → вебинар → флагман» — ещё 4 рабочих схемы</p>
+
+  <div class="grid-2" style="margin-bottom:24px">
+
+    <div>
+      <h3>Воронка 1: Квиз-воронка (органический трафик)</h3>
+      <div class="funnel-v">
+        <div class="fv-step">
+          <div class="fv-label">Reels/Stories</div>
+          <div class="fv-content">«Пройди тест: Какой твой тип сексуальности?» — в шапке профиля</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Тест (лид-магнит)</div>
+          <div class="fv-content">«Код твоей сексуальности» — 5 вопросов. Результат: тип + рекомендации + оффер</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">ManyChat/бот</div>
+          <div class="fv-content">Автоматически: результат + 3-дневная цепочка прогрева → вебинар</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Вебинар</div>
+          <div class="fv-content">Уже тёплые лиды, которые прошли тест и получили ценность</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Флагман 190€+</div>
+          <div class="fv-content">Конверсия выше чем с холодного — аудитория уже «рассортирована» по болям</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Воронка 2: VSL-воронка (автоматические продажи)</h3>
+      <div class="funnel-v">
+        <div class="fv-step">
+          <div class="fv-label">Таргет/Reels</div>
+          <div class="fv-content">Объявление: «Смотри как [результат] за 30 дней» → кликают на ссылку</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">VSL 4–7 мин</div>
+          <div class="fv-content">Видео: история эксперта + боль аудитории + решение + оффер + дедлайн</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Страница захвата</div>
+          <div class="fv-content">Email/телефон в обмен на лид-магнит (PDF «5 причин почему нет либидо»)</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Telegram-бот</div>
+          <div class="fv-content">5-дневная цепочка: день 1 — польза, день 3 — кейс, день 5 — оффер флагман</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Флагман / вебинар</div>
+          <div class="fv-content">Продажа напрямую или регистрация на ближайший вебинар</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Воронка 3: Даунсейл-воронка (после вебинара)</h3>
+      <div class="funnel-v">
+        <div class="fv-step">
+          <div class="fv-label">Вебинар</div>
+          <div class="fv-content">Оффер флагман 190€. Часть аудитории не купила.</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Дожим 72ч</div>
+          <div class="fv-content">3 касания по флагману. Не купили — переходим к даунсейлу.</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Даунсейл 39€</div>
+          <div class="fv-content">«Понимаю если 190€ сейчас много. Есть вариант начать с малого — мини-курс 39€»</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Апселл</div>
+          <div class="fv-content">Через 7 дней: «Хочешь пойти глубже? Оффер на флагман со скидкой для покупателей мини»</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Флагман со скидкой</div>
+          <div class="fv-content">-20% для тех, кто уже купил мини-курс. Логика: они уже доверяют.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Воронка 4: Telegram-прогрев (тёплая база)</h3>
+      <div class="funnel-v">
+        <div class="fv-step">
+          <div class="fv-label">Telegram-канал</div>
+          <div class="fv-content">Ежедневный контент: факты, инсайты, кейсы. Не продажа — ценность.</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Лид-магнит</div>
+          <div class="fv-content">Пост: «Напиши "хочу" — пришлю гайд "5 причин почему нет оргазма"»</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Бот-цепочка</div>
+          <div class="fv-content">3 дня пользы → анонс вебинара → регистрация</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Вебинар</div>
+          <div class="fv-content">Самая лояльная аудитория — конверсия 15–25%</div>
+        </div>
+        <div class="fv-step">
+          <div class="fv-label">Флагман</div>
+          <div class="fv-content">Продажи из тёплой базы Telegram — самые лёгкие деньги</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 5: КОНТЕНТ-ЗАВОД -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="content-factory">
+  <h2>Контент-завод: 30 единиц контента из одного вебинара</h2>
+  <p class="sub">Транскрибация вебинара → конкретные единицы контента с темой, форматом и триггером</p>
+
+  <table>
+    <tr>
+      <th>#</th><th>Тема (из вебинара)</th><th>Формат</th><th>Триггер / первая фраза</th><th>Платформа</th><th>Сегмент</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Почему нас учили что желание — это стыдно</td>
+      <td>Reels 30с</td>
+      <td>«Знаешь почему хотеть секса — до сих пор табу?»</td>
+      <td>IG, TG</td>
+      <td>А, Б</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>5 причин почему пропало либидо</td>
+      <td>Карусель</td>
+      <td>«Ты не "поломана". Просто никто не объяснил эти 5 причин»</td>
+      <td>IG</td>
+      <td>А</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Оргазм — это навык, не удача</td>
+      <td>Reels 45с</td>
+      <td>«95% женщин верят что оргазм — или есть или нет. Это миф.»</td>
+      <td>IG, TG</td>
+      <td>Б, Д</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Эрогенные зоны о которых не знают 95%</td>
+      <td>Reels + Карусель</td>
+      <td>«Ты знаешь про клитор. Но знаешь ли ты, что это только верхушка?»</td>
+      <td>IG</td>
+      <td>Б, Д</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Почему теряется возбуждение в процессе</td>
+      <td>Stories-серия</td>
+      <td>«Он начинает — и ты уже в мыслях о завтрашних делах?»</td>
+      <td>IG Stories</td>
+      <td>А, Г</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Симуляция — почему мы это делаем</td>
+      <td>Пост TG</td>
+      <td>«Ты симулировала хотя бы раз? Почти все ответят да. Почему?»</td>
+      <td>TG</td>
+      <td>А, Б</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Как сказать партнёру что нужно</td>
+      <td>Reels 40с</td>
+      <td>«"Я не могу ему сказать — обидится" — самая частая фраза на приёме»</td>
+      <td>IG</td>
+      <td>А, З</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Кейс: Оля, 34 года, двое детей</td>
+      <td>Reels история</td>
+      <td>«"Я делаю это потому что надо. Желания нет уже 2 года."»</td>
+      <td>IG, TG</td>
+      <td>А, Г</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Психологический блок: контролёр в голове</td>
+      <td>Пост + Reels</td>
+      <td>«Ты в процессе — но голова уже думает о другом. Вот почему»</td>
+      <td>IG, TG</td>
+      <td>А, Б</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Оргазм один и с партнёром — в чём разница</td>
+      <td>Reels 45с</td>
+      <td>«Наедине — легко. С партнёром — никак. Это ненормально?»</td>
+      <td>IG</td>
+      <td>Б, З</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Техника «разрешения» — как выключить внутренний стоп</td>
+      <td>Reels 60с</td>
+      <td>«Ты знаешь что хочешь. Но что-то внутри говорит "нельзя". Вот лекарство»</td>
+      <td>IG</td>
+      <td>А, Б</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Либидо после стресса и войны</td>
+      <td>Пост TG</td>
+      <td>«Когда вокруг тревога — тело отключает желание. Это защита. Вот как её обойти.»</td>
+      <td>TG</td>
+      <td>В, А</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Секс не должен болеть — что делать</td>
+      <td>Карусель</td>
+      <td>«"Мне немного больно, но я терплю" — это НЕ норма.»</td>
+      <td>IG</td>
+      <td>Г, А</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Что мужчины хотят, но не говорят</td>
+      <td>Reels 30с</td>
+      <td>«Он никогда не скажет это вслух. Но я скажу за него.»</td>
+      <td>IG, TG</td>
+      <td>А, З</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Red Room: покажи как работает ИИ-сценарий</td>
+      <td>Reels демо</td>
+      <td>«Смотри что придумал ИИ для одной пары…» (реальный сценарий)</td>
+      <td>IG</td>
+      <td>Все</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Либидо и гормоны: что связано</td>
+      <td>Карусель</td>
+      <td>«Гинеколог говорит "всё в норме", а желания нет. Объясняю почему»</td>
+      <td>IG</td>
+      <td>А, Е</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>«Хорошая жена» vs «сексуальная женщина» — конфликт</td>
+      <td>Reels 50с</td>
+      <td>«Нас учили быть хорошими. Не учили хотеть.»</td>
+      <td>IG, TG</td>
+      <td>А</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Упражнение: осознанность в теле (практика)</td>
+      <td>Reels-практика</td>
+      <td>«Сделай это прямо сейчас — 2 минуты. Результат почувствуешь сегодня.»</td>
+      <td>IG</td>
+      <td>Б, Д</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Почему «просто расслабься» не работает</td>
+      <td>Пост TG</td>
+      <td>«Самый бесполезный совет в сексологии — это "расслабься". Вот почему.»</td>
+      <td>TG</td>
+      <td>А, Б</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Что происходит с сексуальностью после 35</td>
+      <td>Reels</td>
+      <td>«После 35 либидо обязательно падает? Нет. Вот что происходит на самом деле»</td>
+      <td>IG</td>
+      <td>А, Е</td>
+    </tr>
+  </table>
+
+  <p class="note" style="margin-top:12px">Каждый Reel = 1 боль = 1 сегмент. Не пытайся говорить со всеми сразу в одном ролике.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 6: ГОТОВЫЕ СКРИПТЫ -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="scripts">
+  <h2>Готовые скрипты для ключевых форматов</h2>
+  <p class="sub">Копируй — адаптируй под голос Екатерины — публикуй</p>
+
+  <h3 style="margin-bottom:12px">📱 Сценарий Reels #1 — «Либидо исчезло»</h3>
+  <div class="script">
+    <div class="meta">▶ 45 секунд | Сегмент А | Триггер: идентификация | Платформа: IG Reels</div>
+    <em>«Если ты сейчас смотришь это — у тебя, скорее всего, есть партнёр.»</em><br>
+    <em>«И ты его любишь. Но когда он прикасается — первая мысль: "только не сегодня".»</em><br><br>
+    <em>«Это не значит что ты его разлюбила.»</em><br>
+    <em>«Это не значит что ты "сломана".»</em><br><br>
+    <em>«Это значит что либидо — это не постоянная величина.»</em><br>
+    <em>«Оно зависит от стресса, гормонов, психологии разрешения — и от того, что ты думаешь о себе как о сексуальной женщине.»</em><br><br>
+    <span class="cta">«Послезавтра я разбираю это подробно — бесплатный эфир. Ссылка в шапке.»</span>
+  </div>
+
+  <h3 style="margin-bottom:12px; margin-top:24px">📱 Сценарий Reels #2 — «Оргазм — навык»</h3>
+  <div class="script">
+    <div class="meta">▶ 40 секунд | Сегмент Б, Д | Триггер: разрушение мифа | Платформа: IG Reels</div>
+    <em>«Тебе говорили что оргазм — это либо есть, либо нет?»</em><br>
+    <em>«Что "просто расслабься" — и всё получится?»</em><br><br>
+    <em>«Это ложь.»</em><br><br>
+    <em>«Оргазм — это навык. Как езда на велосипеде.»</em><br>
+    <em>«Ты не рождаешься умея кататься. Тебя учат.»</em><br>
+    <em>«Но нас почему-то никогда не учили этому.»</em><br><br>
+    <em>«Я — Екатерина. Сексолог. Именно этому я и учу.»</em><br>
+    <span class="cta">«Ссылка в шапке — эфир в среду, бесплатно.»</span>
+  </div>
+
+  <h3 style="margin-bottom:12px; margin-top:24px">📱 Сценарий Reels #3 — «Кейс ученицы»</h3>
+  <div class="script">
+    <div class="meta">▶ 60 секунд | Сегмент А | Триггер: социальное доказательство | Платформа: IG Reels</div>
+    <em>«Марина написала мне в феврале.»</em><br>
+    <em>«"Катя, мне 31. Замужем 4 года. Я не помню когда последний раз действительно хотела."»</em><br><br>
+    <em>«Через 3 недели она написала снова.»</em><br>
+    <em>«"Я не знала, что это НОРМАЛЬНО — что можно хотеть. Что это НЕ стыдно. Что я имею право на удовольствие — не только он."»</em><br><br>
+    <em>«Я не делала чуда. Я просто объяснила то, что должны были объяснить раньше.»</em><br><br>
+    <em>«Если тебе это откликается — жду тебя в среду на эфире.»</em><br>
+    <span class="cta">«Ссылка в шапке профиля. Бесплатно.»</span>
+  </div>
+
+  <h3 style="margin-bottom:12px; margin-top:24px">✈️ Сценарий Telegram-поста — прогрев</h3>
+  <div class="script">
+    <div class="meta">▶ Telegram пост | День до вебинара | Триггер: боль + надежда</div>
+    <em>Ты симулировала?</em><br><br>
+    <em>Не осуждаю. 73% женщин делают это хотя бы раз.</em><br><br>
+    <em>Не потому что хотят обмануть. А потому что:</em><br>
+    <em>→ не знают как получить настоящий</em><br>
+    <em>→ боятся разочаровать</em><br>
+    <em>→ не умеют говорить о том, что нужно</em><br><br>
+    <em>Завтра на бесплатном эфире разбираем это — без стыда, с конкретными техниками.</em><br><br>
+    <span class="cta">Регистрация: [ссылка]</span><br><br>
+    <em>Приходи. Это для тебя.</em>
+  </div>
+
+  <h3 style="margin-bottom:12px; margin-top:24px">🎯 Скрипт личного директа — для тех кто ответил «ЕЩЁ НЕТ» на опрос</h3>
+  <div class="script">
+    <div class="meta">▶ Директ сообщение | Сразу после опроса | Персональный</div>
+    <em>«Привет 🌸 Видела что ты ещё не зарегистрировалась.»</em><br><br>
+    <em>«Хотела написать лично — эфир завтра в [время], он бесплатный.»</em><br>
+    <em>«Будем разбирать либидо, возбуждение, психоблоки — то что обычно не обсуждают вслух.»</em><br><br>
+    <em>«Вот ссылка: [ссылка]»</em><br><br>
+    <em>«Буду рада видеть тебя там 💜»</em><br><br>
+    <span class="trigger">НЕ продажа. Тёплое приглашение. Отправляй лично, не в рассылке.</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 7: ДОЖИМ ДО ВЕБИНАРА -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="webinar-before">
+  <h2>Дожим до вебинара: конверсия в явку</h2>
+  <p class="sub">Зарегистрировались — не значит придут. Явка без прогрева = 20–30%. С прогревом = 50–70%.</p>
+
+  <div class="grid-2">
+    <div>
+      <h3>Последовательность для зарегистрированных</h3>
+      <div class="tl">
+        <div class="tl-item">
+          <h4>Сразу после регистрации (авто)</h4>
+          <p>«Ура! Ты записалась 🌸 Сохрани дату: [дата], [время]. Ссылка для входа: [ссылка]. Я готовлю кое-что особенное для тех кто досмотрит до конца.»</p>
+        </div>
+        <div class="tl-item">
+          <h4>За 24 часа (авто)</h4>
+          <p>«Завтра наш эфир! Напоминаю — [время]. Сегодня вечером отправлю тебе кое-что интересное — маленький прогрев перед завтрашним. Следи за сообщениями 👀»</p>
+        </div>
+        <div class="tl-item">
+          <h4>За 24 часа (вечер, авто)</h4>
+          <p>«Вот вопрос для тебя: на что из этого ты бы сказала "это про меня"? [список болей] Завтра разбираем каждый пункт. До встречи!»</p>
+        </div>
+        <div class="tl-item">
+          <h4>За 3 часа</h4>
+          <p>«Через 3 часа начинаем! Вот прямая ссылка для входа: [ссылка]. Приходи за 5 минут — займём место.»</p>
+        </div>
+        <div class="tl-item">
+          <h4>За 15 минут</h4>
+          <p>«Через 15 минут открываю эфир. Мы начинаем! [ссылка]»</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>KPI явки и как её поднять</h3>
+      <table>
+        <tr><th>Показатель</th><th>Без прогрева</th><th>С прогревом</th></tr>
+        <tr><td>Явка (% от зарегов)</td><td>20–30%</td><td>50–70%</td></tr>
+        <tr><td>Досмотр до оффера</td><td>40%</td><td>60–70%</td></tr>
+        <tr><td>Конверсия в продажу</td><td>2–3%</td><td>8–12%</td></tr>
+      </table>
+      <div class="highlight" style="margin-top:14px">
+        При 150 зарегистрированных и явке 50% = 75 участников × 8% = 6 продаж × 190€ = $1,140 с вебинара
+      </div>
+      <div class="card card-lite" style="margin-top:14px">
+        <strong>Что повышает явку:</strong>
+        <ul class="check" style="margin-top:8px">
+          <li>Напоминания в ManyChat/боте (не только email)</li>
+          <li>Интрига: «досмотри до конца — получишь X»</li>
+          <li>Вопрос-опрос за день до (вовлечение)</li>
+          <li>Личное сообщение от Екатерины накануне</li>
+          <li>SMS/WhatsApp напоминание за 1 час</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 8: ДОЖИМ ПОСЛЕ ВЕБИНАРА -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="webinar-after">
+  <h2>Полная система дожима после вебинара</h2>
+  <p class="sub">72-часовое окно — когда закрывается 80% всех продаж с вебинара</p>
+
+  <div class="tl" style="margin-bottom:28px">
+
+    <div class="tl-item">
+      <h4>0–1 час после вебинара | Касание 1 — «Горячее»</h4>
+      <div class="script" style="margin-top:8px">
+        <div class="meta">ManyChat + Telegram-бот | Всем участникам вебинара</div>
+        <em>«[Имя], спасибо что была сегодня на эфире! 🌸»</em><br><br>
+        <em>«Сегодня мы разобрали: [1–2 конкретные темы из эфира]. Надеюсь, ты взяла для себя что-то важное.»</em><br><br>
+        <em>«Для тех, кто хочет пойти глубже — я открываю особые условия на курс "Искусство женского наслаждения":»</em><br>
+        <em>→ Тариф «Самостоятельный» — 190€</em><br>
+        <em>→ Тариф «С поддержкой» — 290€</em><br>
+        <em>→ Тариф «VIP» — 790€</em><br><br>
+        <em>«+ курс по позам и доступ в Red Room — в подарок.»</em><br>
+        <em>«Это предложение действует 72 часа.»</em><br><br>
+        <span class="cta">«Ссылка: [ссылка] 👆»</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <h4>Сразу после | Директ вручную — самые горячие</h4>
+      <div class="script" style="margin-top:8px">
+        <div class="meta">Instagram Direct | Тем кто писал «+», «хочу», «интересно» на вебинаре</div>
+        <em>«Привет! Видела что тебе откликнулась тема сегодня 💜»</em><br>
+        <em>«Если есть вопросы по курсу — напиши, расскажу про тариф который подойдёт именно тебе.»</em><br>
+        <em>«Это не шаблон — пишу лично 🌸»</em>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <h4>24 часа | Касание 2 — «Ценность + дедлайн»</h4>
+      <div class="script" style="margin-top:8px">
+        <div class="meta">ManyChat/бот + Stories</div>
+        <em>«Вчера на эфире мы разобрали [конкретная техника].»</em><br>
+        <em>«Ты уже попробовала? Напиши — интересно как тебе 😊»</em><br><br>
+        <em>«Для тех, кто ещё думает о курсе:»</em><br>
+        <em>«Осталось [X] мест по спеццене. Завтра цена вырастет на $100.»</em><br><br>
+        <span class="cta">«[Ссылка]»</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <h4>48 часов | Касание 3 — «История + социальное доказательство»</h4>
+      <div class="script" style="margin-top:8px">
+        <div class="meta">ManyChat/бот</div>
+        <em>«Получила вчера сообщение от Насти — она была на эфире, взяла курс:»</em><br>
+        <em>«"Катя, я просто хочу сказать спасибо. Уже на первом уроке я поняла — это именно то что мне нужно было давно."»</em><br><br>
+        <em>«Вот почему я делаю то что делаю 🌸»</em><br><br>
+        <em>«Ещё 24 часа по специальной цене. Потом — стандартная.»</em><br>
+        <span class="cta">«[Ссылка]»</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <h4>За 2 часа до дедлайна | Касание 4 — «Финальная срочность»</h4>
+      <div class="script" style="margin-top:8px">
+        <div class="meta">ManyChat + Stories с таймером</div>
+        <em>«Через 2 часа закрываю специальные условия.»</em><br>
+        <em>«После — стандартная цена без бонусов.»</em><br><br>
+        <em>«Если ты ещё думаешь — напиши мне "вопрос". Отвечу лично, помогу выбрать тариф.»</em><br><br>
+        <span class="cta">«[Ссылка]»</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <h4>День 4–5 | Даунсейл — для тех кто не купил флагман</h4>
+      <div class="script" style="margin-top:8px">
+        <div class="meta">Отдельный сегмент: участники вебинара, не купившие флагман</div>
+        <em>«Понимаю что 190€ — это не маленькая сумма.»</em><br>
+        <em>«Для тех, кто хочет начать с малого — есть вариант:»</em><br><br>
+        <em>«Мини-курс "Высший пилотаж" или "Либидо и оргазмы" — всего 39€.»</em><br>
+        <em>«5 видеоуроков. Конкретные техники. Результат в тот же вечер.»</em><br><br>
+        <em>«И кстати — для покупателей мини-курса через 7 дней дам $50 скидку на флагман.»</em><br>
+        <span class="cta">«[Ссылка на мини-курс]»</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="highlight-plum">
+    📊 Если конверсия вебинара 2.9% → при правильном 4-касательном дожиме реалистично поднять до 8–10%. Это разница между 2 и 7 продажами с того же вебинара.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 9: ТАРГЕТ -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="targeting">
+  <h2>Слабые места в таргете и как их исправить</h2>
+  <p class="sub">На основе реальных данных февраля и марта 2026</p>
+
+  <table style="margin-bottom:20px">
+    <tr>
+      <th>Проблема</th><th>Факт</th><th>Причина</th><th>Решение</th><th>Ответственный</th>
+    </tr>
+    <tr>
+      <td><strong>Мини-курсы не окупаются в холодном</strong></td>
+      <td>CPA $17–29, цена $9–11</td>
+      <td>Продукт слишком дешёвый для холодного трафика</td>
+      <td>Только даунсейл после вебинара или апселл с мини</td>
+      <td>Продюсер</td>
+    </tr>
+    <tr>
+      <td><strong>Конверсия вебинара 2.9%</strong></td>
+      <td>70 чел → 2 продажи</td>
+      <td>Нет системы дожима после эфира</td>
+      <td>4-касательная последовательность (выше)</td>
+      <td>Таня + Продюсер</td>
+    </tr>
+    <tr>
+      <td><strong>Таргет простаивал 2 недели</strong></td>
+      <td>Март: –$313 итог</td>
+      <td>Нет системы контроля — отчётности нет</td>
+      <td>Еженедельный отчёт, штраф за простой</td>
+      <td>Таня</td>
+    </tr>
+    <tr>
+      <td><strong>Нет пикселя на конверсии</strong></td>
+      <td>«Пиксель не фиксировал»</td>
+      <td>Не настроены события — только базовый пиксель</td>
+      <td>Настроить Purchase, Lead, ViewContent события</td>
+      <td>Таня — до вебинара</td>
+    </tr>
+    <tr>
+      <td><strong>Нет ретаргета</strong></td>
+      <td>Вся реклама — холодный</td>
+      <td>Не запущены аудитории по взаимодействию</td>
+      <td>Запустить Кампанию 2 (ретаргет видео 50%+)</td>
+      <td>Таня — эта неделя</td>
+    </tr>
+    <tr>
+      <td><strong>Нет LAL</strong></td>
+      <td>Нет кампании</td>
+      <td>Не собрана база покупателей для LAL</td>
+      <td>Загрузить базу покупателей → создать LAL</td>
+      <td>Таня</td>
+    </tr>
+  </table>
+
+  <h3 style="margin-bottom:12px">Новые аудиторные сегменты для таргета (холодный)</h3>
+  <div class="grid-3">
+    <div class="card card-accent">
+      <span class="badge">Аудитория 1</span>
+      <h3>Интересы: психология + отношения</h3>
+      <ul class="arrow">
+        <li>Психология, саморазвитие</li>
+        <li>Семейные отношения</li>
+        <li>Женское здоровье</li>
+        <li>Материнство + возраст 28–42</li>
+      </ul>
+    </div>
+    <div class="card card-accent">
+      <span class="badge badge-mauve">Аудитория 2</span>
+      <h3>Поведение: активные покупатели онлайн-курсов</h3>
+      <ul class="arrow">
+        <li>Покупали онлайн-курсы</li>
+        <li>Интерес: обучение, развитие</li>
+        <li>Женщины 22–38</li>
+        <li>Исключить: мужчин</li>
+      </ul>
+    </div>
+    <div class="card card-accent">
+      <span class="badge badge-amber">Аудитория 3</span>
+      <h3>Конкуренты и смежные темы</h3>
+      <ul class="arrow">
+        <li>Подписчики конкурентов (sexologvasilenko)</li>
+        <li>Интерес: сексология, женское здоровье</li>
+        <li>Читатели блогов по психологии пар</li>
+        <li>Возраст: 24–45</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:16px">
+    ⚡ Главное правило: <strong>один оффер = одна аудитория = одно объявление.</strong> Не мешай сегменты в одной группе объявлений.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 10: КОНВЕРСИИ НА КАЖДОМ ЭТАПЕ -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="conversion">
+  <h2>Выжать конверсию на каждом этапе</h2>
+  <p class="sub">Конкретные действия для улучшения каждой точки воронки</p>
+
+  <div class="grid-2">
+
+    <div>
+      <h3>Этап 1: Объявление → Клик</h3>
+      <p><strong>Норма CTR:</strong> 1.5–3% | <strong>Было:</strong> 1.6–3.8% (ок)</p>
+      <ul class="arrow" style="margin-top:8px">
+        <li>Первые 3 секунды — боль/вопрос/шок без продажи</li>
+        <li>Лицо эксперта в кадре — доверие</li>
+        <li>Субтитры обязательно (70% смотрят без звука)</li>
+        <li>A/B тест: 2 версии крючка на одну аудиторию</li>
+        <li>Обновлять креативы каждые 2–3 недели</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Этап 2: Клик → Регистрация на вебинар</h3>
+      <p><strong>Норма CR:</strong> 25–40% | <strong>Цель:</strong> $2–5 за регистрацию</p>
+      <ul class="arrow" style="margin-top:8px">
+        <li>Страница регистрации: 1 поле (имя + telegram), без перегруза</li>
+        <li>Хедлайн: боль → решение → кто проводит</li>
+        <li>Социальное доказательство на странице (отзывы, кол-во участников)</li>
+        <li>Мобильная версия — 85% трафика с телефона</li>
+        <li>Пиксель + событие Lead на кнопке</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Этап 3: Регистрация → Явка</h3>
+      <p><strong>Норма:</strong> 30–50% | <strong>Цель с прогревом:</strong> 50–70%</p>
+      <ul class="arrow" style="margin-top:8px">
+        <li>5 касаний от регистрации до вебинара (выше)</li>
+        <li>Интрига: «подарок только тем, кто досмотрит до конца»</li>
+        <li>Напоминание за 1 час с прямой ссылкой</li>
+        <li>Запись для тех кто не смог — увеличивает доверие</li>
+        <li>Личное сообщение от Екатерины накануне</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Этап 4: Явка → Продажа на вебинаре</h3>
+      <p><strong>Было:</strong> 2.9% | <strong>Норма:</strong> 8–12% | <strong>Цель:</strong> 10%</p>
+      <ul class="arrow" style="margin-top:8px">
+        <li>Структура: 60% контент + 40% продажа (не наоборот)</li>
+        <li>Вилка цен: показать все 3 тарифа, начать со среднего</li>
+        <li>Дедлайн: называть время закрытия (не «скоро»)</li>
+        <li>Бонусы с ценностью: «курс по позам — отдельно $49, сегодня бесплатно»</li>
+        <li>Отзывы прямо на вебинаре — видео или скрины</li>
+        <li>Попросить «+» тем, кто рассматривает — создаёт импульс</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Этап 5: Вебинар → Дожим</h3>
+      <p><strong>Норма:</strong> 30–50% продаж приходит после вебинара, не на нём</p>
+      <ul class="arrow" style="margin-top:8px">
+        <li>4 касания за 72 часа (система выше)</li>
+        <li>Директ вручную тем, кто проявил интерес</li>
+        <li>Сторис с таймером = постоянное напоминание</li>
+        <li>Даунсейл на 4–5 день: 39€ мини-курс</li>
+        <li>Не давить — приглашать</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Этап 6: Покупка → Апселл / Реферал</h3>
+      <p><strong>Потенциал:</strong> +20–30% к выручке с тех же клиентов</p>
+      <ul class="arrow" style="margin-top:8px">
+        <li>После покупки мини-курса → через 7 дней оффер на флагман −$50</li>
+        <li>После флагмана → Red Room Premium со скидкой</li>
+        <li>«Приведи подругу — каждой скидка 10%» (реферальная программа)</li>
+        <li>NPS-опрос через 2 недели → собирать отзывы</li>
+        <li>VIP-тариф: предложить апгрейд через 30 дней</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- БЛОК 11: РИСКИ (5+) -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section id="risks">
+  <h2>Полная карта рисков и решений</h2>
+  <p class="sub">5 зон риска с конкретными контрмерами</p>
+
+  <div class="risk" style="border:2px solid var(--red)">
+    <div class="risk-l">
+      <h4>🔴 РИСК 1: КОНВЕРСИЯ ВЕБИНАРА ОСТАЁТСЯ НИЗКОЙ</h4>
+      <p><strong>Вероятность:</strong> Высокая (была 2.9%)<br><strong>Сценарий:</strong> 150 участников × 3% = 4–5 продаж = $760–950. Апрельская цель $4,500 не достигнута.</p>
+    </div>
+    <div class="risk-r">
+      <h4>✅ КОНТРМЕРЫ</h4>
+      <p>
+        1. Внедрить 4-касательный дожим (скрипты выше)<br>
+        2. Директ вручную — минимум 10 человек после эфира<br>
+        3. Сделать оффер с конкретным дедлайном (не «скоро», а «до 12 апреля 23:59»)<br>
+        4. Добавить даунсейл 39€ как страховку<br>
+        5. Анализ: фиксировать сколько кликнули по ссылке во время вебинара
+      </p>
+    </div>
+  </div>
+
+  <div class="risk">
+    <div class="risk-l">
+      <h4>🟠 РИСК 2: БЛОГЕРСКАЯ АУДИТОРИЯ НЕ КОНВЕРТИРУЕТСЯ</h4>
+      <p><strong>Вероятность:</strong> Средняя<br><strong>Сценарий:</strong> Люди пришли, посмотрели профиль, не зарегистрировались. Деньги за рекламу потеряны.</p>
+    </div>
+    <div class="risk-r">
+      <h4>✅ КОНТРМЕРЫ</h4>
+      <p>
+        1. 48-часовой прогрев Stories (план выше) — с сегодня<br>
+        2. Pinned Story с анонсом вебинара — прямо сейчас<br>
+        3. Ссылка на регистрацию в шапке профиля — проверить<br>
+        4. Личный директ тем, кто лайкнул Stories но не зарегистрировался<br>
+        5. Контрольная метрика: из рекламы у блогера → % зарегистрировавшихся (UTM-метка!)
+      </p>
+    </div>
+  </div>
+
+  <div class="risk">
+    <div class="risk-l">
+      <h4>🟠 РИСК 3: НИЗКАЯ ЯВКА НА ВЕБИНАР</h4>
+      <p><strong>Вероятность:</strong> Средняя (без прогрева явка 20–30%)<br><strong>Сценарий:</strong> Зарегистрировались 200 человек, пришли 40–50. При конверсии 8% = 3–4 продажи.</p>
+    </div>
+    <div class="risk-r">
+      <h4>✅ КОНТРМЕРЫ</h4>
+      <p>
+        1. Серия из 5 напоминаний (система выше)<br>
+        2. Интрига: подарок только тем, кто досмотрит до конца (Red Room)<br>
+        3. Stories с обратным отсчётом за 3ч и 1ч<br>
+        4. Telegram-посевы в каналах (kinky_events_ua и др.)<br>
+        5. Если явка &lt;50 — перенести на 15 минут, дать время подтянуться
+      </p>
+    </div>
+  </div>
+
+  <div class="risk">
+    <div class="risk-l">
+      <h4>🟡 РИСК 4: СГОРАНИЕ ЭКСПЕРТА</h4>
+      <p><strong>Вероятность:</strong> Средняя<br><strong>Сценарий:</strong> 12 Reels + 5 Stories/день + вебинар + директ = огромная нагрузка. Качество контента падает, эксперт теряет мотивацию.</p>
+    </div>
+    <div class="risk-r">
+      <h4>✅ КОНТРМЕРЫ</h4>
+      <p>
+        1. Контент-батчинг: 1 день в неделю = 3–4 Reels за раз<br>
+        2. Stories частично автоматизировать (шаблоны, опросы без съёмки)<br>
+        3. Чёткие блоки: «директ — только 1 час в день, не в выходные»<br>
+        4. КМ берёт на себя все посты и монтаж — Катя только снимает<br>
+        5. Celebrate wins: фиксировать каждую продажу — мотивация продолжать
+      </p>
+    </div>
+  </div>
+
+  <div class="risk">
+    <div class="risk-l">
+      <h4>🟡 РИСК 5: ТАРГЕТ СЪЕДАЕТ БЮДЖЕТ БЕЗ РЕЗУЛЬТАТА</h4>
+      <p><strong>Вероятность:</strong> Средняя (март: −$313)<br><strong>Сценарий:</strong> Апрель $400–500 таргет → снова ROAS &lt;1 → общий убыток.</p>
+    </div>
+    <div class="risk-r">
+      <h4>✅ КОНТРМЕРЫ</h4>
+      <p>
+        1. Таргет ТОЛЬКО на регистрацию вебинара (не мини-курсы!)<br>
+        2. Пиксель + событие Lead → оптимизация по конверсиям, не кликам<br>
+        3. Недельный контроль: если CPA &gt;$8 за регистрацию → стоп, меняем<br>
+        4. Бюджет: старт $100/нед, масштаб только если CPA &lt;$5<br>
+        5. Отчёт каждые 7 дней: охват/CPM/CPA/ROAS — решение по данным
+      </p>
+    </div>
+  </div>
+
+  <div class="risk" style="border:1px solid var(--teal)">
+    <div class="risk-l" style="background:#F0FFFF; border-right-color:var(--teal)">
+      <h4 style="color:var(--teal)">🔵 РИСК 6: RED ROOM НЕ МОНЕТИЗИРУЕТСЯ В МАЕ</h4>
+      <p><strong>Вероятность:</strong> Низкая-средняя<br><strong>Сценарий:</strong> Запуск Premium не вызвал интереса. Ожидаемые $585 не пришли.</p>
+    </div>
+    <div class="risk-r">
+      <h4>✅ КОНТРМЕРЫ</h4>
+      <p>
+        1. В апреле: не менее 4 Reels демонстрирующих функционал<br>
+        2. Waitlist: «Запишись первой на Premium — дам скидку 50%»<br>
+        3. На вебинаре: демонстрация живого использования Red Room<br>
+        4. Цена $3.9 — настолько низкая, что барьер минимален<br>
+        5. Если слабый спрос — упаковать как «бонус к флагману навсегда» и поднять цену флагмана
+      </p>
+    </div>
+  </div>
+
+  <div class="risk">
+    <div class="risk-l">
+      <h4>🟡 РИСК 7: БЛОГЕРЫ НЕ ОТВЕЧАЮТ НА ПРЕДЛОЖЕНИЕ О КОЛЛАБЕ</h4>
+      <p><strong>Вероятность:</strong> Высокая (38 написали, большинство молчат)<br><strong>Сценарий:</strong> Органический рост тормозит. Нет новых лидов из коллабораций.</p>
+    </div>
+    <div class="risk-r">
+      <h4>✅ КОНТРМЕРЫ</h4>
+      <p>
+        1. Писать ПОВТОРНО через 5–7 дней (большинство не отвечают с первого раза)<br>
+        2. Персонализировать: «Видела твой пост про [конкретное] — думаю нашим аудиториям было бы интересно...»<br>
+        3. Начать с маленьких блогеров (3–10K) — выше % ответов<br>
+        4. Платные посевы в Telegram как резерв ($50–150)<br>
+        5. Взаимный эфир — легче чем Stories, выше ценность для обеих сторон
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  SecretCoach — Полный маркетинговый плейбук | Апрель–Май 2026 | Конфиденциально
+</footer>
+
+</body>
+</html>
