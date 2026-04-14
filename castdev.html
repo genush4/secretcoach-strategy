@@ -8,21 +8,19 @@
 :root{
   --plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;
   --cream:#FAF7F4;--lite:#F5F0EC;--dark:#1E1428;--mid:#DDD5CC;
-  --green:#3A9A6A;--green-light:#E8F5EE;
+  --green:#3A9A6A;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--dark);min-height:100vh;}
 
-/* TOP PROGRESS BAR */
 .top-bar{position:fixed;top:0;left:0;width:100%;z-index:200;background:white;border-bottom:1px solid var(--mid);padding:10px 20px;display:flex;align-items:center;gap:14px;}
 .top-bar-fill{flex:1;height:8px;background:var(--mid);border-radius:10px;overflow:hidden;}
-.top-bar-fill-inner{height:100%;background:linear-gradient(90deg,var(--green),#5ABF8A);border-radius:10px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+.top-bar-inner{height:100%;background:linear-gradient(90deg,var(--green),#5ABF8A);border-radius:10px;transition:width .5s ease;}
 .top-bar-label{font-size:12px;font-weight:700;color:var(--mauve);white-space:nowrap;min-width:70px;text-align:right;}
 
-/* HERO */
 .hero{background:linear-gradient(135deg,var(--plum) 0%,#4A2D6A 60%,#3D1F5A 100%);padding:72px 24px 52px;text-align:center;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-40%;left:-20%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(196,133,106,.15) 0%,transparent 70%);pointer-events:none;}
-.hero-gift{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);color:white;font-size:12px;font-weight:700;padding:8px 18px;border-radius:20px;letter-spacing:.04em;margin-bottom:22px;border:1px solid rgba(255,255,255,.2);}
+.hero-gift{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:white;font-size:12px;font-weight:700;padding:8px 18px;border-radius:20px;margin-bottom:22px;border:1px solid rgba(255,255,255,.2);}
 .hero h1{color:white;font-size:27px;font-weight:800;max-width:580px;margin:0 auto 16px;line-height:1.35;}
 .hero-sub{color:var(--blush);font-size:15px;max-width:500px;margin:0 auto 24px;line-height:1.65;}
 .hero-cards{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:520px;margin:0 auto;}
@@ -31,10 +29,8 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 .hero-card .hc-title{color:white;font-size:13px;font-weight:700;margin-bottom:4px;}
 .hero-card .hc-text{color:rgba(255,255,255,.65);font-size:12px;line-height:1.5;}
 
-/* FORM CONTAINER */
 .form-wrap{max-width:640px;margin:0 auto;padding:32px 20px 80px;}
 
-/* STEP PROGRESS */
 .steps-progress{background:white;border-radius:16px;padding:18px 20px;margin-bottom:24px;border:1px solid var(--mid);}
 .steps-list{display:flex;align-items:center;position:relative;}
 .step-item{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;z-index:1;}
@@ -48,26 +44,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 .step-item.done .step-label{color:var(--green);}
 @media(max-width:480px){.step-label{font-size:9px;}.step-circle{width:26px;height:26px;font-size:11px;}}
 
-/* ERROR TOAST */
-.error-toast{display:none;background:#FFF0EC;border:1.5px solid var(--rose);border-radius:12px;padding:14px 18px;margin-bottom:16px;color:#8A3020;font-size:13px;font-weight:600;align-items:center;gap:10px;}
-.error-toast.show{display:flex;}
-
-/* CHEERING BANNER */
-.cheer-block{background:linear-gradient(135deg,var(--green-light),#F0FAF4);border-radius:12px;padding:16px 20px;margin-bottom:24px;border:1px solid rgba(58,154,106,.2);display:flex;align-items:center;gap:14px;}
-.cheer-block .cheer-icon{font-size:28px;flex-shrink:0;}
-.cheer-block .cheer-text strong{display:block;font-size:14px;font-weight:700;color:#2A7A54;margin-bottom:2px;}
-.cheer-block .cheer-text span{font-size:13px;color:#3D8A60;line-height:1.5;}
-.cheer-block.purple{background:linear-gradient(135deg,#F3EFF8,#EEE8F5);border-color:rgba(123,92,116,.2);}
-.cheer-block.purple .cheer-text strong{color:var(--plum);}
-.cheer-block.purple .cheer-text span{color:var(--mauve);}
-.cheer-block.rose{background:linear-gradient(135deg,#FDF5F0,#FAF0EA);border-color:rgba(196,133,106,.2);}
-.cheer-block.rose .cheer-text strong{color:#9A5040;}
-.cheer-block.rose .cheer-text span{color:var(--rose);}
-.cheer-block.warm{background:linear-gradient(135deg,#FFF3E0,#FFF8F0);border-color:rgba(196,133,106,.3);}
-.cheer-block.warm .cheer-text strong{color:#8A5030;}
-.cheer-block.warm .cheer-text span{color:var(--rose);}
-
-/* SECTIONS */
 .section{background:white;border-radius:16px;padding:28px;margin-bottom:20px;border:1px solid var(--mid);display:none;animation:fadeUp .4s ease;}
 .section.active{display:block;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
@@ -76,69 +52,51 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 .section-title{font-size:17px;font-weight:700;color:var(--plum);}
 .section-sub{font-size:13px;color:var(--mauve);margin-top:2px;}
 
-/* INTRO TEXT */
 .intro-block{background:var(--lite);border-radius:12px;padding:20px;margin-bottom:28px;border-left:4px solid var(--rose);}
 .intro-block p{font-size:14px;line-height:1.7;color:#444;}
 .intro-block p+p{margin-top:10px;}
 .intro-block strong{color:var(--plum);}
 
-/* QUESTIONS */
 .question{margin-bottom:24px;}
 .question label{display:block;font-size:14px;font-weight:600;color:var(--dark);margin-bottom:8px;line-height:1.4;}
 .question label .req{color:var(--rose);}
 .question .hint{font-size:12px;color:var(--mauve);margin-bottom:8px;font-style:italic;line-height:1.5;}
 
-input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{
+input[type=text],input[type=tel],input[type=number],textarea{
   width:100%;padding:12px 16px;border:1.5px solid var(--mid);border-radius:10px;
   font-size:14px;font-family:inherit;color:var(--dark);background:white;
   transition:border-color .2s,box-shadow .2s;outline:none;
 }
-input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus,
-input[type=number]:focus,select:focus,textarea:focus{
+input[type=text]:focus,input[type=tel]:focus,input[type=number]:focus,textarea:focus{
   border-color:var(--rose);box-shadow:0 0 0 3px rgba(196,133,106,.15);
 }
 textarea{resize:vertical;min-height:120px;line-height:1.6;}
-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237B5C74' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;}
 
-/* CHECKBOXES / RADIO */
 .options-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .options-grid.single{grid-template-columns:1fr;}
 @media(max-width:480px){.options-grid{grid-template-columns:1fr;}}
 .option-item{position:relative;}
 .option-item input{position:absolute;opacity:0;width:0;height:0;}
-.option-item label{
-  display:flex;align-items:center;gap:10px;padding:12px 14px;
-  border:1.5px solid var(--mid);border-radius:10px;cursor:pointer;
-  font-size:13px;font-weight:500;color:#555;transition:all .2s;line-height:1.3;
-}
-.option-item label .check{
-  width:20px;height:20px;border:2px solid var(--mid);border-radius:5px;
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;
-}
-.option-item input[type=radio] + label .check{border-radius:50%;}
-.option-item input:checked + label{border-color:var(--rose);background:#FDF5F0;color:var(--plum);}
-.option-item input:checked + label .check{background:var(--rose);border-color:var(--rose);}
-.option-item input:checked + label .check::after{content:'✓';color:white;font-size:11px;font-weight:700;}
-.option-item input[type=radio]:checked + label .check::after{content:'';width:8px;height:8px;background:white;border-radius:50%;}
+.option-item label{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--mid);border-radius:10px;cursor:pointer;font-size:13px;font-weight:500;color:#555;transition:all .2s;line-height:1.3;}
+.option-item label .check{width:20px;height:20px;border:2px solid var(--mid);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.option-item input[type=radio]+label .check{border-radius:50%;}
+.option-item input:checked+label{border-color:var(--rose);background:#FDF5F0;color:var(--plum);}
+.option-item input:checked+label .check{background:var(--rose);border-color:var(--rose);}
+.option-item input:checked+label .check::after{content:'✓';color:white;font-size:11px;font-weight:700;}
+.option-item input[type=radio]:checked+label .check::after{content:'';width:8px;height:8px;background:white;border-radius:50%;}
 
-/* SCALE */
 .scale-wrap{display:flex;gap:6px;}
 .scale-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--mauve);margin-top:6px;}
 .scale-item{flex:1;text-align:center;}
 .scale-item input{display:none;}
-.scale-item label{
-  display:block;padding:10px 2px;border:1.5px solid var(--mid);border-radius:8px;
-  cursor:pointer;font-size:13px;font-weight:700;color:#999;transition:all .2s;
-}
-.scale-item input:checked + label{background:var(--rose);border-color:var(--rose);color:white;}
+.scale-item label{display:block;padding:10px 2px;border:1.5px solid var(--mid);border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;color:#999;transition:all .2s;}
+.scale-item input:checked+label{background:var(--rose);border-color:var(--rose);color:white;}
 .scale-item label:hover{border-color:var(--rose);color:var(--rose);}
 
-/* CHAR COUNTER */
 .char-counter{font-size:11px;color:var(--mauve);text-align:right;margin-top:4px;}
-.char-counter.warning{color:var(--rose);}
+.char-counter.warn{color:var(--rose);}
 .char-counter.ok{color:var(--green);font-weight:600;}
 
-/* BUTTONS */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:30px;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all .2s;font-family:inherit;}
 .btn-primary{background:linear-gradient(135deg,var(--rose),#b06a50);color:white;width:100%;}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,133,106,.35);}
@@ -147,81 +105,68 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 .btn-wrap{display:flex;gap:12px;margin-top:28px;}
 .btn-wrap .btn-primary{flex:1;}
 
-/* CONSENT */
 .consent-block{background:var(--lite);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;}
 .consent-block input[type=checkbox]{margin-top:3px;accent-color:var(--rose);width:16px;height:16px;flex-shrink:0;cursor:pointer;}
 .consent-block label{font-size:13px;color:#555;line-height:1.5;cursor:pointer;}
 
+/* ERROR */
+.err-field{color:var(--rose);font-size:12px;margin-top:6px;display:none;font-weight:500;}
+.has-error input,.has-error textarea{border-color:var(--rose) !important;box-shadow:0 0 0 3px rgba(196,133,106,.12) !important;}
+.has-error .err-field{display:block;}
+.err-group{color:var(--rose);font-size:12px;margin-top:6px;font-weight:500;display:none;}
+.err-group.show{display:block;}
+
 /* SUCCESS */
 #success-screen{display:none;text-align:center;padding:60px 20px;}
-#success-screen .success-icon{font-size:64px;margin-bottom:20px;}
+#success-screen .s-icon{font-size:64px;margin-bottom:20px;}
 #success-screen h2{font-size:26px;font-weight:800;color:var(--plum);margin-bottom:12px;}
-#success-screen .success-sub{font-size:15px;color:#555;max-width:420px;margin:0 auto 28px;line-height:1.7;}
-
+#success-screen .s-sub{font-size:15px;color:#555;max-width:420px;margin:0 auto 28px;line-height:1.7;}
 .gift-card{background:linear-gradient(135deg,var(--plum),#4A2D6A);border-radius:20px;padding:28px;margin-bottom:20px;position:relative;overflow:hidden;text-align:left;}
 .gift-card::before{content:'';position:absolute;top:-30%;right:-10%;width:60%;height:160%;background:radial-gradient(ellipse,rgba(196,133,106,.2) 0%,transparent 70%);}
-.gift-card .gift-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);color:var(--blush);font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(255,255,255,.2);}
+.gift-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);color:var(--blush);font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(255,255,255,.2);}
 .gift-card h3{color:white;font-size:20px;font-weight:800;margin-bottom:10px;}
 .gift-card p{color:var(--blush);font-size:14px;line-height:1.6;margin-bottom:20px;}
 .gift-btn{display:inline-flex;align-items:center;gap:10px;background:var(--rose);color:white;padding:14px 28px;border-radius:30px;font-size:15px;font-weight:700;text-decoration:none;transition:all .2s;}
-.gift-btn:hover{background:#b06a50;transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,133,106,.4);}
-
-.next-steps{background:white;border-radius:16px;padding:24px;margin-top:16px;border:1px solid var(--mid);text-align:left;}
-.next-steps h3{font-size:15px;font-weight:700;color:var(--plum);margin-bottom:14px;}
-.next-steps ul{list-style:none;padding:0;}
-.next-steps li{font-size:13px;color:#555;margin-bottom:14px;line-height:1.5;display:flex;gap:10px;align-items:flex-start;}
-.next-steps li .li-icon{flex-shrink:0;}
-.next-steps a{color:var(--rose);font-weight:600;text-decoration:none;}
-.next-steps a:hover{text-decoration:underline;}
-
+.gift-btn:hover{background:#b06a50;transform:translateY(-2px);}
+.tg-cta{background:white;border-radius:16px;padding:24px;margin-top:16px;border:1px solid var(--mid);text-align:left;}
+.tg-cta p{font-size:14px;color:#444;line-height:1.7;margin-bottom:14px;}
+.tg-cta a.tg-link{display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#2AABEE,#1A8BC6);color:white;padding:14px 24px;border-radius:30px;font-size:15px;font-weight:700;text-decoration:none;transition:all .2s;width:100%;}
+.tg-cta a.tg-link:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(42,171,238,.35);}
 .refill-btn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:var(--lite);color:var(--mauve);border:1.5px solid var(--mid);padding:12px 24px;border-radius:30px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
 .refill-btn:hover{border-color:var(--rose);color:var(--rose);}
 
-/* VALIDATION */
-.error-msg{color:var(--rose);font-size:12px;margin-top:6px;display:none;font-weight:500;}
-.question.has-error input,.question.has-error textarea,.question.has-error select{border-color:var(--rose);box-shadow:0 0 0 3px rgba(196,133,106,.12);}
-.question.has-error .error-msg{display:block;}
-.group-error{color:var(--rose);font-size:12px;margin-top:6px;display:none;font-weight:500;}
-.group-error.show{display:block;}
-
-@media(max-width:480px){
-  .hero h1{font-size:22px;}
-  .section{padding:20px 16px;}
-  .btn{padding:13px 20px;font-size:14px;}
-  .hero-cards{flex-direction:column;}
-  .top-bar{padding:8px 14px;}
-}
+@media(max-width:480px){.hero h1{font-size:22px;}.section{padding:20px 16px;}.btn{padding:13px 20px;font-size:14px;}.hero-cards{flex-direction:column;}.top-bar{padding:8px 14px;}}
 </style>
 </head>
 <body>
 
 <div class="top-bar">
-  <div class="top-bar-fill"><div class="top-bar-fill-inner" id="topBar" style="width:10%"></div></div>
+  <div class="top-bar-fill"><div class="top-bar-inner" id="topBar" style="width:10%"></div></div>
   <div class="top-bar-label" id="topLabel">Шаг 1 из 5</div>
 </div>
 
 <div class="hero" id="heroBlock">
   <div class="hero-gift"><span>🎁</span> Подарок каждой участнице</div>
-  <h1>Расскажи мне о себе — и я постараюсь помочь каждой из вас</h1>
-  <p class="hero-sub">Я читаю каждую анкету лично. Одну девушку возьму на глубокую работу — а каждая, кто ответит честно, получит кое-что особенное от меня в подарок</p>
+  <h1>Расскажи мне о себе и я постараюсь помочь каждой из вас</h1>
+  <p class="hero-sub">Я читаю каждую анкету лично. Одну девушку возьму на глубокую работу, а каждая, кто ответит честно, получит кое-что особенное в подарок</p>
   <div class="hero-cards">
     <div class="hero-card">
       <div class="hc-icon">🌸</div>
-      <div class="hc-title">1 место — личная работа со мной</div>
+      <div class="hc-title">1 место: личная работа со мной</div>
       <div class="hc-text">Возьму девушку, чья ситуация откликается мне сильнее всего, и буду вести её до результата бесплатно</div>
     </div>
     <div class="hero-card">
       <div class="hc-icon">🔴</div>
-      <div class="hc-title">Всем — доступ к RED ROOM</div>
-      <div class="hc-text">Каждая участница получит ссылку на эксклюзивное приложение с секс-сценариями — чтобы уже сегодня сделать шаг к ярким ощущениям</div>
+      <div class="hc-title">Всем: доступ к RED ROOM</div>
+      <div class="hc-text">Каждая участница получит ссылку на эксклюзивное приложение с секс-сценариями для ярких ощущений</div>
     </div>
   </div>
 </div>
 
 <div class="form-wrap">
 
-  <div class="steps-progress" id="stepsProgressWrap">
-    <div class="steps-list" id="stepsProgress">
+  <div class="steps-progress" id="stepsWrap">
+    <div class="steps-list">
       <div class="step-item active" id="step-1"><div class="step-circle">1</div><div class="step-label">О тебе</div></div>
       <div class="step-item" id="step-2"><div class="step-circle">2</div><div class="step-label">Запрос</div></div>
       <div class="step-item" id="step-3"><div class="step-circle">3</div><div class="step-label">Отношения</div></div>
@@ -230,14 +175,9 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     </div>
   </div>
 
-  <div class="error-toast" id="errorToast">
-    <span style="font-size:18px;flex-shrink:0">☝️</span>
-    <div id="errorToastMsg">Пожалуйста, ответь на все вопросы выше — прокрути страницу вверх</div>
-  </div>
-
   <form id="castdevForm" action="https://formspree.io/f/xpqkwavg" method="POST">
 
-  <!-- SECTION 1: О ТЕБЕ -->
+  <!-- SECTION 1 -->
   <div class="section active" id="section-1">
     <div class="intro-block">
       <p><strong>Привет 🌸</strong> Я хочу познакомиться с тобой поближе и понять, что тебя волнует — чтобы быть по-настоящему полезной.</p>
@@ -249,17 +189,17 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
       <div><div class="section-title">О тебе</div><div class="section-sub">Несколько вводных вопросов</div></div>
     </div>
 
-    <div class="question" id="q-name">
-      <label>Как тебя зовут? <span class="req">*</span></label>
-      <div class="hint">Имя — как тебе удобно</div>
-      <input type="text" name="Имя" placeholder="Например: Анна" required>
-      <div class="error-msg">Напиши своё имя</div>
+    <div class="question" id="q-tg">
+      <label>Ник в Telegram <span class="req">*</span></label>
+      <div class="hint">Именно туда я напишу тебе и пришлю подарок после анкеты</div>
+      <input type="text" name="Ник в Telegram" id="inp-tg" placeholder="@username">
+      <div class="err-field">Напиши свой ник в Telegram</div>
     </div>
 
     <div class="question" id="q-age">
       <label>Сколько тебе лет? <span class="req">*</span></label>
-      <input type="number" name="Возраст" placeholder="Например: 29" min="18" max="65" required>
-      <div class="error-msg">Укажи возраст (от 18)</div>
+      <input type="number" name="Возраст" id="inp-age" placeholder="Например: 29" min="18" max="65">
+      <div class="err-field">Укажи возраст (от 18)</div>
     </div>
 
     <div class="question" id="q-status">
@@ -270,7 +210,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="option-item"><input type="radio" name="Статус отношений" id="r3" value="Свободна"><label for="r3"><div class="check"></div>Свободна</label></div>
         <div class="option-item"><input type="radio" name="Статус отношений" id="r4" value="Сложно ответить"><label for="r4"><div class="check"></div>Сложно ответить</label></div>
       </div>
-      <div class="group-error" id="err-status">Выбери один вариант</div>
+      <div class="err-group" id="eg-status">Выбери один вариант</div>
     </div>
 
     <div class="question" id="q-children">
@@ -279,25 +219,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="option-item"><input type="radio" name="Дети" id="ch1" value="Нет"><label for="ch1"><div class="check"></div>Нет</label></div>
         <div class="option-item"><input type="radio" name="Дети" id="ch2" value="Да"><label for="ch2"><div class="check"></div>Да</label></div>
       </div>
-      <div class="group-error" id="err-children">Выбери один вариант</div>
-    </div>
-
-    <div class="question" id="q-nick">
-      <label>Твой ник <span class="req">*</span></label>
-      <div class="hint">Именно через него я с тобой свяжусь — и пришлю подарок после анкеты</div>
-      <input type="text" name="Ник" placeholder="@username" required>
-      <div class="error-msg">Напиши свой ник</div>
-    </div>
-
-    <div class="question" id="q-platform">
-      <label>В какой соцсети или мессенджере? <span class="req">*</span></label>
-      <div class="options-grid">
-        <div class="option-item"><input type="radio" name="Платформа" id="pl1" value="Telegram"><label for="pl1"><div class="check"></div>Telegram</label></div>
-        <div class="option-item"><input type="radio" name="Платформа" id="pl2" value="Instagram"><label for="pl2"><div class="check"></div>Instagram</label></div>
-        <div class="option-item"><input type="radio" name="Платформа" id="pl3" value="WhatsApp"><label for="pl3"><div class="check"></div>WhatsApp</label></div>
-        <div class="option-item"><input type="radio" name="Платформа" id="pl4" value="Viber"><label for="pl4"><div class="check"></div>Viber</label></div>
-      </div>
-      <div class="group-error" id="err-platform">Выбери, где с тобой связаться</div>
+      <div class="err-group" id="eg-children">Выбери один вариант</div>
     </div>
 
     <div class="question">
@@ -310,28 +232,19 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     </div>
   </div>
 
-  <!-- SECTION 2: ТВОЙ ЗАПРОС -->
+  <!-- SECTION 2 -->
   <div class="section" id="section-2">
-
-    <div class="cheer-block">
-      <div class="cheer-icon">🎉</div>
-      <div class="cheer-text">
-        <strong>Отличное начало!</strong>
-        <span>Теперь самое важное — расскажи мне о себе. Здесь всё остаётся между нами, и нет никаких правильных или неправильных ответов.</span>
-      </div>
-    </div>
-
     <div class="section-header">
       <div class="section-num">2</div>
-      <div><div class="section-title">Твой запрос</div><div class="section-sub">Самая важная часть — не торопись</div></div>
+      <div><div class="section-title">Твой запрос</div><div class="section-sub">Самая важная часть, не торопись</div></div>
     </div>
 
     <div class="question" id="q-main">
       <label>Расскажи мне о своей ситуации подробно <span class="req">*</span></label>
-      <div class="hint">Что сейчас происходит? Что беспокоит? Что хочется изменить? Ты можешь писать откровенно — это только между тобой и мной.</div>
-      <textarea name="Описание ситуации" id="mainText" placeholder="Например: Уже два года я замечаю, что желания почти нет. Секс случается редко, и я чувствую что просто «участвую», а не получаю. Иногда думаю, что со мной что-то не так..." required minlength="80"></textarea>
-      <div class="char-counter" id="mainCounter">0 / нужно минимум 80 символов</div>
-      <div class="error-msg">Расскажи подробнее — нужно минимум 80 символов</div>
+      <div class="hint">Что сейчас происходит? Что беспокоит? Что хочется изменить? Ты можешь писать откровенно, это только между тобой и мной.</div>
+      <textarea name="Описание ситуации" id="mainText" placeholder="Например: Уже два года я замечаю, что желания почти нет. Секс случается редко, и я чувствую что просто участвую, а не получаю. Иногда думаю, что со мной что-то не так..."></textarea>
+      <div class="char-counter warn" id="mainCounter">0 / нужно минимум 80 символов</div>
+      <div class="err-field">Расскажи подробнее — нужно минимум 80 символов</div>
     </div>
 
     <div class="question" id="q-topics">
@@ -352,45 +265,47 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="option-item"><input type="checkbox" name="Запросы" id="t12" value="Эротическая переписка / флирт"><label for="t12"><div class="check"></div>Эротическая переписка</label></div>
         <div class="option-item"><input type="checkbox" name="Запросы" id="t13" value="Идеи для разнообразия в сексе"><label for="t13"><div class="check"></div>Разнообразие в сексе</label></div>
       </div>
-      <div class="group-error" id="err-topics">Выбери хотя бы одно</div>
+      <div class="err-group" id="eg-topics">Выбери хотя бы один вариант</div>
     </div>
 
-    <div class="question" id="q-duration">
+    <div class="question" id="q-dur">
       <label>Как давно ты с этим живёшь? <span class="req">*</span></label>
       <div class="options-grid single">
-        <div class="option-item"><input type="radio" name="Длительность" id="d1" value="Всегда так было"><label for="d1"><div class="check"></div>Всегда так было — другого не знаю</label></div>
+        <div class="option-item"><input type="radio" name="Длительность" id="d1" value="Всегда так было"><label for="d1"><div class="check"></div>Всегда так было, другого не знаю</label></div>
         <div class="option-item"><input type="radio" name="Длительность" id="d2" value="Несколько месяцев"><label for="d2"><div class="check"></div>Несколько месяцев</label></div>
-        <div class="option-item"><input type="radio" name="Длительность" id="d3" value="1-2 года"><label for="d3"><div class="check"></div>1–2 года</label></div>
+        <div class="option-item"><input type="radio" name="Длительность" id="d3" value="1-2 года"><label for="d3"><div class="check"></div>1-2 года</label></div>
         <div class="option-item"><input type="radio" name="Длительность" id="d4" value="Несколько лет"><label for="d4"><div class="check"></div>Несколько лет</label></div>
       </div>
-      <div class="group-error" id="err-duration">Выбери один вариант</div>
+      <div class="err-group" id="eg-dur">Выбери один вариант</div>
     </div>
 
-    <div class="question">
-      <label>Что ты уже пробовала? Что помогло, что нет?</label>
-      <div class="hint">Статьи, видео, книги, консультации, курсы, советы подруг</div>
-      <textarea name="Что пробовала" placeholder="Смотрела ролики в ютубе, читала про либидо... пробовала поговорить с ним, но стало неловко..."></textarea>
+    <div class="question" id="q-tried">
+      <label>Что ты уже пробовала? <span class="req">*</span></label>
+      <div class="hint">Статьи, видео, книги, консультации, курсы, советы подруг. Напиши что пробовала и помогло ли это.</div>
+      <textarea name="Что пробовала" id="triedText" placeholder="Смотрела ролики в ютубе, читала про либидо... пробовала поговорить с ним, но стало неловко..."></textarea>
+      <div class="char-counter warn" id="triedCounter">0 / нужно минимум 30 символов</div>
+      <div class="err-field">Напиши хотя бы пару слов, нужно минимум 30 символов</div>
     </div>
 
     <div class="question" id="q-dream">
       <label>Как ты поймёшь, что твоя цель достигнута? Как изменится твоя жизнь? <span class="req">*</span></label>
-      <div class="hint">Опиши это как можно конкретнее — это один из самых важных вопросов для меня.</div>
-      <textarea name="Желаемый результат (6 месяцев)" id="dreamText" placeholder="Я наконец чувствую желание — не по расписанию, а по-настоящему. Оргазм с партнёром стал нормой, а не лотереей. Я перестала думать во время секса о том, как выгляжу..." required minlength="60"></textarea>
-      <div class="char-counter" id="dreamCounter">0 / нужно минимум 60 символов</div>
-      <div class="error-msg">Расскажи подробнее — нужно минимум 60 символов</div>
+      <div class="hint">Опиши это как можно конкретнее. Это один из самых важных вопросов для меня.</div>
+      <textarea name="Желаемый результат" id="dreamText" placeholder="Я наконец чувствую желание, не по расписанию, а по-настоящему. Оргазм с партнёром стал нормой, а не лотереей. Я перестала думать во время секса о том, как выгляжу..."></textarea>
+      <div class="char-counter warn" id="dreamCounter">0 / нужно минимум 60 символов</div>
+      <div class="err-field">Опиши подробнее, нужно минимум 60 символов</div>
     </div>
 
     <div class="question" id="q-fears">
       <label>Что тебя больше всего пугает или останавливает в работе над этой темой? <span class="req">*</span></label>
       <div class="options-grid single">
         <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f1" value="Страшно признать что есть проблема"><label for="f1"><div class="check"></div>Страшно признать вслух что есть проблема</label></div>
-        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f2" value="Боюсь что не поможет или снова разочаруюсь"><label for="f2"><div class="check"></div>Боюсь что не поможет — уже разочаровывалась</label></div>
-        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f3" value="Стыдно говорить об этом даже со специалистом"><label for="f3"><div class="check"></div>Стыдно говорить об этом даже со специалистом</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f2" value="Боюсь что не поможет"><label for="f2"><div class="check"></div>Боюсь что не поможет, уже разочаровывалась</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f3" value="Стыдно говорить даже со специалистом"><label for="f3"><div class="check"></div>Стыдно говорить об этом даже со специалистом</label></div>
         <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f4" value="Боюсь реакции партнёра"><label for="f4"><div class="check"></div>Боюсь реакции партнёра</label></div>
         <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f5" value="Не верю что у меня это изменится"><label for="f5"><div class="check"></div>Не верю что у меня это изменится</label></div>
-        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f6" value="Нет страхов — готова работать"><label for="f6"><div class="check"></div>Нет страхов — готова работать</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f6" value="Нет страхов, готова работать"><label for="f6"><div class="check"></div>Нет страхов, готова работать</label></div>
       </div>
-      <div class="group-error" id="err-fears">Выбери хотя бы один вариант</div>
+      <div class="err-group" id="eg-fears">Выбери хотя бы один вариант</div>
     </div>
 
     <div class="btn-wrap">
@@ -399,49 +314,42 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     </div>
   </div>
 
-  <!-- SECTION 3: ОТНОШЕНИЯ -->
+  <!-- SECTION 3 -->
   <div class="section" id="section-3">
-
-    <div class="cheer-block purple">
-      <div class="cheer-icon">💜</div>
-      <div class="cheer-text">
-        <strong>Уже половина позади — ты молодец!</strong>
-        <span>То, что ты здесь и делишься — это уже шаг к себе. Осталось ещё 2 коротких блока.</span>
-      </div>
-    </div>
-
     <div class="section-header">
       <div class="section-num">3</div>
-      <div><div class="section-title">Отношения и партнёр</div><div class="section-sub">Если нет партнёра — выбери «Нет партнёра»</div></div>
+      <div><div class="section-title">Отношения и партнёр</div><div class="section-sub">Если нет партнёра, выбери соответствующий вариант</div></div>
     </div>
 
-    <div class="question" id="q-rel-duration">
+    <div class="question" id="q-reldur">
       <label>Как долго вы вместе? <span class="req">*</span></label>
       <div class="options-grid">
         <div class="option-item"><input type="radio" name="Длительность отношений" id="rel1" value="Меньше года"><label for="rel1"><div class="check"></div>Меньше года</label></div>
-        <div class="option-item"><input type="radio" name="Длительность отношений" id="rel2" value="1-3 года"><label for="rel2"><div class="check"></div>1–3 года</label></div>
-        <div class="option-item"><input type="radio" name="Длительность отношений" id="rel3" value="3-7 лет"><label for="rel3"><div class="check"></div>3–7 лет</label></div>
+        <div class="option-item"><input type="radio" name="Длительность отношений" id="rel2" value="1-3 года"><label for="rel2"><div class="check"></div>1-3 года</label></div>
+        <div class="option-item"><input type="radio" name="Длительность отношений" id="rel3" value="3-7 лет"><label for="rel3"><div class="check"></div>3-7 лет</label></div>
         <div class="option-item"><input type="radio" name="Длительность отношений" id="rel4" value="Больше 7 лет"><label for="rel4"><div class="check"></div>Больше 7 лет</label></div>
         <div class="option-item"><input type="radio" name="Длительность отношений" id="rel5" value="Нет партнёра"><label for="rel5"><div class="check"></div>Нет партнёра</label></div>
       </div>
-      <div class="group-error" id="err-rel-duration">Выбери один вариант</div>
+      <div class="err-group" id="eg-reldur">Выбери один вариант</div>
     </div>
 
-    <div class="question">
-      <label>Как бы ты описала интимную жизнь с партнёром прямо сейчас?</label>
-      <div class="hint">Ты можешь писать откровенно — это остаётся только между нами</div>
-      <textarea name="Интимная жизнь с партнёром" placeholder="Секс бывает раз в две недели, и я чаще всего просто жду когда закончится. Он не знает об этом..."></textarea>
+    <div class="question" id="q-intimate">
+      <label>Как бы ты описала интимную жизнь с партнёром прямо сейчас? <span class="req">*</span></label>
+      <div class="hint">Ты можешь писать откровенно, это остаётся только между нами</div>
+      <textarea name="Интимная жизнь с партнёром" id="intimateText" placeholder="Секс бывает раз в две недели, и я чаще всего просто жду когда закончится. Он не знает об этом..."></textarea>
+      <div class="char-counter warn" id="intimateCounter">0 / нужно минимум 30 символов</div>
+      <div class="err-field">Расскажи немного подробнее, нужно минимум 30 символов</div>
     </div>
 
-    <div class="question" id="q-partner-knows">
+    <div class="question" id="q-partnerknows">
       <label>Знает ли партнёр о том, что тебя беспокоит? <span class="req">*</span></label>
       <div class="options-grid single">
-        <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn1" value="Да, мы это обсуждаем"><label for="kn1"><div class="check"></div>Да, мы это обсуждаем открыто</label></div>
-        <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn2" value="Частично — чувствует но не знает деталей"><label for="kn2"><div class="check"></div>Частично — чувствует, но не знает подробностей</label></div>
+        <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn1" value="Да, обсуждаем"><label for="kn1"><div class="check"></div>Да, мы это обсуждаем открыто</label></div>
+        <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn2" value="Частично, чувствует но не знает деталей"><label for="kn2"><div class="check"></div>Частично, чувствует, но не знает подробностей</label></div>
         <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn3" value="Нет, не говорила"><label for="kn3"><div class="check"></div>Нет, я не говорила об этом</label></div>
         <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn4" value="Нет партнёра"><label for="kn4"><div class="check"></div>Нет партнёра</label></div>
       </div>
-      <div class="group-error" id="err-partner-knows">Выбери один вариант</div>
+      <div class="err-group" id="eg-partnerknows">Выбери один вариант</div>
     </div>
 
     <div class="btn-wrap">
@@ -450,17 +358,8 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     </div>
   </div>
 
-  <!-- SECTION 4: ОПЫТ -->
+  <!-- SECTION 4 -->
   <div class="section" id="section-4">
-
-    <div class="cheer-block rose">
-      <div class="cheer-icon">🔥</div>
-      <div class="cheer-text">
-        <strong>Остался 1 шаг после этого!</strong>
-        <span>Ты открываешься — и это смело. Именно такая честность помогает мне быть по-настоящему полезной.</span>
-      </div>
-    </div>
-
     <div class="section-header">
       <div class="section-num">4</div>
       <div><div class="section-title">Опыт и готовность</div><div class="section-sub">Помогает мне понять, что именно тебе нужно</div></div>
@@ -469,17 +368,12 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     <div class="question" id="q-bought">
       <label>Покупала ли ты раньше курсы по теме секса, отношений или психологии? <span class="req">*</span></label>
       <div class="options-grid single">
-        <div class="option-item"><input type="radio" name="Покупала курсы" id="buy1" value="Да, и помогло"><label for="buy1"><div class="check"></div>Да — и получила результат</label></div>
-        <div class="option-item"><input type="radio" name="Покупала курсы" id="buy2" value="Да, но без результата"><label for="buy2"><div class="check"></div>Да — но особого результата не было</label></div>
+        <div class="option-item"><input type="radio" name="Покупала курсы" id="buy1" value="Да, и получила результат"><label for="buy1"><div class="check"></div>Да, и получила результат</label></div>
+        <div class="option-item"><input type="radio" name="Покупала курсы" id="buy2" value="Да, без результата"><label for="buy2"><div class="check"></div>Да, но особого результата не было</label></div>
         <div class="option-item"><input type="radio" name="Покупала курсы" id="buy3" value="Нет, не покупала"><label for="buy3"><div class="check"></div>Нет, никогда не покупала</label></div>
-        <div class="option-item"><input type="radio" name="Покупала курсы" id="buy4" value="Была у специалиста лично"><label for="buy4"><div class="check"></div>Была у психолога / сексолога лично</label></div>
+        <div class="option-item"><input type="radio" name="Покупала курсы" id="buy4" value="Была у специалиста лично"><label for="buy4"><div class="check"></div>Была у психолога или сексолога лично</label></div>
       </div>
-      <div class="group-error" id="err-bought">Выбери один вариант</div>
-    </div>
-
-    <div class="question">
-      <label>Если покупала — что понравилось и что нет?</label>
-      <textarea name="Опыт с курсами" placeholder="Курс был интересный, но не давал конкретики. Или: помогло понять откуда ноги растут, но не объяснило что делать..."></textarea>
+      <div class="err-group" id="eg-bought">Выбери один вариант</div>
     </div>
 
     <div class="question" id="q-stopfactors">
@@ -488,31 +382,32 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
       <div class="options-grid">
         <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s1" value="Цена кажется высокой"><label for="s1"><div class="check"></div>Цена кажется высокой</label></div>
         <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s2" value="Не уверена что поможет именно мне"><label for="s2"><div class="check"></div>Не уверена что поможет мне</label></div>
-        <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s3" value="Стыдно / неловко"><label for="s3"><div class="check"></div>Стыдно / неловко обращаться</label></div>
+        <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s3" value="Стыдно / неловко"><label for="s3"><div class="check"></div>Стыдно / неловко</label></div>
         <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s4" value="Нет времени"><label for="s4"><div class="check"></div>Нет времени</label></div>
         <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s5" value="Боюсь разочароваться снова"><label for="s5"><div class="check"></div>Боюсь разочароваться снова</label></div>
         <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s6" value="Ничего не останавливает"><label for="s6"><div class="check"></div>Ничего не останавливает</label></div>
       </div>
-      <div class="group-error" id="err-stopfactors">Выбери хотя бы один вариант</div>
+      <div class="err-group" id="eg-stopfactors">Выбери хотя бы один вариант</div>
     </div>
 
     <div class="question" id="q-awareness">
       <label>Слышала ли ты раньше о курсе «Секреты женского наслаждения»? <span class="req">*</span></label>
       <div class="options-grid single">
         <div class="option-item"><input type="radio" name="Знает о курсе" id="aw1" value="Нет, первый раз слышу"><label for="aw1"><div class="check"></div>Нет, первый раз слышу</label></div>
-        <div class="option-item"><input type="radio" name="Знает о курсе" id="aw2" value="Слышала, но не изучала"><label for="aw2"><div class="check"></div>Слышала — но не изучала подробно</label></div>
+        <div class="option-item"><input type="radio" name="Знает о курсе" id="aw2" value="Слышала, не изучала"><label for="aw2"><div class="check"></div>Слышала, но не изучала подробно</label></div>
         <div class="option-item"><input type="radio" name="Знает о курсе" id="aw3" value="Смотрела вебинар"><label for="aw3"><div class="check"></div>Смотрела бесплатный вебинар</label></div>
-        <div class="option-item"><input type="radio" name="Знает о курсе" id="aw4" value="Хотела купить но что-то остановило"><label for="aw4"><div class="check"></div>Хотела купить — но что-то остановило</label></div>
+        <div class="option-item"><input type="radio" name="Знает о курсе" id="aw4" value="Хотела купить, что-то остановило"><label for="aw4"><div class="check"></div>Хотела купить, но что-то остановило</label></div>
         <div class="option-item"><input type="radio" name="Знает о курсе" id="aw5" value="Уже покупала продукты Екатерины"><label for="aw5"><div class="check"></div>Уже покупала продукты Екатерины</label></div>
       </div>
-      <div class="group-error" id="err-awareness">Выбери один вариант</div>
+      <div class="err-group" id="eg-awareness">Выбери один вариант</div>
     </div>
 
     <div class="question" id="q-trigger">
       <label>Что помогло бы тебе начать решать эту тему со специалистом? <span class="req">*</span></label>
-      <div class="hint">Не «правильный ответ» — а честный. Что тебе нужно увидеть, услышать или понять?</div>
-      <textarea name="Триггер принятия решения" id="triggerText" placeholder="Мне нужно увидеть реальные результаты других девушек. Или понять что это сработает именно в моей ситуации, а не в общем..." required minlength="20"></textarea>
-      <div class="error-msg">Расскажи немного подробнее</div>
+      <div class="hint">Не правильный ответ, а честный. Что тебе нужно увидеть, услышать или понять?</div>
+      <textarea name="Триггер принятия решения" id="triggerText" placeholder="Мне нужно увидеть реальные результаты других девушек. Или понять что это сработает именно в моей ситуации..."></textarea>
+      <div class="char-counter warn" id="triggerCounter">0 / нужно минимум 20 символов</div>
+      <div class="err-field">Напиши хотя бы пару слов, нужно минимум 20 символов</div>
     </div>
 
     <div class="question" id="q-readiness">
@@ -530,7 +425,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="scale-item"><input type="radio" name="Готовность начать" id="sc10" value="10"><label for="sc10">10</label></div>
       </div>
       <div class="scale-labels"><span>Пока не готова</span><span>Готова прямо сейчас</span></div>
-      <div class="group-error" id="err-readiness">Выбери значение от 1 до 10</div>
+      <div class="err-group" id="eg-readiness">Выбери значение от 1 до 10</div>
     </div>
 
     <div class="btn-wrap">
@@ -539,20 +434,11 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     </div>
   </div>
 
-  <!-- SECTION 5: ФИНАЛ -->
+  <!-- SECTION 5 -->
   <div class="section" id="section-5">
-
-    <div class="cheer-block warm">
-      <div class="cheer-icon">🌟</div>
-      <div class="cheer-text">
-        <strong>Финальный шаг — уже почти!</strong>
-        <span>Сразу после отправки твой подарок будет ждать тебя 🎁</span>
-      </div>
-    </div>
-
     <div class="section-header">
       <div class="section-num">5</div>
-      <div><div class="section-title">Последний шаг</div><div class="section-sub">Пара вопросов и разрешения</div></div>
+      <div><div class="section-title">Последний шаг</div><div class="section-sub">Уже совсем скоро твой подарок 🎁</div></div>
     </div>
 
     <div class="question" id="q-source">
@@ -564,32 +450,32 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="option-item"><input type="radio" name="Источник" id="src4" value="Реклама"><label for="src4"><div class="check"></div>Реклама</label></div>
         <div class="option-item"><input type="radio" name="Источник" id="src5" value="Другое"><label for="src5"><div class="check"></div>Другое</label></div>
       </div>
-      <div class="group-error" id="err-source">Выбери один вариант</div>
+      <div class="err-group" id="eg-source">Выбери один вариант</div>
     </div>
 
     <div class="question">
       <label>Есть что-то важное, что стоит о тебе знать?</label>
-      <div class="hint">Всё, что не вошло в вопросы выше — можешь написать здесь</div>
+      <div class="hint">Всё, что не вошло в вопросы выше</div>
       <textarea name="Дополнительно" placeholder="Любые детали, которые помогут мне лучше понять твою ситуацию..."></textarea>
     </div>
 
     <div style="background:var(--lite);border-radius:12px;padding:20px;margin-bottom:20px;">
       <p style="font-size:14px;font-weight:600;color:var(--plum);margin-bottom:6px">Разрешения</p>
-      <p style="font-size:12px;color:var(--mauve);margin-bottom:16px;line-height:1.5;">Выбери то, что тебе комфортно — ничего лишнего я делать не стану</p>
+      <p style="font-size:12px;color:var(--mauve);margin-bottom:16px;line-height:1.5;">Выбери то, что тебе комфортно</p>
 
       <div class="consent-block">
         <input type="checkbox" name="Участие в сторис (анонимно)" id="consent1" value="Да">
-        <label for="consent1">Я готова участвовать в сторис Екатерины — рассказывать о своём запросе и изменениях <strong>анонимно</strong> (без имени и фото)</label>
+        <label for="consent1">Я готова участвовать в сторис Екатерины и рассказывать о своих изменениях <strong>анонимно</strong> (без имени и фото)</label>
       </div>
 
       <div class="consent-block">
         <input type="checkbox" name="Участие в сторис (открыто)" id="consent2" value="Да">
-        <label for="consent2">Я готова рассказывать о своих изменениях <strong>открыто</strong> — с именем или ником, если результат будет классным</label>
+        <label for="consent2">Я готова рассказывать о своих изменениях <strong>открыто</strong>, с именем или ником, если результат будет классным</label>
       </div>
 
       <div class="consent-block" id="consent3wrap">
-        <input type="checkbox" name="Согласие на связь" id="consent3" value="Да" required>
-        <label for="consent3">Я разрешаю Екатерине написать мне по контакту, который я указала, чтобы сообщить о результате отбора <span class="req">*</span></label>
+        <input type="checkbox" name="Согласие на связь" id="consent3" value="Да">
+        <label for="consent3">Я разрешаю Екатерине написать мне в Telegram по результатам отбора <span class="req">*</span></label>
       </div>
     </div>
 
@@ -606,35 +492,32 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
   </form>
 
-  <!-- SUCCESS SCREEN -->
+  <!-- SUCCESS -->
   <div id="success-screen">
-    <div class="success-icon">🎉</div>
+    <div class="s-icon">🎉</div>
     <h2>Спасибо! Анкета отправлена</h2>
-    <p class="success-sub">Я лично прочту твои ответы. Если выберу тебя — напишу в течение нескольких дней. А пока — твой подарок уже здесь!</p>
+    <p class="s-sub">Я лично прочту твои ответы. Если выберу тебя, напишу в течение нескольких дней. А пока твой подарок уже здесь!</p>
 
     <div class="gift-card">
       <div class="gift-tag">🎁 Подарок каждой участнице</div>
-      <h3>RED ROOM — приложение с секс-сценариями</h3>
-      <p>50+ эксклюзивных сценариев для яркой интимной жизни. Открой прямо сейчас — твой 24-часовой доступ уже активен.</p>
+      <h3>RED ROOM: приложение с секс-сценариями</h3>
+      <p>50+ эксклюзивных сценариев для яркой интимной жизни. Открой прямо сейчас, твой 24-часовой доступ уже активен.</p>
       <a href="https://secretcoach.place/" target="_blank" class="gift-btn">🔴 Открыть RED ROOM →</a>
     </div>
 
-    <div class="next-steps">
-      <h3>Пока ждёшь ответа от меня:</h3>
-      <ul>
-        <li>
-          <span class="li-icon">🎥</span>
-          <span>Хочешь посмотреть бесплатный вебинар «Секреты женского удовольствия»? Напиши мне в Telegram — пришлю ссылку: <a href="https://t.me/secret_coach1" target="_blank">@secret_coach1</a></span>
-        </li>
-        <li>
-          <span class="li-icon">💌</span>
-          <span>Есть вопрос, который не терпит? Напиши мне напрямую в Telegram или Instagram Direct: <a href="https://t.me/secret_coach1" target="_blank">@secret_coach1</a></span>
-        </li>
-        <li>
-          <span class="li-icon">📲</span>
-          <span>Подпишись на мой аккаунт — там практики и реальные кейсы каждую неделю</span>
-        </li>
-      </ul>
+    <div class="tg-cta">
+      <p style="font-size:15px;font-weight:700;color:var(--plum);margin-bottom:10px;">Хочешь получить доступ к RED ROOM и запись вебинара «Секреты женского удовольствия»?</p>
+      <p>Просто напиши мне в Telegram — вышлю все материалы сразу 💌</p>
+      <a href="https://t.me/Secret_coach_manager" target="_blank" class="tg-link" style="margin-bottom:16px;">✈️ Написать в Telegram</a>
+      <div style="background:#F3EFF8;border-radius:12px;padding:16px;margin-top:16px;text-align:center;">
+        <p style="font-size:13px;color:var(--mauve);margin-bottom:10px;line-height:1.6;">Или нажми на ссылку напрямую:</p>
+        <p style="font-size:15px;font-weight:700;margin-bottom:6px;">
+          <a href="https://t.me/Secret_coach_manager" target="_blank" style="color:var(--plum);text-decoration:none;">t.me/Secret_coach_manager</a>
+        </p>
+        <p style="font-size:14px;color:var(--mauve);">
+          <a href="https://t.me/Secret_coach_manager" target="_blank" style="color:var(--rose);font-weight:600;text-decoration:none;">@Secret_coach_manager</a>
+        </p>
+      </div>
     </div>
 
     <button class="refill-btn" onclick="refillForm()">↩ Заполнить анкету ещё раз</button>
@@ -643,24 +526,20 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 </div>
 
 <script>
-const TOTAL_SECTIONS = 5;
-let currentSection = 1;
+const TOTAL = 5;
+let cur = 1;
 
-// ─── PERSIST SUCCESS STATE ───────────────────────────────────────
-function checkSavedSuccess(){
-  if(localStorage.getItem('castdev_done') === '1'){
-    showSuccessScreen();
-  }
+function checkSaved(){
+  if(localStorage.getItem('castdev_done')==='1') showSuccess();
 }
 
-function showSuccessScreen(){
-  document.getElementById('heroBlock').style.display = 'none';
-  document.getElementById('castdevForm').style.display = 'none';
-  document.getElementById('stepsProgressWrap').style.display = 'none';
-  document.getElementById('errorToast').style.display = 'none';
-  document.getElementById('topBar').style.width = '100%';
-  document.getElementById('topLabel').textContent = 'Готово! 🎉';
-  document.getElementById('success-screen').style.display = 'block';
+function showSuccess(){
+  document.getElementById('heroBlock').style.display='none';
+  document.getElementById('castdevForm').style.display='none';
+  document.getElementById('stepsWrap').style.display='none';
+  document.getElementById('topBar').style.width='100%';
+  document.getElementById('topLabel').textContent='Готово! 🎉';
+  document.getElementById('success-screen').style.display='block';
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -669,213 +548,165 @@ function refillForm(){
   location.reload();
 }
 
-// ─── PROGRESS ────────────────────────────────────────────────────
 function updateProgress(){
-  const pct = Math.round(((currentSection-1)/(TOTAL_SECTIONS-1))*100);
-  document.getElementById('topBar').style.width = Math.max(10,pct)+'%';
-  document.getElementById('topLabel').textContent = 'Шаг '+currentSection+' из '+TOTAL_SECTIONS;
-  for(let i=1;i<=TOTAL_SECTIONS;i++){
-    const el = document.getElementById('step-'+i);
-    const circle = el.querySelector('.step-circle');
-    el.className = 'step-item';
-    if(i < currentSection){ el.classList.add('done'); circle.textContent='✓'; }
-    else if(i === currentSection){ el.classList.add('active'); circle.textContent=i; }
-    else { circle.textContent=i; }
+  const pct=Math.round(((cur-1)/(TOTAL-1))*100);
+  document.getElementById('topBar').style.width=Math.max(10,pct)+'%';
+  document.getElementById('topLabel').textContent='Шаг '+cur+' из '+TOTAL;
+  for(let i=1;i<=TOTAL;i++){
+    const el=document.getElementById('step-'+i);
+    const c=el.querySelector('.step-circle');
+    el.className='step-item';
+    if(i<cur){el.classList.add('done');c.textContent='✓';}
+    else if(i===cur){el.classList.add('active');c.textContent=i;}
+    else{c.textContent=i;}
   }
-  document.getElementById('heroBlock').style.display = currentSection > 1 ? 'none' : 'block';
+  document.getElementById('heroBlock').style.display=cur>1?'none':'block';
 }
 
-// ─── TOAST ───────────────────────────────────────────────────────
-function showToast(msg){
-  const t = document.getElementById('errorToast');
-  document.getElementById('errorToastMsg').textContent = msg || 'Пожалуйста, ответь на все вопросы — прокрути страницу вверх';
-  t.classList.add('show');
-  t.scrollIntoView({behavior:'smooth',block:'center'});
-  setTimeout(()=>t.classList.remove('show'), 6000);
+// Helpers
+function radio(name){return !!document.querySelector('input[name="'+name+'"]:checked');}
+function cbox(name){return !!document.querySelector('input[name="'+name+'"]:checked');}
+function setErr(id,on){
+  const el=document.getElementById(id);
+  if(!el)return;
+  if(on)el.classList.add('has-error');else el.classList.remove('has-error');
 }
-function hideToast(){ document.getElementById('errorToast').classList.remove('show'); }
-
-// ─── VALIDATION ──────────────────────────────────────────────────
-function checkRadio(name){ return !!document.querySelector('input[name="'+name+'"]:checked'); }
-function checkCheckboxGroup(name){ return !!document.querySelector('input[name="'+name+'"]:checked'); }
-
-function setQError(id, hasError){
-  const el = document.getElementById(id);
-  if(!el) return;
-  if(hasError) el.classList.add('has-error'); else el.classList.remove('has-error');
-}
-function setGroupError(id, show){
-  const el = document.getElementById(id);
-  if(!el) return;
-  if(show) el.classList.add('show'); else el.classList.remove('show');
+function setEg(id,on){
+  const el=document.getElementById(id);
+  if(!el)return;
+  if(on)el.classList.add('show');else el.classList.remove('show');
 }
 
-function validateSection(num){
-  let valid = true;
+function validate(num){
+  let ok=true;
+  let firstErr=null;
+
+  function fail(id,isGroup){
+    ok=false;
+    if(isGroup) setEg(id,true); else setErr(id,true);
+    const el=document.getElementById(id.replace('eg-','q-').replace('err-','q-'));
+    if(!firstErr) firstErr=document.getElementById(id)||el;
+  }
+  function pass(id,isGroup){
+    if(isGroup) setEg(id,false); else setErr(id,false);
+  }
+
+  function chkText(qid,elId,min){
+    const el=document.getElementById(elId);
+    if(!el)return;
+    if(el.value.trim().length<min) fail(qid); else pass(qid);
+  }
+  function chkRadio(egId,name){
+    if(radio(name)) pass(egId,true); else fail(egId,true);
+  }
+  function chkCbox(egId,name){
+    if(cbox(name)) pass(egId,true); else fail(egId,true);
+  }
 
   if(num===1){
-    const name = document.querySelector('[name="Имя"]');
-    const age = document.querySelector('[name="Возраст"]');
-    const nick = document.querySelector('[name="Ник"]');
-
-    const nameOk = name && name.value.trim().length > 0;
-    setQError('q-name', !nameOk); if(!nameOk) valid=false;
-
-    const ageOk = age && age.value && age.value >= 18;
-    setQError('q-age', !ageOk); if(!ageOk) valid=false;
-
-    const statusOk = checkRadio('Статус отношений');
-    setGroupError('err-status', !statusOk); if(!statusOk) valid=false;
-
-    const childOk = checkRadio('Дети');
-    setGroupError('err-children', !childOk); if(!childOk) valid=false;
-
-    const nickOk = nick && nick.value.trim().length > 0;
-    setQError('q-nick', !nickOk); if(!nickOk) valid=false;
-
-    const platOk = checkRadio('Платформа');
-    setGroupError('err-platform', !platOk); if(!platOk) valid=false;
+    chkText('q-tg','inp-tg',2);
+    chkText('q-age','inp-age',1);
+    const age=document.getElementById('inp-age');
+    if(age&&(age.value<18||!age.value)){fail('q-age');}else if(age&&age.value>=18){pass('q-age');}
+    chkRadio('eg-status','Статус отношений');
+    chkRadio('eg-children','Дети');
   }
-
   if(num===2){
-    const main = document.getElementById('mainText');
-    const mainOk = main && main.value.trim().length >= 80;
-    setQError('q-main', !mainOk); if(!mainOk) valid=false;
-
-    const topicsOk = checkCheckboxGroup('Запросы');
-    setGroupError('err-topics', !topicsOk); if(!topicsOk) valid=false;
-
-    const durOk = checkRadio('Длительность');
-    setGroupError('err-duration', !durOk); if(!durOk) valid=false;
-
-    const dream = document.getElementById('dreamText');
-    const dreamOk = dream && dream.value.trim().length >= 60;
-    setQError('q-dream', !dreamOk); if(!dreamOk) valid=false;
-
-    const fearsOk = checkCheckboxGroup('Страхи и барьеры');
-    setGroupError('err-fears', !fearsOk); if(!fearsOk) valid=false;
+    chkText('q-main','mainText',80);
+    chkCbox('eg-topics','Запросы');
+    chkRadio('eg-dur','Длительность');
+    chkText('q-tried','triedText',30);
+    chkText('q-dream','dreamText',60);
+    chkCbox('eg-fears','Страхи и барьеры');
   }
-
   if(num===3){
-    const relOk = checkRadio('Длительность отношений');
-    setGroupError('err-rel-duration', !relOk); if(!relOk) valid=false;
-
-    const pkOk = checkRadio('Знает ли партнёр');
-    setGroupError('err-partner-knows', !pkOk); if(!pkOk) valid=false;
+    chkRadio('eg-reldur','Длительность отношений');
+    chkText('q-intimate','intimateText',30);
+    chkRadio('eg-partnerknows','Знает ли партнёр');
   }
-
   if(num===4){
-    const boughtOk = checkRadio('Покупала курсы');
-    setGroupError('err-bought', !boughtOk); if(!boughtOk) valid=false;
-
-    const sfOk = checkCheckboxGroup('Стоп-факторы');
-    setGroupError('err-stopfactors', !sfOk); if(!sfOk) valid=false;
-
-    const awOk = checkRadio('Знает о курсе');
-    setGroupError('err-awareness', !awOk); if(!awOk) valid=false;
-
-    const trigger = document.getElementById('triggerText');
-    const trigOk = trigger && trigger.value.trim().length >= 20;
-    setQError('q-trigger', !trigOk); if(!trigOk) valid=false;
-
-    const readOk = checkRadio('Готовность начать');
-    setGroupError('err-readiness', !readOk); if(!readOk) valid=false;
+    chkRadio('eg-bought','Покупала курсы');
+    chkCbox('eg-stopfactors','Стоп-факторы');
+    chkRadio('eg-awareness','Знает о курсе');
+    chkText('q-trigger','triggerText',20);
+    chkRadio('eg-readiness','Готовность начать');
   }
-
   if(num===5){
-    const srcOk = checkRadio('Источник');
-    setGroupError('err-source', !srcOk); if(!srcOk) valid=false;
-
-    const c3 = document.getElementById('consent3');
-    const c3w = document.getElementById('consent3wrap');
+    chkRadio('eg-source','Источник');
+    const c3=document.getElementById('consent3');
+    const c3w=document.getElementById('consent3wrap');
     if(!c3.checked){
-      c3w.style.outline='2px solid var(--rose)';c3w.style.borderRadius='8px';
-      valid=false;
+      ok=false;
+      c3w.style.outline='2px solid var(--rose)';
+      c3w.style.borderRadius='8px';
+      if(!firstErr)firstErr=c3w;
     } else {
       c3w.style.outline='none';
     }
   }
 
-  return valid;
-}
-
-function scrollToFirstError(sectionNum){
-  const sec = document.getElementById('section-'+sectionNum);
-  const first = sec.querySelector('.has-error, .group-error.show');
-  if(first) first.scrollIntoView({behavior:'smooth',block:'center'});
-}
-
-// ─── NAVIGATION ──────────────────────────────────────────────────
-function nextSection(from){
-  if(!validateSection(from)){
-    scrollToFirstError(from);
-    showToast('Пожалуйста, ответь на все вопросы — прокрути страницу вверх');
-    return;
+  if(!ok && firstErr){
+    setTimeout(()=>firstErr.scrollIntoView({behavior:'smooth',block:'center'}),100);
   }
-  hideToast();
+  return ok;
+}
+
+function nextSection(from){
+  if(!validate(from)) return;
   document.getElementById('section-'+from).classList.remove('active');
   document.getElementById('section-'+(from+1)).classList.add('active');
-  currentSection = from+1;
+  cur=from+1;
   updateProgress();
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
 function prevSection(from){
-  hideToast();
   document.getElementById('section-'+from).classList.remove('active');
   document.getElementById('section-'+(from-1)).classList.add('active');
-  currentSection = from-1;
+  cur=from-1;
   updateProgress();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ─── CHAR COUNTERS ───────────────────────────────────────────────
-function initCounter(textId, counterId, min){
-  const t = document.getElementById(textId);
-  const c = document.getElementById(counterId);
-  if(!t||!c) return;
+// Counters
+function mkCounter(tid,cid,min){
+  const t=document.getElementById(tid),c=document.getElementById(cid);
+  if(!t||!c)return;
   t.addEventListener('input',function(){
-    const len = this.value.length;
-    if(len < min){
-      c.textContent = len+' / нужно минимум '+min+' символов';
-      c.className = 'char-counter warning';
-    } else {
-      c.textContent = len+' символов ✓';
-      c.className = 'char-counter ok';
-    }
+    const n=this.value.length;
+    c.textContent=n+(n<min?' / нужно минимум '+min+' символов':' символов ✓');
+    c.className='char-counter '+(n<min?'warn':'ok');
   });
 }
-initCounter('mainText','mainCounter',80);
-initCounter('dreamText','dreamCounter',60);
+mkCounter('mainText','mainCounter',80);
+mkCounter('dreamText','dreamCounter',60);
+mkCounter('triedText','triedCounter',30);
+mkCounter('intimateText','intimateCounter',30);
+mkCounter('triggerText','triggerCounter',20);
 
-// ─── SUBMIT ──────────────────────────────────────────────────────
-document.getElementById('castdevForm').addEventListener('submit', async function(e){
+// Submit
+document.getElementById('castdevForm').addEventListener('submit',async function(e){
   e.preventDefault();
-  if(!validateSection(5)){
-    showToast('Подтверди разрешение на связь — это последнее поле');
-    return;
-  }
-  const btn = document.getElementById('submitBtn');
-  btn.textContent = 'Отправляю...';
-  btn.disabled = true;
-  try {
-    const res = await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
-    if(res.ok){
+  if(!validate(5)) return;
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='Отправляю...';
+  btn.disabled=true;
+  try{
+    const r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
+    if(r.ok){
       localStorage.setItem('castdev_done','1');
-      showSuccessScreen();
+      showSuccess();
     } else {
-      btn.textContent='Ошибка — попробуй снова';
+      btn.textContent='Ошибка, попробуй снова';
       btn.disabled=false;
     }
-  } catch(err){
-    btn.textContent='Ошибка сети — попробуй снова';
+  } catch(e){
+    btn.textContent='Ошибка сети, попробуй снова';
     btn.disabled=false;
   }
 });
 
-// ─── INIT ────────────────────────────────────────────────────────
 updateProgress();
-checkSavedSuccess();
+checkSaved();
 </script>
 </body>
 </html>
