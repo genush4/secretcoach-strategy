@@ -20,10 +20,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 .top-bar-label{font-size:12px;font-weight:700;color:var(--mauve);white-space:nowrap;min-width:70px;text-align:right;}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,var(--plum) 0%,#4A2D6A 60%,#3D1F5A 100%);padding:72px 24px 52px;text-align:center;position:relative;overflow:hidden;transition:all .4s ease;}
+.hero{background:linear-gradient(135deg,var(--plum) 0%,#4A2D6A 60%,#3D1F5A 100%);padding:72px 24px 52px;text-align:center;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-40%;left:-20%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(196,133,106,.15) 0%,transparent 70%);pointer-events:none;}
 .hero-gift{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);color:white;font-size:12px;font-weight:700;padding:8px 18px;border-radius:20px;letter-spacing:.04em;margin-bottom:22px;border:1px solid rgba(255,255,255,.2);}
-.hero-gift span{font-size:16px;}
 .hero h1{color:white;font-size:27px;font-weight:800;max-width:580px;margin:0 auto 16px;line-height:1.35;}
 .hero-sub{color:var(--blush);font-size:15px;max-width:500px;margin:0 auto 24px;line-height:1.65;}
 .hero-cards{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:520px;margin:0 auto;}
@@ -37,7 +36,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 
 /* STEP PROGRESS */
 .steps-progress{background:white;border-radius:16px;padding:18px 20px;margin-bottom:24px;border:1px solid var(--mid);}
-.steps-list{display:flex;align-items:center;gap:0;position:relative;}
+.steps-list{display:flex;align-items:center;position:relative;}
 .step-item{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;z-index:1;}
 .step-item:not(:last-child)::after{content:'';position:absolute;top:16px;left:50%;width:100%;height:2px;background:var(--mid);z-index:0;transition:background .4s;}
 .step-item.done:not(:last-child)::after{background:var(--green);}
@@ -52,7 +51,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 /* ERROR TOAST */
 .error-toast{display:none;background:#FFF0EC;border:1.5px solid var(--rose);border-radius:12px;padding:14px 18px;margin-bottom:16px;color:#8A3020;font-size:13px;font-weight:600;align-items:center;gap:10px;}
 .error-toast.show{display:flex;}
-.error-toast .toast-icon{font-size:18px;flex-shrink:0;}
 
 /* CHEERING BANNER */
 .cheer-block{background:linear-gradient(135deg,var(--green-light),#F0FAF4);border-radius:12px;padding:16px 20px;margin-bottom:24px;border:1px solid rgba(58,154,106,.2);display:flex;align-items:center;gap:14px;}
@@ -65,6 +63,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 .cheer-block.rose{background:linear-gradient(135deg,#FDF5F0,#FAF0EA);border-color:rgba(196,133,106,.2);}
 .cheer-block.rose .cheer-text strong{color:#9A5040;}
 .cheer-block.rose .cheer-text span{color:var(--rose);}
+.cheer-block.warm{background:linear-gradient(135deg,#FFF3E0,#FFF8F0);border-color:rgba(196,133,106,.3);}
+.cheer-block.warm .cheer-text strong{color:#8A5030;}
+.cheer-block.warm .cheer-text span{color:var(--rose);}
 
 /* SECTIONS */
 .section{background:white;border-radius:16px;padding:28px;margin-bottom:20px;border:1px solid var(--mid);display:none;animation:fadeUp .4s ease;}
@@ -85,7 +86,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 .question{margin-bottom:24px;}
 .question label{display:block;font-size:14px;font-weight:600;color:var(--dark);margin-bottom:8px;line-height:1.4;}
 .question label .req{color:var(--rose);}
-.question .hint{font-size:12px;color:var(--mauve);margin-bottom:8px;font-style:italic;}
+.question .hint{font-size:12px;color:var(--mauve);margin-bottom:8px;font-style:italic;line-height:1.5;}
 
 input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{
   width:100%;padding:12px 16px;border:1.5px solid var(--mid);border-radius:10px;
@@ -121,13 +122,13 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 .option-item input[type=radio]:checked + label .check::after{content:'';width:8px;height:8px;background:white;border-radius:50%;}
 
 /* SCALE */
-.scale-wrap{display:flex;gap:8px;align-items:center;}
+.scale-wrap{display:flex;gap:6px;}
 .scale-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--mauve);margin-top:6px;}
 .scale-item{flex:1;text-align:center;}
 .scale-item input{display:none;}
 .scale-item label{
-  display:block;padding:10px 4px;border:1.5px solid var(--mid);border-radius:8px;
-  cursor:pointer;font-size:14px;font-weight:700;color:#999;transition:all .2s;
+  display:block;padding:10px 2px;border:1.5px solid var(--mid);border-radius:8px;
+  cursor:pointer;font-size:13px;font-weight:700;color:#999;transition:all .2s;
 }
 .scale-item input:checked + label{background:var(--rose);border-color:var(--rose);color:white;}
 .scale-item label:hover{border-color:var(--rose);color:var(--rose);}
@@ -147,7 +148,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 .btn-wrap .btn-primary{flex:1;}
 
 /* CONSENT */
-.consent-block{background:var(--lite);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;}
+.consent-block{background:var(--lite);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;}
 .consent-block input[type=checkbox]{margin-top:3px;accent-color:var(--rose);width:16px;height:16px;flex-shrink:0;cursor:pointer;}
 .consent-block label{font-size:13px;color:#555;line-height:1.5;cursor:pointer;}
 
@@ -168,15 +169,20 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 .next-steps{background:white;border-radius:16px;padding:24px;margin-top:16px;border:1px solid var(--mid);text-align:left;}
 .next-steps h3{font-size:15px;font-weight:700;color:var(--plum);margin-bottom:14px;}
 .next-steps ul{list-style:none;padding:0;}
-.next-steps li{font-size:13px;color:#555;margin-bottom:12px;line-height:1.5;display:flex;gap:10px;align-items:flex-start;}
+.next-steps li{font-size:13px;color:#555;margin-bottom:14px;line-height:1.5;display:flex;gap:10px;align-items:flex-start;}
 .next-steps li .li-icon{flex-shrink:0;}
 .next-steps a{color:var(--rose);font-weight:600;text-decoration:none;}
 .next-steps a:hover{text-decoration:underline;}
 
+.refill-btn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:var(--lite);color:var(--mauve);border:1.5px solid var(--mid);padding:12px 24px;border-radius:30px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
+.refill-btn:hover{border-color:var(--rose);color:var(--rose);}
+
 /* VALIDATION */
-.error-msg{color:var(--rose);font-size:12px;margin-top:4px;display:none;}
+.error-msg{color:var(--rose);font-size:12px;margin-top:6px;display:none;font-weight:500;}
 .question.has-error input,.question.has-error textarea,.question.has-error select{border-color:var(--rose);box-shadow:0 0 0 3px rgba(196,133,106,.12);}
 .question.has-error .error-msg{display:block;}
+.group-error{color:var(--rose);font-size:12px;margin-top:6px;display:none;font-weight:500;}
+.group-error.show{display:block;}
 
 @media(max-width:480px){
   .hero h1{font-size:22px;}
@@ -189,63 +195,44 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 </head>
 <body>
 
-<!-- TOP PROGRESS BAR -->
 <div class="top-bar">
   <div class="top-bar-fill"><div class="top-bar-fill-inner" id="topBar" style="width:10%"></div></div>
   <div class="top-bar-label" id="topLabel">Шаг 1 из 5</div>
 </div>
 
-<!-- HERO — показывается только на шаге 1 -->
 <div class="hero" id="heroBlock">
   <div class="hero-gift"><span>🎁</span> Подарок каждой участнице</div>
-  <h1>Расскажи мне о себе — и я помогу каждой из вас приблизиться к мечте</h1>
-  <p class="hero-sub">Я читаю каждую анкету лично. Одну девушку выберу для глубокой личной работы бесплатно — а каждая, кто ответит честно, получит кое-что особенное от меня в подарок</p>
+  <h1>Расскажи мне о себе — и я постараюсь помочь каждой из вас</h1>
+  <p class="hero-sub">Я читаю каждую анкету лично. Одну девушку возьму на глубокую работу — а каждая, кто ответит честно, получит кое-что особенное от меня в подарок</p>
   <div class="hero-cards">
     <div class="hero-card">
       <div class="hc-icon">🌸</div>
       <div class="hc-title">1 место — личная работа со мной</div>
-      <div class="hc-text">Выберу девушку, чья ситуация откликается мне больше всего — и проведу её к реальному результату бесплатно</div>
+      <div class="hc-text">Возьму девушку, чья ситуация откликается мне сильнее всего, и буду вести её до результата бесплатно</div>
     </div>
     <div class="hero-card">
       <div class="hc-icon">🔴</div>
       <div class="hc-title">Всем — доступ к RED ROOM</div>
-      <div class="hc-text">Каждая участница получит ссылку на наше эксклюзивное приложение с секс-сценариями — чтобы уже сегодня сделать шаг к ярким ощущениям</div>
+      <div class="hc-text">Каждая участница получит ссылку на эксклюзивное приложение с секс-сценариями — чтобы уже сегодня сделать шаг к ярким ощущениям</div>
     </div>
   </div>
 </div>
 
 <div class="form-wrap">
 
-  <!-- STEPS PROGRESS -->
-  <div class="steps-progress">
+  <div class="steps-progress" id="stepsProgressWrap">
     <div class="steps-list" id="stepsProgress">
-      <div class="step-item active" id="step-1">
-        <div class="step-circle">1</div>
-        <div class="step-label">О тебе</div>
-      </div>
-      <div class="step-item" id="step-2">
-        <div class="step-circle">2</div>
-        <div class="step-label">Запрос</div>
-      </div>
-      <div class="step-item" id="step-3">
-        <div class="step-circle">3</div>
-        <div class="step-label">Отношения</div>
-      </div>
-      <div class="step-item" id="step-4">
-        <div class="step-circle">4</div>
-        <div class="step-label">Опыт</div>
-      </div>
-      <div class="step-item" id="step-5">
-        <div class="step-circle">5</div>
-        <div class="step-label">Финал</div>
-      </div>
+      <div class="step-item active" id="step-1"><div class="step-circle">1</div><div class="step-label">О тебе</div></div>
+      <div class="step-item" id="step-2"><div class="step-circle">2</div><div class="step-label">Запрос</div></div>
+      <div class="step-item" id="step-3"><div class="step-circle">3</div><div class="step-label">Отношения</div></div>
+      <div class="step-item" id="step-4"><div class="step-circle">4</div><div class="step-label">Опыт</div></div>
+      <div class="step-item" id="step-5"><div class="step-circle">5</div><div class="step-label">Финал</div></div>
     </div>
   </div>
 
-  <!-- ERROR TOAST -->
   <div class="error-toast" id="errorToast">
-    <div class="toast-icon">☝️</div>
-    <div>Не всё заполнено — прокрути вверх и заполни обязательные поля</div>
+    <span style="font-size:18px;flex-shrink:0">☝️</span>
+    <div id="errorToastMsg">Пожалуйста, ответь на все вопросы выше — прокрути страницу вверх</div>
   </div>
 
   <form id="castdevForm" action="https://formspree.io/f/xpqkwavg" method="POST">
@@ -253,24 +240,20 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
   <!-- SECTION 1: О ТЕБЕ -->
   <div class="section active" id="section-1">
     <div class="intro-block">
-      <p><strong>Привет.</strong> Я выбираю одну девушку, с которой буду работать бесплатно — и превращу её результат в живой кейс, который вдохновит других женщин.</p>
-      <p>Но я хочу помочь каждой, кто сюда пришёл. Поэтому <strong>все участницы</strong>, ответившие честно и подробно, получат 24-часовой доступ к приложению RED ROOM — эксклюзивные сценарии для яркой интимной жизни.</p>
-      <p><strong>Отвечай как другу — без фильтра. Чем честнее и откровеннее, тем больше я смогу тебе дать.</strong></p>
+      <p><strong>Привет 🌸</strong> Я хочу познакомиться с тобой поближе и понять, что тебя волнует — чтобы быть по-настоящему полезной.</p>
+      <p>Ты можешь писать откровенно. Это только между тобой и мной. Чем подробнее ты ответишь, тем точнее я смогу тебе помочь.</p>
     </div>
 
     <div class="section-header">
       <div class="section-num">1</div>
-      <div>
-        <div class="section-title">О тебе</div>
-        <div class="section-sub">Пара базовых вопросов — совсем быстро</div>
-      </div>
+      <div><div class="section-title">О тебе</div><div class="section-sub">Несколько вводных вопросов</div></div>
     </div>
 
     <div class="question" id="q-name">
       <label>Как тебя зовут? <span class="req">*</span></label>
-      <div class="hint">Имя или ник — как тебе удобно</div>
-      <input type="text" name="Имя" placeholder="Напр.: Анна или @anya_life" required>
-      <div class="error-msg">Заполни это поле</div>
+      <div class="hint">Имя — как тебе удобно</div>
+      <input type="text" name="Имя" placeholder="Например: Анна" required>
+      <div class="error-msg">Напиши своё имя</div>
     </div>
 
     <div class="question" id="q-age">
@@ -279,7 +262,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
       <div class="error-msg">Укажи возраст (от 18)</div>
     </div>
 
-    <div class="question">
+    <div class="question" id="q-status">
       <label>Твой статус отношений <span class="req">*</span></label>
       <div class="options-grid">
         <div class="option-item"><input type="radio" name="Статус отношений" id="r1" value="Замужем"><label for="r1"><div class="check"></div>Замужем</label></div>
@@ -287,21 +270,34 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="option-item"><input type="radio" name="Статус отношений" id="r3" value="Свободна"><label for="r3"><div class="check"></div>Свободна</label></div>
         <div class="option-item"><input type="radio" name="Статус отношений" id="r4" value="Сложно ответить"><label for="r4"><div class="check"></div>Сложно ответить</label></div>
       </div>
+      <div class="group-error" id="err-status">Выбери один вариант</div>
     </div>
 
-    <div class="question">
-      <label>Есть дети?</label>
+    <div class="question" id="q-children">
+      <label>Есть дети? <span class="req">*</span></label>
       <div class="options-grid">
         <div class="option-item"><input type="radio" name="Дети" id="ch1" value="Нет"><label for="ch1"><div class="check"></div>Нет</label></div>
         <div class="option-item"><input type="radio" name="Дети" id="ch2" value="Да"><label for="ch2"><div class="check"></div>Да</label></div>
       </div>
+      <div class="group-error" id="err-children">Выбери один вариант</div>
     </div>
 
-    <div class="question" id="q-contact">
-      <label>Твой ник в Telegram или Instagram <span class="req">*</span></label>
-      <div class="hint">Напиши @username — туда я напишу если выберу тебя, и там же пришлю подарок</div>
-      <input type="text" name="Контакт (TG или IG)" placeholder="@username" required>
-      <div class="error-msg">Укажи способ связи — это обязательно</div>
+    <div class="question" id="q-nick">
+      <label>Твой ник <span class="req">*</span></label>
+      <div class="hint">Именно через него я с тобой свяжусь — и пришлю подарок после анкеты</div>
+      <input type="text" name="Ник" placeholder="@username" required>
+      <div class="error-msg">Напиши свой ник</div>
+    </div>
+
+    <div class="question" id="q-platform">
+      <label>В какой соцсети или мессенджере? <span class="req">*</span></label>
+      <div class="options-grid">
+        <div class="option-item"><input type="radio" name="Платформа" id="pl1" value="Telegram"><label for="pl1"><div class="check"></div>Telegram</label></div>
+        <div class="option-item"><input type="radio" name="Платформа" id="pl2" value="Instagram"><label for="pl2"><div class="check"></div>Instagram</label></div>
+        <div class="option-item"><input type="radio" name="Платформа" id="pl3" value="WhatsApp"><label for="pl3"><div class="check"></div>WhatsApp</label></div>
+        <div class="option-item"><input type="radio" name="Платформа" id="pl4" value="Viber"><label for="pl4"><div class="check"></div>Viber</label></div>
+      </div>
+      <div class="group-error" id="err-platform">Выбери, где с тобой связаться</div>
     </div>
 
     <div class="question">
@@ -321,75 +317,80 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
       <div class="cheer-icon">🎉</div>
       <div class="cheer-text">
         <strong>Отличное начало!</strong>
-        <span>Первый шаг позади. Теперь самое важное — расскажи мне о себе по-настоящему. Здесь нет правильных и неправильных ответов.</span>
+        <span>Теперь самое важное — расскажи мне о себе. Здесь всё остаётся между нами, и нет никаких правильных или неправильных ответов.</span>
       </div>
     </div>
 
     <div class="section-header">
       <div class="section-num">2</div>
-      <div>
-        <div class="section-title">Твой запрос</div>
-        <div class="section-sub">Раскройся — это самая важная часть анкеты</div>
-      </div>
+      <div><div class="section-title">Твой запрос</div><div class="section-sub">Самая важная часть — не торопись</div></div>
     </div>
 
     <div class="question" id="q-main">
-      <label>Опиши свою ситуацию подробно. <span class="req">*</span></label>
-      <div class="hint">Что происходит прямо сейчас? Что беспокоит? Что хочешь изменить? Напиши как другу — без фильтра. Чем честнее и подробнее — тем выше шанс быть выбранной.</div>
+      <label>Расскажи мне о своей ситуации подробно <span class="req">*</span></label>
+      <div class="hint">Что сейчас происходит? Что беспокоит? Что хочется изменить? Ты можешь писать откровенно — это только между тобой и мной.</div>
       <textarea name="Описание ситуации" id="mainText" placeholder="Например: Уже два года я замечаю, что желания почти нет. Секс случается редко, и я чувствую что просто «участвую», а не получаю. Иногда думаю, что со мной что-то не так..." required minlength="80"></textarea>
-      <div class="char-counter" id="mainCounter">0 / минимум 80 символов</div>
-      <div class="error-msg">Расскажи подробнее — минимум 80 символов</div>
+      <div class="char-counter" id="mainCounter">0 / нужно минимум 80 символов</div>
+      <div class="error-msg">Расскажи подробнее — нужно минимум 80 символов</div>
     </div>
 
-    <div class="question">
-      <label>Что для тебя сейчас наиболее актуально? <span class="req">*</span><br><span style="font-weight:400;font-size:12px;color:var(--mauve)">Можно выбрать несколько</span></label>
+    <div class="question" id="q-topics">
+      <label>Что для тебя сейчас наиболее актуально? <span class="req">*</span></label>
+      <div class="hint">Можно выбрать несколько</div>
       <div class="options-grid">
         <div class="option-item"><input type="checkbox" name="Запросы" id="t1" value="Либидо / желание пропало"><label for="t1"><div class="check"></div>Либидо / желание пропало</label></div>
-        <div class="option-item"><input type="checkbox" name="Запросы" id="t2" value="Оргазм с партнёром не получается"><label for="t2"><div class="check"></div>Оргазм с партнёром</label></div>
-        <div class="option-item"><input type="checkbox" name="Запросы" id="t3" value="Боль или дискомфорт во время секса"><label for="t3"><div class="check"></div>Боль / дискомфорт</label></div>
+        <div class="option-item"><input type="checkbox" name="Запросы" id="t2" value="Оргазм с партнёром"><label for="t2"><div class="check"></div>Оргазм с партнёром</label></div>
+        <div class="option-item"><input type="checkbox" name="Запросы" id="t3" value="Боль или дискомфорт"><label for="t3"><div class="check"></div>Боль / дискомфорт</label></div>
         <div class="option-item"><input type="checkbox" name="Запросы" id="t4" value="Психологические блоки / стыд"><label for="t4"><div class="check"></div>Психологические блоки</label></div>
         <div class="option-item"><input type="checkbox" name="Запросы" id="t5" value="Не принимаю своё тело"><label for="t5"><div class="check"></div>Не принимаю своё тело</label></div>
-        <div class="option-item"><input type="checkbox" name="Запросы" id="t6" value="Не умею говорить с партнёром о сексе"><label for="t6"><div class="check"></div>Сложно говорить о сексе</label></div>
-        <div class="option-item"><input type="checkbox" name="Запросы" id="t7" value="Скука и рутина в интимной жизни"><label for="t7"><div class="check"></div>Скука / рутина в сексе</label></div>
-        <div class="option-item"><input type="checkbox" name="Запросы" id="t8" value="Хочу понять себя и своё тело глубже"><label for="t8"><div class="check"></div>Хочу понять себя глубже</label></div>
+        <div class="option-item"><input type="checkbox" name="Запросы" id="t6" value="Сложно говорить о сексе с партнёром"><label for="t6"><div class="check"></div>Сложно говорить о сексе</label></div>
+        <div class="option-item"><input type="checkbox" name="Запросы" id="t7" value="Скука и рутина в сексе"><label for="t7"><div class="check"></div>Скука / рутина в сексе</label></div>
+        <div class="option-item"><input type="checkbox" name="Запросы" id="t8" value="Хочу понять себя глубже"><label for="t8"><div class="check"></div>Хочу понять себя глубже</label></div>
+        <div class="option-item"><input type="checkbox" name="Запросы" id="t9" value="Оральные техники"><label for="t9"><div class="check"></div>Оральные техники</label></div>
+        <div class="option-item"><input type="checkbox" name="Запросы" id="t10" value="Мануальные техники"><label for="t10"><div class="check"></div>Мануальные техники</label></div>
+        <div class="option-item"><input type="checkbox" name="Запросы" id="t11" value="Эротический массаж"><label for="t11"><div class="check"></div>Эротический массаж</label></div>
+        <div class="option-item"><input type="checkbox" name="Запросы" id="t12" value="Эротическая переписка / флирт"><label for="t12"><div class="check"></div>Эротическая переписка</label></div>
+        <div class="option-item"><input type="checkbox" name="Запросы" id="t13" value="Идеи для разнообразия в сексе"><label for="t13"><div class="check"></div>Разнообразие в сексе</label></div>
       </div>
+      <div class="group-error" id="err-topics">Выбери хотя бы одно</div>
     </div>
 
-    <div class="question">
-      <label>Как давно ты с этим живёшь?</label>
+    <div class="question" id="q-duration">
+      <label>Как давно ты с этим живёшь? <span class="req">*</span></label>
       <div class="options-grid single">
         <div class="option-item"><input type="radio" name="Длительность" id="d1" value="Всегда так было"><label for="d1"><div class="check"></div>Всегда так было — другого не знаю</label></div>
         <div class="option-item"><input type="radio" name="Длительность" id="d2" value="Несколько месяцев"><label for="d2"><div class="check"></div>Несколько месяцев</label></div>
         <div class="option-item"><input type="radio" name="Длительность" id="d3" value="1-2 года"><label for="d3"><div class="check"></div>1–2 года</label></div>
         <div class="option-item"><input type="radio" name="Длительность" id="d4" value="Несколько лет"><label for="d4"><div class="check"></div>Несколько лет</label></div>
       </div>
+      <div class="group-error" id="err-duration">Выбери один вариант</div>
     </div>
 
     <div class="question">
       <label>Что ты уже пробовала? Что помогло, что нет?</label>
-      <div class="hint">Статьи, видео, книги, консультации, курсы, советы подруг — всё что пробовала</div>
+      <div class="hint">Статьи, видео, книги, консультации, курсы, советы подруг</div>
       <textarea name="Что пробовала" placeholder="Смотрела ролики в ютубе, читала про либидо... пробовала поговорить с ним, но стало неловко..."></textarea>
     </div>
 
     <div class="question" id="q-dream">
-      <label>А теперь — представь, что прошло 6 месяцев и всё изменилось. <span class="req">*</span></label>
-      <div class="hint">Как выглядит твоя интимная жизнь? Что ты чувствуешь? Опиши максимально конкретно — это важно для меня.</div>
+      <label>Как ты поймёшь, что твоя цель достигнута? Как изменится твоя жизнь? <span class="req">*</span></label>
+      <div class="hint">Опиши это как можно конкретнее — это один из самых важных вопросов для меня.</div>
       <textarea name="Желаемый результат (6 месяцев)" id="dreamText" placeholder="Я наконец чувствую желание — не по расписанию, а по-настоящему. Оргазм с партнёром стал нормой, а не лотереей. Я перестала думать во время секса о том, как выгляжу..." required minlength="60"></textarea>
-      <div class="char-counter" id="dreamCounter">0 / минимум 60 символов</div>
-      <div class="error-msg">Опиши желаемый результат — минимум 60 символов</div>
+      <div class="char-counter" id="dreamCounter">0 / нужно минимум 60 символов</div>
+      <div class="error-msg">Расскажи подробнее — нужно минимум 60 символов</div>
     </div>
 
-    <div class="question">
-      <label>Что тебя больше всего пугает или останавливает в работе над этой темой?</label>
-      <div class="hint">Честно — это важная часть анкеты</div>
+    <div class="question" id="q-fears">
+      <label>Что тебя больше всего пугает или останавливает в работе над этой темой? <span class="req">*</span></label>
       <div class="options-grid single">
         <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f1" value="Страшно признать что есть проблема"><label for="f1"><div class="check"></div>Страшно признать вслух что есть проблема</label></div>
         <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f2" value="Боюсь что не поможет или снова разочаруюсь"><label for="f2"><div class="check"></div>Боюсь что не поможет — уже разочаровывалась</label></div>
-        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f3" value="Стыдно говорить об этом даже с психологом"><label for="f3"><div class="check"></div>Стыдно говорить об этом даже со специалистом</label></div>
-        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f4" value="Боюсь реакции партнёра если узнает что работаю с этим"><label for="f4"><div class="check"></div>Боюсь реакции партнёра</label></div>
-        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f5" value="Не верю что у меня что-то изменится"><label for="f5"><div class="check"></div>Не верю что у меня это изменится</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f3" value="Стыдно говорить об этом даже со специалистом"><label for="f3"><div class="check"></div>Стыдно говорить об этом даже со специалистом</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f4" value="Боюсь реакции партнёра"><label for="f4"><div class="check"></div>Боюсь реакции партнёра</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f5" value="Не верю что у меня это изменится"><label for="f5"><div class="check"></div>Не верю что у меня это изменится</label></div>
         <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f6" value="Нет страхов — готова работать"><label for="f6"><div class="check"></div>Нет страхов — готова работать</label></div>
       </div>
+      <div class="group-error" id="err-fears">Выбери хотя бы один вариант</div>
     </div>
 
     <div class="btn-wrap">
@@ -404,44 +405,43 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     <div class="cheer-block purple">
       <div class="cheer-icon">💜</div>
       <div class="cheer-text">
-        <strong>Ты молодец — уже половина позади!</strong>
-        <span>То, что ты здесь и отвечаешь честно — это уже шаг к себе. Осталось ещё 2 коротких блока.</span>
+        <strong>Уже половина позади — ты молодец!</strong>
+        <span>То, что ты здесь и делишься — это уже шаг к себе. Осталось ещё 2 коротких блока.</span>
       </div>
     </div>
 
     <div class="section-header">
       <div class="section-num">3</div>
-      <div>
-        <div class="section-title">Отношения и партнёр</div>
-        <div class="section-sub">Пропусти, если не актуально</div>
-      </div>
+      <div><div class="section-title">Отношения и партнёр</div><div class="section-sub">Если нет партнёра — выбери «Нет партнёра»</div></div>
     </div>
 
-    <div class="question">
-      <label>Как долго вы вместе? (если есть партнёр)</label>
+    <div class="question" id="q-rel-duration">
+      <label>Как долго вы вместе? <span class="req">*</span></label>
       <div class="options-grid">
         <div class="option-item"><input type="radio" name="Длительность отношений" id="rel1" value="Меньше года"><label for="rel1"><div class="check"></div>Меньше года</label></div>
         <div class="option-item"><input type="radio" name="Длительность отношений" id="rel2" value="1-3 года"><label for="rel2"><div class="check"></div>1–3 года</label></div>
         <div class="option-item"><input type="radio" name="Длительность отношений" id="rel3" value="3-7 лет"><label for="rel3"><div class="check"></div>3–7 лет</label></div>
         <div class="option-item"><input type="radio" name="Длительность отношений" id="rel4" value="Больше 7 лет"><label for="rel4"><div class="check"></div>Больше 7 лет</label></div>
-        <div class="option-item"><input type="radio" name="Длительность отношений" id="rel5" value="Нет партнёра"><label for="rel5"><div class="check"></div>Сейчас нет партнёра</label></div>
+        <div class="option-item"><input type="radio" name="Длительность отношений" id="rel5" value="Нет партнёра"><label for="rel5"><div class="check"></div>Нет партнёра</label></div>
       </div>
+      <div class="group-error" id="err-rel-duration">Выбери один вариант</div>
     </div>
 
     <div class="question">
       <label>Как бы ты описала интимную жизнь с партнёром прямо сейчас?</label>
-      <div class="hint">Честно — это остаётся между нами</div>
+      <div class="hint">Ты можешь писать откровенно — это остаётся только между нами</div>
       <textarea name="Интимная жизнь с партнёром" placeholder="Секс бывает раз в две недели, и я чаще всего просто жду когда закончится. Он не знает об этом..."></textarea>
     </div>
 
-    <div class="question">
-      <label>Знает ли партнёр о твоём запросе / о том, что тебя беспокоит?</label>
+    <div class="question" id="q-partner-knows">
+      <label>Знает ли партнёр о том, что тебя беспокоит? <span class="req">*</span></label>
       <div class="options-grid single">
         <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn1" value="Да, мы это обсуждаем"><label for="kn1"><div class="check"></div>Да, мы это обсуждаем открыто</label></div>
-        <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn2" value="Частично, но не в деталях"><label for="kn2"><div class="check"></div>Частично — чувствует, но не знает подробностей</label></div>
-        <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn3" value="Нет, он не знает"><label for="kn3"><div class="check"></div>Нет, я не говорила об этом</label></div>
+        <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn2" value="Частично — чувствует но не знает деталей"><label for="kn2"><div class="check"></div>Частично — чувствует, но не знает подробностей</label></div>
+        <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn3" value="Нет, не говорила"><label for="kn3"><div class="check"></div>Нет, я не говорила об этом</label></div>
         <div class="option-item"><input type="radio" name="Знает ли партнёр" id="kn4" value="Нет партнёра"><label for="kn4"><div class="check"></div>Нет партнёра</label></div>
       </div>
+      <div class="group-error" id="err-partner-knows">Выбери один вариант</div>
     </div>
 
     <div class="btn-wrap">
@@ -450,65 +450,54 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     </div>
   </div>
 
-  <!-- SECTION 4: ОПЫТ С ПРОДУКТАМИ -->
+  <!-- SECTION 4: ОПЫТ -->
   <div class="section" id="section-4">
 
     <div class="cheer-block rose">
       <div class="cheer-icon">🔥</div>
       <div class="cheer-text">
-        <strong>Уже почти! Остался 1 шаг после этого</strong>
-        <span>Ты открываешься — и это смело. Именно такая честность помогает мне подобрать для тебя самое нужное.</span>
+        <strong>Остался 1 шаг после этого!</strong>
+        <span>Ты открываешься — и это смело. Именно такая честность помогает мне быть по-настоящему полезной.</span>
       </div>
     </div>
 
     <div class="section-header">
       <div class="section-num">4</div>
-      <div>
-        <div class="section-title">Опыт с курсами и специалистами</div>
-        <div class="section-sub">Честные ответы помогут мне понять, что тебе действительно нужно</div>
-      </div>
+      <div><div class="section-title">Опыт и готовность</div><div class="section-sub">Помогает мне понять, что именно тебе нужно</div></div>
     </div>
 
-    <div class="question">
-      <label>Покупала ли ты когда-нибудь курсы по теме секса, отношений или психологии?</label>
+    <div class="question" id="q-bought">
+      <label>Покупала ли ты раньше курсы по теме секса, отношений или психологии? <span class="req">*</span></label>
       <div class="options-grid single">
         <div class="option-item"><input type="radio" name="Покупала курсы" id="buy1" value="Да, и помогло"><label for="buy1"><div class="check"></div>Да — и получила результат</label></div>
         <div class="option-item"><input type="radio" name="Покупала курсы" id="buy2" value="Да, но без результата"><label for="buy2"><div class="check"></div>Да — но особого результата не было</label></div>
         <div class="option-item"><input type="radio" name="Покупала курсы" id="buy3" value="Нет, не покупала"><label for="buy3"><div class="check"></div>Нет, никогда не покупала</label></div>
         <div class="option-item"><input type="radio" name="Покупала курсы" id="buy4" value="Была у специалиста лично"><label for="buy4"><div class="check"></div>Была у психолога / сексолога лично</label></div>
       </div>
+      <div class="group-error" id="err-bought">Выбери один вариант</div>
     </div>
 
     <div class="question">
-      <label>Если покупала — что понравилось и что не понравилось?</label>
+      <label>Если покупала — что понравилось и что нет?</label>
       <textarea name="Опыт с курсами" placeholder="Курс был интересный, но не давал конкретики. Или: помогло понять откуда ноги растут, но не объяснило что делать..."></textarea>
     </div>
 
-    <div class="question">
-      <label>Что обычно останавливает тебя от покупки?</label>
+    <div class="question" id="q-stopfactors">
+      <label>Что обычно останавливает тебя от покупки? <span class="req">*</span></label>
       <div class="hint">Можно выбрать несколько</div>
       <div class="options-grid">
         <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s1" value="Цена кажется высокой"><label for="s1"><div class="check"></div>Цена кажется высокой</label></div>
         <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s2" value="Не уверена что поможет именно мне"><label for="s2"><div class="check"></div>Не уверена что поможет мне</label></div>
         <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s3" value="Стыдно / неловко"><label for="s3"><div class="check"></div>Стыдно / неловко обращаться</label></div>
         <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s4" value="Нет времени"><label for="s4"><div class="check"></div>Нет времени</label></div>
-        <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s5" value="Не доверяю / боюсь разочароваться"><label for="s5"><div class="check"></div>Боюсь разочароваться снова</label></div>
+        <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s5" value="Боюсь разочароваться снова"><label for="s5"><div class="check"></div>Боюсь разочароваться снова</label></div>
         <div class="option-item"><input type="checkbox" name="Стоп-факторы" id="s6" value="Ничего не останавливает"><label for="s6"><div class="check"></div>Ничего не останавливает</label></div>
       </div>
+      <div class="group-error" id="err-stopfactors">Выбери хотя бы один вариант</div>
     </div>
 
-    <div class="question">
-      <label>Сколько ты готова вложить в решение своего запроса?</label>
-      <div class="options-grid single">
-        <div class="option-item"><input type="radio" name="Готовность платить" id="p1" value="До 100 евро"><label for="p1"><div class="check"></div>До 100€</label></div>
-        <div class="option-item"><input type="radio" name="Готовность платить" id="p2" value="100-200 евро"><label for="p2"><div class="check"></div>100–200€</label></div>
-        <div class="option-item"><input type="radio" name="Готовность платить" id="p3" value="200-500 евро"><label for="p3"><div class="check"></div>200–500€</label></div>
-        <div class="option-item"><input type="radio" name="Готовность платить" id="p4" value="500+ евро если уверена в результате"><label for="p4"><div class="check"></div>500€+ если уверена в результате</label></div>
-      </div>
-    </div>
-
-    <div class="question">
-      <label>Слышала ли ты раньше о курсе «Секреты женского наслаждения»?</label>
+    <div class="question" id="q-awareness">
+      <label>Слышала ли ты раньше о курсе «Секреты женского наслаждения»? <span class="req">*</span></label>
       <div class="options-grid single">
         <div class="option-item"><input type="radio" name="Знает о курсе" id="aw1" value="Нет, первый раз слышу"><label for="aw1"><div class="check"></div>Нет, первый раз слышу</label></div>
         <div class="option-item"><input type="radio" name="Знает о курсе" id="aw2" value="Слышала, но не изучала"><label for="aw2"><div class="check"></div>Слышала — но не изучала подробно</label></div>
@@ -516,16 +505,18 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="option-item"><input type="radio" name="Знает о курсе" id="aw4" value="Хотела купить но что-то остановило"><label for="aw4"><div class="check"></div>Хотела купить — но что-то остановило</label></div>
         <div class="option-item"><input type="radio" name="Знает о курсе" id="aw5" value="Уже покупала продукты Екатерины"><label for="aw5"><div class="check"></div>Уже покупала продукты Екатерины</label></div>
       </div>
+      <div class="group-error" id="err-awareness">Выбери один вариант</div>
     </div>
 
-    <div class="question">
-      <label>Что должно произойти, чтобы ты решилась зайти на курс прямо сейчас?</label>
+    <div class="question" id="q-trigger">
+      <label>Что помогло бы тебе начать решать эту тему со специалистом? <span class="req">*</span></label>
       <div class="hint">Не «правильный ответ» — а честный. Что тебе нужно увидеть, услышать или понять?</div>
-      <textarea name="Триггер принятия решения" placeholder="Мне нужно увидеть реальные результаты других. Или понять что это сработает именно в моей ситуации, а не в общем..."></textarea>
+      <textarea name="Триггер принятия решения" id="triggerText" placeholder="Мне нужно увидеть реальные результаты других девушек. Или понять что это сработает именно в моей ситуации, а не в общем..." required minlength="20"></textarea>
+      <div class="error-msg">Расскажи немного подробнее</div>
     </div>
 
-    <div class="question">
-      <label>Насколько ты готова начать работу прямо сейчас?</label>
+    <div class="question" id="q-readiness">
+      <label>Насколько ты готова начать работу прямо сейчас? <span class="req">*</span></label>
       <div class="scale-wrap">
         <div class="scale-item"><input type="radio" name="Готовность начать" id="sc1" value="1"><label for="sc1">1</label></div>
         <div class="scale-item"><input type="radio" name="Готовность начать" id="sc2" value="2"><label for="sc2">2</label></div>
@@ -539,6 +530,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="scale-item"><input type="radio" name="Готовность начать" id="sc10" value="10"><label for="sc10">10</label></div>
       </div>
       <div class="scale-labels"><span>Пока не готова</span><span>Готова прямо сейчас</span></div>
+      <div class="group-error" id="err-readiness">Выбери значение от 1 до 10</div>
     </div>
 
     <div class="btn-wrap">
@@ -550,24 +542,21 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
   <!-- SECTION 5: ФИНАЛ -->
   <div class="section" id="section-5">
 
-    <div class="cheer-block" style="background:linear-gradient(135deg,#FFF3E0,#FFF8F0);border-color:rgba(196,133,106,.3);">
+    <div class="cheer-block warm">
       <div class="cheer-icon">🌟</div>
       <div class="cheer-text">
-        <strong style="color:#8A5030;">Финальный шаг! Ты уже почти там</strong>
-        <span style="color:var(--rose);">Сразу после отправки анкеты я пришлю тебе твой подарок 🎁</span>
+        <strong>Финальный шаг — уже почти!</strong>
+        <span>Сразу после отправки твой подарок будет ждать тебя 🎁</span>
       </div>
     </div>
 
     <div class="section-header">
       <div class="section-num">5</div>
-      <div>
-        <div class="section-title">Последний шаг</div>
-        <div class="section-sub">Пара вопросов и разрешения</div>
-      </div>
+      <div><div class="section-title">Последний шаг</div><div class="section-sub">Пара вопросов и разрешения</div></div>
     </div>
 
-    <div class="question">
-      <label>Откуда ты пришла?</label>
+    <div class="question" id="q-source">
+      <label>Откуда ты пришла? <span class="req">*</span></label>
       <div class="options-grid">
         <div class="option-item"><input type="radio" name="Источник" id="src1" value="Instagram"><label for="src1"><div class="check"></div>Instagram</label></div>
         <div class="option-item"><input type="radio" name="Источник" id="src2" value="Telegram"><label for="src2"><div class="check"></div>Telegram-канал</label></div>
@@ -575,38 +564,40 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="option-item"><input type="radio" name="Источник" id="src4" value="Реклама"><label for="src4"><div class="check"></div>Реклама</label></div>
         <div class="option-item"><input type="radio" name="Источник" id="src5" value="Другое"><label for="src5"><div class="check"></div>Другое</label></div>
       </div>
+      <div class="group-error" id="err-source">Выбери один вариант</div>
     </div>
 
     <div class="question">
-      <label>Есть что-то важное, что я должна знать о тебе?</label>
-      <div class="hint">Всё, что не вошло в вопросы выше — напиши здесь</div>
-      <textarea name="Дополнительно" placeholder="Любые детали, которые помогут мне понять твою ситуацию лучше..."></textarea>
+      <label>Есть что-то важное, что стоит о тебе знать?</label>
+      <div class="hint">Всё, что не вошло в вопросы выше — можешь написать здесь</div>
+      <textarea name="Дополнительно" placeholder="Любые детали, которые помогут мне лучше понять твою ситуацию..."></textarea>
     </div>
 
     <div style="background:var(--lite);border-radius:12px;padding:20px;margin-bottom:20px;">
-      <p style="font-size:14px;font-weight:600;color:var(--plum);margin-bottom:14px">Разрешения</p>
+      <p style="font-size:14px;font-weight:600;color:var(--plum);margin-bottom:6px">Разрешения</p>
+      <p style="font-size:12px;color:var(--mauve);margin-bottom:16px;line-height:1.5;">Выбери то, что тебе комфортно — ничего лишнего я делать не стану</p>
 
-      <div class="consent-block" style="margin-bottom:12px">
-        <input type="checkbox" name="Согласие на кейс (анонимно)" id="consent1" value="Да">
-        <label for="consent1">Я разрешаю использовать мой кейс <strong>анонимно</strong> как пример для других женщин (без имени, без фото)</label>
+      <div class="consent-block">
+        <input type="checkbox" name="Участие в сторис (анонимно)" id="consent1" value="Да">
+        <label for="consent1">Я готова участвовать в сторис Екатерины — рассказывать о своём запросе и изменениях <strong>анонимно</strong> (без имени и фото)</label>
       </div>
 
-      <div class="consent-block" style="margin-bottom:12px">
-        <input type="checkbox" name="Согласие на кейс (с именем)" id="consent2" value="Да">
-        <label for="consent2">Я готова к тому, чтобы мой кейс показывали <strong>с именем/никнеймом</strong> — если результат будет классным</label>
+      <div class="consent-block">
+        <input type="checkbox" name="Участие в сторис (открыто)" id="consent2" value="Да">
+        <label for="consent2">Я готова рассказывать о своих изменениях <strong>открыто</strong> — с именем или ником, если результат будет классным</label>
       </div>
 
       <div class="consent-block" id="consent3wrap">
-        <input type="checkbox" name="Согласие на обработку данных" id="consent3" value="Да" required>
-        <label for="consent3">Я согласна с тем, что мои данные используются для отбора и связи со мной <span class="req">*</span></label>
+        <input type="checkbox" name="Согласие на связь" id="consent3" value="Да" required>
+        <label for="consent3">Я разрешаю Екатерине написать мне по контакту, который я указала, чтобы сообщить о результате отбора <span class="req">*</span></label>
       </div>
     </div>
 
     <button type="submit" class="btn btn-primary" id="submitBtn" style="font-size:16px;padding:16px 32px;">
-      ✨ Отправить анкету и получить подарок
+      ✨ Отправить и получить подарок
     </button>
 
-    <p style="font-size:12px;color:var(--mauve);text-align:center;margin-top:14px">Я лично читаю каждую анкету. Отвечу в течение 3–5 дней.</p>
+    <p style="font-size:12px;color:var(--mauve);text-align:center;margin-top:14px">Я лично читаю каждую анкету 🌸</p>
 
     <div style="margin-top:16px">
       <button type="button" class="btn btn-secondary" onclick="prevSection(5)" style="width:100%;justify-content:center;">← Назад</button>
@@ -618,16 +609,14 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
   <!-- SUCCESS SCREEN -->
   <div id="success-screen">
     <div class="success-icon">🎉</div>
-    <h2>Анкета отправлена!</h2>
-    <p class="success-sub">Я лично прочту твою анкету. Если ты среди выбранных — напишу тебе в течение нескольких дней. А пока — твой подарок уже ждёт!</p>
+    <h2>Спасибо! Анкета отправлена</h2>
+    <p class="success-sub">Я лично прочту твои ответы. Если выберу тебя — напишу в течение нескольких дней. А пока — твой подарок уже здесь!</p>
 
     <div class="gift-card">
       <div class="gift-tag">🎁 Подарок каждой участнице</div>
       <h3>RED ROOM — приложение с секс-сценариями</h3>
-      <p>50+ эксклюзивных сценариев, которые помогут тебе уже сегодня сделать шаг к ярким ощущениям, близости и настоящему удовольствию. Твой доступ — прямо сейчас.</p>
-      <a href="https://secretcoach.place/" target="_blank" class="gift-btn">
-        🔴 Открыть RED ROOM →
-      </a>
+      <p>50+ эксклюзивных сценариев для яркой интимной жизни. Открой прямо сейчас — твой 24-часовой доступ уже активен.</p>
+      <a href="https://secretcoach.place/" target="_blank" class="gift-btn">🔴 Открыть RED ROOM →</a>
     </div>
 
     <div class="next-steps">
@@ -639,121 +628,193 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         </li>
         <li>
           <span class="li-icon">💌</span>
-          <span>Есть вопрос, который горит прямо сейчас? Напиши мне напрямую в Telegram или Instagram Direct: <a href="https://t.me/secret_coach1" target="_blank">@secret_coach1</a></span>
+          <span>Есть вопрос, который не терпит? Напиши мне напрямую в Telegram или Instagram Direct: <a href="https://t.me/secret_coach1" target="_blank">@secret_coach1</a></span>
         </li>
         <li>
           <span class="li-icon">📲</span>
-          <span>Подпишись на мой аккаунт — там я делюсь практиками и кейсами каждую неделю</span>
+          <span>Подпишись на мой аккаунт — там практики и реальные кейсы каждую неделю</span>
         </li>
       </ul>
     </div>
+
+    <button class="refill-btn" onclick="refillForm()">↩ Заполнить анкету ещё раз</button>
   </div>
 
-</div><!-- /form-wrap -->
+</div>
 
 <script>
 const TOTAL_SECTIONS = 5;
 let currentSection = 1;
 
+// ─── PERSIST SUCCESS STATE ───────────────────────────────────────
+function checkSavedSuccess(){
+  if(localStorage.getItem('castdev_done') === '1'){
+    showSuccessScreen();
+  }
+}
+
+function showSuccessScreen(){
+  document.getElementById('heroBlock').style.display = 'none';
+  document.getElementById('castdevForm').style.display = 'none';
+  document.getElementById('stepsProgressWrap').style.display = 'none';
+  document.getElementById('errorToast').style.display = 'none';
+  document.getElementById('topBar').style.width = '100%';
+  document.getElementById('topLabel').textContent = 'Готово! 🎉';
+  document.getElementById('success-screen').style.display = 'block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function refillForm(){
+  localStorage.removeItem('castdev_done');
+  location.reload();
+}
+
+// ─── PROGRESS ────────────────────────────────────────────────────
 function updateProgress(){
   const pct = Math.round(((currentSection-1)/(TOTAL_SECTIONS-1))*100);
   document.getElementById('topBar').style.width = Math.max(10,pct)+'%';
   document.getElementById('topLabel').textContent = 'Шаг '+currentSection+' из '+TOTAL_SECTIONS;
-
   for(let i=1;i<=TOTAL_SECTIONS;i++){
     const el = document.getElementById('step-'+i);
     const circle = el.querySelector('.step-circle');
     el.className = 'step-item';
-    if(i < currentSection){
-      el.classList.add('done');
-      circle.textContent = '✓';
-    } else if(i === currentSection){
-      el.classList.add('active');
-      circle.textContent = i;
-    } else {
-      circle.textContent = i;
-    }
+    if(i < currentSection){ el.classList.add('done'); circle.textContent='✓'; }
+    else if(i === currentSection){ el.classList.add('active'); circle.textContent=i; }
+    else { circle.textContent=i; }
   }
-
-  // Прячем hero начиная со 2-го шага
-  const hero = document.getElementById('heroBlock');
-  if(currentSection > 1){
-    hero.style.display = 'none';
-  } else {
-    hero.style.display = 'block';
-  }
+  document.getElementById('heroBlock').style.display = currentSection > 1 ? 'none' : 'block';
 }
 
+// ─── TOAST ───────────────────────────────────────────────────────
 function showToast(msg){
-  const toast = document.getElementById('errorToast');
-  toast.querySelector('div:last-child').textContent = msg || 'Не всё заполнено — прокрути вверх и заполни обязательные поля';
-  toast.classList.add('show');
-  toast.scrollIntoView({behavior:'smooth', block:'center'});
-  setTimeout(()=>{ toast.classList.remove('show'); }, 5000);
+  const t = document.getElementById('errorToast');
+  document.getElementById('errorToastMsg').textContent = msg || 'Пожалуйста, ответь на все вопросы — прокрути страницу вверх';
+  t.classList.add('show');
+  t.scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(()=>t.classList.remove('show'), 6000);
 }
+function hideToast(){ document.getElementById('errorToast').classList.remove('show'); }
 
-function scrollToFirstError(sectionNum){
-  const sec = document.getElementById('section-'+sectionNum);
-  const firstError = sec.querySelector('.has-error');
-  if(firstError){
-    firstError.scrollIntoView({behavior:'smooth', block:'center'});
-  }
+// ─── VALIDATION ──────────────────────────────────────────────────
+function checkRadio(name){ return !!document.querySelector('input[name="'+name+'"]:checked'); }
+function checkCheckboxGroup(name){ return !!document.querySelector('input[name="'+name+'"]:checked'); }
+
+function setQError(id, hasError){
+  const el = document.getElementById(id);
+  if(!el) return;
+  if(hasError) el.classList.add('has-error'); else el.classList.remove('has-error');
+}
+function setGroupError(id, show){
+  const el = document.getElementById(id);
+  if(!el) return;
+  if(show) el.classList.add('show'); else el.classList.remove('show');
 }
 
 function validateSection(num){
   let valid = true;
-  const sec = document.getElementById('section-'+num);
 
   if(num===1){
-    const name = sec.querySelector('[name="Имя"]');
-    const age = sec.querySelector('[name="Возраст"]');
-    const contact = sec.querySelector('[name="Контакт (TG или IG)"]');
-    const nameQ = document.getElementById('q-name');
-    const ageQ = document.getElementById('q-age');
-    const contactQ = document.getElementById('q-contact');
+    const name = document.querySelector('[name="Имя"]');
+    const age = document.querySelector('[name="Возраст"]');
+    const nick = document.querySelector('[name="Ник"]');
 
-    if(!name.value.trim()){nameQ.classList.add('has-error');valid=false;}else{nameQ.classList.remove('has-error');}
-    if(!age.value||age.value<18){ageQ.classList.add('has-error');valid=false;}else{ageQ.classList.remove('has-error');}
-    if(!contact.value.trim()){contactQ.classList.add('has-error');valid=false;}else{contactQ.classList.remove('has-error');}
+    const nameOk = name && name.value.trim().length > 0;
+    setQError('q-name', !nameOk); if(!nameOk) valid=false;
+
+    const ageOk = age && age.value && age.value >= 18;
+    setQError('q-age', !ageOk); if(!ageOk) valid=false;
+
+    const statusOk = checkRadio('Статус отношений');
+    setGroupError('err-status', !statusOk); if(!statusOk) valid=false;
+
+    const childOk = checkRadio('Дети');
+    setGroupError('err-children', !childOk); if(!childOk) valid=false;
+
+    const nickOk = nick && nick.value.trim().length > 0;
+    setQError('q-nick', !nickOk); if(!nickOk) valid=false;
+
+    const platOk = checkRadio('Платформа');
+    setGroupError('err-platform', !platOk); if(!platOk) valid=false;
   }
 
   if(num===2){
     const main = document.getElementById('mainText');
-    const mainQ = document.getElementById('q-main');
-    const dream = document.getElementById('dreamText');
-    const dreamQ = document.getElementById('q-dream');
+    const mainOk = main && main.value.trim().length >= 80;
+    setQError('q-main', !mainOk); if(!mainOk) valid=false;
 
-    if(main.value.trim().length < 80){mainQ.classList.add('has-error');valid=false;}else{mainQ.classList.remove('has-error');}
-    if(dream && dream.value.trim().length < 60){dreamQ.classList.add('has-error');valid=false;}else if(dreamQ){dreamQ.classList.remove('has-error');}
+    const topicsOk = checkCheckboxGroup('Запросы');
+    setGroupError('err-topics', !topicsOk); if(!topicsOk) valid=false;
+
+    const durOk = checkRadio('Длительность');
+    setGroupError('err-duration', !durOk); if(!durOk) valid=false;
+
+    const dream = document.getElementById('dreamText');
+    const dreamOk = dream && dream.value.trim().length >= 60;
+    setQError('q-dream', !dreamOk); if(!dreamOk) valid=false;
+
+    const fearsOk = checkCheckboxGroup('Страхи и барьеры');
+    setGroupError('err-fears', !fearsOk); if(!fearsOk) valid=false;
+  }
+
+  if(num===3){
+    const relOk = checkRadio('Длительность отношений');
+    setGroupError('err-rel-duration', !relOk); if(!relOk) valid=false;
+
+    const pkOk = checkRadio('Знает ли партнёр');
+    setGroupError('err-partner-knows', !pkOk); if(!pkOk) valid=false;
+  }
+
+  if(num===4){
+    const boughtOk = checkRadio('Покупала курсы');
+    setGroupError('err-bought', !boughtOk); if(!boughtOk) valid=false;
+
+    const sfOk = checkCheckboxGroup('Стоп-факторы');
+    setGroupError('err-stopfactors', !sfOk); if(!sfOk) valid=false;
+
+    const awOk = checkRadio('Знает о курсе');
+    setGroupError('err-awareness', !awOk); if(!awOk) valid=false;
+
+    const trigger = document.getElementById('triggerText');
+    const trigOk = trigger && trigger.value.trim().length >= 20;
+    setQError('q-trigger', !trigOk); if(!trigOk) valid=false;
+
+    const readOk = checkRadio('Готовность начать');
+    setGroupError('err-readiness', !readOk); if(!readOk) valid=false;
   }
 
   if(num===5){
-    const consent3 = document.getElementById('consent3');
-    const wrap = document.getElementById('consent3wrap');
-    if(!consent3.checked){
+    const srcOk = checkRadio('Источник');
+    setGroupError('err-source', !srcOk); if(!srcOk) valid=false;
+
+    const c3 = document.getElementById('consent3');
+    const c3w = document.getElementById('consent3wrap');
+    if(!c3.checked){
+      c3w.style.outline='2px solid var(--rose)';c3w.style.borderRadius='8px';
       valid=false;
-      wrap.style.outline='2px solid var(--rose)';
-      wrap.style.borderRadius='8px';
     } else {
-      wrap.style.outline='none';
+      c3w.style.outline='none';
     }
   }
 
   return valid;
 }
 
+function scrollToFirstError(sectionNum){
+  const sec = document.getElementById('section-'+sectionNum);
+  const first = sec.querySelector('.has-error, .group-error.show');
+  if(first) first.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ─── NAVIGATION ──────────────────────────────────────────────────
 function nextSection(from){
   if(!validateSection(from)){
     scrollToFirstError(from);
-    showToast('Не всё заполнено — проверь обязательные поля выше');
+    showToast('Пожалуйста, ответь на все вопросы — прокрути страницу вверх');
     return;
   }
   hideToast();
-  const cur = document.getElementById('section-'+from);
-  const next = document.getElementById('section-'+(from+1));
-  if(!next) return;
-  cur.classList.remove('active');
-  next.classList.add('active');
+  document.getElementById('section-'+from).classList.remove('active');
+  document.getElementById('section-'+(from+1)).classList.add('active');
   currentSection = from+1;
   updateProgress();
   window.scrollTo({top:0,behavior:'smooth'});
@@ -761,90 +822,60 @@ function nextSection(from){
 
 function prevSection(from){
   hideToast();
-  const cur = document.getElementById('section-'+from);
-  const prev = document.getElementById('section-'+(from-1));
-  if(!prev) return;
-  cur.classList.remove('active');
-  prev.classList.add('active');
+  document.getElementById('section-'+from).classList.remove('active');
+  document.getElementById('section-'+(from-1)).classList.add('active');
   currentSection = from-1;
   updateProgress();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function hideToast(){
-  document.getElementById('errorToast').classList.remove('show');
-}
-
-// Char counters
-const mainText = document.getElementById('mainText');
-const mainCounter = document.getElementById('mainCounter');
-if(mainText){
-  mainText.addEventListener('input',function(){
+// ─── CHAR COUNTERS ───────────────────────────────────────────────
+function initCounter(textId, counterId, min){
+  const t = document.getElementById(textId);
+  const c = document.getElementById(counterId);
+  if(!t||!c) return;
+  t.addEventListener('input',function(){
     const len = this.value.length;
-    if(len < 80){
-      mainCounter.textContent = len+' / нужно минимум 80 символов';
-      mainCounter.className = 'char-counter warning';
+    if(len < min){
+      c.textContent = len+' / нужно минимум '+min+' символов';
+      c.className = 'char-counter warning';
     } else {
-      mainCounter.textContent = len+' символов ✓ отлично!';
-      mainCounter.className = 'char-counter ok';
+      c.textContent = len+' символов ✓';
+      c.className = 'char-counter ok';
     }
   });
 }
-const dreamText = document.getElementById('dreamText');
-const dreamCounter = document.getElementById('dreamCounter');
-if(dreamText){
-  dreamText.addEventListener('input',function(){
-    const len = this.value.length;
-    if(len < 60){
-      dreamCounter.textContent = len+' / нужно минимум 60 символов';
-      dreamCounter.className = 'char-counter warning';
-    } else {
-      dreamCounter.textContent = len+' символов ✓ отлично!';
-      dreamCounter.className = 'char-counter ok';
-    }
-  });
-}
+initCounter('mainText','mainCounter',80);
+initCounter('dreamText','dreamCounter',60);
 
-// Form submit
+// ─── SUBMIT ──────────────────────────────────────────────────────
 document.getElementById('castdevForm').addEventListener('submit', async function(e){
   e.preventDefault();
   if(!validateSection(5)){
-    showToast('Подтверди согласие на обработку данных');
+    showToast('Подтверди разрешение на связь — это последнее поле');
     return;
   }
-
   const btn = document.getElementById('submitBtn');
   btn.textContent = 'Отправляю...';
   btn.disabled = true;
-
-  const formData = new FormData(this);
-
   try {
-    const res = await fetch(this.action, {
-      method:'POST',
-      body: formData,
-      headers:{'Accept':'application/json'}
-    });
+    const res = await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
     if(res.ok){
-      document.getElementById('castdevForm').style.display='none';
-      document.querySelector('.steps-progress').style.display='none';
-      document.getElementById('errorToast').style.display='none';
-      document.getElementById('topBar').style.width='100%';
-      document.getElementById('topLabel').textContent='Готово! 🎉';
-      document.getElementById('success-screen').style.display='block';
-      window.scrollTo({top:0,behavior:'smooth'});
+      localStorage.setItem('castdev_done','1');
+      showSuccessScreen();
     } else {
-      btn.textContent = 'Ошибка — попробуй снова';
-      btn.disabled = false;
+      btn.textContent='Ошибка — попробуй снова';
+      btn.disabled=false;
     }
   } catch(err){
-    btn.textContent = 'Ошибка сети — попробуй снова';
-    btn.disabled = false;
+    btn.textContent='Ошибка сети — попробуй снова';
+    btn.disabled=false;
   }
 });
 
-// Init
+// ─── INIT ────────────────────────────────────────────────────────
 updateProgress();
+checkSavedSuccess();
 </script>
 </body>
 </html>
