@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecretCoach — Регламент команды</title>
+<style>
+:root{--plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;--cream:#FAF7F4;--lite:#F0EBE6;--dark:#1E1428;--mid:#D0C8C0;--green:#3A9A6A;--red:#C03030;--amber:#C87D20;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Calibri,sans-serif;background:var(--cream);color:var(--dark);font-size:14px;line-height:1.65;}
+nav{position:sticky;top:0;z-index:100;background:var(--dark);display:flex;align-items:center;padding:0 16px;overflow-x:auto;scrollbar-width:none;border-bottom:2px solid var(--rose);}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:var(--blush);text-decoration:none;font-size:11px;padding:10px 10px;white-space:nowrap;border-bottom:2px solid transparent;transition:.2s;}
+nav a:hover{border-color:var(--rose);color:white;}
+.hero{background:var(--plum);padding:52px 24px 40px;text-align:center;}
+.hero h1{color:white;font-size:34px;max-width:700px;margin:0 auto 10px;}
+.hero p{color:var(--blush);font-size:15px;max-width:560px;margin:0 auto;}
+.tag{display:inline-block;background:var(--rose);color:white;padding:5px 16px;border-radius:20px;font-size:12px;margin-top:14px;}
+section{max-width:1100px;margin:0 auto;padding:48px 24px 40px;border-bottom:1px solid var(--mid);}
+h2{font-size:22px;font-weight:700;color:var(--plum);margin-bottom:18px;}
+h3{font-size:15px;font-weight:700;color:var(--plum);margin-bottom:10px;}
+.sub{font-size:13px;color:var(--mauve);margin-bottom:22px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:800px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+.card{background:white;border-radius:8px;padding:20px;border:1px solid var(--mid);}
+.role-tanya{border-top:4px solid var(--rose);}
+.role-km{border-top:4px solid var(--mauve);}
+.role-design{border-top:4px solid var(--blush);border-top-color:#A0856A;}
+.role-katya{border-top:4px solid var(--plum);}
+.role-producer{border-top:4px solid var(--dark);}
+.badge{display:inline-block;color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+.b-rose{background:var(--rose);}
+.b-mauve{background:var(--mauve);}
+.b-plum{background:var(--plum);}
+.b-dark{background:var(--dark);}
+.b-amber{background:var(--amber);}
+.b-green{background:var(--green);}
+.b-red{background:var(--red);}
+table{width:100%;border-collapse:collapse;margin:16px 0;}
+th{background:var(--plum);color:white;padding:10px 12px;text-align:left;font-size:12px;}
+td{padding:9px 12px;border-bottom:1px solid var(--mid);font-size:13px;vertical-align:top;}
+tr:nth-child(even) td{background:var(--lite);}
+.kpi-box{background:var(--lite);border-left:4px solid var(--rose);padding:14px 16px;margin:12px 0;border-radius:0 6px 6px 0;}
+.kpi-box h4{font-size:13px;font-weight:700;color:var(--plum);margin-bottom:8px;}
+.kpi-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--mid);font-size:12.5px;}
+.kpi-row:last-child{border:none;}
+.kpi-val{font-weight:700;color:var(--rose);}
+.penalty{background:#FFF0F0;border-left:4px solid var(--red);padding:12px 14px;border-radius:0 6px 6px 0;margin:10px 0;font-size:12.5px;}
+.bonus{background:#F0FFF5;border-left:4px solid var(--green);padding:12px 14px;border-radius:0 6px 6px 0;margin:10px 0;font-size:12.5px;}
+.rule-box{background:var(--plum);color:white;border-radius:8px;padding:18px 20px;margin:10px 0;}
+.rule-box h4{font-size:13px;font-weight:700;margin-bottom:10px;color:var(--blush);}
+.rule-box li{font-size:12.5px;margin-bottom:6px;padding-left:14px;position:relative;list-style:none;}
+.rule-box li::before{content:"→";position:absolute;left:0;color:var(--rose);}
+.week-row{display:grid;grid-template-columns:100px 1fr 1fr 1fr 1fr 1fr;gap:0;border-bottom:1px solid var(--mid);}
+.week-day{padding:10px 12px;font-size:12px;}
+.week-day.header{background:var(--plum);color:white;font-weight:700;}
+.week-day:nth-child(odd){background:var(--lite);}
+.template-box{background:#1E1428;border-radius:8px;padding:18px 20px;margin:12px 0;border-left:4px solid var(--rose);}
+.template-box h4{color:var(--blush);font-size:12px;font-weight:700;margin-bottom:12px;font-family:monospace;}
+.template-field{display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:12px;}
+.template-field:last-child{border:none;}
+.field-label{color:var(--rose);min-width:180px;font-weight:600;font-family:monospace;}
+.field-val{color:#E8D8F0;font-family:monospace;}
+.fire-trigger{background:#FFF3F0;border:1px solid #E09080;border-radius:6px;padding:12px 14px;margin:8px 0;font-size:12.5px;}
+.fire-trigger::before{content:"🔴 ";font-size:14px;}
+.principle{background:var(--plum);color:white;border-radius:8px;padding:20px;text-align:center;margin:8px 0;}
+.principle .num{font-size:36px;font-weight:900;color:var(--rose);display:block;}
+.principle p{font-size:12.5px;color:var(--blush);margin-top:6px;}
+.comm-rule{display:flex;gap:14px;align-items:flex-start;padding:12px;border-bottom:1px solid var(--mid);}
+.comm-icon{font-size:20px;min-width:28px;}
+.comm-text h4{font-size:13px;font-weight:700;color:var(--plum);margin-bottom:4px;}
+.comm-text p{font-size:12.5px;color:#555;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#principles">Принципы</a>
+  <a href="#tanya">Таня (таргет)</a>
+  <a href="#km">Контент-менеджер</a>
+  <a href="#design">Дизайнер</a>
+  <a href="#katya">Катя (эксперт)</a>
+  <a href="#producer">Продюсер</a>
+  <a href="#rhythm">Ритм недели</a>
+  <a href="#reports">Отчётность</a>
+  <a href="#finance">Финансы</a>
+  <a href="#comms">Коммуникация</a>
+  <a href="#hiring">Найм/увольнение</a>
+</nav>
+
+<div class="hero">
+  <h1>Регламент работы команды</h1>
+  <p>SecretCoach | Апрель–Май 2026 | Цель: $20,000</p>
+  <span class="tag">Конфиденциально — только для команды</span>
+</div>
+
+<!-- ПРИНЦИПЫ -->
+<section id="principles">
+  <h2>Принципы работы</h2>
+  <p class="sub">Основа, которая не обсуждается — это наш способ работать</p>
+  <div class="grid-3">
+    <div class="principle"><span class="num">01</span><strong>Результат важнее присутствия</strong><p>Нам важно что ты сделал, а не сколько часов ты был онлайн.</p></div>
+    <div class="principle"><span class="num">02</span><strong>Проблема + решение</strong><p>Приходи не с проблемой, а с проблемой И вариантом решения.</p></div>
+    <div class="principle"><span class="num">03</span><strong>Дедлайны священны</strong><p>Не можешь — предупреди за 24ч. Молчать нельзя.</p></div>
+    <div class="principle"><span class="num">04</span><strong>Оплата по результату</strong><p>Оплата за спринт — после подтверждения выполнения KPI.</p></div>
+    <div class="principle"><span class="num">05</span><strong>Еженедельный синк</strong><p>Понедельник 10:00, 45 минут. Присутствие обязательно.</p></div>
+    <div class="principle"><span class="num">06</span><strong>Прозрачность цифр</strong><p>Все видят финансовые результаты. Прячем только личные данные клиентов.</p></div>
+  </div>
+</section>
+
+<!-- ТАНЯ -->
+<section id="tanya">
+  <h2>Таня — Таргетолог</h2>
+  <p class="sub">Meta Ads (Facebook/Instagram) + Telegram-бот + аналитика</p>
+  <div class="grid-2">
+    <div>
+      <div class="card role-tanya">
+        <span class="badge b-rose">Роль</span>
+        <h3>Ежедневные задачи</h3>
+        <table>
+          <tr><th>Задача</th><th>Время</th></tr>
+          <tr><td>Мониторинг расхода бюджета (пейсинг)</td><td>Утро</td></tr>
+          <tr><td>Проверка CPA и ROAS всех кампаний</td><td>Утро</td></tr>
+          <tr><td>Проверка Telegram-бота (ошибки, сбои)</td><td>Утро</td></tr>
+          <tr><td>Ответ на вопросы продюсера по рекламе</td><td>В течение 2ч</td></tr>
+          <tr><td>Корректировка ставок / аудиторий при отклонении</td><td>По факту</td></tr>
+        </table>
+        <h3 style="margin-top:16px">Еженедельные задачи</h3>
+        <table>
+          <tr><th>День</th><th>Задача</th></tr>
+          <tr><td><strong>Понедельник</strong></td><td>Анализ прошлой недели + план на новую + согласование бюджета</td></tr>
+          <tr><td><strong>Среда</strong></td><td>Промежуточный отчёт (бюджет, регистрации, аномалии)</td></tr>
+          <tr><td><strong>Пятница</strong></td><td>Итоговый отчёт + запрос бюджета на следующую неделю</td></tr>
+          <tr><td><strong>Постоянно</strong></td><td>Тест минимум 3 новых креатива в неделю</td></tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="kpi-box">
+        <h4>KPI — не подлежат обсуждению</h4>
+        <div class="kpi-row"><span>Стоимость регистрации на вебинар</span><span class="kpi-val">< $5</span></div>
+        <div class="kpi-row"><span>Стоимость продажи (флагман)</span><span class="kpi-val">< $30</span></div>
+        <div class="kpi-row"><span>ROAS (минимальный)</span><span class="kpi-val">> 5×</span></div>
+        <div class="kpi-row"><span>ROAS (целевой)</span><span class="kpi-val">> 7×</span></div>
+        <div class="kpi-row"><span>Активных кампаний одновременно</span><span class="kpi-val">4</span></div>
+        <div class="kpi-row"><span>Новых креативов в тест/неделю</span><span class="kpi-val">≥ 3</span></div>
+        <div class="kpi-row"><span>Простой кампаний (макс.)</span><span class="kpi-val">< 3 дней</span></div>
+      </div>
+      <div class="bonus">✅ <strong>Бонус:</strong> ROAS > 8× за спринт = +$100 к оплате</div>
+      <div class="bonus">✅ <strong>Бонус:</strong> CPA регистрации < $3 = +$50 к оплате</div>
+      <div class="penalty">❌ <strong>Штраф:</strong> Простой кампаний > 3 дней без причины = −30% за каждые 3 дня</div>
+      <div class="penalty">❌ <strong>Штраф:</strong> Отчёт не сдан в срок = предупреждение → повтор = −20% спринта</div>
+      <div class="penalty">❌ <strong>Штраф:</strong> KPI не выполнены 3 недели подряд без улучшения = расторжение</div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:24px">4 обязательных кампании</h3>
+  <table>
+    <tr><th>Кампания</th><th>Аудитория</th><th>Цель</th><th>KPI</th><th>Бюджет %</th></tr>
+    <tr><td><strong>1. Регистрация на вебинар</strong></td><td>Холодная + LAL покупателей</td><td>Конверсия на регистрацию</td><td>CPA рег < $5</td><td>40%</td></tr>
+    <tr><td><strong>2. Ретаргет участников вебинара</strong></td><td>Кто был — не купил</td><td>Продажа флагмана</td><td>CPA продажи < $15</td><td>25%</td></tr>
+    <tr><td><strong>3. LAL покупателей</strong></td><td>Похожие на тех кто купил</td><td>Регистрация</td><td>CPA рег < $8</td><td>20%</td></tr>
+    <tr><td><strong>4. Video 50%+ ретаргет</strong></td><td>Смотрели Reels > 50%</td><td>Вовлечённость → вебинар</td><td>CPC < $3</td><td>15%</td></tr>
+  </table>
+
+  <div class="template-box">
+    <h4>📋 ШАБЛОН ОТЧЁТА ТАНИ (каждая пятница до 17:00)</h4>
+    <div class="template-field"><span class="field-label">Период:</span><span class="field-val">[даты]</span></div>
+    <div class="template-field"><span class="field-label">Бюджет потрачено:</span><span class="field-val">$___</span></div>
+    <div class="template-field"><span class="field-label">Регистраций на вебинар:</span><span class="field-val">___ шт | CPA: $___</span></div>
+    <div class="template-field"><span class="field-label">Продаж флагмана:</span><span class="field-val">___ шт | CPA: $___</span></div>
+    <div class="template-field"><span class="field-label">ROAS общий:</span><span class="field-val">___×</span></div>
+    <div class="template-field"><span class="field-label">Лучший креатив недели:</span><span class="field-val">[название/ID] — CTR ___%, CPA $___</span></div>
+    <div class="template-field"><span class="field-label">Что протестировали:</span><span class="field-val">[список 3+ креативов]</span></div>
+    <div class="template-field"><span class="field-label">Что не сработало и почему:</span><span class="field-val">[анализ]</span></div>
+    <div class="template-field"><span class="field-label">Блокеры:</span><span class="field-val">[что мешает работе]</span></div>
+    <div class="template-field"><span class="field-label">План на следующую неделю:</span><span class="field-val">[кампании, бюджет, тесты]</span></div>
+    <div class="template-field"><span class="field-label">Запрос бюджета:</span><span class="field-val">$___</span></div>
+  </div>
+</section>
+
+<!-- КОНТЕНТ-МЕНЕДЖЕР -->
+<section id="km">
+  <h2>Контент-менеджер</h2>
+  <p class="sub">Монтаж Reels, Stories, Telegram, карусели, рекламные баннеры</p>
+  <div class="grid-2">
+    <div class="card role-km">
+      <span class="badge b-mauve">Deliverables / месяц</span>
+      <table>
+        <tr><th>Тип контента</th><th>Кол-во</th><th>Дедлайн</th></tr>
+        <tr><td>Reels (монтаж по сценариям)</td><td>12 шт (3/нед)</td><td>За 24ч до публикации</td></tr>
+        <tr><td>Stories (планирование + шаблоны)</td><td>5/день</td><td>Утром текущего дня</td></tr>
+        <tr><td>Посты в Telegram</td><td>1/день</td><td>За 2ч до публикации</td></tr>
+        <tr><td>Образовательные карусели</td><td>4 шт</td><td>За 48ч до публикации</td></tr>
+        <tr><td>Рекламные баннеры (статика)</td><td>8 шт</td><td>За 48ч до старта кампании</td></tr>
+        <tr><td>Контент-план на неделю</td><td>1/воскресенье</td><td>Воскресенье до 18:00</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="kpi-box">
+        <h4>KPI контент-менеджера</h4>
+        <div class="kpi-row"><span>Сдача контента в срок</span><span class="kpi-val">100%</span></div>
+        <div class="kpi-row"><span>Просмотры Reels (минимум)</span><span class="kpi-val">> 5,000</span></div>
+        <div class="kpi-row"><span>Вовлечённость Stories</span><span class="kpi-val">> 15%</span></div>
+        <div class="kpi-row"><span>Охват Telegram-постов</span><span class="kpi-val">> 30% подписчиков</span></div>
+        <div class="kpi-row"><span>Баннеров сдано вовремя</span><span class="kpi-val">8/8</span></div>
+      </div>
+      <div class="rule-box">
+        <h4>Правила работы с контентом</h4>
+        <ul>
+          <li>Сценарии получаешь от продюсера — не придумываешь самостоятельно темы</li>
+          <li>При получении сценария — подтверди получение в течение 2ч</li>
+          <li>Вопросы по монтажу — в рабочее время, не поздно вечером</li>
+          <li>Правки принимаются 2 раза — потом идёт в публикацию</li>
+          <li>Контент-план согласовываешь с продюсером каждое воскресенье</li>
+        </ul>
+      </div>
+      <div class="penalty">❌ Просрочка контента без предупреждения = предупреждение</div>
+      <div class="penalty">❌ 2× просрочки за спринт = −20% оплаты</div>
+      <div class="bonus">✅ Reel набирает > 50,000 просмотров = +$50 бонус</div>
+    </div>
+  </div>
+
+  <div class="template-box" style="margin-top:20px">
+    <h4>📋 ШАБЛОН ОТЧЁТА КОНТЕНТ-МЕНЕДЖЕРА (каждая пятница до 17:00)</h4>
+    <div class="template-field"><span class="field-label">Reels сделано:</span><span class="field-val">___ из ___</span></div>
+    <div class="template-field"><span class="field-label">Лучший Reel недели:</span><span class="field-val">[название] — ___ просмотров, ___ охват</span></div>
+    <div class="template-field"><span class="field-label">Stories вышло:</span><span class="field-val">___ шт | Avg вовлечённость: ___%</span></div>
+    <div class="template-field"><span class="field-label">Telegram-постов:</span><span class="field-val">___ шт | Avg охват: ___%</span></div>
+    <div class="template-field"><span class="field-label">Баннеры сданы:</span><span class="field-val">___ из 8</span></div>
+    <div class="template-field"><span class="field-label">Что не успел и почему:</span><span class="field-val">[объяснение]</span></div>
+    <div class="template-field"><span class="field-label">План на следующую неделю:</span><span class="field-val">[список контента]</span></div>
+  </div>
+</section>
+
+<!-- ДИЗАЙНЕР -->
+<section id="design">
+  <h2>Дизайнер</h2>
+  <p class="sub">Рекламные макеты, визуальный стиль, обложки</p>
+  <div class="grid-2">
+    <div class="card role-design">
+      <span class="badge b-amber">Deliverables / месяц</span>
+      <table>
+        <tr><th>Тип актива</th><th>Форматы</th><th>Кол-во</th></tr>
+        <tr><td>Рекламные баннеры (статика)</td><td>1:1, 4:5, 9:16</td><td>8 комплектов</td></tr>
+        <tr><td>Фоны и заставки для вебинара</td><td>16:9</td><td>3 варианта</td></tr>
+        <tr><td>Обложки для Reels</td><td>1:1 / 9:16</td><td>12 шт</td></tr>
+        <tr><td>Обложки Telegram-постов</td><td>1:1</td><td>8 шт</td></tr>
+        <tr><td>Карусели (дизайн слайдов)</td><td>1:1</td><td>4 карусели × 6 слайдов</td></tr>
+      </table>
+      <h3 style="margin-top:16px">Правила</h3>
+      <ul style="font-size:13px;padding-left:18px;margin-top:8px;">
+        <li style="margin-bottom:6px">Максимум 2 раунда правок на финальный макет</li>
+        <li style="margin-bottom:6px">Сдача за 48ч до дедлайна клиента</li>
+        <li style="margin-bottom:6px">Всегда предоставлять исходные файлы (Figma/AI/PSD)</li>
+        <li style="margin-bottom:6px">Цветовая палитра: Plum #2D1F42, Rose #C4856A, Blush #E8C5B5, Cream #FAF7F4</li>
+        <li>Шрифты согласовать с продюсером один раз — потом использовать постоянно</li>
+      </ul>
+    </div>
+    <div>
+      <div class="kpi-box">
+        <h4>KPI дизайнера</h4>
+        <div class="kpi-row"><span>Сдача вовремя</span><span class="kpi-val">100%</span></div>
+        <div class="kpi-row"><span>Правок на макет (максимум)</span><span class="kpi-val">2 раунда</span></div>
+        <div class="kpi-row"><span>CTR рекламных баннеров</span><span class="kpi-val">> 1.5%</span></div>
+        <div class="kpi-row"><span>Исходники в архиве</span><span class="kpi-val">100% материалов</span></div>
+      </div>
+      <div class="rule-box">
+        <h4>Брендбук (краткий)</h4>
+        <ul>
+          <li>Primary: #2D1F42 (plum) — фоны, заголовки</li>
+          <li>Accent: #C4856A (rose) — кнопки, акценты</li>
+          <li>Light: #E8C5B5 (blush) — подзаголовки на тёмном</li>
+          <li>BG: #FAF7F4 (cream) — светлые фоны</li>
+          <li>Стиль: элегантный, женственный, не кричащий</li>
+          <li>Без агрессивных цветов и перегруза элементами</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КАТЯ -->
+<section id="katya">
+  <h2>Катя — Эксперт</h2>
+  <p class="sub">Съёмки, вебинары, ответы в директ — и только это</p>
+  <div class="grid-2">
+    <div class="card role-katya">
+      <span class="badge b-plum">Ежемесячные обязательства</span>
+      <table>
+        <tr><th>Активность</th><th>Объём</th><th>Формат</th></tr>
+        <tr><td>Reels (съёмка)</td><td>12 шт (3/съёмочный день)</td><td>По готовым сценариям</td></tr>
+        <tr><td>Прямые эфиры</td><td>2 шт</td><td>Instagram Live, 60–90 мин</td></tr>
+        <tr><td>Продающий вебинар</td><td>1 шт</td><td>Zoom/Webinar, 90–120 мин</td></tr>
+        <tr><td>Ответы в Директ</td><td>1 час/день</td><td>Утро или вечер — выбор Кати</td></tr>
+        <tr><td>Согласование контент-плана</td><td>1×/неделю</td><td>Воскресенье</td></tr>
+        <tr><td>Стратегический созвон</td><td>1×/неделю</td><td>Понедельник, 30 мин</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="rule-box">
+        <h4>🚫 НЕ входит в задачи эксперта</h4>
+        <ul>
+          <li>Монтаж, дизайн, написание текстов</li>
+          <li>Настройка рекламных кампаний</li>
+          <li>Коммуникация с подрядчиками</li>
+          <li>Техподдержка клиентов (кроме директа)</li>
+          <li>Финансовые расчёты и отчёты</li>
+          <li>Поиск блогеров для коллабораций</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-top:14px;border-left:4px solid var(--plum);">
+        <h3>Протокол съёмочного дня</h3>
+        <table>
+          <tr><th>Шаг</th><th>Когда</th></tr>
+          <tr><td>Согласование съёмочного дня</td><td>За 5 дней</td></tr>
+          <tr><td>Сценарии передаются Кате</td><td>За 48ч до съёмки</td></tr>
+          <tr><td>За один день снимается</td><td>3 Reels + 10 сторис за кадром</td></tr>
+          <tr><td>Сырые файлы передаются КМ</td><td>В день съёмки до 20:00</td></tr>
+          <tr><td>Локация</td><td>По выбору Кати (дом/студия)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПРОДЮСЕР -->
+<section id="producer">
+  <h2>Продюсер</h2>
+  <p class="sub">Стратегия, финансы, коллаборации, контроль KPI всей команды</p>
+  <div class="grid-2">
+    <div class="card role-producer">
+      <span class="badge b-dark">Еженедельные задачи</span>
+      <table>
+        <tr><th>День</th><th>Задача</th></tr>
+        <tr><td><strong>Понедельник</strong></td><td>Синк-колл команды + обзор KPI прошлой недели + распределение задач</td></tr>
+        <tr><td><strong>Вторник</strong></td><td>Проверка прогресса по задачам, блокеры</td></tr>
+        <tr><td><strong>Среда</strong></td><td>Финансовый мидвик — выручка, расходы, прогноз</td></tr>
+        <tr><td><strong>Четверг</strong></td><td>Проверка дедлайнов контента, согласование баннеров</td></tr>
+        <tr><td><strong>Пятница</strong></td><td>Сбор отчётов команды + финансовый отчёт + бюджет на след. неделю</td></tr>
+        <tr><td><strong>Постоянно</strong></td><td>Аутрич блогеров (мин. 5 новых/неделю)</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="kpi-box">
+        <h4>KPI продюсера (самопроверка)</h4>
+        <div class="kpi-row"><span>Вебинаров проведено в месяц</span><span class="kpi-val">≥ 2</span></div>
+        <div class="kpi-row"><span>Коллабораций блогеров запущено</span><span class="kpi-val">≥ 5/мес</span></div>
+        <div class="kpi-row"><span>Командных синков проведено</span><span class="kpi-val">4/мес</span></div>
+        <div class="kpi-row"><span>Финансовый отчёт (еженедельно)</span><span class="kpi-val">✓</span></div>
+        <div class="kpi-row"><span>KPI команды проверены</span><span class="kpi-val">Еженедельно</span></div>
+        <div class="kpi-row"><span>Выручка апрель</span><span class="kpi-val">> $7,500</span></div>
+        <div class="kpi-row"><span>Выручка май</span><span class="kpi-val">> $12,500</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- РИТМ НЕДЕЛИ -->
+<section id="rhythm">
+  <h2>Ритм недели</h2>
+  <p class="sub">Стандартная рабочая неделя команды</p>
+  <table>
+    <tr>
+      <th>День</th>
+      <th>Таня (таргет)</th>
+      <th>Контент-менеджер</th>
+      <th>Дизайнер</th>
+      <th>Катя</th>
+      <th>Продюсер</th>
+    </tr>
+    <tr>
+      <td><strong>Понедельник</strong></td>
+      <td>Анализ + план кампаний</td>
+      <td>Контент-план согласован</td>
+      <td>Получает задание на неделю</td>
+      <td>Синк-колл (30 мин)</td>
+      <td>Синк-колл + KPI-ревью</td>
+    </tr>
+    <tr>
+      <td><strong>Вторник</strong></td>
+      <td>Кампании активны, тест креативов</td>
+      <td>Монтаж Reels №1</td>
+      <td>Баннеры в работе</td>
+      <td>Ответы в директ 1ч</td>
+      <td>Блокеры, прогресс</td>
+    </tr>
+    <tr>
+      <td><strong>Среда</strong></td>
+      <td>Мидвик отчёт продюсеру</td>
+      <td>Stories + Telegram-посты</td>
+      <td>Первые макеты сданы</td>
+      <td>Съёмочный день (если запланирован)</td>
+      <td>Финансовый мидвик</td>
+    </tr>
+    <tr>
+      <td><strong>Четверг</strong></td>
+      <td>Оптимизация кампаний</td>
+      <td>Монтаж Reels №2-3</td>
+      <td>Правки баннеров</td>
+      <td>Ответы в директ 1ч</td>
+      <td>Дедлайны контента, аутрич</td>
+    </tr>
+    <tr>
+      <td><strong>Пятница</strong></td>
+      <td>Итоговый отчёт до 17:00</td>
+      <td>Итоговый отчёт до 17:00</td>
+      <td>Финальные макеты сданы</td>
+      <td>—</td>
+      <td>Сбор отчётов + финотчёт</td>
+    </tr>
+    <tr>
+      <td><strong>Суббота</strong></td>
+      <td>—</td>
+      <td>—</td>
+      <td>—</td>
+      <td>Съёмочный день (опц.)</td>
+      <td>Аутрич блогеров</td>
+    </tr>
+    <tr>
+      <td><strong>Воскресенье</strong></td>
+      <td>—</td>
+      <td>Контент-план до 18:00</td>
+      <td>—</td>
+      <td>Согласование контент-плана</td>
+      <td>Стратегия следующей недели</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ОТЧЁТНОСТЬ -->
+<section id="reports">
+  <h2>Система отчётности</h2>
+  <p class="sub">Единый стандарт — каждую пятницу до 17:00</p>
+
+  <div class="template-box">
+    <h4>📋 УНИВЕРСАЛЬНЫЙ ШАБЛОН НЕДЕЛЬНОГО ОТЧЁТА</h4>
+    <div class="template-field"><span class="field-label">Сотрудник:</span><span class="field-val">[имя / роль]</span></div>
+    <div class="template-field"><span class="field-label">Период:</span><span class="field-val">[даты пн–пт]</span></div>
+    <div class="template-field"><span class="field-label">ЧТО СДЕЛАНО:</span><span class="field-val">[список конкретных выполненных задач]</span></div>
+    <div class="template-field"><span class="field-label">ЧТО НЕ СДЕЛАНО:</span><span class="field-val">[задачи + причина]</span></div>
+    <div class="template-field"><span class="field-label">KPI ПЛАН vs ФАКТ:</span><span class="field-val">[таблица: показатель | план | факт | отклонение]</span></div>
+    <div class="template-field"><span class="field-label">БЛОКЕРЫ:</span><span class="field-val">[что мешало работе]</span></div>
+    <div class="template-field"><span class="field-label">ПЛАН НА СЛЕД. НЕДЕЛЮ:</span><span class="field-val">[список задач с дедлайнами]</span></div>
+    <div class="template-field"><span class="field-label">ЧТО НУЖНО ОТ ПРОДЮСЕРА:</span><span class="field-val">[ресурсы, решения, ответы]</span></div>
+  </div>
+
+  <h3 style="margin-top:24px">Финансовый отчёт продюсера (еженедельно)</h3>
+  <table>
+    <tr><th>Показатель</th><th>Апрель план</th><th>Факт нед.</th><th>Факт месяц</th><th>% выполнения</th></tr>
+    <tr><td>Выручка</td><td>$7,500</td><td>$___</td><td>$___</td><td>___%</td></tr>
+    <tr><td>Рекламный бюджет</td><td>$600</td><td>$___</td><td>$___</td><td>___%</td></tr>
+    <tr><td>ФОТ команды</td><td>35% выручки</td><td>$___</td><td>$___</td><td>—</td></tr>
+    <tr><td>Чистая прибыль</td><td>$4,000+</td><td>$___</td><td>$___</td><td>___%</td></tr>
+    <tr><td>Регистраций на вебинар</td><td>200</td><td>___</td><td>___</td><td>___%</td></tr>
+    <tr><td>Продаж флагмана</td><td>25</td><td>___</td><td>___</td><td>___%</td></tr>
+    <tr><td>ROAS</td><td>> 7×</td><td>___×</td><td>___×</td><td>—</td></tr>
+  </table>
+</section>
+
+<!-- ФИНАНСЫ -->
+<section id="finance">
+  <h2>Финансовая система</h2>
+  <p class="sub">Бюджеты, распределение выручки, авторизации</p>
+  <div class="grid-3">
+    <div class="card">
+      <span class="badge b-plum">Рекламный бюджет</span>
+      <h3>Авторизация расходов</h3>
+      <table>
+        <tr><th>Месяц</th><th>Бюджет</th></tr>
+        <tr><td>Апрель</td><td>$500–700</td></tr>
+        <tr><td>Май (при ROAS >5×)</td><td>$1,200–1,500</td></tr>
+      </table>
+      <p style="font-size:12px;margin-top:10px;color:#666">Таня запрашивает бюджет каждую пятницу. Продюсер одобряет в тот же день.</p>
+    </div>
+    <div class="card">
+      <span class="badge b-rose">Распределение выручки</span>
+      <h3>Куда идут деньги</h3>
+      <div class="kpi-row"><span>ФОТ команды</span><span class="kpi-val">35%</span></div>
+      <div class="kpi-row"><span>Реинвестиция в рекламу</span><span class="kpi-val">20%</span></div>
+      <div class="kpi-row"><span>Резервный фонд</span><span class="kpi-val">10%</span></div>
+      <div class="kpi-row"><span>Продюсер + эксперт</span><span class="kpi-val">35%</span></div>
+    </div>
+    <div class="card">
+      <span class="badge b-green">Оплата команды</span>
+      <h3>Система спринтов</h3>
+      <p style="font-size:13px;margin-bottom:10px">Оплата за 15-дневный спринт — только после подтверждения выполнения KPI.</p>
+      <p style="font-size:12px;color:#666">Спринт 1: 1–15 числа<br>Спринт 2: 16–30/31 числа<br>Выплата: в течение 2 рабочих дней после закрытия</p>
+    </div>
+  </div>
+</section>
+
+<!-- КОММУНИКАЦИЯ -->
+<section id="comms">
+  <h2>Правила коммуникации</h2>
+  <p class="sub">Как мы общаемся, чтобы ничего не терялось</p>
+  <div class="comm-rule"><span class="comm-icon">🕐</span><div class="comm-text"><h4>Рабочие часы</h4><p>10:00–19:00. Срочное — до 21:00. После 21:00 — только настоящая авария (сайт упал, кампании слетели).</p></div></div>
+  <div class="comm-rule"><span class="comm-icon">⏱</span><div class="comm-text"><h4>Время ответа</h4><p>В течение 2 часов в рабочее время. Не ответил — значит занят, попробуй через 2ч или позвони.</p></div></div>
+  <div class="comm-rule"><span class="comm-icon">📱</span><div class="comm-text"><h4>Каналы связи</h4><p>Telegram — рабочие вопросы. Звонок — только по договорённости, кроме аварий. Email — документы и отчёты.</p></div></div>
+  <div class="comm-rule"><span class="comm-icon">🚨</span><div class="comm-text"><h4>Эскалация проблем</h4><p>Попробуй решить сам → если не можешь за 1ч → сообщи продюсеру + предложи вариант решения → звонок если срочно.</p></div></div>
+  <div class="comm-rule"><span class="comm-icon">❌</span><div class="comm-text"><h4>Что нельзя</h4><p>Молча не делать задачи. Говорить «сделаю» и не делать. Узнавать о провале в последний момент. Скрывать ошибки — лучше сообщить сразу.</p></div></div>
+  <div class="comm-rule"><span class="comm-icon">✅</span><div class="comm-text"><h4>Золотое правило</h4><p>«Не могу сделать вовремя» — это окей, если предупредил за 24ч. Не предупредил — это нарушение.</p></div></div>
+</section>
+
+<!-- НАЙМ/УВОЛЬНЕНИЕ -->
+<section id="hiring">
+  <h2>Найм и увольнение</h2>
+  <p class="sub">Критерии когда мы расстаёмся и как берём новых людей</p>
+
+  <h3>Триггеры немедленного расторжения</h3>
+  <div class="fire-trigger">Ложь о выполненных задачах или результатах</div>
+  <div class="fire-trigger">Неанонсированное отсутствие > 2 дней</div>
+  <div class="fire-trigger">Разглашение конфиденциальных данных клиентов или стратегии</div>
+  <div class="fire-trigger">Грубость в адрес эксперта или клиентов</div>
+
+  <h3 style="margin-top:20px">Триггеры предупреждения → расторжения</h3>
+  <table>
+    <tr><th>Ситуация</th><th>1-й раз</th><th>2-й раз</th><th>3-й раз</th></tr>
+    <tr><td>Пропущенный дедлайн без предупреждения</td><td>Устное предупреждение</td><td>−20% спринта</td><td>Расторжение</td></tr>
+    <tr><td>KPI не выполнены без объяснений</td><td>Разбор причин</td><td>Письменное предупреждение</td><td>Расторжение</td></tr>
+    <tr><td>KPI не выполнены 3 недели подряд</td><td>—</td><td>—</td><td>Расторжение</td></tr>
+    <tr><td>Игнорирование сообщений > 4ч в рабочее время</td><td>Предупреждение</td><td>−10% спринта</td><td>Расторжение</td></tr>
+  </table>
+
+  <h3 style="margin-top:24px">Онбординг нового члена команды</h3>
+  <table>
+    <tr><th>День</th><th>Что происходит</th></tr>
+    <tr><td>День 1</td><td>Знакомство с командой, получение доступов (рекламный кабинет, Telegram-чат, Notion/Drive)</td></tr>
+    <tr><td>День 1–3</td><td>Изучение регламента, брендбука, текущих кампаний/контента</td></tr>
+    <tr><td>День 3–7</td><td>Первые задачи под присмотром, ежедневный чекин с продюсером</td></tr>
+    <tr><td>Неделя 2</td><td>Самостоятельная работа, первый отчёт</td></tr>
+    <tr><td>Неделя 3</td><td>Оценка по KPI — продолжаем или расстаёмся</td></tr>
+  </table>
+</section>
+
+<div style="background:var(--plum);padding:40px 24px;text-align:center;">
+  <p style="color:var(--blush);font-size:13px;max-width:600px;margin:0 auto;">SecretCoach — Регламент команды | Апрель–Май 2026 | Конфиденциально</p>
+  <p style="color:var(--rose);font-size:20px;font-weight:700;margin-top:12px;">Цель: $20,000 🎯</p>
+</div>
+</body>
+</html>

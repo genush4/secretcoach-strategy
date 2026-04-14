@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecretCoach — Контент-стратегия: Лестница Ханта + Сценарии</title>
+<style>
+:root{--plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;--cream:#FAF7F4;--lite:#F0EBE6;--dark:#1E1428;--mid:#D0C8C0;--green:#3A9A6A;--red:#C03030;--amber:#C87D20;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Calibri,sans-serif;background:var(--cream);color:var(--dark);font-size:14px;line-height:1.7;}
+nav{position:sticky;top:0;z-index:100;background:var(--dark);display:flex;align-items:center;padding:0 16px;overflow-x:auto;scrollbar-width:none;border-bottom:2px solid var(--rose);}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:var(--blush);text-decoration:none;font-size:11px;padding:10px 10px;white-space:nowrap;border-bottom:2px solid transparent;transition:.2s;}
+nav a:hover{border-color:var(--rose);color:white;}
+.hero{background:var(--plum);padding:52px 24px 42px;text-align:center;}
+.hero h1{color:white;font-size:30px;max-width:800px;margin:0 auto 10px;}
+.hero p{color:var(--blush);font-size:15px;max-width:640px;margin:0 auto;}
+.tag{display:inline-block;background:var(--rose);color:white;padding:5px 16px;border-radius:20px;font-size:12px;margin-top:14px;}
+section{max-width:1100px;margin:0 auto;padding:48px 24px 40px;border-bottom:1px solid var(--mid);}
+h2{font-size:22px;font-weight:700;color:var(--plum);margin-bottom:6px;}
+h2::after{content:'';display:block;width:40px;height:3px;background:var(--rose);margin-top:5px;margin-bottom:18px;}
+h3{font-size:15px;font-weight:700;color:var(--plum);margin-bottom:10px;margin-top:20px;}
+h4{font-size:13px;font-weight:700;color:var(--mauve);margin-bottom:6px;margin-top:14px;text-transform:uppercase;letter-spacing:.5px;}
+.sub{font-size:13px;color:var(--mauve);margin-bottom:22px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+@media(max-width:800px){.grid-2,.grid-3,.grid-5{grid-template-columns:1fr;}}
+.card{background:white;border-radius:8px;padding:20px;border:1px solid var(--mid);}
+.card-dark{background:var(--plum);color:white;border:none;border-radius:8px;padding:20px;}
+.card-dark h3,.card-dark h4{color:var(--blush);}
+.card-rose{background:var(--rose);color:white;border:none;border-radius:8px;padding:20px;}
+.card-mauve{background:var(--mauve);color:white;border:none;border-radius:8px;padding:20px;}
+.card-green{background:var(--green);color:white;border:none;border-radius:8px;padding:20px;}
+.accent-top{border-top:4px solid var(--rose);}
+.badge{display:inline-block;color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
+.b-rose{background:var(--rose);}
+.b-plum{background:var(--plum);}
+.b-mauve{background:var(--mauve);}
+.b-green{background:var(--green);}
+.b-amber{background:var(--amber);}
+.b-red{background:var(--red);}
+table{width:100%;border-collapse:collapse;margin:14px 0;}
+th{background:var(--plum);color:white;padding:10px 12px;text-align:left;font-size:12px;}
+td{padding:9px 12px;border-bottom:1px solid var(--mid);font-size:13px;vertical-align:top;}
+tr:nth-child(even) td{background:var(--lite);}
+.script{background:#1A1030;border-radius:8px;padding:20px 22px;border-left:4px solid var(--rose);margin:14px 0;font-family:'Courier New',monospace;font-size:12.5px;color:#E8D8F0;line-height:1.9;}
+.script .meta{color:#C4856A;font-size:11px;margin-bottom:10px;font-family:'Segoe UI',sans-serif;}
+.script .hook{color:#FFD700;font-weight:700;}
+.script .cta{color:#90EE90;font-weight:700;}
+.script em{color:var(--blush);font-style:normal;}
+.reel-num{display:inline-block;background:var(--rose);color:white;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:12px;font-weight:700;margin-right:8px;}
+.stage-card{border-radius:10px;padding:22px;margin-bottom:16px;}
+.s0{background:#2a1a1a;color:#ffd0c0;}
+.s1{background:#1a2030;color:#c0d8ff;}
+.s2{background:#1a2a1a;color:#c0ffd0;}
+.s3{background:#2a2a10;color:#ffffc0;}
+.s4{background:#2a1a2a;color:#ffc0ff;}
+.s5{background:#101828;color:#c0f0ff;}
+.stage-card h3{color:white;margin-bottom:8px;}
+.stage-card p{font-size:13px;line-height:1.6;opacity:.9;}
+.post-block{background:white;border:1px solid var(--mid);border-radius:8px;padding:18px;margin-bottom:14px;}
+.post-block .label{font-size:11px;font-weight:700;color:var(--mauve);text-transform:uppercase;margin-bottom:6px;}
+.post-block .text{font-size:13px;line-height:1.8;white-space:pre-wrap;}
+.cal-week{background:var(--plum);color:white;padding:10px 16px;border-radius:6px;margin:16px 0 10px;font-weight:700;font-size:13px;}
+.cal-day{display:grid;grid-template-columns:80px 1fr;gap:0;border-bottom:1px solid var(--mid);}
+.cal-day .day{padding:10px 12px;background:var(--lite);font-size:12px;font-weight:700;color:var(--plum);}
+.cal-day .content{padding:10px 14px;font-size:12.5px;}
+.cal-day .content .platform{display:inline-block;background:var(--rose);color:white;font-size:10px;padding:1px 7px;border-radius:10px;margin-right:4px;}
+.trigger-card{background:white;border:1px solid var(--mid);border-radius:8px;padding:16px;margin-bottom:12px;}
+.trigger-card .num{font-size:28px;font-weight:900;color:var(--blush);float:left;margin-right:12px;line-height:1;}
+ul{padding-left:18px;}
+ul li{margin-bottom:5px;font-size:13px;}
+ol{padding-left:18px;}
+ol li{margin-bottom:6px;font-size:13px;}
+.arrow{color:var(--rose);font-weight:700;}
+.highlight{background:var(--blush);padding:2px 6px;border-radius:3px;}
+.quote{border-left:3px solid var(--rose);padding:10px 16px;background:var(--lite);border-radius:0 6px 6px 0;font-style:italic;font-size:13px;margin:10px 0;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hunt">🪜 Лестница Ханта</a>
+  <a href="#reels">🎬 Сценарии Reels</a>
+  <a href="#stories">📱 Stories-серии</a>
+  <a href="#tg">✈️ Telegram-посты</a>
+  <a href="#carousels">🎠 Карусели</a>
+  <a href="#dm">💬 DM-скрипты</a>
+  <a href="#calendar">📅 Контент-календарь</a>
+  <a href="#triggers">⚡ Триггеры</a>
+</nav>
+
+<div class="hero">
+  <h1>Контент-стратегия SecretCoach</h1>
+  <p>Сценарии Reels · Stories · Telegram · Карусели · DM · Календарь на апрель–май<br>Основано на материалах вебинара «Женское удовольствие» и лестнице Бена Ханта</p>
+  <span class="tag">Цель: $20 000 за апрель–май 2026</span>
+</div>
+
+<!-- ===== ЛЕСТНИЦА ХАНТА ===== -->
+<section id="hunt">
+<h2>Лестница Ханта — аудитория SecretCoach</h2>
+<p class="sub">5 уровней осознанности → конкретный контент под каждый. Распределение: 35% холодная, 30% тёплая, 20% горячая, 15% готовы покупать</p>
+
+<div class="grid-5">
+  <div class="stage-card s0">
+    <div class="badge b-red">Ступень 0</div>
+    <h3>Не осознаёт проблему</h3>
+    <p><strong>Думает:</strong> «У меня всё нормально. Секс? Ну бывает...»</p>
+    <p style="margin-top:8px"><strong>На деле:</strong> Имитирует оргазм, терпит боль, но считает «у всех так»</p>
+    <p style="margin-top:8px"><strong>Контент:</strong> Провокационные факты, «а ты знала», скетчи, узнавание</p>
+    <p style="margin-top:8px"><strong>Цель:</strong> Заставить увидеть, что это — не норма</p>
+  </div>
+  <div class="stage-card s1">
+    <div class="badge b-mauve">Ступень 1</div>
+    <h3>Осознаёт дискомфорт</h3>
+    <p><strong>Думает:</strong> «Что-то не так, но все же так живут... наверное»</p>
+    <p style="margin-top:8px"><strong>Боли:</strong> Секс стал рутиной, нет желания, партнёр замечает</p>
+    <p style="margin-top:8px"><strong>Контент:</strong> «Если ты узнала себя», диагностики, список признаков</p>
+    <p style="margin-top:8px"><strong>Цель:</strong> Назвать боль. «Это имеет название — и с этим работают»</p>
+  </div>
+  <div class="stage-card s2">
+    <div class="badge b-green">Ступень 2</div>
+    <h3>Ищет решение</h3>
+    <p><strong>Думает:</strong> «Надо что-то делать. Читаю статьи, смотрю YouTube»</p>
+    <p style="margin-top:8px"><strong>Боли:</strong> Пробовала советы — не помогло, не знает с чего начать</p>
+    <p style="margin-top:8px"><strong>Контент:</strong> Экспертный контент, кейсы «до/после», причины почему не оргазм</p>
+    <p style="margin-top:8px"><strong>Цель:</strong> Показать метод Кати как лучший подход</p>
+  </div>
+  <div class="stage-card s3">
+    <div class="badge b-amber">Ступень 3</div>
+    <h3>Выбирает метод</h3>
+    <p><strong>Думает:</strong> «Слышала про сексологов, курсы... Может, стоит попробовать?»</p>
+    <p style="margin-top:8px"><strong>Страхи:</strong> Стыдно, дорого, не поможет, «я ненормальная»</p>
+    <p style="margin-top:8px"><strong>Контент:</strong> Снятие возражений, истории клиенток, разбор мифов</p>
+    <p style="margin-top:8px"><strong>Цель:</strong> Сделать Катю очевидным выбором</p>
+  </div>
+  <div class="stage-card s4">
+    <div class="badge b-plum">Ступень 4–5</div>
+    <h3>Готова купить</h3>
+    <p><strong>Думает:</strong> «Хочу именно SecretCoach. Нужен повод / дедлайн»</p>
+    <p style="margin-top:8px"><strong>Барьеры:</strong> Цена, «потом», «сначала подумаю»</p>
+    <p style="margin-top:8px"><strong>Контент:</strong> Дедлайны, бонусы, социальное доказательство, оффер</p>
+    <p style="margin-top:8px"><strong>Цель:</strong> Дать повод купить прямо сейчас</p>
+  </div>
+</div>
+
+<h3 style="margin-top:32px">Матрица контента по ступеням</h3>
+<table>
+  <tr><th>Ступень</th><th>Состояние</th><th>Форматы</th><th>Примеры тем</th><th>CTA</th></tr>
+  <tr><td><span class="badge b-red">0</span> Слепая зона</td><td>«Всё ок»</td><td>Провок. факты, скетчи, «а ты знала»</td><td>«8 из 10 женщин имитируют оргазм» · «Почему боль в сексе — это сигнал, а не норма»</td><td>Подписка, сохранить</td></tr>
+  <tr><td><span class="badge b-mauve">1</span> Дискомфорт</td><td>«Что-то не так»</td><td>Списки признаков, диагностика, личная история</td><td>«5 признаков, что ты разлучилась со своим желанием» · История Кати</td><td>«Узнала себя? Пиши ХОЧУ»</td></tr>
+  <tr><td><span class="badge b-green">2</span> Поиск</td><td>«Что делать?»</td><td>Причины, механика, кейсы, экспертный разбор</td><td>«5 причин, почему нет оргазма» · Кейс: 2 консультации → оргазм с партнёром</td><td>«Пиши РАЗБОР — пришлю подробнее»</td></tr>
+  <tr><td><span class="badge b-amber">3</span> Выбор метода</td><td>«Какой подход?»</td><td>Сравнения, разбор мифов, трансформации</td><td>«Почему одна техника не работает» · «Что даёт комплексный подход»</td><td>«Пиши ВЕБИНАР — смотри бесплатно»</td></tr>
+  <tr><td><span class="badge b-plum">4–5</span> Покупка</td><td>«Хочу именно это»</td><td>Офферы, дедлайны, отзывы, бонусы</td><td>«Осталось 5 мест» · «Цена растёт в пятницу» · Отзыв клиентки</td><td>«Записаться → ссылка»</td></tr>
+</table>
+</section>
+
+<!-- ===== REELS ===== -->
+<section id="reels">
+<h2>15 сценариев Reels</h2>
+<p class="sub">Формула: Хук (0–3 сек) → Напряжение (3–8 сек) → Мясо (8–40 сек) → Доказательство → CTA с байтом. Все хуки — из реального материала вебинара.</p>
+
+<!-- REEL 1 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">1</span><strong>«Ты тоже это делаешь?» — Ступень 0→1</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Прямой вопрос в лоб · 45–55 сек · Говорит в камеру</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: крупный план, взгляд в камеру, текст: «Подними руку...»]</span>
+<span class="hook">ХУК: Подними руку, если хотя бы раз в жизни делала вид, что кончила. (пауза 2 сек)</span>
+
+Это называется имитация оргазма.
+И по статистике — это делают 8 из 10 женщин.
+
+Знаешь, что происходит каждый раз, когда ты это делаешь?
+Ты учишь своё тело, что это и есть секс.
+Ты учишь партнёра — что он всё делает правильно.
+И с каждым разом — пропасть между тем, что ты хочешь,
+и тем, что получаешь — становится шире.
+
+Я была там. Я не испытывала оргазм с партнёром вообще.
+И думала: ну, видимо, у меня так устроено.
+
+Нет. Это работает иначе.
+Я сексолог, и за 10 лет практики — я не встретила ни одной женщины,
+которой это «просто не дано».
+
+<span class="cta">Если это про тебя — напиши в директ слово ХОЧУ.
+Я пришлю тебе кое-что важное.</span>
+<span class="meta">
+Визуал: говорит в камеру, сменяется текст на экране с ключевыми фразами
+Превью: «Подними руку если...»
+Хэштеги: #оргазм #сексуальность #женскоеудовольствие #сексолог #отношения</span>
+  </div>
+</div>
+
+<!-- REEL 2 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">2</span><strong>«Боль во время секса» — Ступень 0→1</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Провокационный факт · 30–40 сек · Резкий монтаж</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: текст «Боль в сексе — это НЕ норма»]</span>
+<span class="hook">ХУК: Прекрати терпеть боль во время секса.
+Это не «просто так бывает». Это сигнал твоего тела.</span>
+
+Когда нет возбуждения — влагалище не готово.
+Нет смазки. Нет раскрытия. Нет удлинения.
+
+И тогда — боль. Микротрещины. Сухость.
+И каждый раз — твоё тело запоминает:
+«секс = боль».
+
+Потом ты перестаёшь хотеть вообще.
+Не потому что ты холодная.
+А потому что твоё тело защищает тебя.
+
+Это лечится. Это меняется.
+Но сначала — нужно перестать называть это нормой.
+
+<span class="cta">Сохрани этот ролик и покажи тому, кому нужно это услышать.</span>
+<span class="meta">Визуал: текст на экране + говорит в камеру попеременно
+Превью: «БОЛЬ в сексе — это НЕ норма»</span>
+  </div>
+</div>
+
+<!-- REEL 3 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">3</span><strong>«Струя душа» — Ступень 1→2</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Шокирующее признание · 40–50 сек · Прямо в камеру</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «Если кончаешь только от душа — смотри»]</span>
+<span class="hook">ХУК: Если ты кончаешь только от струи душа, вибратора на максимуме
+или сжимая бёдра — это называется неадаптивный способ.</span>
+
+И это напрямую влияет на то,
+почему с партнёром — ничего не происходит.
+
+Ты не сломана. Просто твоё тело привыкло к одному сценарию.
+К конкретному давлению, ритму, интенсивности.
+
+А партнёр — он другой. Он не душ.
+
+Хорошая новость: это меняется.
+Шаг за шагом ты можешь переписать сценарий
+и начать получать оргазм там, где хочешь.
+
+Я прошла через это сама.
+И провела через это больше 500 клиенток.
+
+<span class="cta">Напиши СЦЕНАРИЙ в директ — расскажу с чего начать.</span>
+<span class="meta">Визуал: эмоциональный, не пошлый, текст на экране с ключевыми словами
+Хэштеги: #оргазм #женскоетело #сексология #удовольствие</span>
+  </div>
+</div>
+
+<!-- REEL 4 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">4</span><strong>«Секс стал долгом» — Ступень 1→2</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: «Узнаёшь себя?» · 45 сек · Список через монтаж</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «Ты ложишься в постель и чувствуешь...»]</span>
+<span class="hook">ХУК: Ты ложишься в постель и чувствуешь не желание — а обязанность.
+Стоп. Ты не одна такая.</span>
+
+Вот как это выглядит изнутри:
+
+— Секс стал рутиной. Одни и те же движения, те же позы, тот же сценарий.
+— Ты не помнишь, когда последний раз по-настоящему хотела близости.
+— Оргазм — это что-то, что случается «иногда». Или не случается совсем.
+— После секса — не близость, а облегчение, что закончилось.
+
+Если хотя бы одно — про тебя.
+Это не «охлаждение в отношениях».
+Это не «возраст».
+Это не «у тебя так устроено».
+
+Это решаемо. Я знаю как.
+
+<span class="cta">Напиши в директ ХОЧУ — и я расскажу с чего начать.</span>
+<span class="meta">Визуал: текст появляется по одному пункту, потом Катя говорит финал</span>
+  </div>
+</div>
+
+<!-- REEL 5 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">5</span><strong>«История Кати» — Ступень 1→2</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Личная история-трансформация · 55–60 сек · Мощное личное</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «Я никогда не испытывала оргазм с партнёром»]</span>
+<span class="hook">ХУК: Я никогда не испытывала оргазм с партнёром. Вообще.</span>
+
+Я не понимала своё тело.
+Мне было важнее удовольствие партнёра — не своё.
+Я не знала, что мне вообще нравится.
+И объяснить ему — тоже не могла.
+
+В итоге секса становилось всё меньше.
+Потому что кому хочется заниматься тем,
+от чего тебе не хорошо?
+
+Я тогда думала: ну, видимо, у меня так.
+Холодная. Не чувственная. Не такая.
+
+10 лет психологии и сексологии спустя —
+я точно знаю: дело не в тебе.
+Дело в том, что нас никто не учил своему телу.
+Не учил желанию. Не учил получать.
+
+И это можно изменить.
+
+<span class="cta">Если это про тебя — напиши ПУТЬ. Я расскажу как.</span>
+<span class="meta">Визуал: говорит сидя, без пафоса. Текст на экране с ключевыми моментами
+Превью: «Я никогда не кончала с партнёром»</span>
+  </div>
+</div>
+
+<!-- REEL 6 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">6</span><strong>«5 причин — нет оргазма» — Ступень 2→3</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Экспертный список · 55 сек · Монтаж с текстом</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «5 причин, почему у тебя нет оргазма»]</span>
+<span class="hook">ХУК: Я сексолог. И вот 5 реальных причин, почему нет оргазма.
+Не «ты холодная». Не «у тебя так». Реальные причины.</span>
+
+Первая — нет желания. Нет желания — нет возбуждения.
+Нет возбуждения — оргазм физически невозможен.
+
+Вторая — нет возбуждения даже если желание есть.
+Тело не включилось, не подготовилось — и всё заходит в никуда.
+
+Третья — психологические блоки.
+Стыд, убеждения из детства, «так хорошие девочки не делают».
+Они живут в тебе и блокируют удовольствие на уровне нервной системы.
+
+Четвёртая — неадаптивный способ оргазма.
+Душ, вибратор, сжатие — тело привыкло к одному сценарию.
+С партнёром — другое.
+
+Пятая — ты молчишь. Он не экстрасенс.
+Коммуникация в сексе — это не стыдно. Это необходимо.
+
+<span class="cta">Какая из пяти — твоя? Пиши в комментах. Или напиши РАЗБОР — разберём лично.</span>
+<span class="meta">Визуал: Катя на камере, текст с номерами причин появляется за ней
+Превью: «5 причин нет оргазма (не то, что ты думаешь)»</span>
+  </div>
+</div>
+
+<!-- REEL 7 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">7</span><strong>«Кейс: 2 консультации → оргазм с партнёром» — Ступень 2→3</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: История клиентки до/после · 55 сек</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «2,5 месяца. 2 консультации. Вот что изменилось»]</span>
+<span class="hook">ХУК: Она не могла кончить без вакуумника.
+2,5 месяца спустя — она испытывает оргазм с партнёром.</span>
+
+Вот что мы делали.
+
+После первой консультации — она получила оргазм от стимуляции рукой.
+Без игрушки. Впервые.
+
+Мы шаг за шагом меняли сценарий:
+подбирали новые подходы, усиливали чувствительность, работали с фантазией.
+
+После второй — оргазм с партнёром.
+При помощи его рук.
+А через несколько недель — во время кунилингуса.
+
+Это не магия. Это система.
+Это понимание того, как устроено твоё тело.
+Желание. Возбуждение. Снятие блоков. Новый сценарий.
+
+2,5 месяца. 2 консультации. Курс по позам.
+И жизнь — другая.
+
+<span class="cta">Хочешь так же? Напиши ИСТОРИЯ — расскажу как начать.</span>
+<span class="meta">Визуал: Катя рассказывает историю, текст с цифрами на экране
+Превью: «2 консультации и вот результат»</span>
+  </div>
+</div>
+
+<!-- REEL 8 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">8</span><strong>«Стыд блокирует оргазм» — Ступень 1→3</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Психологический инсайт · 45 сек</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «Почему стыд буквально блокирует оргазм»]</span>
+<span class="hook">ХУК: В детстве тебе говорили «так хорошие девочки не делают».
+И теперь это сидит в тебе — и буквально блокирует твой оргазм.</span>
+
+Вот как это работает.
+
+Когда-то — тебе было стыдно за желание.
+За своё тело. За любопытство.
+И психика записала: «Хотеть — опасно. Показывать желание — стыдно».
+
+Теперь, когда ты во взрослом теле пытаешься расслабиться и получить —
+внутри звучит голос: «Осторожно. Так нельзя. Я не заслуживаю».
+
+Ты вроде хочешь. Но что-то не пускает.
+
+Это не ты холодная.
+Это — убеждение. Которое можно изменить.
+
+Именно с этим мы работаем в курсе «Секреты женского наслаждения».
+Стыд, убеждения, блоки — отдельный большой модуль.
+
+<span class="cta">Напиши СТЫД — пришлю тебе кое-что важное про это.</span>
+<span class="meta">Визуал: Катя говорит тихо, интимно, близко к камере. Текст минимальный.</span>
+  </div>
+</div>
+
+<!-- REEL 9 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">9</span><strong>«Упражнение Крестики» — Ступень 1→2</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Практическое задание · 40 сек · Вовлечение</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «Сделай это завтра и узнай кое-что о себе»]</span>
+<span class="hook">ХУК: Вот одно упражнение. Сделай завтра.
+Ты будешь в шоке от результата.</span>
+
+Весь день — каждый раз, когда ловишь себя на негативной мысли о себе,
+ставь крестик в телефоне или блокноте.
+
+«Я толстая» — крестик.
+«Я плохая мать» — крестик.
+«Я не заслуживаю» — крестик.
+«Я некрасивая» — крестик.
+
+В конце дня — посчитай.
+
+Потому что ровно столько раз в день
+ты говоришь своему телу: «ты не достойна наслаждения».
+
+И потом удивляешься, почему не можешь расслабиться в сексе.
+
+Тело не даст тебе кайф, если внутри идёт война.
+
+<span class="cta">Напиши в комментах сколько крестиков получилось. Серьёзно — жду.</span>
+<span class="meta">Визуал: говорит быстро, энергично. Текст с крестиками появляется на экране.
+Превью: «Сделай это завтра — ты удивишься»</span>
+  </div>
+</div>
+
+<!-- REEL 10 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">10</span><strong>«Желание → Возбуждение → Оргазм» — Ступень 2→3</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Схема-объяснение · 45 сек · Экспертный</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «Почему оргазм не приходит "просто так"»]</span>
+<span class="hook">ХУК: Оргазм не возникает из ниоткуда.
+Это пик. К нему ведёт цепочка. И если цепочка сломана — оргазма нет.</span>
+
+Вот как это работает:
+
+Сначала — желание. Мысль: я хочу близости.
+Если желания нет — цепочка не запускается.
+
+Потом — возбуждение. Тело включается.
+Прилив крови, смазка, учащённый пульс.
+Если тело не включилось — оргазм невозможен физически.
+
+И только потом — при правильной стимуляции — оргазм.
+
+Вот почему «просто постарайся расслабиться» — не работает.
+Вот почему «просто думай о чём-то приятном» — не работает.
+
+Нужна система. Желание → Возбуждение → Оргазм.
+По порядку. Без пропуска шагов.
+
+<span class="cta">Сохрани это. И напиши с какого шага у тебя идёт сбой — разберём.</span>
+  </div>
+</div>
+
+<!-- REEL 11 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">11</span><strong>«Партнёр не экстрасенс» — Ступень 2→3</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Провокация + инсайт · 40 сек</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «Ты хочешь чтобы он догадался?»]</span>
+<span class="hook">ХУК: Ты хочешь, чтобы он догадался?
+Он не экстрасенс. И это — твоя ответственность.</span>
+
+Я понимаю, это неудобно слышать.
+
+Но вот правда: если ты молчишь о том, что тебе нравится —
+он будет делать то, что кажется правильным ему.
+
+А потом ты обижаешься. Или терпишь. Или имитируешь.
+
+Коммуникация в сексе — это не про «объяснять инструкцию».
+Это про умение говорить: вот здесь хорошо, вот здесь нет, медленнее, сильнее.
+
+Без стыда. Без неловкости.
+Это навык. Его можно научиться.
+
+Мужчина, который хочет тебе хорошо — он будет рад это узнать.
+
+<span class="cta">Напиши ГОВОРЮ — пришлю конкретные фразы, с которых начать.</span>
+  </div>
+</div>
+
+<!-- REEL 12 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">12</span><strong>«Разница одной консультации и курса» — Ступень 3→4</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Сравнение с ценой · 40 сек · Ценностный</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «За цену одной консультации...»]</span>
+<span class="hook">ХУК: Одна моя консультация — 120 евро.
+За эту же цену ты можешь получить кое-что намного большее.</span>
+
+В курсе «Секреты женского наслаждения» —
+50+ видеоуроков. 9 недель работы. Доступ на полгода.
+6 модулей: желание, возбуждение, психология, оргазмы, коммуникация, интеграция.
+
+Плюс — модуль «Минет» на 9 недель.
+Плюс — доступ к приложению RED ROOM.
+Плюс — курс по позам в подарок.
+
+Всё это — от 190 евро.
+
+Ты буквально получаешь месяцы системной работы
+по цене полутора консультаций.
+
+<span class="cta">Хочешь подробности? Пиши КУРС — пришлю программу.</span>
+<span class="meta">Визуал: текст с цифрами на экране. Уверенно, без извинений за цену.</span>
+  </div>
+</div>
+
+<!-- REEL 13 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">13</span><strong>«Что будет, если ничего не менять» — Ступень 3→5</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: FOMO + боль будущего · 45 сек</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «Через год ты будешь в том же месте»]</span>
+<span class="hook">ХУК: Через год — ты будешь в том же месте.
+Если ничего не изменишь сейчас.</span>
+
+Секс останется обязанностью — не удовольствием.
+Партнёр будет чувствовать твою отстранённость — отношения будут остывать.
+Ты так и не узнаешь, на что способно твоё тело.
+Стыд и комплексы будут только расти.
+
+Я видела это сотни раз.
+Женщины, которые говорили «потом, попозже, когда время будет».
+
+И потом приходили ко мне через 2, 5, 10 лет —
+с теми же болями. Только глубже.
+
+Или — женщины, которые решали прямо сейчас.
+И через 2,5 месяца меняли свою сексуальную жизнь полностью.
+
+Разница — в одном решении.
+
+<span class="cta">Напиши СЕЙЧАС — расскажу как начать прямо сегодня.</span>
+  </div>
+</div>
+
+<!-- REEL 14 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">14</span><strong>«Не партнёр виноват» — Ступень 1→3</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Разрушение убеждения · 40 сек</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «Дело не в партнёре»]</span>
+<span class="hook">ХУК: Ты меняла партнёров. А оргазма так и нет.
+Значит — дело не в них.</span>
+
+Это неудобная правда.
+
+Потому что если дело в партнёре — можно поменять.
+А если дело в тебе — придётся работать с собой.
+
+Но вот что важно понять:
+это не означает, что с тобой что-то не так.
+Это означает, что тебе нужна другая работа — с желанием, с блоками, с телом.
+
+Партнёр не может дать тебе то,
+что ты сама в себе ещё не открыла.
+
+Сначала — ты.
+Потом — с партнёром.
+
+<span class="cta">Напиши ТЕЛО — расскажу с чего начать работу с собой.</span>
+  </div>
+</div>
+
+<!-- REEL 15 -->
+<div class="card accent-top" style="margin-bottom:16px">
+  <div style="display:flex;align-items:center;margin-bottom:6px"><span class="reel-num">15</span><strong>«RED ROOM» — Ступень 4→5</strong></div>
+  <p style="font-size:12px;color:var(--mauve);margin-bottom:10px">Формат: Продуктовый · 35 сек · Конкретный оффер</p>
+  <div class="script">
+<span class="meta">[ПРЕВЬЮ: «Вы скучаете в постели?»]</span>
+<span class="hook">ХУК: Вы скучаете в постели? Я сделала приложение для этого.</span>
+
+RED ROOM — это 50+ готовых сценариев интимной близости для пар.
+Романтика, ролевые игры, сенсорные, оральные, доминирование.
+
+Приложение знает ваши предпочтения — и создаёт персональный сценарий.
+Пошаговый гид с таймингом. Встроенные стоп-слова.
+
+Не нужно придумывать. Не нужно неловко предлагать.
+Просто открываешь — и следуешь.
+
+Это бонус к курсу «Секреты женского наслаждения».
+
+<span class="cta">Хочешь попробовать? Пиши RED ROOM — расскажу как получить доступ.</span>
+<span class="meta">Визуал: показать приложение на экране телефона (скрин интерфейса)
+Превью: «50+ сценариев для пар — смотри»</span>
+  </div>
+</div>
+</section>
+
+<!-- ===== STORIES ===== -->
+<section id="stories">
+<h2>10 серий Instagram Stories</h2>
+<p class="sub">Каждая серия — 4–8 слайдов. Структура: Хук → Развитие → Инсайт → CTA. Вовлечение через опросы, вопросы, реакции.</p>
+
+<div class="grid-2">
+<div class="card accent-top">
+  <div class="badge b-red">Серия 1 · Ступень 0→1</div>
+  <h3>«Тест: как ты живёшь в сексе?»</h3>
+  <ol>
+    <li><strong>Слайд 1:</strong> «Честный тест из 5 вопросов. Ответь — узнаешь кое-что о себе» [свайп]</li>
+    <li><strong>Слайд 2:</strong> Опрос: «Когда ты последний раз по-настоящему хотела секса?» — Недавно / Давно не помню / Что такое вообще «хотеть»</li>
+    <li><strong>Слайд 3:</strong> Опрос: «Оргазм в сексе с партнёром — это для тебя...» — Регулярно / Иногда / Редко / Никогда</li>
+    <li><strong>Слайд 4:</strong> Опрос: «Секс для тебя сейчас — это...» — Удовольствие / Рутина / Скорее обязанность / Стресс</li>
+    <li><strong>Слайд 5:</strong> «Если ты ответила "давно / иногда / рутина" — ты не одна. Я расскажу почему так бывает и что с этим делать» [кнопка: ЧИТАТЬ ДАЛЕЕ]</li>
+    <li><strong>Слайд 6:</strong> Личная история Кати (2-3 предложения) + «Именно поэтому я стала сексологом»</li>
+    <li><strong>Слайд 7:</strong> CTA: «Напиши мне в директ — я отправлю разбор твоей ситуации»</li>
+  </ol>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-mauve">Серия 2 · Ступень 1→2</div>
+  <h3>«5 признаков, что ты разлучилась с желанием»</h3>
+  <ol>
+    <li><strong>Слайд 1:</strong> «Сохрани это. Потом перечитаешь и скажешь — да, так и было»</li>
+    <li><strong>Слайд 2–6:</strong> Каждый слайд = 1 признак: нет инициативы / секс по расписанию / тело «выключено» / оргазм через силу / после секса — пустота</li>
+    <li><strong>Слайд 7:</strong> «Если узнала себя в 2+ пунктах — это не норма. Это называется [название ситуации]» + разбор причины</li>
+    <li><strong>Слайд 8:</strong> «Я работала с 500+ женщинами. У каждой — был выход. И у тебя будет» + CTA</li>
+  </ol>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-green">Серия 3 · Ступень 2→3</div>
+  <h3>«Разбор: почему нет оргазма с партнёром»</h3>
+  <ol>
+    <li><strong>Слайд 1:</strong> «Объясняю простыми словами. Почему с вибратором — да, а с мужчиной — нет»</li>
+    <li><strong>Слайд 2:</strong> Объяснение адаптивного/неадаптивного оргазма</li>
+    <li><strong>Слайд 3:</strong> «Вот что происходит в теле» — схема: желание → возбуждение → оргазм</li>
+    <li><strong>Слайд 4:</strong> «Где ломается цепочка у большинства женщин»</li>
+    <li><strong>Слайд 5:</strong> Опрос: «На каком этапе у тебя сбой?» — Желание / Возбуждение / Техника / Блоки / Коммуникация</li>
+    <li><strong>Слайд 6:</strong> «По ответам на опрос — напишу тебе лично что делать в твоей ситуации»</li>
+  </ol>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-amber">Серия 4 · Ступень 1→2</div>
+  <h3>«История клиентки: 2,5 месяца»</h3>
+  <ol>
+    <li><strong>Слайд 1:</strong> «Она не могла кончить без вакуумника. Сегодня расскажу что изменилось»</li>
+    <li><strong>Слайд 2:</strong> Ситуация до: вибратор → единственный способ, с партнёром — ничего, стыд, избегание</li>
+    <li><strong>Слайд 3:</strong> Первая консультация → оргазм от руки</li>
+    <li><strong>Слайд 4:</strong> Вторая консультация → оргазм с партнёром</li>
+    <li><strong>Слайд 5:</strong> Несколько недель → оргазм при кунилингусе</li>
+    <li><strong>Слайд 6:</strong> «2,5 месяца. 2 консультации. Всё изменилось»</li>
+    <li><strong>Слайд 7:</strong> «Хочешь так же? Напиши мне ИСТОРИЯ»</li>
+  </ol>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-plum">Серия 5 · Ступень 0→1</div>
+  <h3>«Упражнение Крестики — прямо сейчас»</h3>
+  <ol>
+    <li><strong>Слайд 1:</strong> «Сделай это завтра — и напиши мне результат»</li>
+    <li><strong>Слайд 2:</strong> Инструкция: крестик за каждую негативную мысль о себе</li>
+    <li><strong>Слайд 3:</strong> Примеры: «я толстая / я плохая мать / я не заслуживаю»</li>
+    <li><strong>Слайд 4:</strong> «Тело не даст кайф, если внутри идёт война»</li>
+    <li><strong>Слайд 5:</strong> «Напиши сколько крестиков вышло — посмотрим на твою стартовую точку»</li>
+  </ol>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-rose" style="background:var(--rose)">Серия 6 · Ступень 3→4</div>
+  <h3>«Мифы о женском оргазме»</h3>
+  <ol>
+    <li><strong>Слайд 1:</strong> «5 мифов, из-за которых ты не получаешь удовольствие»</li>
+    <li><strong>Слайд 2:</strong> МИФ: «Оргазм должен быть вагинальным» → ПРАВДА: у 70% женщин — только клиторальный</li>
+    <li><strong>Слайд 3:</strong> МИФ: «Если долго нет — значит "холодная"» → ПРАВДА: это следствие, не диагноз</li>
+    <li><strong>Слайд 4:</strong> МИФ: «Партнёр должен сам догадаться» → ПРАВДА: это навык коммуникации</li>
+    <li><strong>Слайд 5:</strong> МИФ: «Нужны игрушки» → ПРАВДА: игрушки — опция, не необходимость</li>
+    <li><strong>Слайд 6:</strong> МИФ: «После детей это не вернуть» → ПРАВДА: тело меняется, но восстанавливается</li>
+    <li><strong>Слайд 7:</strong> «Какой миф тебя удивил? Напиши»</li>
+  </ol>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-green">Серия 7 · Ступень 2→3</div>
+  <h3>«Что такое RED ROOM»</h3>
+  <ol>
+    <li><strong>Слайд 1:</strong> «Я разработала приложение для пар. Вот как это работает»</li>
+    <li><strong>Слайд 2:</strong> Проблема: «В постели — скука. Одно и то же. Стесняетесь предлагать новое»</li>
+    <li><strong>Слайд 3:</strong> «RED ROOM — это 50+ готовых сценариев. Приложение знает ваши предпочтения»</li>
+    <li><strong>Слайд 4:</strong> Категории: романтика / ролевые / сенсорные / оральные / доминирование</li>
+    <li><strong>Слайд 5:</strong> «Встроенные стоп-слова. Безопасно. Пошагово»</li>
+    <li><strong>Слайд 6:</strong> Опрос: «Хотела бы попробовать?» — Да, интересно / Расскажи больше / У нас и так хорошо</li>
+    <li><strong>Слайд 7:</strong> «Напиши RED — расскажу как получить доступ»</li>
+  </ol>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-amber">Серия 8 · Ступень 4→5</div>
+  <h3>«Последние места на курсе»</h3>
+  <ol>
+    <li><strong>Слайд 1:</strong> «Осталось 5 мест на тариф Индивидуальный»</li>
+    <li><strong>Слайд 2:</strong> Что входит: видеоуроки + модуль Минет + 2 личные консультации + безлимит RED ROOM</li>
+    <li><strong>Слайд 3:</strong> Цифра: «2 консультации = 240€. Весь тариф = 790€. То есть курс — за 550€»</li>
+    <li><strong>Слайд 4:</strong> Бонус: «Курс по позам — в подарок при записи сегодня»</li>
+    <li><strong>Слайд 5:</strong> Дедлайн: «Старт [дата]. После — цена выше»</li>
+    <li><strong>Слайд 6:</strong> CTA: «Напиши МЕСТО — забронирую для тебя»</li>
+  </ol>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-plum">Серия 9 · Ступень 2→3</div>
+  <h3>«Как Катя стала сексологом»</h3>
+  <ol>
+    <li><strong>Слайд 1:</strong> «Я не всегда была такой. Расскажу с самого начала»</li>
+    <li><strong>Слайд 2:</strong> «Не понимала своё тело. Не испытывала оргазм с партнёром. Приоритет — его удовольствие»</li>
+    <li><strong>Слайд 3:</strong> «Секса становилось всё меньше. Потому что кому хочется делать то, от чего не хорошо»</li>
+    <li><strong>Слайд 4:</strong> «10 лет психологии и сексологии — на себе, потом на клиентках»</li>
+    <li><strong>Слайд 5:</strong> «500+ женщин прошли мои программы. Ни одна — которой "просто не дано"»</li>
+    <li><strong>Слайд 6:</strong> «Я знаю этот путь изнутри. Именно поэтому — помогаю»</li>
+    <li><strong>Слайд 7:</strong> «Напиши мне. Поговорим о твоей ситуации»</li>
+  </ol>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-rose" style="background:var(--rose)">Серия 10 · Ступень 0→1</div>
+  <h3>«Скетч: партнёр и оргазм»</h3>
+  <ol>
+    <li><strong>Слайд 1:</strong> «Ладно, признайся. Это про тебя или нет?»</li>
+    <li><strong>Слайд 2:</strong> «ОН: "Тебе было хорошо?" ТЫ: (кивает) ТЫ ВНУТРИ: 🙂‍↕️»</li>
+    <li><strong>Слайд 3:</strong> «ОН считает, что всё идеально. ТЫ уже мечтаешь чтобы побыстрее закончилось»</li>
+    <li><strong>Слайд 4:</strong> «Так живёт большинство женщин. И называют это "у нас нормально"»</li>
+    <li><strong>Слайд 5:</strong> «Норма — это когда тебе хорошо. По-настоящему»</li>
+    <li><strong>Слайд 6:</strong> «Я сексолог. И я знаю, как это изменить. Напиши мне»</li>
+  </ol>
+</div>
+</div>
+</section>
+
+<!-- ===== TELEGRAM ===== -->
+<section id="tg">
+<h2>15 Telegram-постов</h2>
+<p class="sub">Канал / личные сообщения. Форматы: экспертный, личный, провокационный, кейс, оффер. Длина 150–400 слов.</p>
+
+<div class="post-block">
+  <div class="label">📌 Пост 1 · Ступень 0→1 · Провокация</div>
+  <div class="text">Подними руку, если хотя бы раз делала вид, что кончила.
+
+...
+
+Это называется имитация. И по статистике — так делают 8 из 10 женщин.
+
+Знаешь, что происходит каждый раз?
+
+Ты учишь своё тело, что это — норма.
+Ты учишь партнёра, что он всё делает правильно.
+И с каждым разом пропасть между тем, что ты хочешь, и тем, что есть — становится шире.
+
+Я была там сама. Я сексолог, 10 лет практики, 500+ клиенток.
+И я не встретила ни одной женщины, которой это «просто не дано».
+
+Если хотя бы один раз узнала себя — напиши в ответ. Поговорим.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 2 · Ступень 1→2 · Список болей</div>
+  <div class="text">Если хотя бы 2 пункта из этого списка — про тебя, читай до конца.
+
+— Секс стал рутиной. Одни и те же движения, та же поза, тот же исход
+— Ты не помнишь, когда последний раз по-настоящему хотела близости
+— Оргазм — это что-то, что «иногда бывает» или не бывает совсем
+— После секса — не близость, а облегчение, что закончилось
+— Ты стесняешься своего тела или своих желаний
+— Ты хочешь, чтобы он «сам догадался» — но он не догадывается
+
+Это не «в ваших отношениях что-то не так».
+Это не «ты холодная».
+Это не «возраст».
+
+Это — конкретные вещи, с которыми работают. Которые меняются.
+
+Я сексолог. Это — моя работа.
+
+Напиши мне — расскажи, что из этого списка твоё. Начнём с этого.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 3 · Ступень 1→2 · Личная история</div>
+  <div class="text">Я никогда не испытывала оргазм с партнёром. Вообще.
+
+Мне было важнее его удовольствие — не своё.
+Я не понимала своё тело.
+Не знала, что мне нравится.
+И объяснить — тоже не могла.
+
+Секса становилось всё меньше. Потому что зачем заниматься тем, от чего тебе не хорошо?
+
+Тогда я думала: ну, видимо, у меня так. Холодная. Не такая.
+
+10 лет психологии и сексологии спустя — я точно знаю: дело не в тебе.
+
+Дело в том, что нас никто не учил своему телу.
+Не учил желанию.
+Не учил получать — не только давать.
+
+Именно поэтому я стала сексологом.
+И именно поэтому — помогаю 500+ женщинам делать то, что когда-то сделала для себя.
+
+Ты не сломана. Ты просто не знаешь ещё кое-чего важного о себе.
+
+Напиши — поговорим.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 4 · Ступень 2→3 · Экспертный разбор</div>
+  <div class="text">Почему с вибратором — да, а с мужчиной — нет.
+
+Объясняю простыми словами.
+
+Когда ты используешь вибратор или душ — у тела есть чёткий, повторяющийся сценарий. Определённая интенсивность. Определённый ритм. Определённое место.
+
+Тело адаптировалось. Привыкло. И реагирует только на это.
+
+Партнёр — другой. У него другие руки. Другой ритм. Другое давление.
+И тело говорит: «Нет. Не так. Это не то».
+
+Это называется неадаптивный способ достижения оргазма.
+Это не диагноз. Это — сценарий, который можно переписать.
+
+Шаг за шагом ты тренируешь тело реагировать по-новому.
+Расширяешь диапазон. Включаешь чувствительность в других точках.
+
+Это работа, которую мы делаем в курсе «Секреты женского наслаждения».
+
+Если это твоя ситуация — напиши. Расскажу с чего начать.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 5 · Ступень 2→3 · Кейс клиентки</div>
+  <div class="text">2,5 месяца. 2 консультации. Вот что изменилось.
+
+Она пришла ко мне с простым запросом: «Я не могу кончить без вакуумника. А с мужем — вообще ничего».
+
+После первой консультации — она получила оргазм от стимуляции рукой. Без игрушки. Впервые в жизни.
+
+Мы работали: меняли сценарий, подбирали новые подходы, усиливали чувствительность, тренировали фантазию.
+
+После второй консультации — оргазм с мужем. При помощи его рук.
+Через несколько недель — оргазм во время кунилингуса.
+
+2,5 месяца. 2 консультации. И жизнь — другая.
+
+Теперь секс — это не только про удовольствие мужчины. Это про её яркие ощущения тоже.
+
+Это не магия. Это система. Понимание тела. Правильная работа.
+
+Хочешь так же? Напиши мне ИСТОРИЯ — расскажу как начать.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 6 · Ступень 1→2 · Стыд и блоки</div>
+  <div class="text">Тебе в детстве говорили «так хорошие девочки не делают»?
+
+Или что сексуальность — это что-то стыдное?
+Или что интересоваться своим телом — неприлично?
+
+Эти слова не просто были произнесены.
+Они записались в твою психику.
+И теперь — каждый раз, когда ты пытаешься расслабиться и получить удовольствие,
+где-то внутри звучит голос: «Осторожно. Так нельзя. Хорошие девочки не...»
+
+Это называется психологический блок.
+И он буквально работает на уровне нервной системы — не даёт телу расслабиться.
+
+Не даёт ты испытать оргазм.
+Не даёт ты попросить то, что хочешь.
+Не даёт ты получить то, что тебе нужно.
+
+Это не «ты холодная». Это — результат того, что было заложено раньше.
+
+И это — меняется. Я знаю как.
+
+Напиши мне БЛОК — расскажу как с этим работают.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 7 · Ступень 0→1 · Провокационный факт</div>
+  <div class="text">Факт, который неудобно признавать:
+
+Большинство женщин никогда не испытывали оргазм во время секса с партнёром.
+
+Не «иногда не испытывали».
+А вообще никогда.
+
+И считают, что у них «так устроено».
+
+Нет. Это не «так устроено».
+Это следствие: отсутствия желания, недостатка возбуждения, психологических блоков, неправильного сценария оргазма, неумения говорить о том, что нужно.
+
+Все пять причин — решаемы.
+
+Я сексолог. За 10 лет — ни одной клиентки, которой «просто не дано».
+
+Сохрани этот пост. Или поделись с той, кому это нужно услышать.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 8 · Ступень 3→4 · Программа курса</div>
+  <div class="text">Что происходит за 9 недель курса «Секреты женского наслаждения»:
+
+Недели 1–2: Либидо и желание
+Разбираемся с корнем: почему нет желания и как его разбудить.
+
+Недели 3–4: Возбуждение и тело
+Учимся включать тело, понимать его сигналы, работать с чувствительностью.
+
+Недели 4–5: Психология
+Стыд, убеждения, комплексы, непринятие тела — это отдельная большая работа.
+
+Недели 6–7: Оргазмы
+Техники, практики, смена сценария, работа с чувствительностью.
+
+Неделя 8: Коммуникация с партнёром
+Как говорить о том, что нужно. Без неловкости. Без стыда.
+
+Неделя 9: Интеграция
+Закрепляем, отвечаем на вопросы, строим следующие шаги.
+
+50+ видеоуроков. Практические задания. Доступ на 6 месяцев.
+
+Это не «послушай и забудь». Это системная работа.
+
+Хочешь программу подробнее? Напиши ПРОГРАММА.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 9 · Ступень 4→5 · Оффер + дедлайн</div>
+  <div class="text">До старта курса — [N] дней.
+
+Сейчас при записи — курс по позам в подарок.
+После — этого бонуса не будет.
+
+Тариф «Самостоятельный» — 190€ (было 290€)
+Тариф «С поддержкой» — 290€ + модуль «Минет», чат, Q&A
+Тариф «Индивидуальный» — 790€ + 2 личные консультации + безлимит RED ROOM
+→ Осталось 10 мест
+
+Одна моя консультация — 120€.
+В тарифе «Индивидуальный» — 2 консультации уже внутри.
+Плюс весь курс. Плюс RED ROOM. Плюс поддержка.
+
+По цене двух консультаций — ты получаешь и консультации, и всё остальное.
+
+Записаться → [ссылка]
+Или напиши мне ЗАПИСАТЬСЯ — объясню все тарифы.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 10 · Ступень 3→4 · Снятие возражения «нет времени»</div>
+  <div class="text">«У меня нет времени на курс»
+
+Слышу это часто. Отвечу честно.
+
+Уроки — 15–20 минут. Это меньше одной серии Нетфликса.
+Доступ — 6 месяцев. Проходи в своём ритме, в своё время.
+Практики — делаются дома, в своей жизни, с партнёром или без.
+
+Вопрос не во времени.
+Вопрос в приоритете.
+
+Ты находишь время на работу. На детей. На сериалы. На всё.
+Ты — та самая вещь, на которую не остаётся времени.
+
+Твоё удовольствие. Твоё тело. Твоя сексуальность.
+
+Это не эгоизм. Это необходимость.
+Потому что то, как ты чувствуешь себя в сексе — влияет на всю остальную жизнь.
+
+Если ты в этом месте — напиши. Поговорим что реально подходит под твой ритм.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 11 · Ступень 1→2 · «Нет партнёра»</div>
+  <div class="text">«У меня сейчас нет партнёра. Курс для меня не актуален?»
+
+Ответ: нет, актуален. И, возможно, — особенно для тебя.
+
+Большая часть курса — это работа с собой.
+
+С желанием. С блоками. С убеждениями. С принятием своего тела.
+С тем, как ты вообще относишься к своей сексуальности.
+
+Женщины, которые проходят эту работу без партнёра —
+приходят к следующим отношениям уже другими.
+
+Они знают своё тело. Они умеют говорить о желаниях. Они не боятся.
+
+И в новых отношениях — они получают то, что хотят.
+Сразу. Без лет «притирки».
+
+Партнёр — не обязателен для начала.
+Нужна только ты — готовая разобраться в себе.
+
+Напиши мне — расскажу что конкретно из курса будет полезно в твоей ситуации.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 12 · Ступень 2→3 · RED ROOM</div>
+  <div class="text">Я разработала приложение для пар.
+
+Называется RED ROOM.
+
+Проблема, которую оно решает: вы хотите разнообразия в постели, но не знаете с чего начать. Или стесняетесь предложить. Или уже пробовали — и вышло неловко.
+
+RED ROOM создаёт для вас готовые сценарии интимной близости.
+Исходя из ваших предпочтений. Пошагово. С таймингом.
+
+50+ сценариев: романтика, ролевые игры, сенсорные, оральные, доминирование, утренние, быстрый секс.
+
+Встроенные стоп-слова. Проверки комфорта. Безопасно.
+
+Это бонус к курсу «Секреты женского наслаждения» — входит в тарифы.
+
+Хочешь узнать больше? Напиши RED — расскажу подробнее.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 13 · Ступень 4→5 · Отзыв клиентки</div>
+  <div class="text">Скриншот отзыва [вставить реальный отзыв из вебинара]
+
+Она написала мне это через 6 недель после начала курса.
+
+Я каждый раз перечитываю такие сообщения.
+Потому что это — не просто «курс понравился».
+
+Это женщина, которая изменила отношения с собой.
+Которая перестала стесняться своего тела.
+Которая теперь знает, чего хочет — и умеет это получать.
+
+За этим я и работаю.
+
+Если хочешь так же — запись открыта.
+Напиши ХОЧУ ТАК ЖЕ — расскажу как попасть на курс.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 14 · Ступень 0→1 · «А ты знала»</div>
+  <div class="text">А ты знала, что секс без возбуждения буквально травмирует тело?
+
+Когда нет возбуждения — нет смазки, нет раскрытия, нет удлинения.
+Входить в это состояние — это микротрещины. Сухость. Дискомфорт. Иногда боль.
+
+И тело запоминает: «секс = боль».
+И начинает избегать.
+
+Потом ты думаешь: «Я просто охладела к нему».
+Нет. Твоё тело защищает тебя от боли.
+
+Прелюдия — это не «опциональная нежность».
+Это физиологическая необходимость.
+
+Так же, как мужчина не может заниматься сексом без эрекции —
+женщина не должна заниматься сексом без возбуждения.
+
+Сохрани. Покажи тому, кому важно это знать.</div>
+</div>
+
+<div class="post-block">
+  <div class="label">📌 Пост 15 · Ступень 4→5 · Финальный призыв</div>
+  <div class="text">Через год ты будешь в том же месте.
+
+Если ничего не изменишь сейчас.
+
+Секс останется обязанностью. Желание — ещё дальше. Комплексы — ещё глубже.
+
+Или — за 9 недель ты можешь пройти путь, который прошли 500+ моих клиенток.
+
+Женщины, которые теперь знают своё тело.
+Которые умеют говорить о желаниях.
+Которые получают от секса то, что хотят.
+
+Разница — в одном решении. Которое ты принимаешь прямо сейчас — или откладываешь на потом.
+
+Курс «Секреты женского наслаждения».
+Старт [дата]. Бонус — курс по позам — только при записи до [дата].
+
+Записаться → [ссылка]
+Или напиши мне — отвечу на все вопросы.</div>
+</div>
+</section>
+
+<!-- ===== КАРУСЕЛИ ===== -->
+<section id="carousels">
+<h2>8 карусельных постов</h2>
+<p class="sub">Структура каждой: Обложка (остановить скролл) → 4–7 слайдов (ценность) → Финальный слайд (CTA)</p>
+
+<div class="grid-2">
+<div class="card accent-top">
+  <div class="badge b-red">Карусель 1 · Ступень 0→1</div>
+  <h3>«8 из 10 женщин имитируют оргазм»</h3>
+  <p><strong>Обложка:</strong> «8 из 10 женщин делают это. Ты — одна из них?»</p>
+  <ul style="margin-top:10px">
+    <li>Слайд 2: Что такое имитация и почему мы делаем это</li>
+    <li>Слайд 3: Что происходит с телом каждый раз, когда ты имитируешь</li>
+    <li>Слайд 4: Что происходит с отношениями</li>
+    <li>Слайд 5: Почему «потерпеть» — не выход</li>
+    <li>Слайд 6: Как разорвать этот цикл</li>
+    <li>Слайд 7 (CTA): «Напиши ХОЧУ — разберём твою ситуацию»</li>
+  </ul>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-mauve">Карусель 2 · Ступень 2→3</div>
+  <h3>«5 причин, почему нет оргазма»</h3>
+  <p><strong>Обложка:</strong> «5 реальных причин отсутствия оргазма (не то, что ты думаешь)»</p>
+  <ul style="margin-top:10px">
+    <li>Слайд 2: Причина 1 — нет желания / либидо</li>
+    <li>Слайд 3: Причина 2 — нет возбуждения</li>
+    <li>Слайд 4: Причина 3 — психологические блоки</li>
+    <li>Слайд 5: Причина 4 — неадаптивный сценарий (душ/вибратор)</li>
+    <li>Слайд 6: Причина 5 — нет коммуникации с партнёром</li>
+    <li>Слайд 7 (CTA): «Какая из пяти — твоя? Пиши в комменты»</li>
+  </ul>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-green">Карусель 3 · Ступень 1→2</div>
+  <h3>«Желание → Возбуждение → Оргазм»</h3>
+  <p><strong>Обложка:</strong> «Почему оргазм не приходит "сам по себе" — схема»</p>
+  <ul style="margin-top:10px">
+    <li>Слайд 2: Шаг 1 — желание (что это, откуда берётся)</li>
+    <li>Слайд 3: Шаг 2 — возбуждение (что происходит в теле)</li>
+    <li>Слайд 4: Что мешает на каждом шаге</li>
+    <li>Слайд 5: Почему нельзя «пропустить» шаги</li>
+    <li>Слайд 6: «На каком шаге у тебя сбой?» — опрос</li>
+    <li>Слайд 7 (CTA): «Напиши мне — разберём вместе»</li>
+  </ul>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-amber">Карусель 4 · Ступень 1→2</div>
+  <h3>«5 мифов об оргазме, в которые ты веришь»</h3>
+  <p><strong>Обложка:</strong> «5 мифов, которые мешают тебе получать удовольствие»</p>
+  <ul style="margin-top:10px">
+    <li>Слайд 2–6: МИФ vs ПРАВДА по каждому мифу</li>
+    <li>Миф 1: «Оргазм должен быть вагинальным»</li>
+    <li>Миф 2: «Если долго нет — значит холодная»</li>
+    <li>Миф 3: «Партнёр должен сам догадаться»</li>
+    <li>Миф 4: «Без игрушек не получится»</li>
+    <li>Миф 5: «После детей это не вернуть»</li>
+    <li>Слайд 7 (CTA): «Сохрани и поделись с подругой»</li>
+  </ul>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-plum">Карусель 5 · Ступень 2→3</div>
+  <h3>«История: от вакуумника до оргазма с партнёром»</h3>
+  <p><strong>Обложка:</strong> «Она не могла кончить без вакуумника. Вот что изменилось»</p>
+  <ul style="margin-top:10px">
+    <li>Слайд 2: Ситуация до — полный портрет проблемы</li>
+    <li>Слайд 3: Что мы делали на первой консультации</li>
+    <li>Слайд 4: Первый результат — оргазм от руки</li>
+    <li>Слайд 5: Вторая консультация и результат с партнёром</li>
+    <li>Слайд 6: Ситуация сейчас</li>
+    <li>Слайд 7: «2,5 месяца. 2 консультации»</li>
+    <li>Слайд 8 (CTA): «Напиши ИСТОРИЯ — расскажу как начать»</li>
+  </ul>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-rose" style="background:var(--rose)">Карусель 6 · Ступень 3→4</div>
+  <h3>«Что входит в курс: всё по полочкам»</h3>
+  <p><strong>Обложка:</strong> «9 недель. 6 модулей. Вот что ты получишь»</p>
+  <ul style="margin-top:10px">
+    <li>Слайд 2: Модуль 1 — либидо и желание</li>
+    <li>Слайд 3: Модуль 2 — возбуждение и тело</li>
+    <li>Слайд 4: Модуль 3 — психология (стыд, блоки)</li>
+    <li>Слайд 5: Модуль 4 — оргазмы (техники)</li>
+    <li>Слайд 6: Модуль 5+6 — коммуникация + интеграция</li>
+    <li>Слайд 7: Бонусы — RED ROOM, курс по позам, модуль «Минет»</li>
+    <li>Слайд 8 (CTA): «Хочешь программу подробнее? Пиши ПРОГРАММА»</li>
+  </ul>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-green">Карусель 7 · Ступень 3→4</div>
+  <h3>«Сравнение тарифов» (визуальное)</h3>
+  <p><strong>Обложка:</strong> «Как выбрать свой тариф — простая инструкция»</p>
+  <ul style="margin-top:10px">
+    <li>Слайд 2: Тариф Самостоятельный — для кого, что входит, цена 190€</li>
+    <li>Слайд 3: Тариф С поддержкой — для кого, что входит, цена 290€</li>
+    <li>Слайд 4: Тариф Индивидуальный — для кого, что входит, цена 790€</li>
+    <li>Слайд 5: Сравнительная таблица в одном слайде</li>
+    <li>Слайд 6: Ценность vs цена: одна консультация 120€ / курс от 190€</li>
+    <li>Слайд 7 (CTA): «Не уверена какой тариф твой? Напиши — помогу выбрать»</li>
+  </ul>
+</div>
+
+<div class="card accent-top">
+  <div class="badge b-amber">Карусель 8 · Ступень 4→5</div>
+  <h3>«Что будет, если ничего не менять»</h3>
+  <p><strong>Обложка:</strong> «Два варианта. Выбор за тобой.»</p>
+  <ul style="margin-top:10px">
+    <li>Слайд 2–5: Левая колонка «Если ничего не делать» (5 последствий)</li>
+    <li>Слайд 6–9: Правая колонка «После курса» (5 изменений)</li>
+    <li>Слайд 10 (CTA): Дедлайн + ссылка + «Напиши СЕЙЧАС»</li>
+  </ul>
+</div>
+</div>
+</section>
+
+<!-- ===== DM СКРИПТЫ ===== -->
+<section id="dm">
+<h2>5 DM-скриптов</h2>
+<p class="sub">Ответы на кодовые слова. Живой тон, не шаблон. Цель — перевести в диалог или сразу в продажу.</p>
+
+<div class="grid-2">
+<div class="card">
+  <div class="badge b-rose">Байт: ХОЧУ</div>
+  <h3>После рилсов о желании / имитации</h3>
+  <div class="script" style="font-size:12px">
+Привет! Рада, что откликнулось 🤍
+
+Скажи мне честно — что из этого больше про тебя сейчас:
+А) нет желания / нет влечения вообще
+Б) желание есть, но с партнёром — оргазма нет
+В) оргазм бывает, но редко / только определённым способом
+Г) всё ок с телом, но хочу большего — разнообразия, глубины
+
+Ответь одной буквой — и я расскажу точно что делать в твоей ситуации 💜
+  </div>
+  <p style="font-size:12px;color:var(--mauve);margin-top:8px">→ По ответу отправляем релевантный контент + приглашение на вебинар или курс</p>
+</div>
+
+<div class="card">
+  <div class="badge b-mauve">Байт: РАЗБОР / ПРИЧИНА</div>
+  <h3>После рилса «5 причин нет оргазма»</h3>
+  <div class="script" style="font-size:12px">
+Привет! Спасибо что написала — это важный шаг 🤍
+
+Расскажи мне немного о себе:
+— Сколько тебе лет примерно?
+— Есть партнёр сейчас?
+— И главное: что конкретно тебя беспокоит больше всего — нет желания, нет оргазма, боль, что-то другое?
+
+Я хочу понять твою ситуацию, а не просто скинуть ссылку на курс.
+Пиши как есть — здесь безопасно 💜
+  </div>
+</div>
+
+<div class="card">
+  <div class="badge b-green">Байт: ИСТОРИЯ</div>
+  <h3>После кейса клиентки</h3>
+  <div class="script" style="font-size:12px">
+Привет! Рада что история тебя тронула 🤍
+
+Эта девушка — одна из многих, кто прошёл похожий путь.
+
+Расскажи — у тебя похожая ситуация? Вибратор / душ — единственный способ? Или что-то другое?
+
+Хочу понять с чего начать конкретно для тебя.
+  </div>
+  <p style="font-size:12px;color:var(--mauve);margin-top:8px">→ После ответа: краткий разбор + предложение вебинара или курса</p>
+</div>
+
+<div class="card">
+  <div class="badge b-amber">Байт: КУРС / ПРОГРАММА</div>
+  <h3>Горячий лид — интересуется курсом</h3>
+  <div class="script" style="font-size:12px">
+Привет! Отлично, что написала — расскажу всё 🤍
+
+Курс «Секреты женского наслаждения» — 9 недель, старт [дата].
+
+3 тарифа:
+📌 Самостоятельный — 190€ (всё сама, доступ 6 мес)
+📌 С поддержкой — 290€ (+ модуль Минет, Q&A, чат)
+📌 Индивидуальный — 790€ (+ 2 личные консультации, безлимит RED ROOM)
+
+При записи сейчас — курс по позам в подарок 🎁
+
+Скажи мне: у тебя есть партнёр? Это поможет мне порекомендовать подходящий тариф.
+  </div>
+</div>
+
+<div class="card">
+  <div class="badge b-plum">Байт: ВЕБИНАР</div>
+  <h3>Тёплый лид — хочет сначала посмотреть</h3>
+  <div class="script" style="font-size:12px">
+Привет! Конечно, держи 🤍
+
+Вот запись вебинара «Женское удовольствие. Оргазмы, либидо, минеты»:
+[ссылка]
+
+Там я рассказываю:
+— 5 реальных причин почему нет оргазма
+— Как работает женское возбуждение
+— Психологические блоки и что с ними делать
+— Реальный кейс клиентки
+
+Посмотри — там будет многое про тебя.
+И напиши мне потом что откликнулось 💜
+  </div>
+  <p style="font-size:12px;color:var(--mauve);margin-top:8px">→ Это начало 9-дневного прогрева в боте</p>
+</div>
+</div>
+</section>
+
+<!-- ===== КАЛЕНДАРЬ ===== -->
+<section id="calendar">
+<h2>Контент-календарь на апрель–май</h2>
+<p class="sub">4 недели апреля + 4 недели мая. Логика: прогрев по лестнице Ханта → запуск вебинара → продажи курса → дожим</p>
+
+<div class="cal-week">НЕДЕЛЯ 1 (апрель 14–20) — Ступень 0→1: Пробуждаем боль</div>
+<div class="cal-day"><div class="day">ПН</div><div class="content"><span class="platform">Reels</span> Reel #1 «Подними руку» (имитация оргазма) + <span class="platform">TG</span> Пост 7 «Факт про большинство женщин»</div></div>
+<div class="cal-day"><div class="day">ВТ</div><div class="content"><span class="platform">Stories</span> Серия 10 «Скетч: партнёр и оргазм» (вовлечение)</div></div>
+<div class="cal-day"><div class="day">СР</div><div class="content"><span class="platform">Reels</span> Reel #4 «Секс стал долгом» + <span class="platform">Карусель</span> #1 «8 из 10»</div></div>
+<div class="cal-day"><div class="day">ЧТ</div><div class="content"><span class="platform">Stories</span> Серия 1 «Тест: как ты живёшь в сексе?» (опросы) + <span class="platform">TG</span> Пост 1 «Подними руку»</div></div>
+<div class="cal-day"><div class="day">ПТ</div><div class="content"><span class="platform">Reels</span> Reel #2 «Боль в сексе — не норма»</div></div>
+<div class="cal-day"><div class="day">СБ</div><div class="content"><span class="platform">TG</span> Пост 14 «А ты знала» (боль без возбуждения) + <span class="platform">Stories</span> Личное фото + мысль</div></div>
+<div class="cal-day"><div class="day">ВС</div><div class="content"><span class="platform">Stories</span> Ответы на реакции, ответы в директ, вовлечение</div></div>
+
+<div class="cal-week">НЕДЕЛЯ 2 (апрель 21–27) — Ступень 1→2: Называем боль</div>
+<div class="cal-day"><div class="day">ПН</div><div class="content"><span class="platform">Reels</span> Reel #5 «История Кати» + <span class="platform">TG</span> Пост 3 «Я никогда не испытывала»</div></div>
+<div class="cal-day"><div class="day">ВТ</div><div class="content"><span class="platform">Stories</span> Серия 9 «История Кати: как стала сексологом» + опрос «Узнаёшь себя?»</div></div>
+<div class="cal-day"><div class="day">СР</div><div class="content"><span class="platform">Reels</span> Reel #9 «Упражнение Крестики» + <span class="platform">Карусель</span> #4 «5 мифов»</div></div>
+<div class="cal-day"><div class="day">ЧТ</div><div class="content"><span class="platform">Stories</span> Серия 2 «5 признаков разлучилась с желанием» + <span class="platform">TG</span> Пост 2 «Список болей»</div></div>
+<div class="cal-day"><div class="day">ПТ</div><div class="content"><span class="platform">Reels</span> Reel #8 «Стыд блокирует оргазм»</div></div>
+<div class="cal-day"><div class="day">СБ</div><div class="content"><span class="platform">TG</span> Пост 6 «Стыд и блоки» + <span class="platform">Stories</span> Упражнение «Ваши роли»</div></div>
+<div class="cal-day"><div class="day">ВС</div><div class="content"><span class="platform">Stories</span> Разбор ответов на опросы + анонс вебинара на следующей неделе</div></div>
+
+<div class="cal-week">НЕДЕЛЯ 3 (апрель 28 — май 4) — Ступень 2→3: ВЕБИНАР «Женское удовольствие»</div>
+<div class="cal-day"><div class="day">ПН</div><div class="content"><span class="platform">Reels</span> Reel #6 «5 причин нет оргазма» + <span class="platform">TG</span> Пост 4 «Разбор: с вибратором да, с мужчиной — нет»</div></div>
+<div class="cal-day"><div class="day">ВТ</div><div class="content"><span class="platform">Stories</span> Серия 3 «Разбор: почему нет оргазма с партнёром» + <span class="platform">Анонс</span> вебинара</div></div>
+<div class="cal-day"><div class="day">СР</div><div class="content"><span class="platform">Reels</span> Reel #7 «Кейс: 2 консультации → оргазм» + <span class="platform">Карусель</span> #5 история</div></div>
+<div class="cal-day"><div class="day">ЧТ</div><div class="content"><span class="platform">Stories</span> Серия 4 «История клиентки» + ПРОГРЕВ вебинара + <span class="platform">TG</span> Пост 5 «Кейс»</div></div>
+<div class="cal-day"><div class="day">ПТ</div><div class="content"><span class="platform">🔥 ВЕБИНАР</span> «Женское удовольствие. Оргазмы, либидо, минеты» — прямой эфир или запись</div></div>
+<div class="cal-day"><div class="day">СБ</div><div class="content"><span class="platform">Stories</span> Эмоции после вебинара + отзывы участниц + CTA записаться на курс</div></div>
+<div class="cal-day"><div class="day">ВС</div><div class="content"><span class="platform">TG</span> Пост 8 «Программа курса» + <span class="platform">Stories</span> FAQ по курсу</div></div>
+
+<div class="cal-week">НЕДЕЛЯ 4 (май 5–11) — Ступень 3→5: ПРОДАЖИ КУРСА</div>
+<div class="cal-day"><div class="day">ПН</div><div class="content"><span class="platform">Reels</span> Reel #12 «Цена одной консультации vs курс» + <span class="platform">TG</span> Пост 9 «Оффер + дедлайн»</div></div>
+<div class="cal-day"><div class="day">ВТ</div><div class="content"><span class="platform">Stories</span> Серия 8 «Последние места» + <span class="platform">Карусель</span> #7 сравнение тарифов</div></div>
+<div class="cal-day"><div class="day">СР</div><div class="content"><span class="platform">Reels</span> Reel #10 «Желание → Возбуждение → Оргазм» + <span class="platform">TG</span> Пост 10 «Нет времени»</div></div>
+<div class="cal-day"><div class="day">ЧТ</div><div class="content"><span class="platform">Stories</span> Отзыв клиентки + <span class="platform">TG</span> Пост 13 «Отзыв»</div></div>
+<div class="cal-day"><div class="day">ПТ</div><div class="content"><span class="platform">Reels</span> Reel #14 «Не партнёр виноват» + <span class="platform">TG</span> Пост 11 «Нет партнёра»</div></div>
+<div class="cal-day"><div class="day">СБ</div><div class="content"><span class="platform">Reels</span> Reel #13 «Через год будешь там же» + <span class="platform">TG</span> Пост 15 «Финальный призыв»</div></div>
+<div class="cal-day"><div class="day">ВС</div><div class="content"><span class="platform">🔥 ДЕДЛАЙН</span> Последний день бонуса «Курс по позам» + <span class="platform">Stories</span> таймер закрытия</div></div>
+
+<div class="cal-week">НЕДЕЛИ 5–8 (май 12 – июнь 8) — Прогрев к старту курса + дожим</div>
+<table>
+  <tr><th>Период</th><th>Фокус</th><th>Контент</th></tr>
+  <tr><td>Май 12–18</td><td>Углублённый прогрев</td><td>Reel #3 «Струя душа», Reel #11 «Партнёр не экстрасенс», Stories «Мифы», TG экспертные посты</td></tr>
+  <tr><td>Май 19–25</td><td>Социальное доказательство</td><td>Серия отзывов клиенток, кейсы, Stories «За кулисами подготовки курса»</td></tr>
+  <tr><td>Май 26–31</td><td>RED ROOM + VSL воронка</td><td>Reel #15 «RED ROOM», Карусель #8, TG Пост 12, Stories Серия 7</td></tr>
+  <tr><td>Июнь 1–8</td><td>🔥 Старт курса + дожим</td><td>Финальные офферы, истории первых участниц, сторис из курса</td></tr>
+</table>
+</section>
+
+<!-- ===== ТРИГГЕРЫ ===== -->
+<section id="triggers">
+<h2>12 психологических триггеров</h2>
+<p class="sub">Работают на всех ступенях лестницы. Используй в каждом формате — Reels, Stories, постах.</p>
+
+<div class="grid-2">
+<div class="trigger-card"><div class="num">1</div><div><h3>Узнавание («это про меня»)</h3><p style="font-size:13px">Конкретные ситуации, которые женщина переживала сама. <span class="highlight">«Ты ложишься в постель и чувствуешь не желание, а обязанность»</span> — это не описание, это зеркало.</p></div></div>
+
+<div class="trigger-card"><div class="num">2</div><div><h3>Нормализация</h3><p style="font-size:13px">Снятие стыда через «ты не одна». <span class="highlight">«8 из 10 женщин — так же»</span>. Это даёт разрешение признать проблему.</p></div></div>
+
+<div class="trigger-card"><div class="num">3</div><div><h3>Авторитет через личную историю</h3><p style="font-size:13px">«Я сама через это прошла» — намного сильнее, чем «я эксперт». Это равенство, а не дистанция.</p></div></div>
+
+<div class="trigger-card"><div class="num">4</div><div><h3>Конкретный кейс</h3><p style="font-size:13px"><span class="highlight">«2,5 месяца. 2 консультации. Вот что изменилось»</span> — цифры делают историю реальной. Дают надежду.</p></div></div>
+
+<div class="trigger-card"><div class="num">5</div><div><h3>Боль будущего (FOMO)</h3><p style="font-size:13px"><span class="highlight">«Через год ты будешь в том же месте»</span> — не пугалка, а честное зеркало последствий бездействия.</p></div></div>
+
+<div class="trigger-card"><div class="num">6</div><div><h3>Разрушение мифа</h3><p style="font-size:13px">«Ты не холодная / не сломана / не такая» — снятие ложного убеждения открывает человека к новому.</p></div></div>
+
+<div class="trigger-card"><div class="num">7</div><div><h3>Обратная психология</h3><p style="font-size:13px"><span class="highlight">«Не смотри это если не готова к правде о себе»</span> — вызывает обратную реакцию: досмотреть до конца.</p></div></div>
+
+<div class="trigger-card"><div class="num">8</div><div><h3>Ценность vs цена</h3><p style="font-size:13px"><span class="highlight">«Одна консультация — 120€. Курс — от 190€»</span> — конкретное сравнение убирает возражение «дорого».</p></div></div>
+
+<div class="trigger-card"><div class="num">9</div><div><h3>Срочность + дефицит</h3><p style="font-size:13px">«10 мест на Индивидуальный» + «бонус только при записи до [дата]» — создаёт реальный повод действовать сейчас.</p></div></div>
+
+<div class="trigger-card"><div class="num">10</div><div><h3>Приватность</h3><p style="font-size:13px"><span class="highlight">«Напиши мне в директ»</span> — создаёт ощущение личного разговора, снижает барьер стыда. Работает в сексуальной теме особенно сильно.</p></div></div>
+
+<div class="trigger-card"><div class="num">11</div><div><h3>Механизм + причина</h3><p style="font-size:13px">Объяснение «почему» (без возбуждения → боль → тело избегает) даёт интеллектуальное удовлетворение и доверие к эксперту.</p></div></div>
+
+<div class="trigger-card"><div class="num">12</div><div><h3>Вовлечение через вопрос</h3><p style="font-size:13px"><span class="highlight">«Какая из 5 причин — твоя? Пиши в комментах»</span> — человек, написавший ответ, уже инвестировал в тему. Продать ему легче.</p></div></div>
+</div>
+
+<div class="card-dark" style="margin-top:24px;padding:24px;">
+  <h3>Правило контента SecretCoach</h3>
+  <p style="color:var(--blush);margin-top:8px;line-height:1.8">Каждый пост, рилс, сторис должен делать одно из трёх:<br>
+  1. <strong>Узнать себя</strong> → «это про меня» → подписка / сохранение<br>
+  2. <strong>Получить инсайт</strong> → «я не знала этого» → доверие к эксперту<br>
+  3. <strong>Сделать шаг</strong> → написать в директ → перейти в воронку<br><br>
+  Если контент не делает ни одного из трёх — это не контент, это шум.</p>
+</div>
+</section>
+
+<div style="text-align:center;padding:40px 20px;background:var(--plum);color:var(--blush)">
+  <p style="font-size:13px">SecretCoach · Контент-стратегия апрель–май 2026 · Цель: $20 000</p>
+  <p style="font-size:12px;margin-top:6px;opacity:.7">15 Reels · 10 Stories-серий · 15 TG-постов · 8 каруселей · 5 DM-скриптов · Календарь 8 недель · 12 триггеров</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecretCoach — Стратегия $20,000 Апрель-Май 2026</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --plum:#2D1F42;
+    --rose:#C4856A;
+    --blush:#E8C5B5;
+    --mauve:#7B5C74;
+    --cream:#FAF7F4;
+    --dark:#1E1428;
+    --gold:#D4A853;
+    --green:#4CAF82;
+    --red:#E05C5C;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Georgia',serif;background:var(--cream);color:var(--dark);line-height:1.7}
+  /* NAV */
+  nav{position:sticky;top:0;z-index:999;background:var(--dark);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 20px rgba(0,0,0,.4)}
+  .nav-logo{color:var(--blush);font-size:.95rem;font-weight:700;letter-spacing:2px;padding:1rem 0;text-transform:uppercase}
+  .nav-links{display:flex;gap:0;flex-wrap:wrap}
+  .nav-links a{color:var(--blush);opacity:.7;text-decoration:none;font-size:.72rem;padding:.9rem .7rem;letter-spacing:.5px;transition:opacity .2s;text-transform:uppercase;font-family:'Arial',sans-serif}
+  .nav-links a:hover{opacity:1;color:var(--rose)}
+  /* SECTIONS */
+  section{padding:5rem 2rem}
+  .container{max-width:1100px;margin:0 auto}
+  /* HERO */
+  #hero{background:linear-gradient(135deg,var(--dark) 0%,var(--plum) 50%,#3D2558 100%);padding:7rem 2rem 6rem;position:relative;overflow:hidden}
+  #hero::before{content:'';position:absolute;top:-40%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(196,133,106,.15) 0%,transparent 70%);pointer-events:none}
+  #hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(123,92,116,.2) 0%,transparent 70%);pointer-events:none}
+  .hero-tag{display:inline-block;background:rgba(196,133,106,.2);border:1px solid rgba(196,133,106,.4);color:var(--blush);font-family:'Arial',sans-serif;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;padding:.4rem 1.2rem;border-radius:20px;margin-bottom:1.5rem}
+  .hero-title{color:#fff;font-size:clamp(2.2rem,5vw,4rem);line-height:1.15;margin-bottom:1rem;font-weight:400}
+  .hero-title span{color:var(--rose)}
+  .hero-subtitle{color:var(--blush);font-size:1.1rem;opacity:.85;max-width:600px;margin-bottom:3rem;font-family:'Arial',sans-serif;font-weight:300}
+  .hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;margin-top:3rem}
+  .hero-stat{background:rgba(255,255,255,.06);border:1px solid rgba(196,133,106,.25);border-radius:12px;padding:1.5rem;text-align:center}
+  .hero-stat .val{color:var(--rose);font-size:2rem;font-weight:700;display:block;font-family:'Arial',sans-serif}
+  .hero-stat .lbl{color:var(--blush);font-size:.75rem;opacity:.75;letter-spacing:1px;text-transform:uppercase;font-family:'Arial',sans-serif;margin-top:.3rem}
+  /* SECTION HEADERS */
+  .sec-label{font-family:'Arial',sans-serif;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--rose);margin-bottom:.8rem}
+  .sec-title{font-size:clamp(1.6rem,3vw,2.4rem);color:var(--plum);margin-bottom:1rem;font-weight:400}
+  .sec-desc{color:#5a4a6a;font-size:1rem;max-width:700px;margin-bottom:2.5rem;font-family:'Arial',sans-serif;line-height:1.7}
+  /* CARDS */
+  .card{background:#fff;border-radius:16px;padding:2rem;box-shadow:0 4px 24px rgba(45,31,66,.08);border:1px solid rgba(196,133,106,.15)}
+  .card-rose{border-left:4px solid var(--rose)}
+  .card-plum{border-left:4px solid var(--plum)}
+  .card-gold{border-left:4px solid var(--gold)}
+  .card-green{border-left:4px solid var(--green)}
+  .card h3{color:var(--plum);margin-bottom:.8rem;font-size:1.1rem}
+  .card p{color:#5a4a6a;font-family:'Arial',sans-serif;font-size:.9rem;line-height:1.7}
+  .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+  .grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+  /* AUDIT SECTION */
+  #audit{background:#fff}
+  .audit-data{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2rem 0}
+  .audit-item{background:var(--cream);border-radius:12px;padding:1.5rem;text-align:center;border:1px solid rgba(196,133,106,.2)}
+  .audit-item .num{font-size:1.8rem;font-weight:700;color:var(--plum);display:block;font-family:'Arial',sans-serif}
+  .audit-item .desc{font-size:.78rem;color:#7a6a8a;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:.5px;margin-top:.3rem}
+  .audit-item.warn .num{color:var(--red)}
+  .audit-item.good .num{color:var(--green)}
+  .insight-box{background:linear-gradient(135deg,var(--plum),var(--mauve));border-radius:16px;padding:2.5rem;color:#fff;margin-top:2rem}
+  .insight-box h3{color:var(--blush);margin-bottom:1rem;font-size:1.2rem}
+  .insight-box p{opacity:.9;font-family:'Arial',sans-serif;font-size:.95rem;line-height:1.8}
+  /* PROBLEM SECTION */
+  #problem{background:linear-gradient(180deg,var(--cream) 0%,#f0e8f0 100%)}
+  .math-card{background:var(--dark);border-radius:16px;padding:2rem;color:#fff}
+  .math-card h3{color:var(--rose);margin-bottom:1.5rem;font-size:1.1rem;font-family:'Arial',sans-serif}
+  .math-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.08);font-family:'Arial',sans-serif;font-size:.9rem}
+  .math-row:last-child{border-bottom:none;padding-top:1rem;font-weight:700;color:var(--rose)}
+  .math-row .label{color:rgba(255,255,255,.7)}
+  .math-row .value{color:#fff}
+  .math-row.bad .value{color:var(--red)}
+  .math-row.good .value{color:var(--green)}
+  .vs-block{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin:2rem 0}
+  .vs-label{text-align:center;font-family:'Arial',sans-serif;font-weight:700;color:var(--mauve);font-size:1.2rem}
+  /* DECOMPOSITION */
+  #decomp{background:#fff}
+  .month-block{border-radius:16px;overflow:hidden;margin-bottom:2rem;box-shadow:0 4px 24px rgba(45,31,66,.1)}
+  .month-header{padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center}
+  .month-header.april{background:linear-gradient(135deg,var(--plum),var(--mauve))}
+  .month-header.may{background:linear-gradient(135deg,var(--dark),#4a3060)}
+  .month-header h2{color:#fff;font-size:1.4rem;font-weight:400}
+  .month-header .target{color:var(--rose);font-size:1.8rem;font-weight:700;font-family:'Arial',sans-serif}
+  .month-body{background:var(--cream);padding:1.5rem}
+  .revenue-row{display:grid;grid-template-columns:1fr auto auto;gap:1rem;align-items:center;padding:.8rem 1rem;border-radius:8px;margin-bottom:.5rem;font-family:'Arial',sans-serif;font-size:.88rem}
+  .revenue-row:nth-child(odd){background:#fff}
+  .revenue-row .source{color:var(--plum);font-weight:600}
+  .revenue-row .calc{color:#7a6a8a;font-size:.8rem}
+  .revenue-row .amount{color:var(--rose);font-weight:700;font-size:1rem;text-align:right}
+  .revenue-total{display:flex;justify-content:space-between;align-items:center;padding:1rem 1rem;background:var(--plum);border-radius:8px;margin-top:1rem;color:#fff;font-family:'Arial',sans-serif}
+  .revenue-total .t-label{font-size:.85rem;opacity:.8}
+  .revenue-total .t-amount{font-size:1.4rem;font-weight:700;color:var(--blush)}
+  .progress-bar{height:8px;background:rgba(196,133,106,.2);border-radius:4px;margin-top:1rem;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--gold));border-radius:4px;transition:width .3s}
+  /* FUNNEL */
+  #funnel{background:linear-gradient(180deg,#f5eef8 0%,var(--cream) 100%)}
+  .funnel-viz{max-width:600px;margin:0 auto 3rem}
+  .funnel-step{margin-bottom:.5rem;position:relative}
+  .funnel-bar{border-radius:8px;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;color:#fff;font-family:'Arial',sans-serif}
+  .funnel-bar .f-label{font-size:.9rem;font-weight:600}
+  .funnel-bar .f-metric{font-size:.85rem;opacity:.85}
+  .funnel-bar .f-cost{font-size:1rem;font-weight:700;background:rgba(255,255,255,.15);padding:.2rem .7rem;border-radius:20px}
+  .f1{background:linear-gradient(135deg,#5a3a7a,var(--mauve));width:100%}
+  .f2{background:linear-gradient(135deg,var(--mauve),#9a6a8a);width:85%;margin:0 auto}
+  .f3{background:linear-gradient(135deg,#9a6a8a,var(--rose));width:70%;margin:0 auto}
+  .f4{background:linear-gradient(135deg,var(--rose),#d4956a);width:50%;margin:0 auto}
+  .f5{background:linear-gradient(135deg,#d4956a,var(--gold));width:35%;margin:0 auto}
+  .funnel-arrow{text-align:center;color:var(--rose);font-size:1.2rem;margin:.2rem 0}
+  .roas-box{background:linear-gradient(135deg,var(--dark),var(--plum));border-radius:16px;padding:2rem;text-align:center;color:#fff;margin-top:2rem}
+  .roas-box .roas-num{font-size:3.5rem;font-weight:700;color:var(--rose);font-family:'Arial',sans-serif;display:block}
+  .roas-box .roas-lbl{color:var(--blush);font-family:'Arial',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase}
+  /* WEEKLY PLAN */
+  #weekly{background:#fff}
+  table{width:100%;border-collapse:collapse;font-family:'Arial',sans-serif;font-size:.85rem}
+  thead th{background:var(--plum);color:var(--blush);padding:1rem 1.2rem;text-align:left;font-weight:600;font-size:.8rem;letter-spacing:.5px;text-transform:uppercase}
+  thead th:first-child{border-radius:8px 0 0 0}
+  thead th:last-child{border-radius:0 8px 0 0}
+  tbody tr:nth-child(odd){background:var(--cream)}
+  tbody tr:nth-child(even){background:#fff}
+  tbody tr:hover{background:rgba(196,133,106,.1)}
+  tbody td{padding:.9rem 1.2rem;color:#4a3a5a;border-bottom:1px solid rgba(196,133,106,.12);vertical-align:top;line-height:1.6}
+  tbody td:first-child{font-weight:600;color:var(--plum);white-space:nowrap}
+  .badge{display:inline-block;font-size:.7rem;padding:.2rem .6rem;border-radius:10px;font-weight:600;margin-right:.3rem;white-space:nowrap}
+  .badge-rose{background:rgba(196,133,106,.15);color:var(--rose)}
+  .badge-plum{background:rgba(45,31,66,.1);color:var(--plum)}
+  .badge-green{background:rgba(76,175,130,.15);color:#2d8a5e}
+  .badge-gold{background:rgba(212,168,83,.15);color:#8a6020}
+  /* MAY SCALE */
+  #may{background:linear-gradient(180deg,var(--cream),#ece4f4)}
+  .scale-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin:2rem 0}
+  .scale-card{background:#fff;border-radius:14px;padding:1.8rem;border-top:4px solid var(--rose);box-shadow:0 3px 16px rgba(45,31,66,.07)}
+  .scale-card .sc-icon{font-size:1.8rem;margin-bottom:1rem}
+  .scale-card h3{color:var(--plum);margin-bottom:.7rem;font-size:1rem}
+  .scale-card p{color:#6a5a7a;font-family:'Arial',sans-serif;font-size:.85rem;line-height:1.6}
+  .scale-card .sc-kpi{display:inline-block;background:rgba(196,133,106,.12);color:var(--rose);font-family:'Arial',sans-serif;font-size:.8rem;font-weight:700;padding:.3rem .8rem;border-radius:20px;margin-top:.8rem}
+  /* TRAFFIC */
+  #traffic{background:#fff}
+  .campaign-card{background:var(--cream);border-radius:14px;padding:1.5rem;border:1px solid rgba(196,133,106,.2);margin-bottom:1rem}
+  .campaign-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem}
+  .campaign-header h3{color:var(--plum);font-size:1rem}
+  .campaign-kpi{background:var(--plum);color:var(--blush);font-family:'Arial',sans-serif;font-size:.75rem;padding:.3rem .8rem;border-radius:20px;white-space:nowrap}
+  .campaign-details{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.8rem}
+  .campaign-detail{background:#fff;border-radius:8px;padding:.5rem 1rem;font-family:'Arial',sans-serif;font-size:.8rem;color:#5a4a6a;border:1px solid rgba(196,133,106,.15)}
+  .budget-bar{background:rgba(196,133,106,.1);border-radius:8px;padding:1.2rem;display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem}
+  .budget-bar .b-label{font-family:'Arial',sans-serif;font-size:.85rem;color:#5a4a6a}
+  .budget-bar .b-amount{font-size:1.2rem;font-weight:700;color:var(--plum);font-family:'Arial',sans-serif}
+  /* PRODUCT MATRIX */
+  #products{background:linear-gradient(180deg,#ece4f4 0%,var(--cream) 100%)}
+  .product-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(45,31,66,.1)}
+  .product-header{background:linear-gradient(135deg,var(--plum),var(--mauve));padding:1.5rem;color:#fff}
+  .product-header h3{font-size:1rem;margin-bottom:.3rem}
+  .product-header .price{font-size:1.6rem;font-weight:700;color:var(--blush);font-family:'Arial',sans-serif}
+  .product-body{padding:1.5rem}
+  .product-body p{font-family:'Arial',sans-serif;font-size:.85rem;color:#5a4a6a;line-height:1.6;margin-bottom:.8rem}
+  .product-tag{display:inline-block;background:rgba(196,133,106,.12);color:var(--rose);font-size:.72rem;padding:.2rem .7rem;border-radius:10px;margin-right:.3rem;margin-bottom:.3rem;font-family:'Arial',sans-serif}
+  .product-highlight{background:linear-gradient(135deg,var(--dark),var(--plum));color:#fff;padding:1.5rem;border-radius:16px;text-align:center}
+  .product-highlight .ph-price{font-size:2rem;font-weight:700;color:var(--rose);font-family:'Arial',sans-serif}
+  .product-highlight .ph-label{color:var(--blush);font-family:'Arial',sans-serif;font-size:.8rem;margin-top:.3rem}
+  .product-highlight .ph-equiv{color:rgba(255,255,255,.6);font-family:'Arial',sans-serif;font-size:.78rem;margin-top:.5rem}
+  /* RISK */
+  #risks{background:#fff}
+  .risk-card{background:var(--cream);border-radius:14px;padding:1.5rem;border-left:4px solid var(--red);margin-bottom:1rem}
+  .risk-card.medium{border-left-color:var(--gold)}
+  .risk-card.low{border-left-color:var(--green)}
+  .risk-header{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem}
+  .risk-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Arial',sans-serif;font-size:.8rem;flex-shrink:0}
+  .risk-num.high{background:rgba(224,92,92,.15);color:var(--red)}
+  .risk-num.medium{background:rgba(212,168,83,.15);color:#8a6020}
+  .risk-num.low{background:rgba(76,175,130,.15);color:#2d8a5e}
+  .risk-title{color:var(--plum);font-size:.95rem;font-weight:600;font-family:'Arial',sans-serif}
+  .risk-body{display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-family:'Arial',sans-serif;font-size:.85rem}
+  .risk-problem{color:#6a5a7a}
+  .risk-solution{background:#fff;border-radius:8px;padding:.8rem;color:var(--plum);border:1px solid rgba(76,175,130,.2)}
+  .risk-solution strong{color:var(--green);display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.3rem}
+  /* KPI DASHBOARD */
+  #kpi{background:linear-gradient(180deg,#ece4f4 0%,var(--cream) 100%)}
+  .kpi-table-wrap{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(45,31,66,.08);margin-bottom:2rem}
+  .kpi-table-wrap table thead th{background:var(--dark)}
+  .kpi-row-good td:last-child{color:var(--green);font-weight:700}
+  .kpi-row-warn td:last-child{color:var(--gold);font-weight:700}
+  .kpi-row-bad td:last-child{color:var(--red);font-weight:700}
+  .weekly-checklist{background:var(--dark);border-radius:16px;padding:2rem;color:#fff}
+  .weekly-checklist h3{color:var(--rose);margin-bottom:1.5rem;font-size:1.1rem}
+  .checklist-item{display:flex;align-items:flex-start;gap:.8rem;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.07);font-family:'Arial',sans-serif;font-size:.88rem}
+  .checklist-item:last-child{border-bottom:none}
+  .check-icon{width:20px;height:20px;border:2px solid var(--rose);border-radius:4px;flex-shrink:0;margin-top:.1rem}
+  .checklist-item span{color:rgba(255,255,255,.8);line-height:1.5}
+  /* FOOTER */
+  footer{background:var(--dark);padding:3rem 2rem;text-align:center}
+  footer .f-title{color:var(--blush);font-size:1rem;margin-bottom:.5rem}
+  footer .f-sub{color:rgba(255,255,255,.4);font-family:'Arial',sans-serif;font-size:.8rem}
+  /* DIVIDER */
+  .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(196,133,106,.3),transparent);margin:2rem 0}
+  /* HIGHLIGHT TEXT */
+  .highlight{color:var(--rose);font-weight:700}
+  .text-gold{color:var(--gold)}
+  .text-green{color:var(--green)}
+  .text-red{color:var(--red)}
+  /* PILL */
+  .pill{display:inline-block;background:rgba(196,133,106,.12);color:var(--rose);font-family:'Arial',sans-serif;font-size:.75rem;padding:.25rem .8rem;border-radius:20px;border:1px solid rgba(196,133,106,.3)}
+  /* BLOCKQUOTE */
+  blockquote{border-left:3px solid var(--rose);padding:.8rem 1.2rem;background:rgba(196,133,106,.06);border-radius:0 8px 8px 0;margin:1.5rem 0;font-style:italic;color:#5a4a6a;font-size:.95rem}
+  /* NUMBERED LIST */
+  ol.styled{padding-left:1.5rem;font-family:'Arial',sans-serif;font-size:.9rem;color:#5a4a6a;line-height:2}
+  ul.styled{list-style:none;padding:0;font-family:'Arial',sans-serif;font-size:.9rem;color:#5a4a6a}
+  ul.styled li{padding:.35rem 0;padding-left:1.4rem;position:relative;line-height:1.6}
+  ul.styled li::before{content:'→';position:absolute;left:0;color:var(--rose);font-size:.85rem}
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .nav-links{display:none}
+    .hero-stats{grid-template-columns:repeat(2,1fr)}
+    .vs-block{grid-template-columns:1fr;text-align:center}
+    .risk-body{grid-template-columns:1fr}
+    .revenue-row{grid-template-columns:1fr auto}
+    .revenue-row .calc{display:none}
+    #hero{padding:5rem 1.5rem 4rem}
+    section{padding:3.5rem 1.5rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">SecretCoach</div>
+  <div class="nav-links">
+    <a href="#hero">Цель</a>
+    <a href="#audit">Аудит</a>
+    <a href="#problem">Проблема</a>
+    <a href="#decomp">Декомпозиция</a>
+    <a href="#funnel">Воронка</a>
+    <a href="#weekly">Апрель</a>
+    <a href="#may">Май</a>
+    <a href="#traffic">Трафик</a>
+    <a href="#products">Продукты</a>
+    <a href="#risks">Риски</a>
+    <a href="#kpi">KPI</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1 · HERO
+═══════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-tag">Стратегия · Апрель–Май 2026</div>
+    <h1 class="hero-title">
+      Путь к <span>$20,000</span><br>
+      за 8 недель
+    </h1>
+    <p class="hero-subtitle">
+      SecretCoach · онлайн-школа сексологии · эксперт Катя<br>
+      Операционная стратегия и финансовая декомпозиция
+    </p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="val">$20,000</span>
+        <span class="lbl">Цель апрель+май</span>
+      </div>
+      <div class="hero-stat">
+        <span class="val">$7,500</span>
+        <span class="lbl">Апрель (минимум)</span>
+      </div>
+      <div class="hero-stat">
+        <span class="val">$13,000</span>
+        <span class="lbl">Май (масштаб)</span>
+      </div>
+      <div class="hero-stat">
+        <span class="val">7×+</span>
+        <span class="lbl">Целевой ROAS</span>
+      </div>
+      <div class="hero-stat">
+        <span class="val">190€</span>
+        <span class="lbl">Входной продукт</span>
+      </div>
+      <div class="hero-stat">
+        <span class="val">$2.45</span>
+        <span class="lbl">CPA регистрации</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2 · AUDIT
+═══════════════════════════════════════════════ -->
+<section id="audit">
+  <div class="container">
+    <div class="sec-label">Раздел 02 · Аудит</div>
+    <h2 class="sec-title">Что случилось на вебинаре 9 апреля</h2>
+    <p class="sec-desc">Разбор реальных цифр — точка отсчёта для роста. Не провал, а baseline.</p>
+
+    <div class="audit-data">
+      <div class="audit-item">
+        <span class="num">70</span>
+        <span class="desc">Участников вебинара</span>
+      </div>
+      <div class="audit-item warn">
+        <span class="num">2</span>
+        <span class="desc">Продажи на вебинаре</span>
+      </div>
+      <div class="audit-item">
+        <span class="num">380€</span>
+        <span class="desc">Выручка (2×190€)</span>
+      </div>
+      <div class="audit-item">
+        <span class="num">$2.45</span>
+        <span class="desc">CPA регистрации</span>
+      </div>
+      <div class="audit-item warn">
+        <span class="num">2.9%</span>
+        <span class="desc">Конверсия вебинара</span>
+      </div>
+      <div class="audit-item">
+        <span class="num">2.4×</span>
+        <span class="desc">ROAS (факт)</span>
+      </div>
+      <div class="audit-item">
+        <span class="num">$10–17</span>
+        <span class="desc">CPM в кабинете</span>
+      </div>
+      <div class="audit-item good">
+        <span class="num">7×+</span>
+        <span class="desc">ROAS (потенциал)</span>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:2rem">
+      <div class="card card-rose">
+        <h3>Что пошло не так</h3>
+        <p>Конверсия 2.9% при целевом 10% говорит о слабом дожиме, а не о плохом трафике. 70 человек — достаточно для теста модели. Отсутствие 72-часовой follow-up последовательности после вебинара — это потерянные $1,500–2,000.</p>
+        <br>
+        <ul class="styled">
+          <li>Нет системы дожима после вебинара</li>
+          <li>Оффер не доработан (нет urgency/scarcity)</li>
+          <li>Нет downsell-каскада</li>
+          <li>Трафик остановился после вебинара</li>
+        </ul>
+      </div>
+      <div class="card card-green">
+        <h3>Что работает — не трогать</h3>
+        <p>CPA $2.45/регистрация — это отличный результат. При CPM $10–17 это означает высокую кликабельность крео и правильный таргетинг. Модель вебинара подтверждена — нужно масштабировать конверсию внутри воронки.</p>
+        <br>
+        <ul class="styled">
+          <li>Таргетинг работает — Таня держит CPA в норме</li>
+          <li>CPM $10–17 — приемлемо для ниши</li>
+          <li>190€ продукт продаётся с холодного трафика</li>
+          <li>LAL аудитории ещё не тестировались</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="insight-box" style="margin-top:2rem">
+      <h3>Ключевой вывод аудита</h3>
+      <p>Вебинар 9 апреля — это не плохой результат, это <strong>доказательство модели</strong>. При 70 участниках и 2.9% конверсии математика сходится на масштабе 200+ участников и 10% конверсии. Всё, что нужно исправить — это <strong>дожимная система</strong> после вебинара, а не трафик. Трафик уже дешевле нормы.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3 · CORE PROBLEM & INSIGHT
+═══════════════════════════════════════════════ -->
+<section id="problem">
+  <div class="container">
+    <div class="sec-label">Раздел 03 · Инсайт</div>
+    <h2 class="sec-title">Почему мини-курсы убивают бюджет</h2>
+    <p class="sec-desc">Математика не лжёт. Каждая продажа мини-курса с холодного трафика — это гарантированный убыток.</p>
+
+    <div class="vs-block">
+      <div class="math-card">
+        <h3>❌ Мини-курс с холодного трафика</h3>
+        <div class="math-row">
+          <span class="label">Цена продукта</span>
+          <span class="value">380–449 грн (~$9–11)</span>
+        </div>
+        <div class="math-row">
+          <span class="label">CPA (реальный)</span>
+          <span class="value bad">$17–29</span>
+        </div>
+        <div class="math-row">
+          <span class="label">ROAS</span>
+          <span class="value bad">0.38–0.65×</span>
+        </div>
+        <div class="math-row">
+          <span class="label">Убыток на продажу</span>
+          <span class="value bad">-$6 до -$20</span>
+        </div>
+        <div class="math-row" style="border-top:1px solid rgba(224,92,92,.3);margin-top:.5rem">
+          <span class="label">Вердикт</span>
+          <span class="value" style="color:var(--red)">ВСЕГДА УБЫТОК</span>
+        </div>
+      </div>
+
+      <div class="vs-label">VS</div>
+
+      <div class="math-card" style="border:2px solid rgba(76,175,130,.3)">
+        <h3 style="color:var(--green)">✓ Вебинар → Флагман</h3>
+        <div class="math-row">
+          <span class="label">Цена регистрации</span>
+          <span class="value">$2.45</span>
+        </div>
+        <div class="math-row">
+          <span class="label">Конверсия вебинара</span>
+          <span class="value">10% (цель)</span>
+        </div>
+        <div class="math-row">
+          <span class="label">Эффективный CPA сделки</span>
+          <span class="value">$24.50</span>
+        </div>
+        <div class="math-row">
+          <span class="label">Продукт</span>
+          <span class="value">190€ (~$210)</span>
+        </div>
+        <div class="math-row" style="border-top:1px solid rgba(76,175,130,.3);margin-top:.5rem">
+          <span class="label">ROAS</span>
+          <span class="value" style="color:var(--green)">8.6× ✓</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:2rem">
+      <div class="card card-rose">
+        <h3>Правило #1</h3>
+        <p>Мини-курсы работают <strong>только как downsell</strong> после вебинара — для тех, кто не купил флагман. Цена приобретения уже оплачена вебинарной регистрацией.</p>
+      </div>
+      <div class="card card-gold" style="border-left:4px solid var(--gold)">
+        <h3>Правило #2</h3>
+        <p>Единственный прибыльный путь для холодного трафика: <strong>регистрация на вебинар ($2.45) → продажа 190€+</strong>. Всё остальное — только с тёплой аудитории.</p>
+      </div>
+      <div class="card card-green">
+        <h3>Правило #3</h3>
+        <p>RED ROOM $3.9/мес — это <strong>retention, не acquisition</strong>. Не тратить бюджет на привлечение в подписку. Конвертировать покупателей флагмана.</p>
+      </div>
+    </div>
+
+    <blockquote>
+      "При цене регистрации $2.45 и флагмане 190€ — нам нужна конверсия всего 1.2% чтобы выйти в ноль. При 10% — ROAS 8.6×. Задача не в трафике — задача в конверсии вебинара и дожимной системе."
+    </blockquote>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 4 · $20,000 DECOMPOSITION
+═══════════════════════════════════════════════ -->
+<section id="decomp">
+  <div class="container">
+    <div class="sec-label">Раздел 04 · Декомпозиция</div>
+    <h2 class="sec-title">Откуда берутся $20,000</h2>
+    <p class="sec-desc">Каждый рубль расписан. Никаких «надеемся на лучшее» — только конкретные источники с математикой.</p>
+
+    <!-- APRIL BLOCK -->
+    <div class="month-block">
+      <div class="month-header april">
+        <div>
+          <h2>Апрель 2026</h2>
+          <div style="color:rgba(232,197,181,.7);font-family:'Arial',sans-serif;font-size:.85rem;margin-top:.3rem">01–30 апреля · 4 рабочих недели</div>
+        </div>
+        <div class="target">~$8,730</div>
+      </div>
+      <div class="month-body">
+        <div class="revenue-row">
+          <span class="source">Вебинар 9 апреля (факт)</span>
+          <span class="calc">2 × 190€ = ~$420</span>
+          <span class="amount">$410</span>
+        </div>
+        <div class="revenue-row">
+          <span class="source">Вебинар 23 апреля</span>
+          <span class="calc">200 уч. × 10% × 190€</span>
+          <span class="amount">$4,100</span>
+        </div>
+        <div class="revenue-row">
+          <span class="source">72ч дожим после Apr 23</span>
+          <span class="calc">+8 продаж × 190€</span>
+          <span class="amount">$1,650</span>
+        </div>
+        <div class="revenue-row">
+          <span class="source">Downsell мини-курс 39€</span>
+          <span class="calc">40 продаж × 39€</span>
+          <span class="amount">$1,680</span>
+        </div>
+        <div class="revenue-row">
+          <span class="source">RED ROOM подписка</span>
+          <span class="calc">100 подписчиков × $3.9</span>
+          <span class="amount">$390</span>
+        </div>
+        <div class="revenue-row">
+          <span class="source">Блогеры / органика</span>
+          <span class="calc">Коллаборации + соцсети</span>
+          <span class="amount">$500</span>
+        </div>
+        <div class="revenue-total">
+          <span class="t-label">ИТОГО АПРЕЛЬ (прогноз)</span>
+          <span class="t-amount">~$8,730</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:44%"></div></div>
+        <div style="font-family:'Arial',sans-serif;font-size:.75rem;color:#9a8aaa;margin-top:.5rem">44% от общей цели $20,000</div>
+      </div>
+    </div>
+
+    <!-- MAY BLOCK -->
+    <div class="month-block">
+      <div class="month-header may">
+        <div>
+          <h2>Май 2026</h2>
+          <div style="color:rgba(232,197,181,.7);font-family:'Arial',sans-serif;font-size:.85rem;margin-top:.3rem">01–31 мая · Масштабирование</div>
+        </div>
+        <div class="target">~$17,520</div>
+      </div>
+      <div class="month-body">
+        <div class="revenue-row">
+          <span class="source">2 вебинара (300 уч. каждый)</span>
+          <span class="calc">600 уч. × 12% × avg 220€</span>
+          <span class="amount">$7,920</span>
+        </div>
+        <div class="revenue-row">
+          <span class="source">VSL-воронка (автоматизация)</span>
+          <span class="calc">20 продаж × 190€</span>
+          <span class="amount">$4,100</span>
+        </div>
+        <div class="revenue-row">
+          <span class="source">RED ROOM подписка</span>
+          <span class="calc">300 подписчиков × $3.9</span>
+          <span class="amount">$1,170</span>
+        </div>
+        <div class="revenue-row">
+          <span class="source">Downsell 39€</span>
+          <span class="calc">60 продаж × 39€</span>
+          <span class="amount">$2,530</span>
+        </div>
+        <div class="revenue-row">
+          <span class="source">Коллаборации с блогерами</span>
+          <span class="calc">5+ партнёров</span>
+          <span class="amount">$1,800</span>
+        </div>
+        <div class="revenue-total">
+          <span class="t-label">ИТОГО МАЙ (прогноз)</span>
+          <span class="t-amount">~$17,520</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+        <div style="font-family:'Arial',sans-serif;font-size:.75rem;color:#9a8aaa;margin-top:.5rem">88% от общей цели — совокупно с апрелем</div>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div style="background:linear-gradient(135deg,var(--dark),var(--plum));border-radius:16px;padding:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;text-align:center">
+      <div>
+        <div style="color:var(--rose);font-size:2rem;font-weight:700;font-family:'Arial',sans-serif">$26,250</div>
+        <div style="color:var(--blush);font-family:'Arial',sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;margin-top:.3rem">Оптимистичный сценарий</div>
+      </div>
+      <div>
+        <div style="color:var(--gold);font-size:2rem;font-weight:700;font-family:'Arial',sans-serif">$20,000</div>
+        <div style="color:var(--blush);font-family:'Arial',sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;margin-top:.3rem">Консервативная цель</div>
+      </div>
+      <div>
+        <div style="color:#fff;font-size:2rem;font-weight:700;font-family:'Arial',sans-serif">76%</div>
+        <div style="color:var(--blush);font-family:'Arial',sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;margin-top:.3rem">Процент достижения $20k</div>
+      </div>
+      <div>
+        <div style="color:var(--green);font-size:2rem;font-weight:700;font-family:'Arial',sans-serif">$1,700</div>
+        <div style="color:var(--blush);font-family:'Arial',sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;margin-top:.3rem">Рекламный бюджет</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 5 · FUNNEL ARCHITECTURE
+═══════════════════════════════════════════════ -->
+<section id="funnel">
+  <div class="container">
+    <div class="sec-label">Раздел 05 · Воронка</div>
+    <h2 class="sec-title">Архитектура выигрышной воронки</h2>
+    <p class="sec-desc">Один путь. Один механизм. Максимальный ROI на каждом этапе.</p>
+
+    <div class="grid-2" style="align-items:start">
+      <div>
+        <div class="funnel-viz">
+          <div class="funnel-step">
+            <div class="funnel-bar f1">
+              <span class="f-label">Холодный трафик (Facebook/Instagram)</span>
+              <span class="f-cost">$500–700/мес</span>
+            </div>
+          </div>
+          <div class="funnel-arrow">↓</div>
+          <div class="funnel-step">
+            <div class="funnel-bar f2">
+              <span class="f-label">Регистрация на вебинар</span>
+              <span class="f-cost">$2.45/рег</span>
+            </div>
+          </div>
+          <div class="funnel-arrow">↓</div>
+          <div class="funnel-step">
+            <div class="funnel-bar f3">
+              <span class="f-label">Посещение вебинара (~60%)</span>
+              <span class="f-cost">$4.08/уч</span>
+            </div>
+          </div>
+          <div class="funnel-arrow">↓</div>
+          <div class="funnel-step">
+            <div class="funnel-bar f4">
+              <span class="f-label">Продажа на вебинаре (10%)</span>
+              <span class="f-cost">190–290€</span>
+            </div>
+          </div>
+          <div class="funnel-arrow">↓</div>
+          <div class="funnel-step">
+            <div class="funnel-bar f5">
+              <span class="f-label">Дожим 72ч + Downsell</span>
+              <span class="f-cost">+25% выручки</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card card-rose" style="margin-bottom:1rem">
+          <h3>Математика воронки (цель Apr 23)</h3>
+          <div class="math-row" style="border-bottom:1px solid rgba(196,133,106,.15);padding:.5rem 0;font-family:'Arial',sans-serif;font-size:.85rem">
+            <span style="color:#5a4a6a">Рекламный бюджет</span>
+            <span style="color:var(--plum);font-weight:700">$490</span>
+          </div>
+          <div class="math-row" style="border-bottom:1px solid rgba(196,133,106,.15);padding:.5rem 0;font-family:'Arial',sans-serif;font-size:.85rem">
+            <span style="color:#5a4a6a">Регистраций ($490÷$2.45)</span>
+            <span style="color:var(--plum);font-weight:700">200</span>
+          </div>
+          <div class="math-row" style="border-bottom:1px solid rgba(196,133,106,.15);padding:.5rem 0;font-family:'Arial',sans-serif;font-size:.85rem">
+            <span style="color:#5a4a6a">Посетителей вебинара (60%)</span>
+            <span style="color:var(--plum);font-weight:700">120</span>
+          </div>
+          <div class="math-row" style="border-bottom:1px solid rgba(196,133,106,.15);padding:.5rem 0;font-family:'Arial',sans-serif;font-size:.85rem">
+            <span style="color:#5a4a6a">Продаж на вебинаре (10%)</span>
+            <span style="color:var(--rose);font-weight:700">12–20</span>
+          </div>
+          <div class="math-row" style="padding:.5rem 0;font-family:'Arial',sans-serif;font-size:.85rem">
+            <span style="color:#5a4a6a">Выручка (190€ avg)</span>
+            <span style="color:var(--green);font-weight:700">$2,500–4,200</span>
+          </div>
+        </div>
+
+        <div class="roas-box">
+          <span class="roas-num">7–8.6×</span>
+          <span class="roas-lbl">Целевой ROAS воронки</span>
+          <div style="color:rgba(255,255,255,.5);font-family:'Arial',sans-serif;font-size:.78rem;margin-top:.8rem">Текущий факт: 2.4× → Нужно: 10% конверсия вебинара</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3 style="color:var(--plum);margin-bottom:1.5rem">Дожимная система (72 часа после вебинара)</h3>
+    <div class="grid-4">
+      <div class="card" style="text-align:center">
+        <div style="font-size:1.5rem;margin-bottom:.5rem">H+0</div>
+        <h3 style="font-size:.9rem">Email/сообщение</h3>
+        <p>«Спасибо за участие» + ссылка на запись + специальный оффер 24ч</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:1.5rem;margin-bottom:.5rem">H+6</div>
+        <h3 style="font-size:.9rem">Напоминание</h3>
+        <p>Кейс студента + обработка возражения «слишком дорого»</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:1.5rem;margin-bottom:.5rem">H+24</div>
+        <h3 style="font-size:.9rem">Urgency push</h3>
+        <p>«Осталось 12 часов по специальной цене» + бонус</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:1.5rem;margin-bottom:.5rem">H+48</div>
+        <h3 style="font-size:.9rem">Downsell</h3>
+        <p>Мини-курс 39€ для тех, кто не купил флагман — последний шанс</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 6 · APRIL WEEK-BY-WEEK PLAN
+═══════════════════════════════════════════════ -->
+<section id="weekly">
+  <div class="container">
+    <div class="sec-label">Раздел 06 · Апрель</div>
+    <h2 class="sec-title">Апрель: неделя за неделей</h2>
+    <p class="sec-desc">Конкретные задачи для каждого члена команды. Никаких размытых формулировок.</p>
+
+    <div style="overflow-x:auto;border-radius:12px;box-shadow:0 4px 20px rgba(45,31,66,.08)">
+      <table>
+        <thead>
+          <tr>
+            <th>Неделя</th>
+            <th>Фокус</th>
+            <th>Таня (таргетинг)</th>
+            <th>Контент/Дизайн</th>
+            <th>Катя (эксперт)</th>
+            <th>KPI недели</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Нед. 1<br><span style="font-weight:400;color:#9a8aaa;font-size:.78rem">8–14 апр</span></td>
+            <td><span class="badge badge-rose">Фундамент</span><br>Починить систему дожима, подготовка к Apr 23</td>
+            <td>Запустить кампанию на регистрацию Apr 23 (cold+LAL). Бюджет $200. Тест 3 новых крео.</td>
+            <td>5 Reels в производстве. Лендинг регистрации вебинара (проверить конверсию). Шаблон email-серии.</td>
+            <td>Запись 5 Reels (1 день). Написание продающего блока для вебинара. Outreach 10 блогерам.</td>
+            <td><span class="badge badge-plum">200 рег</span><br><span class="badge badge-green">$2.50 CPA</span></td>
+          </tr>
+          <tr>
+            <td>Нед. 2<br><span style="font-weight:400;color:#9a8aaa;font-size:.78rem">15–21 апр</span></td>
+            <td><span class="badge badge-gold">Прогрев</span><br>Разогрев аудитории, блогеры в эфир</td>
+            <td>Масштаб на лучший крео из нед.1. Запуск ретаргета на тех, кто смотрел 50%+ видео. Оптимизация LAL.</td>
+            <td>5 Reels опубликовать. 3 запуска коллаборации с блогерами. Черновик VSL-лендинга.</td>
+            <td>Выход у 2–3 блогеров (прямой эфир/сторис). Анонс вебинара в своих соцсетях ×3.</td>
+            <td><span class="badge badge-plum">200 рег</span><br><span class="badge badge-rose">3 блогера</span></td>
+          </tr>
+          <tr>
+            <td>Нед. 3<br><span style="font-weight:400;color:#9a8aaa;font-size:.78rem">22–28 апр</span></td>
+            <td><span class="badge badge-rose">ВЕБИНАР</span><br>Апрель 23 — главное событие</td>
+            <td>Push-кампания в день вебинара (reminder). Ретаргет на зарег. не пришедших. Контроль CPM.</td>
+            <td>Все материалы к вебинару готовы. Email 72ч серия активна. Дизайн downsell-страницы.</td>
+            <td>Вебинар 23 апреля (2–3ч). Продающий блок 45 мин. Ответы в чате. Запись для дожима.</td>
+            <td><span class="badge badge-green">200 уч.</span><br><span class="badge badge-gold">10% conv.</span></td>
+          </tr>
+          <tr>
+            <td>Нед. 4<br><span style="font-weight:400;color:#9a8aaa;font-size:.78rem">29 апр+</span></td>
+            <td><span class="badge badge-plum">Анализ</span><br>Разбор результатов, подготовка мая</td>
+            <td>Анализ кампаний: что дало ROAS 7×+. Документировать winning creo. Стратегия бюджета мая.</td>
+            <td>Finalize VSL лендинг. Контент-план мая (10 Reels, 2 вебинара). Дизайн VIP 790€ блока.</td>
+            <td>Разбор аналитики с командой. Запись материалов для мая (1 день batch). Идеи блогеров мая.</td>
+            <td><span class="badge badge-rose">Апрель итог</span><br><span class="badge badge-plum">Май план</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-2" style="margin-top:2rem">
+      <div class="card card-rose">
+        <h3>Приоритеты апреля (TOP-3)</h3>
+        <ol class="styled" style="padding-left:1.5rem;margin-top:.5rem">
+          <li><strong>200 регистраций</strong> на вебинар Apr 23 при CPA &lt;$3</li>
+          <li><strong>Запустить 72ч email-серию</strong> с дожимом и downsell</li>
+          <li><strong>Выйти у 3+ блогеров</strong> для органического охвата</li>
+        </ol>
+      </div>
+      <div class="card card-plum">
+        <h3>Командные встречи</h3>
+        <ul class="styled" style="margin-top:.5rem">
+          <li>Понедельник 10:00 — недельный брифинг (30 мин)</li>
+          <li>Среда — промежуточная сверка по KPI (15 мин)</li>
+          <li>Пятница — итоги недели + план следующей (45 мин)</li>
+          <li>Послевебинарный разбор — в течение 24ч</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 7 · MAY SCALE PLAN
+═══════════════════════════════════════════════ -->
+<section id="may">
+  <div class="container">
+    <div class="sec-label">Раздел 07 · Масштаб</div>
+    <h2 class="sec-title">Май: удваиваем всё что работает</h2>
+    <p class="sec-desc">Апрель — тест. Май — масштаб. Только то, что показало ROAS 5×+ в апреле.</p>
+
+    <div class="scale-grid">
+      <div class="scale-card">
+        <div class="sc-icon">📅</div>
+        <h3>2 вебинара в месяц</h3>
+        <p>Май 7 и Май 21. По 300 участников каждый. Конверсия 12%+ (улучшенный оффер после апреля).</p>
+        <span class="sc-kpi">300 × 12% × 220€ = $3,960/вебинар</span>
+      </div>
+      <div class="scale-card">
+        <div class="sc-icon">🎬</div>
+        <h3>VSL автоматическая воронка</h3>
+        <p>Видео-письмо 20–30 мин → продажа 190€ без живого вебинара. Запускается в VSL-лендинг параллельно.</p>
+        <span class="sc-kpi">Цель: 20 продаж = $4,100</span>
+      </div>
+      <div class="scale-card">
+        <div class="sc-icon">🤝</div>
+        <h3>5+ блогерских коллабораций</h3>
+        <p>Обмен аудиториями, совместные эфиры, CPA-партнёрство. Минимум 15 в пайплайне на случай отказов.</p>
+        <span class="sc-kpi">Прогноз: $1,800 с коллабов</span>
+      </div>
+      <div class="scale-card">
+        <div class="sc-icon">💎</div>
+        <h3>VIP 790€ апселл фокус</h3>
+        <p>1 VIP продажа = 4 продажи «Самостоятельного». Выделить VIP в отдельный продающий блок на вебинаре.</p>
+        <span class="sc-kpi">5 VIP × 790€ = $4,350</span>
+      </div>
+      <div class="scale-card">
+        <div class="sc-icon">🔴</div>
+        <h3>RED ROOM: 300 подписчиков</h3>
+        <p>Конвертировать покупателей флагмана в подписку. Email-серия после покупки. Не тратить холодный бюджет.</p>
+        <span class="sc-kpi">300 × $3.9 = $1,170/мес</span>
+      </div>
+      <div class="scale-card">
+        <div class="sc-icon">📊</div>
+        <h3>Удвоение рекламного бюджета</h3>
+        <p>С $500–700 до $1,200–1,500. Только после подтверждения ROAS 7×+ в апреле. Без подтверждения — не масштабировать.</p>
+        <span class="sc-kpi">Бюджет мая: $1,200–1,500</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3 style="color:var(--plum);margin-bottom:1.5rem">May Target vs. April Baseline</h3>
+    <div style="overflow-x:auto;border-radius:12px;box-shadow:0 4px 20px rgba(45,31,66,.08)">
+      <table>
+        <thead>
+          <tr>
+            <th>Метрика</th>
+            <th>Апрель (факт/цель)</th>
+            <th>Май (цель)</th>
+            <th>Рост</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Вебинаров в месяц</td>
+            <td>1 (Apr 23)</td>
+            <td>2 (May 7 + 21)</td>
+            <td><span class="badge badge-green">+100%</span></td>
+          </tr>
+          <tr>
+            <td>Участников вебинара</td>
+            <td>200</td>
+            <td>600 (300×2)</td>
+            <td><span class="badge badge-green">+200%</span></td>
+          </tr>
+          <tr>
+            <td>Конверсия вебинара</td>
+            <td>10%</td>
+            <td>12%</td>
+            <td><span class="badge badge-green">+20%</span></td>
+          </tr>
+          <tr>
+            <td>Avg. чек</td>
+            <td>190€</td>
+            <td>220€ (с VIP mix)</td>
+            <td><span class="badge badge-rose">+16%</span></td>
+          </tr>
+          <tr>
+            <td>RED ROOM подписчики</td>
+            <td>100</td>
+            <td>300</td>
+            <td><span class="badge badge-green">+200%</span></td>
+          </tr>
+          <tr>
+            <td>Рекламный бюджет</td>
+            <td>$500–700</td>
+            <td>$1,200–1,500</td>
+            <td><span class="badge badge-rose">+115%</span></td>
+          </tr>
+          <tr>
+            <td>Выручка</td>
+            <td>~$8,730</td>
+            <td>~$17,520</td>
+            <td><span class="badge badge-green">+101%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 8 · TRAFFIC STRATEGY
+═══════════════════════════════════════════════ -->
+<section id="traffic">
+  <div class="container">
+    <div class="sec-label">Раздел 08 · Трафик</div>
+    <h2 class="sec-title">Трафиковая стратегия</h2>
+    <p class="sec-desc">4 платные кампании + блогеры + органика. Каждая со своим KPI и бюджетом.</p>
+
+    <div style="margin-bottom:2rem">
+
+      <div class="campaign-card">
+        <div class="campaign-header">
+          <div>
+            <h3>Кампания 1 · Регистрация на вебинар (Cold + LAL)</h3>
+            <div style="color:#7a6a8a;font-family:'Arial',sans-serif;font-size:.82rem;margin-top:.3rem">Основной источник новых регистраций. Самая важная кампания.</div>
+          </div>
+          <span class="campaign-kpi">KPI &lt;$5/рег</span>
+        </div>
+        <div style="font-family:'Arial',sans-serif;font-size:.85rem;color:#5a4a6a;line-height:1.7">
+          Аудитории: холодные (интересы: сексология, отношения, психология, женское здоровье) + LAL 1–2% от базы покупателей. Цель: CPA $2.45–3.00/рег. Тест 3 крео в неделю.
+        </div>
+        <div class="campaign-details">
+          <span class="campaign-detail">📍 Facebook + Instagram</span>
+          <span class="campaign-detail">🎯 Женщины 25–45</span>
+          <span class="campaign-detail">💰 Апрель: $300</span>
+          <span class="campaign-detail">📊 Цель: 100+ рег/нед</span>
+          <span class="campaign-detail">🎨 3 крео/неделя</span>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="campaign-header">
+          <div>
+            <h3>Кампания 2 · Ретаргет некупивших (после вебинара)</h3>
+            <div style="color:#7a6a8a;font-family:'Arial',sans-serif;font-size:.82rem;margin-top:.3rem">Горячая аудитория — участники вебинара, не купившие на вебинаре.</div>
+          </div>
+          <span class="campaign-kpi">KPI &lt;$15/продажа</span>
+        </div>
+        <div style="font-family:'Arial',sans-serif;font-size:.85rem;color:#5a4a6a;line-height:1.7">
+          Запускается сразу после вебинара. Показывает кейсы студентов, обработку возражений, urgency (осталось X мест). Работает 72 часа параллельно email-серии.
+        </div>
+        <div class="campaign-details">
+          <span class="campaign-detail">🔥 Горячая аудитория</span>
+          <span class="campaign-detail">⏱️ 72 часа активна</span>
+          <span class="campaign-detail">💰 $50–80/вебинар</span>
+          <span class="campaign-detail">📊 Цель: 8+ продаж</span>
+          <span class="campaign-detail">🎨 Кейс + возражения</span>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="campaign-header">
+          <div>
+            <h3>Кампания 3 · LAL покупателей</h3>
+            <div style="color:#7a6a8a;font-family:'Arial',sans-serif;font-size:.82rem;margin-top:.3rem">Расширение аудитории похожей на покупателей — самое качественное расширение.</div>
+          </div>
+          <span class="campaign-kpi">KPI &lt;$8/рег</span>
+        </div>
+        <div style="font-family:'Arial',sans-serif;font-size:.85rem;color:#5a4a6a;line-height:1.7">
+          LAL 1–3% от базы всех покупателей флагмана. Если база &lt;1000 — использовать LAL из email-листа. Обычно показывает CPA на 30–40% лучше холодных аудиторий.
+        </div>
+        <div class="campaign-details">
+          <span class="campaign-detail">👥 LAL 1–3%</span>
+          <span class="campaign-detail">📦 База покупателей</span>
+          <span class="campaign-detail">💰 $100–150/мес</span>
+          <span class="campaign-detail">📊 Цель: 50+ рег/мес</span>
+          <span class="campaign-detail">🎨 Тот же крео что кампания 1</span>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="campaign-header">
+          <div>
+            <h3>Кампания 4 · Ретаргет Video 50%+ просмотров</h3>
+            <div style="color:#7a6a8a;font-family:'Arial',sans-serif;font-size:.82rem;margin-top:.3rem">Тёплая аудитория, которая смотрела Reels/видео до половины — уже знакома с экспертом.</div>
+          </div>
+          <span class="campaign-kpi">KPI &lt;$3/клик</span>
+        </div>
+        <div style="font-family:'Arial',sans-serif;font-size:.85rem;color:#5a4a6a;line-height:1.7">
+          Аудитория: 50–100% просмотр видео за последние 30 дней. Показывает регистрационный оффер. Дешёвый трафик — эти люди уже "прогреты" контентом.
+        </div>
+        <div class="campaign-details">
+          <span class="campaign-detail">📹 Video engagers</span>
+          <span class="campaign-detail">🌡️ Тёплая аудитория</span>
+          <span class="campaign-detail">💰 $50–100/мес</span>
+          <span class="campaign-detail">📊 Цель: $1.5–2.5/клик</span>
+          <span class="campaign-detail">🎨 Прямой оффер вебинара</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <h3 style="color:var(--plum);margin-bottom:1.5rem">Блогеры и органика</h3>
+    <div class="grid-2">
+      <div class="card card-rose">
+        <h3>Стратегия блогерских коллабораций</h3>
+        <ul class="styled" style="margin-top:.8rem">
+          <li>15+ блогеров в пайплайне (страхование от no-show)</li>
+          <li>Форматы: совместный эфир, гостевой Reels, CPA-партнёрство</li>
+          <li>Аудитория блогера: 10K–200K (нишевые &gt; массовые)</li>
+          <li>Ниши: отношения, психология, женское здоровье, self-care</li>
+          <li>Отбор: ER &gt;3%, аудитория 25–45 женщины, СНГ</li>
+          <li>Апрель: 3 активных коллаба → Май: 5+ коллабов</li>
+        </ul>
+      </div>
+      <div class="card card-plum">
+        <h3>Органический контент (Reels)</h3>
+        <ul class="styled" style="margin-top:.8rem">
+          <li>5 Reels в неделю — обязательный минимум</li>
+          <li>Съёмка батчем: 1 день в неделю = 5–7 Reels</li>
+          <li>Форматы: топ-3 совета, развенчание мифа, личная история</li>
+          <li>Каждый Reels ведёт на регистрацию вебинара (ссылка в шапке)</li>
+          <li>Лучшие Reels усилить рекламным бюджетом (кампания 4)</li>
+          <li>Telegram: 2 поста в неделю + анонс вебинара</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1.5rem">
+      <div class="budget-bar">
+        <div>
+          <div class="b-label">Бюджет Апрель</div>
+          <div style="font-family:'Arial',sans-serif;font-size:.75rem;color:#9a8aaa">Распределение по кампаниям</div>
+        </div>
+        <div class="b-amount">$500–700</div>
+      </div>
+      <div class="budget-bar">
+        <div>
+          <div class="b-label">Бюджет Май</div>
+          <div style="font-family:'Arial',sans-serif;font-size:.75rem;color:#9a8aaa">×2 после подтверждения ROAS</div>
+        </div>
+        <div class="b-amount">$1,200–1,500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 9 · PRODUCT MATRIX
+═══════════════════════════════════════════════ -->
+<section id="products">
+  <div class="container">
+    <div class="sec-label">Раздел 09 · Продукты</div>
+    <h2 class="sec-title">Продуктовая матрица</h2>
+    <p class="sec-desc">Правильная роль каждого продукта — ключ к прибыльной воронке.</p>
+
+    <div class="grid-3" style="margin-bottom:2rem">
+
+      <div class="product-card">
+        <div class="product-header">
+          <h3>Мини-курсы</h3>
+          <div class="price">380–449 грн</div>
+          <div style="color:rgba(232,197,181,.6);font-family:'Arial',sans-serif;font-size:.75rem;margin-top:.3rem">~$9–11 USD</div>
+        </div>
+        <div class="product-body">
+          <p>Только как downsell после вебинара. Никогда — с холодного трафика.</p>
+          <span class="product-tag">Downsell</span>
+          <span class="product-tag">Тёплая база</span>
+          <span class="product-tag">Email-серия</span>
+          <div style="margin-top:1rem;padding:.8rem;background:rgba(224,92,92,.06);border-radius:8px;font-family:'Arial',sans-serif;font-size:.8rem;color:var(--red)">
+            ⚠️ CPA $17–29 &gt; цена продукта. Холодный трафик = убыток.
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" style="border:2px solid var(--rose)">
+        <div class="product-header" style="background:linear-gradient(135deg,var(--rose),#d4956a)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <h3>Искусство женского наслаждения</h3>
+            <span style="background:rgba(255,255,255,.2);color:#fff;font-size:.7rem;padding:.2rem .6rem;border-radius:10px;font-family:'Arial',sans-serif">ФЛАГМАН</span>
+          </div>
+          <div class="price">190€ / 290€ / 790€</div>
+          <div style="color:rgba(255,255,255,.7);font-family:'Arial',sans-serif;font-size:.75rem;margin-top:.3rem">Самостоятельный / С поддержкой / VIP</div>
+        </div>
+        <div class="product-body">
+          <p>Основной продукт. Продаётся на вебинаре. 3 ценовых уровня под разные сегменты.</p>
+          <span class="product-tag">Основной источник выручки</span>
+          <span class="product-tag">Живой вебинар</span>
+          <span class="product-tag">VSL-воронка (май)</span>
+          <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;text-align:center">
+            <div style="background:rgba(196,133,106,.1);border-radius:8px;padding:.6rem">
+              <div style="color:var(--rose);font-weight:700;font-family:'Arial',sans-serif">190€</div>
+              <div style="color:#7a6a8a;font-size:.72rem;font-family:'Arial',sans-serif">Самост.</div>
+            </div>
+            <div style="background:rgba(196,133,106,.15);border-radius:8px;padding:.6rem">
+              <div style="color:var(--rose);font-weight:700;font-family:'Arial',sans-serif">290€</div>
+              <div style="color:#7a6a8a;font-size:.72rem;font-family:'Arial',sans-serif">С поддерж.</div>
+            </div>
+            <div style="background:linear-gradient(135deg,rgba(212,168,83,.15),rgba(196,133,106,.1));border-radius:8px;padding:.6rem">
+              <div style="color:var(--gold);font-weight:700;font-family:'Arial',sans-serif">790€</div>
+              <div style="color:#7a6a8a;font-size:.72rem;font-family:'Arial',sans-serif">VIP</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-header" style="background:linear-gradient(135deg,#1a1030,#2d1f42)">
+          <h3>RED ROOM</h3>
+          <div class="price">$3.9/мес</div>
+          <div style="color:rgba(232,197,181,.6);font-family:'Arial',sans-serif;font-size:.75rem;margin-top:.3rem">Ежемесячная подписка</div>
+        </div>
+        <div class="product-body">
+          <p>Retention-продукт для покупателей флагмана. Не тратить холодный бюджет на привлечение.</p>
+          <span class="product-tag">Retention</span>
+          <span class="product-tag">После покупки флагмана</span>
+          <span class="product-tag">MRR</span>
+          <div style="margin-top:1rem;padding:.8rem;background:rgba(45,31,66,.06);border-radius:8px;font-family:'Arial',sans-serif;font-size:.8rem;color:var(--mauve)">
+            100 подписчиков апрель → 300 подписчиков май = $1,170 MRR
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+      <div class="product-highlight">
+        <div class="ph-price">790€</div>
+        <div class="ph-label">VIP — главный фокус мая</div>
+        <div class="ph-equiv">1 VIP продажа = 4× «Самостоятельный»</div>
+      </div>
+      <div class="product-highlight" style="background:linear-gradient(135deg,rgba(196,133,106,.3),rgba(212,168,83,.2));border:1px solid rgba(196,133,106,.3)">
+        <div class="ph-price" style="color:var(--gold)">39€</div>
+        <div class="ph-label">Downsell — только после вебинара</div>
+        <div class="ph-equiv">Цель: 40 продаж апрель = $1,680</div>
+      </div>
+      <div class="product-highlight" style="background:linear-gradient(135deg,rgba(45,31,66,.8),rgba(30,20,40,.9))">
+        <div class="ph-price" style="color:var(--green)">3.9×12=$46.8</div>
+        <div class="ph-label">RED ROOM — годовая LTV</div>
+        <div class="ph-equiv">300 подписчиков = $1,170/мес MRR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 10 · RISK MAP
+═══════════════════════════════════════════════ -->
+<section id="risks">
+  <div class="container">
+    <div class="sec-label">Раздел 10 · Риски</div>
+    <h2 class="sec-title">Карта рисков и решений</h2>
+    <p class="sec-desc">Каждый риск предусмотрен. Каждое решение — конкретное действие, а не «надо постараться».</p>
+
+    <div class="risk-card">
+      <div class="risk-header">
+        <div class="risk-num high">01</div>
+        <div class="risk-title">Низкая явка на вебинар (&lt;100 человек)</div>
+        <span class="badge badge-rose">ВЫСОКИЙ</span>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <strong style="color:var(--red);font-size:.8rem;display:block;margin-bottom:.3rem">ПРОБЛЕМА</strong>
+          Если придёт меньше 100 человек — выручка упадёт в 2 раза. При 2.9% конверсии и 70 участниках = только 2 продажи (что и произошло 9 апреля).
+        </div>
+        <div class="risk-solution">
+          <strong>РЕШЕНИЕ</strong>
+          Диверсификация источников: платный трафик + органика (Reels) + блогеры + Telegram. Напоминания регистрантам за 24ч, 2ч, 30 мин до старта. Цель — 200+ регистраций при 60% явке = 120+ участников.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-card">
+      <div class="risk-header">
+        <div class="risk-num high">02</div>
+        <div class="risk-title">Конверсия вебинара &lt;8% (не достигает цели)</div>
+        <span class="badge badge-rose">ВЫСОКИЙ</span>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <strong style="color:var(--red);font-size:.8rem;display:block;margin-bottom:.3rem">ПРОБЛЕМА</strong>
+          При конверсии 5% и 200 участниках = 10 продаж × 190€ = $2,100. Цель апреля под угрозой, недостача ~$2,000.
+        </div>
+        <div class="risk-solution">
+          <strong>РЕШЕНИЕ</strong>
+          Улучшить продающий блок вебинара: усилить оффер (бонусы, гарантия), добавить urgency (только 20 мест), проработать возражения. Запустить 72ч дожимную систему — она добавит +25% к выручке вебинара.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-card medium">
+      <div class="risk-header">
+        <div class="risk-num medium">03</div>
+        <div class="risk-title">Таргетинг не попадает в аудиторию / CPA растёт</div>
+        <span class="badge badge-gold">СРЕДНИЙ</span>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <strong style="color:#8a6020;font-size:.8rem;display:block;margin-bottom:.3rem">ПРОБЛЕМА</strong>
+          Если CPA/регистрация вырастет с $2.45 до $5+ — бюджет апреля не хватит на 200 регистраций. ROAS упадёт.
+        </div>
+        <div class="risk-solution">
+          <strong>РЕШЕНИЕ</strong>
+          Еженедельный отчёт Тани по KPI (по четвергам). Тест минимум 3 новых крео в неделю. При CPA &gt;$4 — немедленное A/B тестирование оффера и аудитории. Запасной план: усилить органику.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-card medium">
+      <div class="risk-header">
+        <div class="risk-num medium">04</div>
+        <div class="risk-title">Катя перегружена — контент не выходит вовремя</div>
+        <span class="badge badge-gold">СРЕДНИЙ</span>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <strong style="color:#8a6020;font-size:.8rem;display:block;margin-bottom:.3rem">ПРОБЛЕМА</strong>
+          5 Reels в неделю + вебинар + ответы подписчикам + блогеры. Если Катя заболевает или выгорает — весь контент-план рушится.
+        </div>
+        <div class="risk-solution">
+          <strong>РЕШЕНИЕ</strong>
+          Batch-съёмка: 1 фиксированный день в неделю (напр. воскресенье) = 5–7 Reels. Продюсер отвечает за организацию съёмки. Заготовить буфер — 2-недельный запас контента. Ограничить коммуникацию с подписчиками — только 30 мин/день.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-card low">
+      <div class="risk-header">
+        <div class="risk-num low">05</div>
+        <div class="risk-title">RED ROOM не конвертируется в подписку</div>
+        <span class="badge badge-green">НИЗКИЙ</span>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <strong style="color:#2d8a5e;font-size:.8rem;display:block;margin-bottom:.3rem">ПРОБЛЕМА</strong>
+          Если на RED ROOM подпишется &lt;50 человек — $390 цели нет. Небольшая потеря, но означает слабый retention.
+        </div>
+        <div class="risk-solution">
+          <strong>РЕШЕНИЕ</strong>
+          Лечить как бонус к основной выручке. Не тратить холодный бюджет. Конвертировать покупателей флагмана через автоматическое письмо (H+2 после покупки). Цель минимум: 50 → 100 подписчиков к маю.
+        </div>
+      </div>
+    </div>
+
+    <div class="risk-card low">
+      <div class="risk-header">
+        <div class="risk-num low">06</div>
+        <div class="risk-title">Блогеры не выходят / отменяют коллаборацию</div>
+        <span class="badge badge-green">НИЗКИЙ</span>
+      </div>
+      <div class="risk-body">
+        <div class="risk-problem">
+          <strong style="color:#2d8a5e;font-size:.8rem;display:block;margin-bottom:.3rem">ПРОБЛЕМА</strong>
+          No-show rate у блогеров 30–50%. Если 3 из 5 отменят — потери по органическому охвату и $500 выручки апреля.
+        </div>
+        <div class="risk-solution">
+          <strong>РЕШЕНИЕ</strong>
+          Держать 15+ блогеров в пайплайне. При 50% no-show — 7–8 активных коллабораций. Выходить на блогеров за 3 недели (не за 3 дня). Простой CPA-формат без предоплаты снижает риск отказа.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 11 · KPI DASHBOARD
+═══════════════════════════════════════════════ -->
+<section id="kpi">
+  <div class="container">
+    <div class="sec-label">Раздел 11 · KPI</div>
+    <h2 class="sec-title">KPI Dashboard</h2>
+    <p class="sec-desc">Еженедельный контроль. Если цифра красная — исправляем немедленно, не ждём конца месяца.</p>
+
+    <div class="kpi-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Метрика</th>
+            <th>Ответственный</th>
+            <th>Цель (апрель)</th>
+            <th>Цель (май)</th>
+            <th>Статус</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="kpi-row-good">
+            <td>CPA регистрации на вебинар</td>
+            <td>Таня</td>
+            <td>&lt;$3.00</td>
+            <td>&lt;$2.50</td>
+            <td>Отслеживать</td>
+          </tr>
+          <tr class="kpi-row-warn">
+            <td>Явка на вебинар (%)</td>
+            <td>Продюсер + Таня</td>
+            <td>&gt;55%</td>
+            <td>&gt;60%</td>
+            <td>Оптимизировать</td>
+          </tr>
+          <tr class="kpi-row-bad">
+            <td>Конверсия вебинара</td>
+            <td>Катя</td>
+            <td>&gt;10%</td>
+            <td>&gt;12%</td>
+            <td>Критично — 2.9% факт</td>
+          </tr>
+          <tr class="kpi-row-warn">
+            <td>ROAS рекламных кампаний</td>
+            <td>Таня</td>
+            <td>&gt;5×</td>
+            <td>&gt;7×</td>
+            <td>2.4× сейчас</td>
+          </tr>
+          <tr class="kpi-row-good">
+            <td>CPM (Facebook/Instagram)</td>
+            <td>Таня</td>
+            <td>$10–17</td>
+            <td>$10–20</td>
+            <td>В норме</td>
+          </tr>
+          <tr class="kpi-row-warn">
+            <td>Выручка с 72ч дожима</td>
+            <td>Контент + Катя</td>
+            <td>&gt;$1,500</td>
+            <td>&gt;$2,000</td>
+            <td>Система не запущена</td>
+          </tr>
+          <tr class="kpi-row-warn">
+            <td>Downsell конверсия</td>
+            <td>Продюсер</td>
+            <td>&gt;20% от некупивших</td>
+            <td>&gt;25%</td>
+            <td>Не настроен</td>
+          </tr>
+          <tr class="kpi-row-good">
+            <td>RED ROOM подписчики</td>
+            <td>Продюсер</td>
+            <td>100</td>
+            <td>300</td>
+            <td>Запустить апрель</td>
+          </tr>
+          <tr class="kpi-row-warn">
+            <td>Reels в неделю</td>
+            <td>Катя + дизайнер</td>
+            <td>5/нед</td>
+            <td>5–7/нед</td>
+            <td>Настроить систему</td>
+          </tr>
+          <tr class="kpi-row-warn">
+            <td>Блогерские коллаборации</td>
+            <td>Катя + продюсер</td>
+            <td>3 (апрель)</td>
+            <td>5+ (май)</td>
+            <td>В процессе outreach</td>
+          </tr>
+          <tr>
+            <td>Общая выручка месяц</td>
+            <td>Продюсер</td>
+            <td>$7,500 min</td>
+            <td>$13,000 min</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid-2">
+      <div class="weekly-checklist">
+        <h3>Еженедельный чеклист (каждый понедельник)</h3>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>Выручка за прошлую неделю vs. план — сравнение и причины отклонений</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>CPA регистрации: если &gt;$4 — оптимизация кампании до среды</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>Количество регистраций на следующий вебинар — если &lt;цели, увеличить бюджет</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>3 новых крео запущены в тест (Таня)</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>5 Reels запланированы / отсняты (Катя)</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>Статус блогерских переговоров — сколько подтверждено</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>72ч серия работает и отправляется корректно (после каждого вебинара)</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>RED ROOM: новые подписчики за неделю и общее число</span>
+        </div>
+        <div class="checklist-item">
+          <div class="check-icon"></div>
+          <span>Выявить 1 главную проблему недели → решение до пятницы</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="card card-gold" style="margin-bottom:1.5rem">
+          <h3>Сигналы тревоги — действовать немедленно</h3>
+          <ul class="styled" style="margin-top:.8rem">
+            <li><span class="text-red">CPA &gt;$5</span> — стоп кампании, ревизия крео и аудиторий</li>
+            <li><span class="text-red">Явка &lt;40%</span> — усилить напоминания, проверить email</li>
+            <li><span class="text-red">Конверсия &lt;5%</span> — созвон команды в тот же день</li>
+            <li><span class="text-red">0 Reels за 2 недели</span> — batch-съёмка в ближайшие 48ч</li>
+            <li><span class="text-red">Блогеры: 0 из 3 вышли</span> — активировать резервный список</li>
+          </ul>
+        </div>
+
+        <div class="card card-green">
+          <h3>Зелёные сигналы — масштабировать</h3>
+          <ul class="styled" style="margin-top:.8rem">
+            <li><span class="text-green">CPA &lt;$2</span> — удвоить бюджет кампании немедленно</li>
+            <li><span class="text-green">Конверсия &gt;15%</span> — масштабировать трафик 2×</li>
+            <li><span class="text-green">Блогер дал &gt;50 регистраций</span> — повторить коллаб</li>
+            <li><span class="text-green">ROAS &gt;10×</span> — приоритет этой кампании в мае</li>
+            <li><span class="text-green">RED ROOM &gt;200</span> — начать платный прогрев в мае</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,var(--plum),var(--mauve));border-radius:16px;padding:2.5rem;margin-top:2rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center">
+      <div>
+        <div style="color:var(--blush);font-family:'Arial',sans-serif;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.8rem">Главный принцип стратегии</div>
+        <div style="color:#fff;font-size:1.3rem;line-height:1.6">Не трогать то, что работает. Быстро чинить то, что не работает. Масштабировать только после подтверждения ROAS.</div>
+      </div>
+      <div style="text-align:center;min-width:140px">
+        <div style="color:var(--rose);font-size:2.5rem;font-weight:700;font-family:'Arial',sans-serif">$20K</div>
+        <div style="color:var(--blush);font-family:'Arial',sans-serif;font-size:.78rem;margin-top:.3rem">апрель + май</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-title">SecretCoach · Стратегия $20,000</div>
+  <div class="f-sub">Апрель–Май 2026 · Эксперт: Катя · Команда: Таня, контент-менеджер, дизайнер, продюсер</div>
+  <div style="margin-top:1.5rem;color:rgba(255,255,255,.2);font-family:'Arial',sans-serif;font-size:.72rem">Документ для внутреннего использования · Обновлять еженедельно по итогам KPI-встреч</div>
+</footer>
+
+</body>
+</html>
