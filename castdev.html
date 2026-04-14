@@ -20,7 +20,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 .top-bar-label{font-size:12px;font-weight:700;color:var(--mauve);white-space:nowrap;min-width:70px;text-align:right;}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,var(--plum) 0%,#4A2D6A 60%,#3D1F5A 100%);padding:72px 24px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero{background:linear-gradient(135deg,var(--plum) 0%,#4A2D6A 60%,#3D1F5A 100%);padding:72px 24px 52px;text-align:center;position:relative;overflow:hidden;transition:all .4s ease;}
 .hero::before{content:'';position:absolute;top:-40%;left:-20%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(196,133,106,.15) 0%,transparent 70%);pointer-events:none;}
 .hero-gift{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);color:white;font-size:12px;font-weight:700;padding:8px 18px;border-radius:20px;letter-spacing:.04em;margin-bottom:22px;border:1px solid rgba(255,255,255,.2);}
 .hero-gift span{font-size:16px;}
@@ -48,6 +48,11 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 .step-item.active .step-label{color:var(--rose);font-weight:700;}
 .step-item.done .step-label{color:var(--green);}
 @media(max-width:480px){.step-label{font-size:9px;}.step-circle{width:26px;height:26px;font-size:11px;}}
+
+/* ERROR TOAST */
+.error-toast{display:none;background:#FFF0EC;border:1.5px solid var(--rose);border-radius:12px;padding:14px 18px;margin-bottom:16px;color:#8A3020;font-size:13px;font-weight:600;align-items:center;gap:10px;}
+.error-toast.show{display:flex;}
+.error-toast .toast-icon{font-size:18px;flex-shrink:0;}
 
 /* CHEERING BANNER */
 .cheer-block{background:linear-gradient(135deg,var(--green-light),#F0FAF4);border-radius:12px;padding:16px 20px;margin-bottom:24px;border:1px solid rgba(58,154,106,.2);display:flex;align-items:center;gap:14px;}
@@ -152,7 +157,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 #success-screen h2{font-size:26px;font-weight:800;color:var(--plum);margin-bottom:12px;}
 #success-screen .success-sub{font-size:15px;color:#555;max-width:420px;margin:0 auto 28px;line-height:1.7;}
 
-.gift-card{background:linear-gradient(135deg,var(--plum),#4A2D6A);border-radius:20px;padding:28px;margin-bottom:20px;position:relative;overflow:hidden;}
+.gift-card{background:linear-gradient(135deg,var(--plum),#4A2D6A);border-radius:20px;padding:28px;margin-bottom:20px;position:relative;overflow:hidden;text-align:left;}
 .gift-card::before{content:'';position:absolute;top:-30%;right:-10%;width:60%;height:160%;background:radial-gradient(ellipse,rgba(196,133,106,.2) 0%,transparent 70%);}
 .gift-card .gift-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);color:var(--blush);font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(255,255,255,.2);}
 .gift-card h3{color:white;font-size:20px;font-weight:800;margin-bottom:10px;}
@@ -162,12 +167,15 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
 .next-steps{background:white;border-radius:16px;padding:24px;margin-top:16px;border:1px solid var(--mid);text-align:left;}
 .next-steps h3{font-size:15px;font-weight:700;color:var(--plum);margin-bottom:14px;}
-.next-steps ul{padding-left:20px;}
-.next-steps li{font-size:13px;color:#555;margin-bottom:8px;line-height:1.5;}
+.next-steps ul{list-style:none;padding:0;}
+.next-steps li{font-size:13px;color:#555;margin-bottom:12px;line-height:1.5;display:flex;gap:10px;align-items:flex-start;}
+.next-steps li .li-icon{flex-shrink:0;}
+.next-steps a{color:var(--rose);font-weight:600;text-decoration:none;}
+.next-steps a:hover{text-decoration:underline;}
 
 /* VALIDATION */
 .error-msg{color:var(--rose);font-size:12px;margin-top:4px;display:none;}
-.question.has-error input,.question.has-error textarea,.question.has-error select{border-color:var(--rose);}
+.question.has-error input,.question.has-error textarea,.question.has-error select{border-color:var(--rose);box-shadow:0 0 0 3px rgba(196,133,106,.12);}
 .question.has-error .error-msg{display:block;}
 
 @media(max-width:480px){
@@ -187,8 +195,8 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
   <div class="top-bar-label" id="topLabel">Шаг 1 из 5</div>
 </div>
 
-<!-- HERO -->
-<div class="hero">
+<!-- HERO — показывается только на шаге 1 -->
+<div class="hero" id="heroBlock">
   <div class="hero-gift"><span>🎁</span> Подарок каждой участнице</div>
   <h1>Расскажи мне о себе — и я помогу каждой из вас приблизиться к мечте</h1>
   <p class="hero-sub">Я читаю каждую анкету лично. Одну девушку выберу для глубокой личной работы бесплатно — а каждая, кто ответит честно, получит кое-что особенное от меня в подарок</p>
@@ -234,13 +242,19 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     </div>
   </div>
 
+  <!-- ERROR TOAST -->
+  <div class="error-toast" id="errorToast">
+    <div class="toast-icon">☝️</div>
+    <div>Не всё заполнено — прокрути вверх и заполни обязательные поля</div>
+  </div>
+
   <form id="castdevForm" action="https://formspree.io/f/xpqkwavg" method="POST">
 
   <!-- SECTION 1: О ТЕБЕ -->
   <div class="section active" id="section-1">
     <div class="intro-block">
       <p><strong>Привет.</strong> Я выбираю одну девушку, с которой буду работать бесплатно — и превращу её результат в живой кейс, который вдохновит других женщин.</p>
-      <p>Но я хочу помочь каждой, кто сюда пришёл. Поэтому <strong>все участницы</strong>, ответившие честно и подробно, получат 24-часовой доступ к нашему приложению RED ROOM — эксклюзивные сценарии для яркой интимной жизни.</p>
+      <p>Но я хочу помочь каждой, кто сюда пришёл. Поэтому <strong>все участницы</strong>, ответившие честно и подробно, получат 24-часовой доступ к приложению RED ROOM — эксклюзивные сценарии для яркой интимной жизни.</p>
       <p><strong>Отвечай как другу — без фильтра. Чем честнее и откровеннее, тем больше я смогу тебе дать.</strong></p>
     </div>
 
@@ -262,7 +276,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     <div class="question" id="q-age">
       <label>Сколько тебе лет? <span class="req">*</span></label>
       <input type="number" name="Возраст" placeholder="Например: 29" min="18" max="65" required>
-      <div class="error-msg">Укажи возраст</div>
+      <div class="error-msg">Укажи возраст (от 18)</div>
     </div>
 
     <div class="question">
@@ -281,6 +295,18 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="option-item"><input type="radio" name="Дети" id="ch1" value="Нет"><label for="ch1"><div class="check"></div>Нет</label></div>
         <div class="option-item"><input type="radio" name="Дети" id="ch2" value="Да"><label for="ch2"><div class="check"></div>Да</label></div>
       </div>
+    </div>
+
+    <div class="question" id="q-contact">
+      <label>Твой ник в Telegram или Instagram <span class="req">*</span></label>
+      <div class="hint">Напиши @username — туда я напишу если выберу тебя, и там же пришлю подарок</div>
+      <input type="text" name="Контакт (TG или IG)" placeholder="@username" required>
+      <div class="error-msg">Укажи способ связи — это обязательно</div>
+    </div>
+
+    <div class="question">
+      <label>Телефон (по желанию)</label>
+      <input type="tel" name="Телефон" placeholder="+38 000 000 0000">
     </div>
 
     <div class="btn-wrap">
@@ -379,7 +405,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
       <div class="cheer-icon">💜</div>
       <div class="cheer-text">
         <strong>Ты молодец — уже половина позади!</strong>
-        <span>То, что ты здесь и отвечаешь честно — это уже шаг к себе. Осталось ещё 3 коротких блока.</span>
+        <span>То, что ты здесь и отвечаешь честно — это уже шаг к себе. Осталось ещё 2 коротких блока.</span>
       </div>
     </div>
 
@@ -500,7 +526,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
     <div class="question">
       <label>Насколько ты готова начать работу прямо сейчас?</label>
-      <div class="scale-wrap" id="scale-readiness">
+      <div class="scale-wrap">
         <div class="scale-item"><input type="radio" name="Готовность начать" id="sc1" value="1"><label for="sc1">1</label></div>
         <div class="scale-item"><input type="radio" name="Готовность начать" id="sc2" value="2"><label for="sc2">2</label></div>
         <div class="scale-item"><input type="radio" name="Готовность начать" id="sc3" value="3"><label for="sc3">3</label></div>
@@ -521,14 +547,14 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     </div>
   </div>
 
-  <!-- SECTION 5: КОНТАКТ + ФИНАЛ -->
+  <!-- SECTION 5: ФИНАЛ -->
   <div class="section" id="section-5">
 
     <div class="cheer-block" style="background:linear-gradient(135deg,#FFF3E0,#FFF8F0);border-color:rgba(196,133,106,.3);">
       <div class="cheer-icon">🌟</div>
       <div class="cheer-text">
         <strong style="color:#8A5030;">Финальный шаг! Ты уже почти там</strong>
-        <span style="color:var(--rose);">Осталось только оставить контакт — и сразу после отправки я пришлю тебе твой подарок 🎁</span>
+        <span style="color:var(--rose);">Сразу после отправки анкеты я пришлю тебе твой подарок 🎁</span>
       </div>
     </div>
 
@@ -536,20 +562,8 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
       <div class="section-num">5</div>
       <div>
         <div class="section-title">Последний шаг</div>
-        <div class="section-sub">Контактные данные и разрешения</div>
+        <div class="section-sub">Пара вопросов и разрешения</div>
       </div>
-    </div>
-
-    <div class="question" id="q-contact">
-      <label>Твой ник в Telegram или Instagram <span class="req">*</span></label>
-      <div class="hint">Напиши @username — я напишу тебе если выберу</div>
-      <input type="text" name="Контакт (TG или IG)" placeholder="@username" required>
-      <div class="error-msg">Укажи способ связи</div>
-    </div>
-
-    <div class="question">
-      <label>Телефон (по желанию)</label>
-      <input type="tel" name="Телефон" placeholder="+38 000 000 0000">
     </div>
 
     <div class="question">
@@ -582,7 +596,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <label for="consent2">Я готова к тому, чтобы мой кейс показывали <strong>с именем/никнеймом</strong> — если результат будет классным</label>
       </div>
 
-      <div class="consent-block">
+      <div class="consent-block" id="consent3wrap">
         <input type="checkbox" name="Согласие на обработку данных" id="consent3" value="Да" required>
         <label for="consent3">Я согласна с тем, что мои данные используются для отбора и связи со мной <span class="req">*</span></label>
       </div>
@@ -619,9 +633,18 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     <div class="next-steps">
       <h3>Пока ждёшь ответа от меня:</h3>
       <ul>
-        <li>🎥 Посмотри бесплатный вебинар «Секреты женского удовольствия» — там много важного по твоей теме</li>
-        <li>📲 Подпишись на мой Instagram / Telegram — там я делюсь практиками и кейсами каждую неделю</li>
-        <li>💌 Если вопрос горит — напиши мне напрямую в директ</li>
+        <li>
+          <span class="li-icon">🎥</span>
+          <span>Хочешь посмотреть бесплатный вебинар «Секреты женского удовольствия»? Напиши мне в Telegram — пришлю ссылку: <a href="https://t.me/secret_coach1" target="_blank">@secret_coach1</a></span>
+        </li>
+        <li>
+          <span class="li-icon">💌</span>
+          <span>Есть вопрос, который горит прямо сейчас? Напиши мне напрямую в Telegram или Instagram Direct: <a href="https://t.me/secret_coach1" target="_blank">@secret_coach1</a></span>
+        </li>
+        <li>
+          <span class="li-icon">📲</span>
+          <span>Подпишись на мой аккаунт — там я делюсь практиками и кейсами каждую неделю</span>
+        </li>
       </ul>
     </div>
   </div>
@@ -632,15 +655,11 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 const TOTAL_SECTIONS = 5;
 let currentSection = 1;
 
-const STEP_LABELS = ['О тебе','Запрос','Отношения','Опыт','Финал'];
-
 function updateProgress(){
-  // Top bar
   const pct = Math.round(((currentSection-1)/(TOTAL_SECTIONS-1))*100);
   document.getElementById('topBar').style.width = Math.max(10,pct)+'%';
   document.getElementById('topLabel').textContent = 'Шаг '+currentSection+' из '+TOTAL_SECTIONS;
 
-  // Step indicators
   for(let i=1;i<=TOTAL_SECTIONS;i++){
     const el = document.getElementById('step-'+i);
     const circle = el.querySelector('.step-circle');
@@ -655,6 +674,30 @@ function updateProgress(){
       circle.textContent = i;
     }
   }
+
+  // Прячем hero начиная со 2-го шага
+  const hero = document.getElementById('heroBlock');
+  if(currentSection > 1){
+    hero.style.display = 'none';
+  } else {
+    hero.style.display = 'block';
+  }
+}
+
+function showToast(msg){
+  const toast = document.getElementById('errorToast');
+  toast.querySelector('div:last-child').textContent = msg || 'Не всё заполнено — прокрути вверх и заполни обязательные поля';
+  toast.classList.add('show');
+  toast.scrollIntoView({behavior:'smooth', block:'center'});
+  setTimeout(()=>{ toast.classList.remove('show'); }, 5000);
+}
+
+function scrollToFirstError(sectionNum){
+  const sec = document.getElementById('section-'+sectionNum);
+  const firstError = sec.querySelector('.has-error');
+  if(firstError){
+    firstError.scrollIntoView({behavior:'smooth', block:'center'});
+  }
 }
 
 function validateSection(num){
@@ -664,37 +707,48 @@ function validateSection(num){
   if(num===1){
     const name = sec.querySelector('[name="Имя"]');
     const age = sec.querySelector('[name="Возраст"]');
+    const contact = sec.querySelector('[name="Контакт (TG или IG)"]');
     const nameQ = document.getElementById('q-name');
     const ageQ = document.getElementById('q-age');
+    const contactQ = document.getElementById('q-contact');
+
     if(!name.value.trim()){nameQ.classList.add('has-error');valid=false;}else{nameQ.classList.remove('has-error');}
     if(!age.value||age.value<18){ageQ.classList.add('has-error');valid=false;}else{ageQ.classList.remove('has-error');}
+    if(!contact.value.trim()){contactQ.classList.add('has-error');valid=false;}else{contactQ.classList.remove('has-error');}
   }
+
   if(num===2){
     const main = document.getElementById('mainText');
     const mainQ = document.getElementById('q-main');
-    if(main.value.trim().length < 80){mainQ.classList.add('has-error');valid=false;}else{mainQ.classList.remove('has-error');}
     const dream = document.getElementById('dreamText');
     const dreamQ = document.getElementById('q-dream');
+
+    if(main.value.trim().length < 80){mainQ.classList.add('has-error');valid=false;}else{mainQ.classList.remove('has-error');}
     if(dream && dream.value.trim().length < 60){dreamQ.classList.add('has-error');valid=false;}else if(dreamQ){dreamQ.classList.remove('has-error');}
   }
+
   if(num===5){
-    const contact = sec.querySelector('[name="Контакт (TG или IG)"]');
-    const contactQ = document.getElementById('q-contact');
     const consent3 = document.getElementById('consent3');
-    if(!contact.value.trim()){contactQ.classList.add('has-error');valid=false;}else{contactQ.classList.remove('has-error');}
+    const wrap = document.getElementById('consent3wrap');
     if(!consent3.checked){
       valid=false;
-      consent3.parentElement.style.outline='2px solid var(--rose)';
-      consent3.parentElement.style.borderRadius='8px';
+      wrap.style.outline='2px solid var(--rose)';
+      wrap.style.borderRadius='8px';
     } else {
-      consent3.parentElement.style.outline='none';
+      wrap.style.outline='none';
     }
   }
+
   return valid;
 }
 
 function nextSection(from){
-  if(!validateSection(from)) return;
+  if(!validateSection(from)){
+    scrollToFirstError(from);
+    showToast('Не всё заполнено — проверь обязательные поля выше');
+    return;
+  }
+  hideToast();
   const cur = document.getElementById('section-'+from);
   const next = document.getElementById('section-'+(from+1));
   if(!next) return;
@@ -706,6 +760,7 @@ function nextSection(from){
 }
 
 function prevSection(from){
+  hideToast();
   const cur = document.getElementById('section-'+from);
   const prev = document.getElementById('section-'+(from-1));
   if(!prev) return;
@@ -716,6 +771,10 @@ function prevSection(from){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+function hideToast(){
+  document.getElementById('errorToast').classList.remove('show');
+}
+
 // Char counters
 const mainText = document.getElementById('mainText');
 const mainCounter = document.getElementById('mainCounter');
@@ -723,10 +782,10 @@ if(mainText){
   mainText.addEventListener('input',function(){
     const len = this.value.length;
     if(len < 80){
-      mainCounter.textContent = len+' / минимум 80 символов';
+      mainCounter.textContent = len+' / нужно минимум 80 символов';
       mainCounter.className = 'char-counter warning';
     } else {
-      mainCounter.textContent = len+' символов ✓';
+      mainCounter.textContent = len+' символов ✓ отлично!';
       mainCounter.className = 'char-counter ok';
     }
   });
@@ -737,10 +796,10 @@ if(dreamText){
   dreamText.addEventListener('input',function(){
     const len = this.value.length;
     if(len < 60){
-      dreamCounter.textContent = len+' / минимум 60 символов';
+      dreamCounter.textContent = len+' / нужно минимум 60 символов';
       dreamCounter.className = 'char-counter warning';
     } else {
-      dreamCounter.textContent = len+' символов ✓';
+      dreamCounter.textContent = len+' символов ✓ отлично!';
       dreamCounter.className = 'char-counter ok';
     }
   });
@@ -749,7 +808,10 @@ if(dreamText){
 // Form submit
 document.getElementById('castdevForm').addEventListener('submit', async function(e){
   e.preventDefault();
-  if(!validateSection(5)) return;
+  if(!validateSection(5)){
+    showToast('Подтверди согласие на обработку данных');
+    return;
+  }
 
   const btn = document.getElementById('submitBtn');
   btn.textContent = 'Отправляю...';
@@ -766,6 +828,7 @@ document.getElementById('castdevForm').addEventListener('submit', async function
     if(res.ok){
       document.getElementById('castdevForm').style.display='none';
       document.querySelector('.steps-progress').style.display='none';
+      document.getElementById('errorToast').style.display='none';
       document.getElementById('topBar').style.width='100%';
       document.getElementById('topLabel').textContent='Готово! 🎉';
       document.getElementById('success-screen').style.display='block';
