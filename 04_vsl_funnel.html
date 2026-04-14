@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SecretCoach — ТЗ: VSL-воронка «Ящик Пандоры»</title>
+<title>SecretCoach — ТЗ: VSL-воронка «Секреты женского удовольствия»</title>
 <style>
 :root{--plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;--cream:#FAF7F4;--lite:#F0EBE6;--dark:#1E1428;--mid:#D0C8C0;--green:#3A9A6A;--red:#C03030;--amber:#C87D20;}
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -13,7 +13,7 @@ nav::-webkit-scrollbar{display:none;}
 nav a{color:var(--blush);text-decoration:none;font-size:11px;padding:10px 10px;white-space:nowrap;border-bottom:2px solid transparent;transition:.2s;}
 nav a:hover{border-color:var(--rose);color:white;}
 .hero{background:var(--plum);padding:52px 24px 42px;text-align:center;}
-.hero h1{color:white;font-size:32px;max-width:800px;margin:0 auto 10px;}
+.hero h1{color:white;font-size:30px;max-width:800px;margin:0 auto 10px;}
 .hero p{color:var(--blush);font-size:15px;max-width:620px;margin:0 auto;}
 .tag{display:inline-block;background:var(--rose);color:white;padding:5px 16px;border-radius:20px;font-size:12px;margin-top:14px;}
 section{max-width:1100px;margin:0 auto;padding:48px 24px 40px;border-bottom:1px solid var(--mid);}
@@ -43,13 +43,11 @@ table{width:100%;border-collapse:collapse;margin:14px 0;}
 th{background:var(--plum);color:white;padding:10px 12px;text-align:left;font-size:12px;}
 td{padding:9px 12px;border-bottom:1px solid var(--mid);font-size:13px;vertical-align:top;}
 tr:nth-child(even) td{background:var(--lite);}
-/* SCRIPT BOX */
-.script{background:#1A1030;border-radius:8px;padding:18px 20px;border-left:4px solid var(--rose);margin:12px 0;font-family:'Courier New',monospace;font-size:12.5px;color:#E8D8F0;line-height:1.8;}
-.script .meta{color:var(--blush);font-size:11px;margin-bottom:10px;font-style:normal;}
+.script{background:#1A1030;border-radius:8px;padding:18px 20px;border-left:4px solid var(--rose);margin:12px 0;font-family:'Courier New',monospace;font-size:12.5px;color:#E8D8F0;line-height:1.9;}
+.script .meta{color:#C4856A;font-size:11px;margin-bottom:10px;font-family:'Segoe UI',sans-serif;}
 .script .cta{color:#FFD700;font-weight:700;}
 .script em{color:var(--blush);font-style:normal;}
 .script .trigger{color:#90EE90;}
-/* FUNNEL STEPS */
 .funnel-step{display:flex;gap:0;margin-bottom:2px;}
 .f-num{background:var(--plum);color:white;min-width:48px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;border-radius:8px 0 0 8px;}
 .f-body{background:white;border:1px solid var(--mid);border-left:none;border-radius:0 8px 8px 0;padding:14px 18px;flex:1;}
@@ -61,14 +59,13 @@ tr:nth-child(even) td{background:var(--lite);}
 .step-4 .f-num{background:var(--amber);}
 .step-5 .f-num{background:var(--green);}
 .step-6 .f-num{background:#5A3F6A;}
-/* BANNER MOCKUP */
+.step-7 .f-num{background:var(--red);}
 .banner-mock{border:2px dashed var(--mid);border-radius:8px;padding:16px;margin:10px 0;background:var(--lite);}
 .banner-mock .banner-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mauve);font-weight:700;margin-bottom:8px;}
 .banner-headline{font-size:15px;font-weight:700;color:var(--plum);margin-bottom:6px;}
 .banner-sub{font-size:12px;color:#555;margin-bottom:8px;}
 .banner-cta-box{display:inline-block;background:var(--rose);color:white;padding:8px 18px;border-radius:4px;font-size:12px;font-weight:700;}
 .banner-format{font-size:11px;color:var(--mauve);margin-top:8px;}
-/* LADING SECTION */
 .lp-block{background:white;border-radius:8px;padding:18px;border:1px solid var(--mid);margin:10px 0;}
 .lp-block .lp-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--rose);font-weight:700;margin-bottom:8px;}
 .highlight{background:linear-gradient(135deg,#2D1F42,#4A2D6A);color:white;border-radius:8px;padding:20px;margin:14px 0;}
@@ -76,567 +73,979 @@ tr:nth-child(even) td{background:var(--lite);}
 .highlight strong{color:white;}
 .warn-box{background:#FFF8E8;border-left:4px solid var(--amber);padding:12px 14px;border-radius:0 6px 6px 0;font-size:13px;margin:10px 0;}
 .tip-box{background:#F0FFF5;border-left:4px solid var(--green);padding:12px 14px;border-radius:0 6px 6px 0;font-size:13px;margin:10px 0;}
+.day-block{background:white;border:1px solid var(--mid);border-radius:8px;margin-bottom:12px;overflow:hidden;}
+.day-header{background:var(--plum);color:white;padding:10px 16px;display:flex;align-items:center;gap:12px;}
+.day-num{background:var(--rose);color:white;font-weight:900;font-size:14px;padding:4px 12px;border-radius:20px;}
+.day-body{padding:16px;}
+.day-body .goal{font-size:11px;color:var(--mauve);text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+ul li{margin-bottom:5px;font-size:13px;}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#overview">Обзор воронки</a>
-  <a href="#banners">Баннеры / Объявления</a>
-  <a href="#landing">Лендинг вебинара</a>
+  <a href="#overview">Воронка</a>
+  <a href="#banners">Баннеры</a>
+  <a href="#landing">Лендинг</a>
   <a href="#tgbot">Telegram-бот</a>
-  <a href="#dojim">Дожим-последовательность</a>
-  <a href="#bonuses">Бонусы и усилители</a>
-  <a href="#tech">Техническое ТЗ</a>
-  <a href="#kpi">KPI воронки</a>
+  <a href="#prewarm">Дожим видео</a>
+  <a href="#dojim14">14-дневный прогрев</a>
+  <a href="#upsell">Upsell Bundle</a>
+  <a href="#tech">Тех. ТЗ</a>
+  <a href="#kpi">KPI</a>
 </nav>
 
 <div class="hero">
-  <h1>VSL-воронка «Ящик Пандоры»</h1>
-  <p>Полное ТЗ для таргетолога и техспециалиста: баннеры → лендинг → Telegram-бот → дожим → продажа флагмана 190€–790€</p>
-  <span class="tag">Апрель 2026 | Версия 1.0</span>
+  <h1>VSL-воронка «Секреты женского удовольствия»</h1>
+  <p>Полное ТЗ для таргетолога и техспециалиста: баннеры → лендинг → Telegram-бот → 14-дневный дожим → продажа флагмана 190€–790€</p>
+  <span class="tag">Апрель–Май 2026 | Версия 2.0</span>
 </div>
 
 <!-- ОБЗОР ВОРОНКИ -->
 <section id="overview">
-  <h2>Логика и архитектура воронки</h2>
-  <p class="sub">Весь путь клиента от рекламного баннера до покупки курса</p>
+<h2>Логика и архитектура воронки</h2>
+<p class="sub">Весь путь клиента от рекламного баннера до покупки курса (или bundle upsell)</p>
 
-  <div class="highlight">
-    <strong>Главная идея:</strong>
-    <p>Пользователь видит рекламу → попадает на лендинг с описанием бесплатного вебинара в записи → кликает «Смотреть» → переходит в Telegram-бот → получает доступ к видео → смотрит вебинар → получает серию прогревающих сообщений → покупает курс «Искусство женского наслаждения».</p>
-  </div>
+<div class="highlight">
+  <strong>Главная идея:</strong>
+  <p>Реклама → лендинг с бесплатным вебинаром → переход в Telegram-бот → выдача доступа к видео → дожим тех кто не смотрел → 14-дневный прогрев к покупке флагмана → если не купили — bundle upsell за 49–69€</p>
+</div>
 
-  <div class="funnel-step step-1">
-    <div class="f-num">1</div>
-    <div class="f-body"><h4>Реклама Meta Ads (Facebook/Instagram)</h4><p>Баннеры и видео-крео с хуком → клик на лендинг. Аудитории: холодная + LAL покупателей + видео 50%+. Цель кампании: трафик на лендинг.</p></div>
-  </div>
-  <div class="f-arrow">↓</div>
-  <div class="funnel-step step-2">
-    <div class="f-num">2</div>
-    <div class="f-body"><h4>Лендинг «Ящик Пандоры» (одностраничник)</h4><p>Описание что будет в вебинаре, отзывы, кнопка «Смотреть бесплатно» → ведёт в Telegram-бот. Цель страницы: конверсия в переход в TG.</p></div>
-  </div>
-  <div class="f-arrow">↓</div>
-  <div class="funnel-step step-3">
-    <div class="f-num">3</div>
-    <div class="f-body"><h4>Telegram-бот: приветствие + выдача доступа</h4><p>Пользователь нажимает /start → приветственное сообщение → выдача ссылки на видео вебинара на закрытой странице / YouTube unlisted / видеохостинге.</p></div>
-  </div>
-  <div class="f-arrow">↓</div>
-  <div class="funnel-step step-4">
-    <div class="f-num">4</div>
-    <div class="f-body"><h4>Просмотр вебинара</h4><p>Пользователь смотрит запись «Ящик Пандоры» (90 мин). В течение просмотра — автоматические напоминания от бота. Пауза 2-3 часа после выдачи.</p></div>
-  </div>
-  <div class="f-arrow">↓</div>
-  <div class="funnel-step step-5">
-    <div class="f-num">5</div>
-    <div class="f-body"><h4>Дожим-последовательность (9 сообщений за 7 дней)</h4><p>Серия прогревающих сообщений в боте: ценность → кейс → закрытие возражений → оффер → срочность → финальный дедлайн. Цель: продажа тарифа 190€ / 290€ / 790€.</p></div>
-  </div>
-  <div class="f-arrow">↓</div>
-  <div class="funnel-step step-6">
-    <div class="f-num">6</div>
-    <div class="f-body"><h4>Покупка / даунсейл</h4><p>Покупает флагман → попадает в курс. Не купил за 7 дней → даунсейл 39€ (мини-курс). Купил — оффер апгрейда на VIP 790€ через 14 дней.</p></div>
-  </div>
+<div class="funnel-step step-1">
+  <div class="f-num">1</div>
+  <div class="f-body"><h4>Реклама Meta Ads (Facebook/Instagram)</h4><p>Видео-крео и баннеры с хуком → клик на лендинг. CTR цель: 2–4%</p></div>
+</div>
+<div class="f-arrow">↓</div>
+<div class="funnel-step step-2">
+  <div class="f-num">2</div>
+  <div class="f-body"><h4>Лендинг «Секреты женского удовольствия»</h4><p>Описание вебинара, боли, отзывы → кнопка «Смотреть бесплатно» → переход в TG-бот. Цель конверсии: 30–50%</p></div>
+</div>
+<div class="f-arrow">↓</div>
+<div class="funnel-step step-3">
+  <div class="f-num">3</div>
+  <div class="f-body"><h4>Telegram-бот: приветствие + сегментация + выдача доступа</h4><p>Старт бота → квиз (узнать запрос) → выдача ссылки на вебинар. Через 3 часа — проверка: посмотрела?</p></div>
+</div>
+<div class="f-arrow">↓</div>
+<div class="funnel-step step-4">
+  <div class="f-num">4</div>
+  <div class="f-body"><h4>ФАЗА 1: Дожим тех, кто не досмотрел видео (3 сообщения за 48 ч)</h4><p>Цель: вернуть к видео. Интрига, боль, анонс RED ROOM в конце вебинара. Если не реагирует — переход в 14-дневный прогрев.</p></div>
+</div>
+<div class="f-arrow">↓</div>
+<div class="funnel-step step-5">
+  <div class="f-num">5</div>
+  <div class="f-body"><h4>ФАЗА 2: 14-дневный прогрев к покупке (14 сообщений)</h4><p>Ежедневно: пост + кружок от Кати + кейсы. Логика: боль → инсайт → социальное доказательство → оффер → срочность. Цель: продать тариф 190€/290€/790€.</p></div>
+</div>
+<div class="f-arrow">↓</div>
+<div class="funnel-step step-6">
+  <div class="f-num">6</div>
+  <div class="f-body"><h4>Покупка флагмана</h4><p>Переходит по ссылке → WayForPay → попадает в курс. Оплатила — из последовательности исключается.</p></div>
+</div>
+<div class="f-arrow">↓</div>
+<div class="funnel-step step-7">
+  <div class="f-num">7</div>
+  <div class="f-body"><h4>Не купила за 14 дней → Bundle Upsell 49–69€</h4><p>Предложение: 3–4 мини-продукта в комплекте по специальной цене. Последний шанс войти по минимальной стоимости.</p></div>
+</div>
 
-  <table style="margin-top:24px">
-    <tr><th>Этап</th><th>Конверсия (цель)</th><th>Инструмент</th></tr>
-    <tr><td>Клик по рекламе</td><td>CTR 2–4%</td><td>Meta Ads</td></tr>
-    <tr><td>Лендинг → переход в TG</td><td>30–50%</td><td>Landing page</td></tr>
-    <tr><td>TG-бот → доступ к видео</td><td>90%+</td><td>Telegram Bot</td></tr>
-    <tr><td>Получил видео → досмотрел</td><td>40–60%</td><td>Видеохостинг + бот</td></tr>
-    <tr><td>Досмотрел → купил курс</td><td>8–15%</td><td>Дожим-последовательность</td></tr>
-    <tr><td>Не купил → даунсейл 39€</td><td>10–20%</td><td>Бот день 7–8</td></tr>
-  </table>
+<table style="margin-top:24px">
+  <tr><th>Этап</th><th>Цель конверсии</th><th>Инструмент</th></tr>
+  <tr><td>Клик по рекламе</td><td>CTR 2–4%</td><td>Meta Ads</td></tr>
+  <tr><td>Лендинг → TG-бот</td><td>30–50%</td><td>Landing page</td></tr>
+  <tr><td>Получила видео → досмотрела</td><td>40–60%</td><td>Видеохостинг + бот фаза 1</td></tr>
+  <tr><td>Вебинар → покупка (органика)</td><td>5–10%</td><td>Оффер в конце вебинара</td></tr>
+  <tr><td>14-дневный прогрев → покупка</td><td>8–15%</td><td>Бот фаза 2</td></tr>
+  <tr><td>Не купила → bundle 49–69€</td><td>15–25%</td><td>Бот день 15</td></tr>
+</table>
 </section>
 
 <!-- БАННЕРЫ -->
 <section id="banners">
-  <h2>Рекламные баннеры и объявления</h2>
-  <p class="sub">Готовые тексты для всех форматов — передай дизайнеру и таргетологу</p>
+<h2>Рекламные баннеры и объявления</h2>
+<p class="sub">Готовые тексты — передай дизайнеру и таргетологу</p>
 
-  <h3>Формат 1: Видео-крео (Reels / Stories) — ПРИОРИТЕТ</h3>
-  <p style="font-size:13px;color:#555;margin-bottom:12px">Лучший формат для этой ниши. Катя говорит в камеру 30–45 секунд.</p>
+<h3>Видео-крео (Reels / Stories) — ПРИОРИТЕТ</h3>
 
-  <div class="script">
-    <div class="meta">▶ Видео 30–45 сек | Сегмент А (замужние 26-40) | Цель: трафик на лендинг</div>
-    <em>[Крупный план, домашняя обстановка, спокойный голос]</em><br><br>
-    <em>«73% женщин никогда не испытывали настоящий оргазм с партнёром.»</em><br>
-    <em>«Не потому что что-то сломано.»</em><br>
-    <em>«А потому что никто никогда не объяснял, как это работает.»</em><br><br>
-    <em>«Я записала бесплатный вебинар — 90 минут о том, почему пропадает желание, и что с этим делать.»</em><br><br>
-    <em>«Без стыда. Без воды. Только то, что реально работает.»</em><br><br>
-    <span class="cta">«Ссылка в шапке профиля — смотри бесплатно 👆»</span>
+<div class="script">
+<div class="meta">▶ Видео 30–45 сек | Сегмент А: замужние 26–40 | Цель: трафик</div>
+[Крупный план. Спокойный голос. Домашняя обстановка.]
+
+Ты ложишься в постель — и первая мысль не «хочу», а «ну ладно, надо».
+
+Это не охлаждение к нему.
+Это не «у вас что-то не так».
+Это — конкретная физиология. И у неё есть решение.
+
+Я записала вебинар — 90 минут о том, почему пропадает женское желание,
+что происходит с либидо, и почему оргазм с партнёром даётся тяжело.
+
+Без воды. Без лирики.
+Только то, что реально меняет ситуацию.
+
+<span class="cta">Ссылка в шапке профиля — смотри бесплатно 👆</span>
+</div>
+
+<div class="script">
+<div class="meta">▶ Видео 30–45 сек | Сегмент Б: свободные 22–35 | Цель: трафик</div>
+[Говорит в камеру, уверенно]
+
+Большинство женщин никогда не испытывали оргазм с партнёром. Вообще.
+
+И годами думают: ну, видимо, у меня так.
+
+Нет. Это не «так». Это — следствие.
+Желание, возбуждение, блоки, сценарий оргазма —
+всё это конкретные вещи. Которые можно изменить.
+
+Я сексолог, 10 лет практики, 500+ клиенток.
+Записала вебинар где разбираю это по деталям.
+
+<span class="cta">Бесплатно. Ссылка 👆</span>
+</div>
+
+<div class="script">
+<div class="meta">▶ Видео 15 сек | Хук-провокация | Все сегменты</div>
+Если секс для тебя — это выполнить и забыть, а не получить...
+
+Этот вебинар изменит это. Бесплатно. 90 минут.
+
+<span class="cta">Ссылка 👆</span>
+</div>
+
+<h3>Статичные баннеры</h3>
+<div class="grid-3">
+  <div class="banner-mock">
+    <div class="banner-label">Баннер А | 1:1 | Feed | Холодная</div>
+    <div class="banner-headline">Секс превратился в обязанность. Это не норма — и это меняется.</div>
+    <div class="banner-sub">Бесплатный вебинар с психологом-сексологом — 90 минут о женском удовольствии</div>
+    <div class="banner-cta-box">Смотреть бесплатно →</div>
+    <div class="banner-format">Фото: Катя, тёплый свет | Фон: тёмно-сливовый | Шрифт: светлый</div>
   </div>
-
-  <div class="script">
-    <div class="meta">▶ Видео 30–45 сек | Сегмент Б (свободные 22-35) | Цель: трафик на лендинг</div>
-    <em>«Ты знаешь, что большинство женщин не знают, как работает их собственное тело?»</em><br><br>
-    <em>«Я магистр психологии, занимаюсь сексологией 10 лет — и честно скажу: это не ваша вина.»</em><br>
-    <em>«Нас этому просто никто не учил.»</em><br><br>
-    <em>«Я записала вебинар, где за 90 минут даю то, что меняет всё.»</em><br>
-    <em>«Либидо. Оргазмы. Уверенность в себе как женщины.»</em><br><br>
-    <span class="cta">«Смотри бесплатно — ссылка в шапке 👆»</span>
+  <div class="banner-mock">
+    <div class="banner-label">Баннер Б | 9:16 | Stories | Холодная</div>
+    <div class="banner-headline">Куда пропало желание — и как его вернуть</div>
+    <div class="banner-sub">Вебинар «Секреты женского удовольствия». Бесплатно. 90 минут.</div>
+    <div class="banner-cta-box">Смотреть →</div>
+    <div class="banner-format">Вертикальный | Крупный текст | Катя в центре</div>
   </div>
-
-  <div class="script">
-    <div class="meta">▶ Видео 15 сек | Универсальный | Хук-провокация</div>
-    <em>«Если секс для тебя — это больше "выполнить обязанность", чем удовольствие...»</em><br>
-    <em>«Этот вебинар для тебя. Бесплатно. 90 минут.»</em><br>
-    <span class="cta">«Ссылка 👆»</span>
+  <div class="banner-mock">
+    <div class="banner-label">Баннер В | 4:5 | Feed | Боль</div>
+    <div class="banner-headline">«Я думала: ну, видимо, у меня так. Пока не разобралась почему.»</div>
+    <div class="banner-sub">Вебинар о либидо, оргазмах и женском удовольствии → бесплатно</div>
+    <div class="banner-cta-box">Хочу знать →</div>
+    <div class="banner-format">Цитата на фоне | Живой шрифт | Акцент Rose</div>
   </div>
-
-  <h3>Формат 2: Статичные баннеры — технические параметры</h3>
-  <div class="grid-3">
-    <div class="banner-mock">
-      <div class="banner-label">Баннер А | 1:1 | Feed</div>
-      <div class="banner-headline">73% женщин никогда не испытывали настоящий оргазм.</div>
-      <div class="banner-sub">Бесплатный вебинар с сексологом — узнай почему и что с этим делать</div>
-      <div class="banner-cta-box">Смотреть бесплатно →</div>
-      <div class="banner-format">Фото: Катя, тёплый свет, домашняя обстановка | Фон: тёмно-сливовый | Шрифт: светлый</div>
-    </div>
-    <div class="banner-mock">
-      <div class="banner-label">Баннер Б | 9:16 | Stories</div>
-      <div class="banner-headline">Куда пропало желание — и как его вернуть</div>
-      <div class="banner-sub">Вебинар психолога-сексолога. Бесплатно. 90 минут.</div>
-      <div class="banner-cta-box">Смотреть →</div>
-      <div class="banner-format">Вертикальный формат | Крупный текст | Катя в центре</div>
-    </div>
-    <div class="banner-mock">
-      <div class="banner-label">Баннер В | 4:5 | Feed Alt</div>
-      <div class="banner-headline">«Я думала, что таким и должен быть секс»</div>
-      <div class="banner-sub">Пока не узнала как работает либидо на самом деле → бесплатный вебинар</div>
-      <div class="banner-cta-box">Хочу знать →</div>
-      <div class="banner-format">Цитата на фоне | Живой шрифт | Rose accent</div>
-    </div>
-    <div class="banner-mock">
-      <div class="banner-label">Баннер Г | 1:1 | Ретаргет</div>
-      <div class="banner-headline">Ты уже заходила на эту страницу. Вебинар всё ещё бесплатный.</div>
-      <div class="banner-sub">Katya — психолог-сексолог с 10-летним опытом. 90 минут, которые меняют всё.</div>
-      <div class="banner-cta-box">Посмотреть сейчас →</div>
-      <div class="banner-format">Для ретаргет-аудитории | Прямое обращение</div>
-    </div>
-    <div class="banner-mock">
-      <div class="banner-label">Баннер Д | 9:16 | Динамика</div>
-      <div class="banner-headline">После этого вебинара ты поймёшь своё тело лучше чем за все предыдущие годы</div>
-      <div class="banner-sub">Магистр психологии | Сексолог | 10+ лет практики</div>
-      <div class="banner-cta-box">Смотреть бесплатно</div>
-      <div class="banner-format">Трансформационное обещание | Stories</div>
-    </div>
-    <div class="banner-mock">
-      <div class="banner-label">Баннер Е | 1:1 | LAL</div>
-      <div class="banner-headline">Либидо. Оргазмы. Уверенность. За 90 минут.</div>
-      <div class="banner-sub">Вебинар «Ящик Пандоры» — смотри бесплатно прямо сейчас</div>
-      <div class="banner-cta-box">Открыть →</div>
-      <div class="banner-format">Для LAL покупателей | Акцент на результат</div>
-    </div>
+  <div class="banner-mock">
+    <div class="banner-label">Баннер Г | 1:1 | Ретаргет</div>
+    <div class="banner-headline">Ты уже заходила. Вебинар всё ещё бесплатный.</div>
+    <div class="banner-sub">Екатерина — психолог-сексолог, 10 лет практики, 500+ клиенток</div>
+    <div class="banner-cta-box">Посмотреть сейчас →</div>
+    <div class="banner-format">Ретаргет | Прямое обращение</div>
   </div>
+  <div class="banner-mock">
+    <div class="banner-label">Баннер Д | 9:16 | Stories | Трансформация</div>
+    <div class="banner-headline">После этого вебинара ты поймёшь своё тело лучше, чем за все предыдущие годы</div>
+    <div class="banner-sub">Магистр психологии | Сексолог | 10+ лет практики</div>
+    <div class="banner-cta-box">Смотреть бесплатно</div>
+    <div class="banner-format">Stories | Трансформационный оффер</div>
+  </div>
+  <div class="banner-mock">
+    <div class="banner-label">Баннер Е | 1:1 | LAL покупателей</div>
+    <div class="banner-headline">Либидо. Оргазмы. Удовольствие. За 90 минут.</div>
+    <div class="banner-sub">Вебинар «Секреты женского удовольствия» — смотри бесплатно прямо сейчас</div>
+    <div class="banner-cta-box">Открыть →</div>
+    <div class="banner-format">LAL покупателей | Акцент на результат</div>
+  </div>
+</div>
 
-  <h3>Технические параметры для таргетолога</h3>
-  <table>
-    <tr><th>Параметр</th><th>Значение</th></tr>
-    <tr><td>Цель кампании</td><td>Трафик → лендинг (не Lead Generation, не конверсия)</td></tr>
-    <tr><td>Пиксель</td><td>Установить на лендинг — событие ViewContent при загрузке, Lead при клике в TG</td></tr>
-    <tr><td>Аудитория 1 (основная)</td><td>Женщины 25–45, Интересы: психология, отношения, саморазвитие, сексология</td></tr>
-    <tr><td>Аудитория 2 (LAL)</td><td>LAL 2–5% от базы покупателей курса (загрузить CSV)</td></tr>
-    <tr><td>Аудитория 3 (ретаргет)</td><td>Посетители лендинга за 30 дней, не перешедшие в TG</td></tr>
-    <tr><td>Аудитория 4 (видео)</td><td>Просмотрели видео-крео 50%+ — тёплая аудитория</td></tr>
-    <tr><td>UTM-метки</td><td>utm_source=facebook&utm_medium=cpc&utm_campaign=webinar_vsl&utm_content=[creative_id]</td></tr>
-    <tr><td>Бюджет старт</td><td>$15–20/день (тест 5–7 дней)</td></tr>
-    <tr><td>Масштаб при CPA лендинг < $1.5</td><td>Поднять до $30–50/день</td></tr>
-  </table>
+<h3>Технические параметры для таргетолога</h3>
+<table>
+  <tr><th>Параметр</th><th>Значение</th></tr>
+  <tr><td>Цель кампании</td><td>Трафик → лендинг (не Lead Generation)</td></tr>
+  <tr><td>Пиксель</td><td>На лендинге: PageView при загрузке, Lead при клике в TG</td></tr>
+  <tr><td>Аудитория 1</td><td>Женщины 25–45, Интересы: психология, отношения, сексология, саморазвитие</td></tr>
+  <tr><td>Аудитория 2 (LAL)</td><td>LAL 2–5% от базы покупателей (загрузить CSV)</td></tr>
+  <tr><td>Аудитория 3 (ретаргет)</td><td>Посетители лендинга за 30 дней без перехода в TG</td></tr>
+  <tr><td>Аудитория 4 (видео)</td><td>Просмотрели видео-крео 50%+ — тёплая</td></tr>
+  <tr><td>UTM</td><td>utm_source=facebook&utm_medium=cpc&utm_campaign=webinar_vsl&utm_content=[creative_id]</td></tr>
+  <tr><td>Бюджет старт</td><td>$15–20/день, тест 5–7 дней</td></tr>
+  <tr><td>Масштаб при CPA лендинг &lt; $1.5</td><td>До $30–50/день</td></tr>
+</table>
 </section>
 
 <!-- ЛЕНДИНГ -->
 <section id="landing">
-  <h2>Лендинг вебинара «Ящик Пандоры»</h2>
-  <p class="sub">Структура страницы — передай разработчику. Все тексты готовы.</p>
+<h2>Лендинг вебинара «Секреты женского удовольствия»</h2>
+<p class="sub">Структура и тексты — передай разработчику. Рекомендуемый инструмент: Tilda</p>
 
-  <div class="lp-block">
-    <div class="lp-label">Блок 1 — Hero (первый экран)</div>
-    <h4>Заголовок:</h4>
-    <p style="font-size:16px;font-weight:700;color:var(--plum);margin:8px 0">«Ящик Пандоры» — бесплатный вебинар о том, почему пропадает женское желание и как его вернуть</p>
-    <h4>Подзаголовок:</h4>
-    <p style="font-size:13px;margin:6px 0">90 минут с магистром психологии и сексологом Екатериной — без стыда, без лишней теории, только практика</p>
-    <h4>CTA-кнопка:</h4>
-    <p style="display:inline-block;background:var(--rose);color:white;padding:10px 22px;border-radius:4px;font-weight:700;font-size:13px;margin:8px 0">👆 Смотреть вебинар бесплатно</p>
-    <p style="font-size:11px;color:var(--mauve);margin-top:6px">* Кнопка ведёт на Telegram-бот</p>
-  </div>
+<div class="lp-block">
+  <div class="lp-label">Блок 1 — Hero (первый экран)</div>
+  <h4>Заголовок:</h4>
+  <p style="font-size:16px;font-weight:700;color:var(--plum);margin:8px 0">«Секреты женского удовольствия» — бесплатный вебинар о либидо, оргазмах и том, почему тело перестаёт отзываться</p>
+  <h4>Подзаголовок:</h4>
+  <p style="font-size:13px;margin:6px 0">90 минут с психологом-сексологом Екатериной — конкретно, без стыда, с практиками которые работают прямо сейчас</p>
+  <h4>CTA-кнопка:</h4>
+  <p style="display:inline-block;background:var(--rose);color:white;padding:10px 22px;border-radius:4px;font-weight:700;font-size:13px;margin:8px 0">👆 Смотреть вебинар бесплатно</p>
+  <p style="font-size:11px;color:var(--mauve);margin-top:6px">* Кнопка ведёт в Telegram-бот</p>
+</div>
 
-  <div class="lp-block">
-    <div class="lp-label">Блок 2 — О ком этот вебинар (боли)</div>
-    <h4>Заголовок: «Этот вебинар для тебя, если...»</h4>
-    <ul style="font-size:13px;margin-top:10px;padding-left:20px;">
-      <li style="margin-bottom:8px">Секс превратился в «выполнить обязанность», а не в удовольствие</li>
-      <li style="margin-bottom:8px">Желание пропало или появляется редко — ты устаёшь, не хочется</li>
-      <li style="margin-bottom:8px">Ты никогда не испытывала оргазм с партнёром — или это случается «через раз»</li>
-      <li style="margin-bottom:8px">Во время секса думаешь о делах, не можешь расслабиться, «улетаешь» в мысли</li>
-      <li style="margin-bottom:8px">Тебе стыдно говорить о своих желаниях — даже партнёру, даже себе</li>
-      <li style="margin-bottom:8px">Ты думаешь, что «у других всё хорошо», а ты — исключение</li>
-    </ul>
-  </div>
+<div class="lp-block">
+  <div class="lp-label">Блок 2 — Боли аудитории</div>
+  <h4>Заголовок: «Этот вебинар для тебя, если...»</h4>
+  <ul style="font-size:13px;margin-top:10px;padding-left:20px;">
+    <li style="margin-bottom:8px">Секс превратился в то, что нужно «сделать», а не получить от него</li>
+    <li style="margin-bottom:8px">Желание пропало — или появляется редко и непредсказуемо</li>
+    <li style="margin-bottom:8px">Оргазм с партнёром — это «иногда», «через раз» или не случается вообще</li>
+    <li style="margin-bottom:8px">Во время секса голова занята чем угодно, только не моментом</li>
+    <li style="margin-bottom:8px">Ты хочешь большего — но не знаешь как об этом говорить и с чего начать</li>
+    <li style="margin-bottom:8px">Ощущение, что раньше было иначе — а теперь что-то изменилось</li>
+  </ul>
+</div>
 
-  <div class="lp-block">
-    <div class="lp-label">Блок 3 — Что ты узнаешь (программа вебинара)</div>
-    <h4>Заголовок: «За 90 минут ты узнаешь:»</h4>
-    <table>
-      <tr><th>#</th><th>Тема</th><th>Что даёт</th></tr>
-      <tr><td>1</td><td>Почему пропадает желание — 4 настоящих причины</td><td>Наконец поймёшь что происходит с твоим телом</td></tr>
-      <tr><td>2</td><td>Психология разрешения: почему тело «выключает» либидо</td><td>Уберёшь главный блок изнутри</td></tr>
-      <tr><td>3</td><td>Уверенность в себе как часть сексуальности</td><td>Практика которая меняет ощущение себя</td></tr>
-      <tr><td>4</td><td>Дезадаптивные способы оргазма — что мешает во время секса</td><td>Поймёшь почему с партнёром не получается</td></tr>
-      <tr><td>5</td><td>3 конкретные практики — которые работают прямо сейчас</td><td>Начнёшь делать сразу после просмотра</td></tr>
-    </table>
-  </div>
+<div class="lp-block">
+  <div class="lp-label">Блок 3 — Программа вебинара</div>
+  <h4>Заголовок: «За 90 минут ты узнаешь:»</h4>
+  <table>
+    <tr><th>#</th><th>Тема</th><th>Что даёт</th></tr>
+    <tr><td>1</td><td>5 реальных причин, почему нет оргазма с партнёром</td><td>Поймёшь что именно происходит в твоём случае</td></tr>
+    <tr><td>2</td><td>Как работает возбуждение — и почему «просто расслабиться» не помогает</td><td>Уберёшь главное заблуждение, которое всё блокирует</td></tr>
+    <tr><td>3</td><td>Психологические блоки и как они физически мешают телу отзываться</td><td>Поймёшь откуда эта стена — и как с ней работать</td></tr>
+    <tr><td>4</td><td>Неадаптивный сценарий оргазма — почему с вибратором да, а с мужчиной нет</td><td>Получишь конкретный путь изменения ситуации</td></tr>
+    <tr><td>5</td><td>3 практики которые можно применить уже сегодня + доступ к RED ROOM</td><td>Уйдёшь с инструментами, а не с теорией</td></tr>
+  </table>
+</div>
 
-  <div class="lp-block">
-    <div class="lp-label">Блок 4 — Об эксперте</div>
-    <h4>Заголовок: «Кто проведёт вебинар»</h4>
-    <div style="display:flex;gap:18px;align-items:flex-start;margin-top:10px;">
-      <div style="min-width:80px;height:80px;background:var(--blush);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px">👩</div>
-      <div>
-        <p style="font-size:15px;font-weight:700;color:var(--plum);margin-bottom:4px">Екатерина — психолог-сексолог</p>
-        <p style="font-size:13px;margin-bottom:6px">Магистр психологии. 10 лет в темах психологии и сексологии. Работала с тысячами женщин.</p>
-        <p style="font-size:13px">«Я начинала как девушка, которая не понимала, как устроено её тело. Не испытывала оргазмы с партнёром. Думала, что секс таким и должен быть. А потом всё изменилось — и я решила поделиться этим с другими.»</p>
-      </div>
+<div class="lp-block">
+  <div class="lp-label">Блок 4 — Об эксперте</div>
+  <h4>Заголовок: «Кто проведёт вебинар»</h4>
+  <div style="display:flex;gap:18px;align-items:flex-start;margin-top:10px;">
+    <div style="min-width:80px;height:80px;background:var(--blush);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px">👩</div>
+    <div>
+      <p style="font-size:15px;font-weight:700;color:var(--plum);margin-bottom:4px">Екатерина — психолог-сексолог</p>
+      <p style="font-size:13px;margin-bottom:6px">Магистр психологии. 10 лет в теме сексологии. 500+ клиенток прошли программы. Автор курса «Секреты женского наслаждения» и приложения RED ROOM.</p>
+      <p style="font-size:13px">«Я сама прошла этот путь — от полного непонимания своего тела до того, как всё изменилось. Именно поэтому знаю, что работает, а что нет.»</p>
     </div>
   </div>
+</div>
 
-  <div class="lp-block">
-    <div class="lp-label">Блок 5 — Отзывы (ОБЯЗАТЕЛЬНО)</div>
-    <h4>Заголовок: «Что говорят те, кто уже посмотрел»</h4>
-    <div class="grid-3" style="margin-top:12px">
-      <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«Тело стало отзывчивым, секс стал в десятки раз приятнее. Теперь кончаю и от куни, и от пальцев, и в разных позах»</p><p style="font-size:11px;color:var(--mauve)">— Анна, 32 года</p></div>
-      <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«Самое главное, чему я научилась — это говорить. Про желания, про неудобства. Муж начал слышать. Секс стал в кайф»</p><p style="font-size:11px;color:var(--mauve)">— Мария, 36 лет</p></div>
-      <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«По итогу курса — любовь к себе возросла, самооценка выросла, теперь я люблю каждую клеточку тела»</p><p style="font-size:11px;color:var(--mauve)">— Юлия, 29 лет</p></div>
-      <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«Мой любимый блок — про эрогенные зоны. Я реально не знала, что я могу столько всего чувствовать!»</p><p style="font-size:11px;color:var(--mauve)">— Ксения, 27 лет</p></div>
-      <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«Я выполнила все рекомендации — и желание вернулось!!! Я снова хочу себя, хочу мужа, хочу секс»</p><p style="font-size:11px;color:var(--mauve)">— Наталья, 38 лет</p></div>
-      <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«Техники работают. Спасибо огромное, что меняете жизнь на до и после»</p><p style="font-size:11px;color:var(--mauve)">— Оксана, 33 года</p></div>
-    </div>
+<div class="lp-block">
+  <div class="lp-label">Блок 5 — Отзывы участниц</div>
+  <h4>Заголовок: «Что говорят те, кто уже прошёл»</h4>
+  <div class="grid-3" style="margin-top:12px">
+    <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«Тело стало отзывчивым, секс стал в десятки раз приятнее. Теперь кончаю и от куни, и от пальцев, и в разных позах»</p><p style="font-size:11px;color:var(--mauve)">— Анна, 32 года</p></div>
+    <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«Самое главное, чему я научилась — это говорить. Про желания, про неудобства. Муж начал слышать. Секс стал в кайф»</p><p style="font-size:11px;color:var(--mauve)">— Мария, 36 лет</p></div>
+    <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«По итогу курса — любовь к себе возросла, самооценка выросла, теперь я люблю каждую клеточку тела»</p><p style="font-size:11px;color:var(--mauve)">— Юлия, 29 лет</p></div>
+    <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«Мой любимый блок — про эрогенные зоны. Я реально не знала, что я могу столько всего чувствовать!»</p><p style="font-size:11px;color:var(--mauve)">— Ксения, 27 лет</p></div>
+    <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«Я выполнила все рекомендации — и желание вернулось! Я снова хочу себя, хочу мужа, хочу секс»</p><p style="font-size:11px;color:var(--mauve)">— Наталья, 38 лет</p></div>
+    <div class="card accent-top"><p style="font-size:13px;font-style:italic;margin-bottom:8px">«Техники работают. Спасибо огромное, что меняете жизнь на до и после»</p><p style="font-size:11px;color:var(--mauve)">— Оксана, 33 года</p></div>
   </div>
+</div>
 
-  <div class="lp-block">
-    <div class="lp-label">Блок 6 — Финальный CTA</div>
-    <div style="text-align:center;padding:20px;background:var(--plum);border-radius:8px;">
-      <p style="color:white;font-size:18px;font-weight:700;margin-bottom:10px">Смотри вебинар прямо сейчас — это бесплатно</p>
-      <p style="color:var(--blush);font-size:13px;margin-bottom:16px">90 минут с практиками. Доступ — через Telegram. Смотри в удобное время.</p>
-      <div style="display:inline-block;background:var(--rose);color:white;padding:14px 32px;border-radius:6px;font-size:15px;font-weight:700;cursor:pointer">👆 Получить доступ бесплатно</div>
-    </div>
-  </div>
-
-  <div class="tip-box">💡 <strong>Для разработчика:</strong> Кнопка «Получить доступ» → ведёт на t.me/[botname]?start=vsl или использует deep link с UTM. Пиксель фиксирует событие <code>Lead</code> при клике. Страница — статичная (HTML или Tilda/Taplink). Время загрузки < 2 сек обязательно.</div>
+<div class="lp-block">
+  <div class="lp-label">Блок 6 — Финальный CTA</div>
+  <h4 style="font-size:16px;color:var(--plum)">Смотри вебинар прямо сейчас — это бесплатно</h4>
+  <p style="font-size:13px;margin:10px 0;color:#555">Нажми кнопку → перейди в Telegram-бот → получи доступ к записи</p>
+  <p style="display:inline-block;background:var(--rose);color:white;padding:12px 28px;border-radius:4px;font-weight:700;font-size:14px;margin:8px 0">👆 Смотреть бесплатно</p>
+  <p style="font-size:12px;color:var(--mauve);margin-top:8px">В конце вебинара — доступ к уникальному приложению RED ROOM для пар 🔥</p>
+</div>
 </section>
 
-<!-- TELEGRAM-БОТ -->
+<!-- TELEGRAM BOT -->
 <section id="tgbot">
-  <h2>Telegram-бот: логика и сообщения</h2>
-  <p class="sub">Полная схема бота — для BotFather / ManyChat / SendBot / Chatfuel</p>
+<h2>Telegram-бот: Сообщения 0–2 (вход в воронку)</h2>
+<p class="sub">Первые сообщения после нажатия /start — сегментация, выдача видео, первая проверка</p>
 
-  <div class="card-dark" style="margin-bottom:20px">
-    <h3>Структура бота</h3>
-    <p style="font-size:13px;color:var(--blush)">Команда /start → Приветствие → Выдача ссылки → 2ч пауза → Дожим-последовательность (9 сообщений за 7 дней)</p>
-  </div>
+<div class="script">
+<div class="meta">📩 СООБЩЕНИЕ 0 — Квиз-сегментация (сразу после /start)</div>
+Привет! Я Екатерина — психолог-сексолог 🤍
 
-  <h3>Сообщение 0 — /start (мгновенно)</h3>
-  <div class="script">
-    <div class="meta">▶ Триггер: /start | Отправить: немедленно</div>
-    <em>Привет! 👋</em><br><br>
-    <em>Я Катя — психолог-сексолог. Рада, что ты здесь.</em><br><br>
-    <em>Ты запросила доступ к вебинару «Ящик Пандоры».</em><br><br>
-    <em>Прежде чем я пришлю ссылку — скажи мне одно:</em><br><br>
-    <em>Что для тебя сейчас самое актуальное? Выбери:</em><br><br>
-    <em>🔥 А — Пропало желание, не хочется секса</em><br>
-    <em>💔 Б — Трудно с оргазмом (или его нет с партнёром)</em><br>
-    <em>🌀 В — Стыд, зажатость, не могу расслабиться</em><br>
-    <em>✨ Г — Хочу большего — глубины, страсти, разнообразия</em><br><br>
-    <span class="trigger">→ После ответа на кнопку — отправить сообщение 1 с персонализацией</span>
-  </div>
+Прежде чем отправить тебе доступ к вебинару — один вопрос.
+Это поможет мне дать тебе максимум пользы.
 
-  <h3>Сообщение 1 — Выдача доступа (после ответа на квиз)</h3>
-  <div class="script">
-    <div class="meta">▶ Триггер: любой ответ на квиз | Персонализация по выбору</div>
-    <em>[Если А]: «Понимаю — именно с этого начинается большинство проблем.»</em><br>
-    <em>[Если Б]: «Это самый частый запрос с которым ко мне приходят.»</em><br>
-    <em>[Если В]: «Психологические блоки — самая глубокая тема на вебинаре.»</em><br>
-    <em>[Если Г]: «Тогда тебе особенно понравится вторая половина.»</em><br><br>
-    <em>Держи ссылку на вебинар 👇</em><br><br>
-    <span class="cta">🎬 [ССЫЛКА НА ВЕБИНАР]</span><br><br>
-    <em>Вебинар длится ~90 минут.</em><br>
-    <em>Можно смотреть частями — ссылка работает 7 дней.</em><br><br>
-    <em>Я напишу тебе после просмотра. Договорились? 🤝</em><br><br>
-    <span class="trigger">→ Через 3 часа — отправить сообщение 2</span>
-  </div>
+Что сейчас ближе всего к твоей ситуации?
 
-  <h3>Сообщение 2 — Проверка через 3 часа</h3>
-  <div class="script">
-    <div class="meta">▶ Триггер: 3 часа после сообщения 1</div>
-    <em>Как вебинар? 🙂</em><br><br>
-    <em>Если ещё не начала — самое время.</em><br>
-    <em>Особенно советую не пропустить часть про психологические блоки — там практика, которую можно делать прямо сегодня.</em><br><br>
-    <em>Жду твоих впечатлений 💜</em>
-  </div>
+<span class="trigger">А) Желание пропало — секс стал последним, о чём думаю</span>
+<span class="trigger">Б) Оргазм с партнёром — это лотерея. Иногда бывает, чаще нет.</span>
+<span class="trigger">В) Всё есть, но хочу большего — глубины, разнообразия, остроты</span>
+<span class="trigger">Г) Хочу понять своё тело — чтобы знать что мне вообще нравится</span>
+
+Напиши букву ответа 👇
+</div>
+
+<div class="script">
+<div class="meta">📩 СООБЩЕНИЕ 1 — Выдача доступа (после ответа на квиз)</div>
+Спасибо, что ответила честно 🤍
+
+Твой вопрос — важный. И на вебинаре ты найдёшь ответ именно на него.
+
+Вот твой доступ к записи:
+<span class="cta">👉 [ССЫЛКА НА ВЕБИНАР]</span>
+
+Вебинар называется «Секреты женского удовольствия».
+90 минут. Без воды.
+
+Я разбираю: почему пропадает желание, как работает возбуждение,
+что мешает оргазму с партнёром — и что с этим делать.
+
+И в самом конце — кое-что особенное. Не пропусти 🔥
+
+Смотри, возвращайся сюда с вопросами.
+</div>
+
+<div class="script">
+<div class="meta">📩 СООБЩЕНИЕ 2 — Чек-ин через 3 часа (автоматически)</div>
+Успела посмотреть? 👀
+
+Если смотришь прямо сейчас — всё отлично, продолжай.
+
+Если ещё не успела — оставь это сообщение непрочитанным.
+Оно напомнит тебе вернуться 😊
+
+Там в конце — кое-что, ради чего точно стоит досмотреть до финала.
+</div>
 </section>
 
-<!-- ДОЖИМ -->
-<section id="dojim">
-  <h2>Дожим-последовательность (9 сообщений, 7 дней)</h2>
-  <p class="sub">Все тексты — готовы к загрузке в бот. Последовательность автоматическая.</p>
+<!-- ФАЗА 1: ДОЖИМ НЕ СМОТРЕВШИХ -->
+<section id="prewarm">
+<h2>Фаза 1: Дожим тех, кто не досмотрел видео</h2>
+<p class="sub">3 сообщения за 48 часов. Цель: вернуть к видео, создать интригу вокруг финала (RED ROOM). Без давления — через любопытство и боль.</p>
 
-  <div class="warn-box">⏱ <strong>Тайминг:</strong> Сообщения 3–11 стартуют ПОСЛЕ выдачи видео (сообщение 1). Пауза между сообщениями указана точно — соблюдать обязательно.</div>
+<div class="warn-box">⚠️ Эти сообщения отправляются ТОЛЬКО тем, кто не кликнул по ссылке на видео или не вернулся в бот после просмотра. Если платформа позволяет — сегментировать по клику на ссылку.</div>
 
-  <h3>День 1 — Сообщение 3 (через 24 часа после выдачи)</h3>
-  <div class="script">
-    <div class="meta">▶ День 1 | +24ч | Ценность: инсайт из вебинара</div>
-    <em>Помнишь, в вебинаре я говорила о «психологии разрешения»?</em><br><br>
-    <em>Вот в чём суть:</em><br>
-    <em>С детства нам говорили — желание это стыдно. «Хорошие девочки так не думают.»</em><br>
-    <em>И тело буквально выключает либидо — не потому что что-то сломано. А потому что так «правильнее».</em><br><br>
-    <em>Это не твоя вина. Это программа, которую можно переписать.</em><br><br>
-    <em>Именно этим мы занимаемся в курсе «Искусство женского наслаждения».</em><br><br>
-    <em>Если хочешь узнать подробнее — напиши мне «расскажи» и я пришлю тебе детали 💜</em><br><br>
-    <span class="trigger">→ Если написала «расскажи» — отправить сообщение с описанием курса + кнопку купить</span>
-  </div>
+<div class="day-block">
+  <div class="day-header"><span class="day-num">+6ч</span><strong style="color:white">Сообщение А — Интрига через финал</strong></div>
+  <div class="day-body">
+    <div class="goal">Цель: создать любопытство. Не давить.</div>
+    <div class="script" style="margin:0">
+Кстати — многие девушки пишут мне именно про последние 15 минут вебинара.
 
-  <h3>День 2 — Сообщение 4 (через 48 часов)</h3>
-  <div class="script">
-    <div class="meta">▶ День 2 | +48ч | Социальное доказательство: история клиентки</div>
-    <em>Хочу поделиться историей одной из моих клиенток.</em><br><br>
-    <em>Аня пришла ко мне с запросом: «Я никогда не испытывала оргазм с мужем. Только с вибратором. И уже не помню когда хотела секса.»</em><br><br>
-    <em>Мы провели 2 консультации за 2,5 месяца.</em><br>
-    <em>После первой — она смогла получить оргазм от руки, без игрушки.</em><br>
-    <em>После второй — оргазм с партнёром.</em><br><br>
-    <em>Она написала: «Это было впервые. Я не просто дошла до оргазма. Я кайфовала от процесса.»</em><br><br>
-    <em>Такой результат — не магия. Это система. Которую я собрала в курс.</em><br><br>
-    <em>Хочешь такой же результат? Напиши «хочу» 💜</em>
-  </div>
+Там я рассказываю про RED ROOM — приложение, которое мы разработали для пар.
+50+ сценариев интимной близости. Персонализация под вас. Пошагово.
 
-  <h3>День 3 — Сообщение 5 (через 72 часа)</h3>
-  <div class="script">
-    <div class="meta">▶ День 3 | +72ч | Раскрытие курса + оффер</div>
-    <em>Я хочу показать тебе что именно есть в курсе «Искусство женского наслаждения».</em><br><br>
-    <em>Потому что это не «набор техник».</em><br>
-    <em>Это 2 месяца работы. По шести ключевым модулям:</em><br><br>
-    <em>🔸 Модуль 1 — Стыд и разрешение: убираем главный блок</em><br>
-    <em>🔸 Модуль 2 — Уверенность в теле: принятие, любовь к себе</em><br>
-    <em>🔸 Модуль 3 — Либидо: как восстановить желание</em><br>
-    <em>🔸 Модуль 4 — Возбуждение: как включить тело</em><br>
-    <em>🔸 Модуль 5 — Оргазмы: разные виды и как их достичь</em><br>
-    <em>🔸 Модуль 6 — Секс с партнёром: коммуникация, инициатива, глубина</em><br><br>
-    <em>50+ видео. Доступ на 6 месяцев.</em><br>
-    <em>По цене двух консультаций со мной — ты получаешь весь курс.</em><br><br>
-    <em>Одна моя консультация — 120€.</em><br>
-    <em>Курс: от 190€.</em><br><br>
-    <span class="cta">👉 [ССЫЛКА НА СТРАНИЦУ ТАРИФОВ]</span>
-  </div>
+Это не про «что-то новое попробовать».
+Это про то, чтобы у вас обоих был повод захотеть — и знать что делать.
 
-  <h3>День 4 — Сообщение 6 (через 96 часов)</h3>
-  <div class="script">
-    <div class="meta">▶ День 4 | +96ч | Закрытие возражения «дорого»</div>
-    <em>Я знаю что может останавливать.</em><br><br>
-    <em>«190€ — это много.»</em><br><br>
-    <em>Понимаю. Хочу спросить тебя кое-что.</em><br><br>
-    <em>Сколько ты уже потратила на то, что не дало результата?</em><br>
-    <em>Книги, которые не перечитаны.</em><br>
-    <em>Психолог, с которым говорили о чём угодно, но не об этом.</em><br>
-    <em>Время, которое прошло в отношениях без удовольствия.</em><br><br>
-    <em>Одна моя консультация — 120€. Это один час.</em><br>
-    <em>В курсе — 50+ видео и 6 месяцев доступа.</em><br><br>
-    <em>Есть ещё тариф «Самостоятельный» — 190€. Начни с него.</em><br>
-    <em>Если хочешь поддержку — есть «С поддержкой» за 290€.</em><br>
-    <em>И VIP — с персональными консультациями лично со мной, 790€.</em><br><br>
-    <em>Какой формат тебе ближе? Напиши — помогу выбрать 💜</em>
-  </div>
-
-  <h3>День 5 — Сообщение 7 (через 5 дней)</h3>
-  <div class="script">
-    <div class="meta">▶ День 5 | +5 дней | Закрытие возражения «потом»</div>
-    <em>Знаешь, что говорят почти все мои клиентки после курса?</em><br><br>
-    <em>«Жалею, что не начала раньше.»</em><br><br>
-    <em>Не потому что это было сложно. А потому что откладывать было... просто привычкой.</em><br><br>
-    <em>«Потом, когда будет время.»</em><br>
-    <em>«Потом, когда разберусь с работой.»</em><br>
-    <em>«Потом, когда буду готова.»</em><br><br>
-    <em>Но тело не ждёт. Отношения не ждут. Годы идут.</em><br><br>
-    <em>Старт курса — в любое время. Ты сама выбираешь ритм.</em><br><br>
-    <span class="cta">Записаться → [ССЫЛКА]</span>
-  </div>
-
-  <h3>День 6 — Сообщение 8 (через 6 дней)</h3>
-  <div class="script">
-    <div class="meta">▶ День 6 | +6 дней | Бонусы + срочность</div>
-    <em>Хочу сказать тебе кое-что важное.</em><br><br>
-    <em>Для тех, кто запишется до [дата], я добавляю бонусы:</em><br><br>
-    <em>🎁 Бонус 1 — Курс «Искусство поз» (стоимость 79€) — в подарок</em><br>
-    <em>🎁 Бонус 2 — Месяц RED ROOM Premium ($3.9 в подарок) — ИИ-сценарии для пар</em><br>
-    <em>🎁 Бонус 3 — Закрытый чат студенток — поддержка и живое общение</em><br><br>
-    <em>После [дата] — бонусы убираю.</em><br><br>
-    <span class="cta">Записаться с бонусами → [ССЫЛКА]</span>
-  </div>
-
-  <h3>День 7 — Сообщение 9 (через 7 дней) — финальный дедлайн</h3>
-  <div class="script">
-    <div class="meta">▶ День 7 | +7 дней | Финальное закрытие</div>
-    <em>Последнее сообщение о курсе. Обещаю 🙂</em><br><br>
-    <em>Сегодня в [время] закрываю набор по этой цене.</em><br>
-    <em>После — цена вырастет и бонусы уйдут.</em><br><br>
-    <em>Если есть вопросы — напиши прямо сейчас. Отвечу лично.</em><br><br>
-    <em>Если чувствуешь, что хочешь — но что-то останавливает — напиши «вопрос».</em><br>
-    <em>Разберёмся вместе.</em><br><br>
-    <span class="cta">Записаться сейчас → [ССЫЛКА]</span><br><br>
-    <em>Спасибо, что посмотрела вебинар. Ты уже сделала шаг — это важно. 💜</em>
-  </div>
-
-  <h3>День 8–9 — Даунсейл (для тех, кто не купил)</h3>
-  <div class="script">
-    <div class="meta">▶ День 8 | Только для тех кто не купил флагман | Даунсейл 39€</div>
-    <em>Понимаю — курс 190€ это серьёзный шаг.</em><br><br>
-    <em>Для тех, кто хочет начать с чего-то меньшего — у меня есть мини-курс.</em><br><br>
-    <em>«Либидо и оргазмы» — 39€.</em><br>
-    <em>Фокус на одном: как вернуть желание и научиться испытывать оргазм.</em><br>
-    <em>Без лишнего — только практика.</em><br><br>
-    <span class="cta">Попробовать за 39€ → [ССЫЛКА НА МИНИ-КУРС]</span>
-  </div>
-</section>
-
-<!-- БОНУСЫ И УСИЛИТЕЛИ -->
-<section id="bonuses">
-  <h2>Бонусы, усилители и элементы доверия</h2>
-  <p class="sub">Всё что увеличивает конверсию в покупку</p>
-
-  <h3>Бонусы к флагману (добавить на лендинг тарифов)</h3>
-  <div class="grid-3">
-    <div class="card-rose"><span class="badge" style="background:rgba(255,255,255,0.3)">Бонус 1</span><h3 style="color:white">Курс «Искусство поз»</h3><p style="color:rgba(255,255,255,0.85);font-size:13px">Практический видеокурс по позам с акцентом на женское удовольствие. Стоимость: 79€. В подарок при записи до дедлайна.</p></div>
-    <div class="card-rose"><span class="badge" style="background:rgba(255,255,255,0.3)">Бонус 2</span><h3 style="color:white">RED ROOM Premium — 1 месяц</h3><p style="color:rgba(255,255,255,0.85);font-size:13px">ИИ-сценарии для пар. Персонализированные интимные сценарии. Стоимость: $3.9. В подарок при любом тарифе.</p></div>
-    <div class="card-rose"><span class="badge" style="background:rgba(255,255,255,0.3)">Бонус 3</span><h3 style="color:white">Закрытый чат студенток</h3><p style="color:rgba(255,255,255,0.85);font-size:13px">Поддержка, живое общение, ответы на вопросы. Катя периодически выходит в чат. Бесплатно при записи.</p></div>
-    <div class="card-dark"><span class="badge b-rose">Бонус 4 (VIP)</span><h3>Личная консультация с Катей</h3><p style="color:var(--blush);font-size:13px">1 персональная сессия 60 минут. Только для тарифа VIP 790€. Стоимость отдельно: 120€.</p></div>
-    <div class="card-dark"><span class="badge b-rose">Бонус 5</span><h3>PDF-гайд «Код твоего оргазма»</h3><p style="color:var(--blush);font-size:13px">Практический гайд из вебинара в PDF. NLP-техники, практики, карта тела. Сразу после оплаты.</p></div>
-    <div class="card-dark"><span class="badge b-rose">Бонус 6</span><h3>Доступ к записи вебинара навсегда</h3><p style="color:var(--blush);font-size:13px">Ящик Пандоры остаётся в личном кабинете. Можно пересматривать в любое время.</p></div>
-  </div>
-
-  <h3 style="margin-top:28px">Элементы доверия на лендинге и в боте</h3>
-  <table>
-    <tr><th>Элемент</th><th>Где использовать</th><th>Готово?</th></tr>
-    <tr><td><strong>6 текстовых отзывов из вебинара</strong></td><td>Лендинг блок 5, бот сообщение 4</td><td><span style="color:var(--green)">✅ В этом документе</span></td></tr>
-    <tr><td><strong>История клиентки (Аня)</strong></td><td>Бот день 2, лендинг блок 6</td><td><span style="color:var(--green)">✅ В этом документе</span></td></tr>
-    <tr><td><strong>Скриншоты отзывов в Instagram</strong></td><td>Лендинг, Stories в боте</td><td><span style="color:var(--amber)">⚠️ Нужно собрать у Кати</span></td></tr>
-    <tr><td><strong>Фото/видео Кати (экспертность)</strong></td><td>Лендинг блок 4, баннеры</td><td><span style="color:var(--amber)">⚠️ Нужна фотосессия или кадры из вебинара</span></td></tr>
-    <tr><td><strong>Статистика: «X женщин прошли курс»</strong></td><td>Лендинг hero, бот сообщение 9</td><td><span style="color:var(--amber)">⚠️ Уточнить реальные цифры у Кати</span></td></tr>
-    <tr><td><strong>Гарантия результата</strong></td><td>Страница тарифов</td><td><span style="color:var(--amber)">⚠️ Обсудить с Катей</span></td></tr>
-    <tr><td><strong>Квиз в боте (сегментация)</strong></td><td>Сообщение 0 в боте</td><td><span style="color:var(--green)">✅ В этом документе</span></td></tr>
-  </table>
-
-  <h3 style="margin-top:24px">Срочность и дефицит (обязательно для конверсии)</h3>
-  <div class="grid-2">
-    <div class="card accent-top">
-      <h4>Ограниченное время</h4>
-      <ul style="font-size:13px;padding-left:16px;">
-        <li style="margin-bottom:6px">Дедлайн на бонусы — конкретная дата (менять каждые 7–10 дней)</li>
-        <li style="margin-bottom:6px">Таймер на странице тарифов (обратный отсчёт)</li>
-        <li style="margin-bottom:6px">В боте — «сегодня в [время] закрываю»</li>
-      </ul>
-    </div>
-    <div class="card accent-top">
-      <h4>Ограниченное количество</h4>
-      <ul style="font-size:13px;padding-left:16px;">
-        <li style="margin-bottom:6px">VIP тариф: «Осталось 3 места с личной консультацией»</li>
-        <li style="margin-bottom:6px">Тариф «С поддержкой»: «Группа закрывается при 20 участницах»</li>
-        <li style="margin-bottom:6px">Реальное ограничение — честность важнее тактики</li>
-      </ul>
+Если не успела — ссылка всё ещё здесь 👉 [ССЫЛКА]
     </div>
   </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">+24ч</span><strong style="color:white">Сообщение Б — Боль + кейс</strong></div>
+  <div class="day-body">
+    <div class="goal">Цель: попасть в боль, показать что решение существует</div>
+    <div class="script" style="margin:0">
+Одна из участниц написала мне вчера.
+
+Говорит: «Я смотрела вебинар и плакала. Потому что наконец поняла — дело не в том, что я холодная. Дело в том, что я никогда не понимала как это работает».
+
+Это происходит часто.
+Женщины годами живут с ощущением, что с ними что-то не так.
+А потом смотрят 90 минут — и всё становится на место.
+
+Ты ещё не смотрела?
+Ссылка здесь 👉 [ССЫЛКА]
+
+Там в конце — практики, которые можно применить сегодня вечером.
+    </div>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">+48ч</span><strong style="color:white">Сообщение В — Последний призыв перед переходом в 14-дневный прогрев</strong></div>
+  <div class="day-body">
+    <div class="goal">Цель: финальный импульс + плавный переход</div>
+    <div class="script" style="margin:0">
+Завтра я начну делиться кое-чем личным.
+
+Кейсами моих клиенток. Инсайтами из практики. Тем, о чём обычно не говорят публично.
+
+Но сначала — если ты ещё не посмотрела вебинар, сделай это сегодня.
+Он даст тебе контекст для всего, что будет дальше.
+
+👉 [ССЫЛКА]
+
+Или просто скажи мне — что тебе сейчас актуально?
+Я отвечу и дам именно то, что нужно тебе.
+    </div>
+  </div>
+</div>
 </section>
 
-<!-- ТЕХНИЧЕСКОЕ ТЗ -->
+<!-- ФАЗА 2: 14-ДНЕВНЫЙ ПРОГРЕВ -->
+<section id="dojim14">
+<h2>Фаза 2: 14-дневный прогрев к покупке флагмана</h2>
+<p class="sub">Ежедневно: 1 текстовое сообщение в боте + 1 кружок (видео-кружок от Кати, 1–2 мин). Кейсы чередуются с экспертным контентом. Логика: установление доверия → боль → трансформация → оффер → срочность.</p>
+
+<div class="tip-box">💡 Кружки снимает Катя заранее. Короткие, живые, без сценария. Говорит как будто одной девочке — не аудитории. Тема кружка совпадает с темой дня.</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 1</span><strong style="color:white">Почему ты здесь — и что будет дальше</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень Ханта: 1→2</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: установить контакт, создать ожидание, обозначить ценность</div>
+    <div class="script" style="margin:0">
+Привет 🤍
+
+Ты посмотрела вебинар — и значит, что-то тебя зацепило.
+Либо узнала себя. Либо появился вопрос. Либо что-то стало на место.
+
+Следующие две недели я буду присылать тебе кое-что из своей практики.
+Кейсы реальных клиенток. Инсайты. Разборы ситуаций.
+
+Не для того, чтобы «прогреть» тебя к покупке.
+А потому что большинство женщин уходят с вебинара с пониманием «что» — но без понимания «как именно» и «с чего начать».
+
+Именно это я и буду давать.
+
+Скажи мне одно: что тебя больше всего зацепило в вебинаре?
+Напиши ответ — это поможет мне дать тебе максимум пользы.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: Катя говорит вживую — «Я рада что ты здесь. Вот что я хочу тебе дать в ближайшие дни...»</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 2</span><strong style="color:white">Кейс: Аня. 2 консультации → оргазм с партнёром</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 2→3</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: социальное доказательство + надежда + любопытство к методу</div>
+    <div class="script" style="margin:0">
+Хочу рассказать тебе про Аню.
+
+Она пришла ко мне с запросом, который я слышу часто:
+«Я не могу кончить без вакуумника. А с мужем — вообще ничего».
+
+Не потому что с ней что-то не так.
+Просто тело привыкло к одному очень конкретному сценарию.
+И всё, что отличалось от него — не считалось.
+
+После первой консультации — оргазм от стимуляции рукой. Без игрушки. Впервые.
+После второй — оргазм с мужем. Сначала от его рук. Потом — при кунилингусе.
+
+2,5 месяца. 2 консультации.
+
+Это не волшебство. Это — работа с конкретным механизмом.
+Шаг за шагом. Без насилия над собой.
+
+Завтра расскажу что именно мы делали на первом этапе.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Хочу рассказать тебе историю. Она про одну мою клиентку...» (Катя рассказывает кейс устно)</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 3</span><strong style="color:white">Как работает неадаптивный оргазм — и что с этим делать</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 2→3</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: экспертный инсайт, доверие, объяснение механизма из кейса</div>
+    <div class="script" style="margin:0">
+Продолжу про Аню.
+
+Её главная проблема называется неадаптивный способ достижения оргазма.
+
+Звучит сложно — объясню просто.
+
+Тело привыкает к тому, что срабатывает. Всегда.
+Вибратор на максимуме. Струя душа. Сжатие бёдер.
+Интенсивность, которую невозможно воспроизвести с живым человеком.
+
+Каждый раз, когда ты «идёшь этим маршрутом» — тело запоминает:
+вот так и только так.
+
+И когда с тобой партнёр — тело говорит «не то».
+Не потому что он плохой. Просто — не тот сигнал.
+
+Что делали с Аней: шаг за шагом расширяли «диапазон».
+Добавляли новые стимулы. Снижали интенсивность привычного.
+Тренировали чувствительность в других местах.
+
+Это работа. Не за один вечер.
+Но она даёт результат — ты видела вчера.
+
+Есть у тебя похожая ситуация? Напиши — разберём.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: Катя объясняет механизм простыми словами на примере</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 4</span><strong style="color:white">Кейс 2: Либидо возвращается. История Марины.</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 1→2</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: попасть в боль «пропавшего желания» — самый распространённый запрос</div>
+    <div class="script" style="margin:0">
+Марина написала мне: «Я не понимаю, куда пропало желание. Я люблю мужа. Но когда он прикасается ко мне — я чувствую... ничего. Как будто отключилась».
+
+Ей 34 года. Двое детей. Хорошие отношения.
+И полное отсутствие желания уже 2 года.
+
+Вот что происходило: постоянный стресс, усталость, «некогда думать о себе».
+Тело переключилось в режим выживания. Либидо — первое, что отключается.
+
+Это не «охлаждение к мужу». Это физиология.
+Нервная система в хроническом напряжении просто не даёт разрешения на удовольствие.
+
+Через 6 недель работы Марина написала:
+«Я снова хочу. Не потому что надо. А потому что хочу».
+
+Это реально. Желание возвращается — если понять откуда оно уходит.
+
+Завтра — про то, что происходит в голове. Это интереснее, чем кажется.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Хочу поговорить о желании. О том, куда оно уходит и почему...»</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 5</span><strong style="color:white">Что происходит в голове — и как это блокирует тело</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 2→3</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: психологический инсайт без клише</div>
+    <div class="script" style="margin:0">
+Есть кое-что, о чём мало говорят.
+
+Тело не может получать удовольствие, если голова в это время занята другим.
+
+Не в метафорическом смысле — в буквальном.
+Возбуждение — это реакция нервной системы.
+Если система в режиме «тревога / контроль / оценка» — сигнал на возбуждение просто не проходит.
+
+Многие женщины во время секса:
+— думают выглядит ли тело правильно
+— контролируют реакции (не слишком ли громко?)
+— отслеживают «нравится ли ему»
+— или просто улетают в список дел
+
+Это называется когнитивная нагрузка во время секса.
+И она буквально обнуляет возбуждение.
+
+Это не характер. Это — паттерн. Который меняется.
+
+Завтра расскажу про ещё один кейс. Про девушку, у которой это было максимально выражено.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: Катя объясняет механизм «голова vs тело» на конкретном примере</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 6</span><strong style="color:white">Кейс 3: Когда стыд управляет телом</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 2→3</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: кейс про психологические блоки — попасть в тех, у кого внутренняя стена</div>
+    <div class="script" style="margin:0">
+Оля пришла ко мне с запросом: «Я не могу расслабиться в сексе. Вообще. Даже если хочу — тело напрягается».
+
+27 лет. В отношениях 4 года. Партнёр внимательный, терпеливый.
+Но каждый раз — стена.
+
+Мы начали разбираться — и нашли кое-что важное.
+Тело фиксировало оценку. «Правильно ли я делаю? Нормально ли реагирую?»
+Эта оценка шла изнутри. Не от него — от неё самой.
+
+Такой внутренний наблюдатель, который стоит рядом и комментирует.
+«Слишком громко. Слишком много. А вдруг не понравится.»
+
+Через 8 недель работы Оля написала:
+«Я первый раз в жизни была полностью в моменте. Ни одной посторонней мысли».
+
+Это случается. Это реально.
+Но над этим нужно работать — это не «само пройдёт».
+
+Кстати — ты узнала себя в ком-то из этих историй?
+Напиши мне. Просто скажи в чьей ситуации больше от тебя.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Хочу поговорить о стыде. Не в абстрактном смысле — а о том, что он буквально делает с телом...»</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 7</span><strong style="color:white">Что даёт курс — конкретно и по шагам</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 3→4</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: первое прямое представление флагмана — через ценность, не через продажу</div>
+    <div class="script" style="margin:0">
+Я создала курс «Секреты женского наслаждения» именно для того, чтобы давать системную работу.
+
+Не одну технику. Не «попробуй это и посмотри».
+А путь — от первопричины до результата.
+
+Вот что мы разбираем:
+
+Недели 1–2: Либидо и желание
+Откуда берётся, куда уходит, как возвращать — без «просто расслабься».
+
+Недели 3–4: Возбуждение и тело
+Как включить тело, как убрать напряжение, как работать с чувствительностью.
+
+Недели 4–5: Психология
+Блоки, стыд, внутренний критик — конкретная работа, не лирика.
+
+Недели 6–7: Оргазмы
+Техники, смена сценария, работа с партнёром — шаг за шагом.
+
+Недели 8–9: Коммуникация и интеграция
+Как говорить о желаниях без неловкости. Как закрепить всё, что изменилось.
+
+50+ видеоуроков. Практические задания. Доступ на 6 месяцев.
+
+Завтра расскажу о тарифах — там есть важный нюанс.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Хочу рассказать тебе про курс — не рекламно, а по-честному, что там внутри и для кого это...»</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 8</span><strong style="color:white">Кейс 4: Женщина без партнёра — и это не помеха</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 2→3 · Возражение</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: снять возражение «у меня нет партнёра / это не для меня»</div>
+    <div class="script" style="margin:0">
+Катя (не я, другая — моя клиентка) написала мне перед началом курса:
+«Я сейчас не в отношениях. Это точно актуально для меня?»
+
+Да.
+
+Потому что большая часть работы — это работа с собой.
+Не с партнёром — с собой.
+
+Со своим телом. Со своей чувствительностью. Со своим отношением к желанию.
+
+Катя прошла курс без партнёра.
+И через 4 месяца — уже в отношениях — написала:
+«Я первый раз в жизни с самого начала знала что хочу. И умела это получать. Не угадывала, не терпела, не ждала».
+
+Это — то, что ты берёшь с собой. В любые отношения. Навсегда.
+
+Партнёр — не обязательное условие для начала.
+Нужна только ты — и готовность разобраться.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Часто спрашивают — а что если нет партнёра. Хочу честно об этом...»</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 9</span><strong style="color:white">Цена вопроса — и почему это не дорого</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 3→4 · Возражение «дорого»</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: снять возражение по цене через конкретное сравнение</div>
+    <div class="script" style="margin:0">
+Хочу поговорить о цене честно.
+
+Одна моя консультация стоит 120 евро.
+За неё — час. Разбор ситуации. Рекомендации.
+
+Курс «Секреты женского наслаждения» — от 190 евро.
+За него — 9 недель. 50+ уроков. Доступ на 6 месяцев.
+Практики, задания, структура, поддержка в чате.
+
+То есть — 9 недель системной работы по цене полутора консультаций.
+
+Тариф «Индивидуальный» — 790 евро.
+В нём уже включены 2 личные консультации (240 евро).
+Плюс весь курс. Плюс безлимитный доступ к RED ROOM на 2 месяца.
+
+Это не «дорого или нет».
+Это вопрос: сколько стоит ещё год в той же ситуации?
+
+Завтра — оффер и всё что нужно знать для записи.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Хочу поговорить о цене — без скидок и манипуляций. Просто честно...»</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 10</span><strong style="color:white">Оффер + бонусы + тарифы</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 4→5 · Первый прямой оффер</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: первый прямой призыв к покупке с полным оффером</div>
+    <div class="script" style="margin:0">
+Сегодня — про запись на курс.
+
+Курс «Секреты женского наслаждения» стартует [ДАТА].
+
+Три тарифа:
+
+📌 Самостоятельный — 190€
+Все видеоуроки + практические задания + доступ 6 месяцев + 3 сценария RED ROOM
+
+📌 С поддержкой — 290€
+Всё из тарифа 1 + модуль «Минет» (9 недель) + чат поддержки + 2 Q&A сессии + обратная связь по заданиям + 5 сценариев RED ROOM
+
+📌 Индивидуальный — 790€ (10 мест)
+Всё из тарифа 2 + 2 личные консультации со мной + безлимит RED ROOM на 2 месяца + индивидуальная стратегия
+
+🎁 При записи до [ДАТА] — курс по позам в подарок
+
+Записаться: [ССЫЛКА]
+Или напиши мне — отвечу на все вопросы и помогу выбрать тариф.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Сегодня — про запись. Расскажу про тарифы — и честно скажу, какой подойдёт именно тебе...»</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 11</span><strong style="color:white">Кейс 5: Через год ты будешь в том же месте</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 4→5 · FOMO</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: показать последствия бездействия через реальную историю</div>
+    <div class="script" style="margin:0">
+Ирина написала мне 2 года назад.
+Я рассказала ей про курс. Она сказала: «Подумаю. Наверное, потом».
+
+В прошлом месяце она написала снова.
+
+«Катя, я вернулась. За эти два года ничего не изменилось. Секс всё так же — как повинность. Желания нет. С мужем отдаляемся. Я поняла: само не пройдёт.»
+
+Она записалась на Индивидуальный тариф.
+
+Я не рассказываю это чтобы напугать.
+Я рассказываю, потому что «потом» — это тоже выбор.
+Выбор остаться там же ещё на год.
+
+А можно — через 9 недель быть в другом месте.
+
+Запись: [ССЫЛКА]
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Хочу рассказать про одну историю. Она не про успех — она про откладывание...»</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 12</span><strong style="color:white">Снятие возражения «нет времени»</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 4 · Возражение</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: убрать последний барьер перед покупкой</div>
+    <div class="script" style="margin:0">
+«Нет времени».
+
+Слышу это часто. Отвечу честно.
+
+Уроки — 15–20 минут. Не час, не два.
+Доступ — 6 месяцев. Можно проходить в своём темпе.
+Практики делаются в своей жизни — не на специальных «занятиях».
+
+Но вот что важно.
+
+Время на работу находится. На детей — находится. На сериалы — находится.
+На своё тело, своё удовольствие, свою жизнь в сексе — «нет времени».
+
+Это не про время.
+Это про то, что ты — последняя в своём собственном списке приоритетов.
+
+И это тоже меняется. Но начинается с решения.
+
+Осталось [N] мест на тариф «С поддержкой» и [N] на «Индивидуальный».
+
+Запись: [ССЫЛКА]
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Про время. Я хочу сказать кое-что неудобное...»</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 13</span><strong style="color:white">Дедлайн + бонус исчезает</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 5 · Срочность</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: создать реальную срочность — бонус уходит</div>
+    <div class="script" style="margin:0">
+Завтра — последний день, когда при записи в курс я даю курс по позам в подарок.
+
+После — бонус закрывается. Стоимость курса по позам отдельно — 40€.
+
+Это не «специальное предложение на 5 минут».
+Это реальный дедлайн — я его соблюдаю.
+
+Если ты думала — сегодня момент принять решение.
+
+Не потому что «горит» или «последний шанс в жизни».
+А потому что каждый день откладывания — это день, когда ничего не меняется.
+
+Записаться: [ССЫЛКА]
+
+Или напиши мне вопрос — отвечу прямо сейчас.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Завтра закрывается бонус. Хочу честно сказать — почему это важно именно сейчас...»</p>
+  </div>
+</div>
+
+<div class="day-block">
+  <div class="day-header"><span class="day-num">День 14</span><strong style="color:white">Финал. Последнее сообщение перед upsell.</strong><span style="margin-left:auto;font-size:11px;color:var(--blush)">Ступень: 5 · Финальный оффер</span></div>
+  <div class="day-body">
+    <div class="goal">Цель: последний шанс купить флагман перед переходом на upsell bundle</div>
+    <div class="script" style="margin:0">
+Сегодня — последний день, когда я пишу тебе про курс «Секреты женского наслаждения» в этом формате.
+
+Бонус «Курс по позам» — закрылся вчера.
+Тариф «Индивидуальный» — [N] мест осталось.
+
+Если ты читала все эти дни — ты уже знаешь достаточно.
+Знаешь кейсы. Знаешь программу. Знаешь как это работает.
+
+Единственный вопрос, который остался: ты это делаешь — или нет.
+
+Не для меня. Для себя.
+Потому что твоё удовольствие — это не привилегия.
+Это часть жизни, которую ты заслуживаешь.
+
+Записаться последний раз с текущими условиями:
+[ССЫЛКА]
+
+Если не готова к флагману — завтра у меня будет кое-что специально для тебя.
+Другой формат. Другая цена. Но тоже с ценностью.
+    </div>
+    <p style="font-size:12px;color:var(--mauve);margin-top:10px">🎥 Кружок: «Сегодня — финальное слово. Хочу сказать тебе кое-что важное. Без продажи.»</p>
+  </div>
+</div>
+</section>
+
+<!-- UPSELL BUNDLE -->
+<section id="upsell">
+<h2>День 15: Bundle Upsell — для тех, кто не купил флагман</h2>
+<p class="sub">Отправляется только тем, кто не совершил покупку за 14 дней. Цена: 49–69€. Формат: 3–4 продукта в комплекте.</p>
+
+<div class="card-dark" style="margin-bottom:20px;padding:24px">
+  <h3>Состав Bundle (варианты на выбор)</h3>
+  <div class="grid-2" style="margin-top:12px">
+    <div>
+      <h4>Bundle A — «Старт» за 49€</h4>
+      <ul style="color:var(--blush);margin-top:8px">
+        <li>Мини-курс «Первый оргазм с партнёром» (видеоуроки)</li>
+        <li>Практика «Разбудить желание» (аудио + гайд)</li>
+        <li>3 сценария RED ROOM на 1 месяц</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Bundle B — «Глубина» за 69€</h4>
+      <ul style="color:var(--blush);margin-top:8px">
+        <li>Всё из Bundle A</li>
+        <li>Курс по позам (видеокурс)</li>
+        <li>Разбор запроса в текстовом формате (1 вопрос)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="script">
+<div class="meta">📩 ДЕНЬ 15 — Сообщение Bundle Upsell</div>
+Привет 🤍
+
+Я вижу, что ты ещё не присоединилась к курсу.
+И это нормально — у каждого своя скорость.
+
+Я хочу предложить тебе кое-что другое.
+
+Не весь курс — а точечный старт.
+Для тех, кто хочет начать — но пока не готов к большой программе.
+
+Я собрала Bundle «Старт» — набор из [N] продуктов.
+Всё что нужно, чтобы сделать первые реальные шаги.
+
+[Состав bundle — перечислить]
+
+Обычная стоимость всего этого — [X]€.
+Вместе, только сейчас — 49€ (или 69€ за расширенный).
+
+Это не утешительный приз.
+Это — точечный инструмент для конкретного результата.
+
+Забрать bundle: [ССЫЛКА]
+
+Действует 48 часов.
+<span class="cta">После — bundle закрывается.</span>
+</div>
+
+<div class="script">
+<div class="meta">📩 ДЕНЬ 16 — Напоминание о Bundle (последнее)</div>
+Последнее напоминание.
+
+Bundle «Старт» закрывается сегодня в [ВРЕМЯ].
+
+[Состав + цена]
+
+Если что-то останавливает — напиши мне.
+Я отвечу и помогу разобраться.
+
+[ССЫЛКА]
+</div>
+</section>
+
+<!-- ТЕХ ТЗ -->
 <section id="tech">
-  <h2>Техническое ТЗ для специалиста</h2>
-  <p class="sub">Что нужно собрать и настроить — список задач</p>
+<h2>Техническое ТЗ</h2>
+<p class="sub">Для техспециалиста — всё что нужно для сборки воронки</p>
 
-  <h3>1. Видеохостинг для вебинара</h3>
-  <div class="card">
-    <table>
-      <tr><th>Вариант</th><th>Плюсы</th><th>Минусы</th><th>Рекомендация</th></tr>
-      <tr><td>YouTube Unlisted</td><td>Бесплатно, надёжно</td><td>Могут найти</td><td>Для старта</td></tr>
-      <tr><td>Kinescope.io</td><td>Платный, нет рекламы, аналитика</td><td>Платно ~$15/мес</td><td>⭐ Рекомендуется</td></tr>
-      <tr><td>Vimeo</td><td>Надёжно, без рекламы</td><td>Платно</td><td>Ок вариант</td></tr>
-      <tr><td>Закрытая страница сайта</td><td>Полный контроль</td><td>Нужен сайт</td><td>Вместе с лендингом</td></tr>
-    </table>
-  </div>
-
-  <h3>2. Платформа для бота</h3>
-  <div class="grid-3">
-    <div class="card accent-top"><h4>SendBot</h4><p style="font-size:12px">Простой, на русском. Достаточно для этой воронки. Цена: от $10/мес.</p><p style="font-size:12px;color:var(--green);font-weight:700">✅ Рекомендуется</p></div>
-    <div class="card accent-top"><h4>BotFather + Python/Node.js</h4><p style="font-size:12px">Максимум гибкости. Нужен разработчик. Цена: по стоимости разработки.</p></div>
-    <div class="card accent-top"><h4>ManyChat</h4><p style="font-size:12px">Удобно, но дороже. Хорошо для сложных воронок. Цена: $15–30/мес.</p></div>
-  </div>
-
-  <h3>3. Лендинг</h3>
-  <div class="grid-2">
-    <div class="card accent-top"><h4>Tilda (рекомендуется)</h4><p style="font-size:12px;margin-top:6px">Быстро, красиво, без кода. Готовые блоки. Цена: от $10/мес. Интеграция пикселя одной строкой. Мобильная версия автоматически.</p></div>
-    <div class="card accent-top"><h4>Taplink / Создание HTML-страницы</h4><p style="font-size:12px;margin-top:6px">Проще и дешевле. Taplink — для минималистичного варианта. HTML — полный контроль.</p></div>
-  </div>
-
-  <h3>4. Пиксель и аналитика</h3>
+<div class="grid-2">
+<div class="card">
+  <h3>Видеохостинг</h3>
   <table>
-    <tr><th>Что поставить</th><th>Где</th><th>Событие</th></tr>
-    <tr><td>Meta Pixel</td><td>Лендинг (head)</td><td>PageView при загрузке</td></tr>
-    <tr><td>Meta Pixel</td><td>Кнопка «Получить доступ»</td><td>Lead при клике</td></tr>
-    <tr><td>Meta Pixel</td><td>Страница тарифов</td><td>ViewContent</td></tr>
-    <tr><td>Meta Pixel</td><td>Страница «Спасибо / Оплата»</td><td>Purchase + Value</td></tr>
-    <tr><td>Google Analytics 4</td><td>Лендинг</td><td>Стандартные события</td></tr>
-    <tr><td>UTM-метки</td><td>Все ссылки в рекламе</td><td>source/medium/campaign/content</td></tr>
+    <tr><th>Вариант</th><th>Плюсы</th><th>Минусы</th></tr>
+    <tr><td><strong>Kinescope.io ✅</strong></td><td>Аналитика просмотров, антипиратская защита, брендинг</td><td>Платный</td></tr>
+    <tr><td>YouTube Unlisted</td><td>Бесплатно, быстро</td><td>Нет аналитики, видно в поиске при утечке</td></tr>
+    <tr><td>Vimeo</td><td>Приватность, пароль</td><td>Дороже Kinescope</td></tr>
   </table>
-
-  <h3>5. Платёжные ссылки</h3>
-  <p style="font-size:13px;margin-bottom:10px">Уже есть ссылки WayForPay из лендинга тарифов:</p>
+</div>
+<div class="card">
+  <h3>Платформа Telegram-бота</h3>
   <table>
-    <tr><th>Тариф</th><th>Цена</th><th>Ссылка WayForPay</th></tr>
-    <tr><td>Самостоятельный</td><td>190€ (было 290€)</td><td>secure.wayforpay.com/button/b1a8aeeb4ff6a</td></tr>
-    <tr><td>С поддержкой</td><td>290€ (было 390€)</td><td>secure.wayforpay.com/button/becef7052ab44</td></tr>
-    <tr><td>Индивидуальный VIP</td><td>790€ (было 990€)</td><td>secure.wayforpay.com/button/b911fe1e1be2b</td></tr>
-    <tr><td>Бронь любого тарифа</td><td>40€</td><td>Указана на лендинге тарифов</td></tr>
+    <tr><th>Вариант</th><th>Рекомендация</th></tr>
+    <tr><td><strong>SendBot ✅</strong></td><td>Визуальный конструктор, сегментация, рассылки</td></tr>
+    <tr><td>BotFather + Python</td><td>Если нужна кастомная логика</td></tr>
+    <tr><td>ManyChat</td><td>Если есть опыт с платформой</td></tr>
   </table>
+</div>
+</div>
 
-  <h3>6. Чеклист запуска</h3>
-  <table>
-    <tr><th>Задача</th><th>Ответственный</th><th>Дедлайн</th></tr>
-    <tr><td>Загрузить видео вебинара на хостинг</td><td>Продюсер</td><td>День 1</td></tr>
-    <tr><td>Создать лендинг вебинара (по ТЗ выше)</td><td>Техспециалист</td><td>День 3</td></tr>
-    <tr><td>Настроить Telegram-бот (9 сообщений + квиз)</td><td>Техспециалист</td><td>День 4</td></tr>
-    <tr><td>Установить пиксель на лендинг</td><td>Таргетолог</td><td>День 3</td></tr>
-    <tr><td>Создать 3 баннера (1:1, 9:16, 4:5)</td><td>Дизайнер</td><td>День 3</td></tr>
-    <tr><td>Снять 2 видео-крео (Катя)</td><td>Эксперт</td><td>День 3</td></tr>
-    <tr><td>Настроить 4 рекламные кампании</td><td>Таргетолог</td><td>День 5</td></tr>
-    <tr><td>Тест всей воронки (пройти как пользователь)</td><td>Продюсер + техспец</td><td>День 5</td></tr>
-    <tr><td>Запуск трафика</td><td>Таргетолог</td><td>День 6</td></tr>
-    <tr><td>Первый отчёт по CPA</td><td>Таргетолог</td><td>День 12</td></tr>
-  </table>
+<h3>Оплата — WayForPay (уже настроено)</h3>
+<table>
+  <tr><th>Тариф</th><th>Цена</th><th>Ссылка WayForPay</th></tr>
+  <tr><td>Самостоятельный</td><td>190€ (было 290€)</td><td>wayforpay.com/pay/b1a8aeeb4ff6a</td></tr>
+  <tr><td>С поддержкой</td><td>290€ (было 390€)</td><td>wayforpay.com/pay/becef7052ab44</td></tr>
+  <tr><td>Индивидуальный VIP</td><td>790€ (было 990€)</td><td>wayforpay.com/pay/b911fe1e1be2b</td></tr>
+  <tr><td>Бронь депозит</td><td>40€</td><td>Отдельная ссылка</td></tr>
+  <tr><td>Bundle A</td><td>49€</td><td>Создать новую ссылку</td></tr>
+  <tr><td>Bundle B</td><td>69€</td><td>Создать новую ссылку</td></tr>
+</table>
+
+<h3>Meta Pixel — события</h3>
+<table>
+  <tr><th>Событие</th><th>Где ставить</th></tr>
+  <tr><td>PageView</td><td>На лендинге при загрузке</td></tr>
+  <tr><td>ViewContent</td><td>При клике на кнопку «Смотреть бесплатно»</td></tr>
+  <tr><td>Lead</td><td>При переходе в Telegram-бот (редирект-страница)</td></tr>
+  <tr><td>Purchase</td><td>На странице thanks после оплаты WayForPay</td></tr>
+</table>
+
+<h3>Чеклист запуска (10 пунктов)</h3>
+<table>
+  <tr><th>#</th><th>Задача</th><th>Ответственный</th><th>Готово</th></tr>
+  <tr><td>1</td><td>Загрузить вебинар на Kinescope, получить приватную ссылку</td><td>Техспец</td><td>☐</td></tr>
+  <tr><td>2</td><td>Собрать Telegram-бот в SendBot: квиз + выдача + 14 дней + bundle</td><td>Техспец</td><td>☐</td></tr>
+  <tr><td>3</td><td>Опубликовать лендинг на Tilda с UTM и кнопкой в TG</td><td>Техспец</td><td>☐</td></tr>
+  <tr><td>4</td><td>Установить Meta Pixel на лендинг, проверить все события</td><td>Таргетолог</td><td>☐</td></tr>
+  <tr><td>5</td><td>Создать ссылки WayForPay для Bundle A и Bundle B</td><td>Катя / Продюсер</td><td>☐</td></tr>
+  <tr><td>6</td><td>Снять кружки для всех 14 дней (по 1–2 мин каждый)</td><td>Катя</td><td>☐</td></tr>
+  <tr><td>7</td><td>Загрузить кружки в бот-последовательность SendBot</td><td>Техспец</td><td>☐</td></tr>
+  <tr><td>8</td><td>Настроить аудитории в Meta Ads: холодная, LAL, ретаргет</td><td>Таргетолог</td><td>☐</td></tr>
+  <tr><td>9</td><td>Тест всей воронки: пройти путь от рекламы до покупки</td><td>Продюсер</td><td>☐</td></tr>
+  <tr><td>10</td><td>Запустить рекламу с бюджетом $15–20/день. Мониторинг ежедневно.</td><td>Таргетолог</td><td>☐</td></tr>
+</table>
 </section>
 
 <!-- KPI -->
 <section id="kpi">
-  <h2>KPI воронки</h2>
-  <p class="sub">Что считать еженедельно чтобы понимать работает ли воронка</p>
-  <table>
-    <tr><th>Метрика</th><th>Норма (хорошо)</th><th>Тревога (плохо)</th><th>Действие при «тревоге»</th></tr>
-    <tr><td>CTR баннеров</td><td>> 2%</td><td>< 1%</td><td>Сменить крео, протестировать новый хук</td></tr>
-    <tr><td>CPC (цена клика)</td><td>< $0.50</td><td>> $1</td><td>Пересмотреть аудитории, крео</td></tr>
-    <tr><td>Конверсия лендинг → TG</td><td>> 35%</td><td>< 20%</td><td>Улучшить заголовок и CTA кнопку</td></tr>
-    <tr><td>CPA (цена подписчика TG)</td><td>< $1.5</td><td>> $3</td><td>Оптимизировать лендинг и аудиторию</td></tr>
-    <tr><td>Open rate сообщений бота</td><td>> 60%</td><td>< 30%</td><td>Улучшить первое сообщение, сегментацию</td></tr>
-    <tr><td>Конверсия бот → покупка</td><td>> 8%</td><td>< 4%</td><td>Усилить дожим, добавить кейсы, пересмотреть оффер</td></tr>
-    <tr><td>ROAS воронки</td><td>> 7×</td><td>< 4×</td><td>Поднять цену / улучшить конверсию / сократить расход</td></tr>
-    <tr><td>Даунсейл 39€ конверсия</td><td>> 15%</td><td>< 5%</td><td>Улучшить текст сообщения 8, проверить ссылку</td></tr>
-  </table>
+<h2>KPI воронки</h2>
+<p class="sub">Метрики для еженедельного отчёта</p>
 
-  <div class="highlight" style="margin-top:24px">
-    <strong>Цель воронки на апрель:</strong>
-    <p>500 подписчиков TG × 8% конверсия = 40 продаж × avg 220€ = 8,800€ (~$9,500)<br>
-    + Даунсейл 39€ × 60 = 2,340€ (~$2,500)<br>
-    <strong>Итого: ~$12,000 при бюджете $700 = ROAS 17×</strong></p>
-  </div>
+<table>
+  <tr><th>Метрика</th><th>Норма</th><th>Тревога</th><th>Как считать</th></tr>
+  <tr><td>CTR рекламы</td><td>2–4%</td><td>&lt;1.5%</td><td>Meta Ads Manager</td></tr>
+  <tr><td>CPC</td><td>&lt;$0.40</td><td>&gt;$0.80</td><td>Meta Ads Manager</td></tr>
+  <tr><td>Лендинг → TG-бот</td><td>30–50%</td><td>&lt;20%</td><td>Клики на кнопку / посетители</td></tr>
+  <tr><td>CPA подписки в бот</td><td>&lt;$1.5</td><td>&gt;$3</td><td>Бюджет / подписки</td></tr>
+  <tr><td>Открываемость сообщений бота</td><td>50–70%</td><td>&lt;30%</td><td>SendBot аналитика</td></tr>
+  <tr><td>Досмотр вебинара</td><td>40–60%</td><td>&lt;25%</td><td>Kinescope аналитика</td></tr>
+  <tr><td>Бот → покупка флагмана</td><td>8–15%</td><td>&lt;5%</td><td>Продажи / подписки в бот</td></tr>
+  <tr><td>Не купили → bundle конверсия</td><td>15–25%</td><td>&lt;10%</td><td>Продажи bundle / не купившие флагман</td></tr>
+  <tr><td>ROAS общий</td><td>10–20×</td><td>&lt;5×</td><td>Выручка / рекламный бюджет</td></tr>
+</table>
+
+<div class="highlight" style="margin-top:24px">
+  <strong>Проекция воронки при бюджете $300/мес:</strong>
+  <p>500 подписок в бот × 50% досмотрели × 10% купили флагман (avg 290€) = ~$14 500<br>
+  500 × 50% не купили флагман × 20% купили bundle (avg 59€) = ~$2 950<br>
+  <strong>Итого: ~$17 500 при ROAS 17× — при бюджете $300/мес на рекламу</strong></p>
+</div>
 </section>
 
-<div style="background:var(--plum);padding:40px 24px;text-align:center;">
-  <p style="color:var(--blush);font-size:13px">SecretCoach — ТЗ: VSL-воронка «Ящик Пандоры» | Апрель 2026</p>
-  <p style="color:white;font-size:18px;font-weight:700;margin-top:10px">Запуск воронки = запуск к $20,000 🚀</p>
+<div style="text-align:center;padding:40px 20px;background:var(--plum);color:var(--blush)">
+  <p style="font-size:13px">SecretCoach · VSL-воронка «Секреты женского удовольствия» · ТЗ версия 2.0</p>
+  <p style="font-size:12px;margin-top:6px;opacity:.7">Баннеры · Лендинг · TG-бот · Фаза 1 (дожим видео) · Фаза 2 (14 дней) · Bundle Upsell · Тех. ТЗ · KPI</p>
 </div>
 
 </body>
