@@ -146,23 +146,23 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
 <div class="hero">
   <div class="hero-badge">Закрытый отбор</div>
-  <h1>Я выберу 3 девушки для бесплатной личной работы со мной</h1>
-  <p>Заполни анкету честно и подробно — чем больше я пойму твою ситуацию, тем выше шанс что выберу именно тебя</p>
-  <div class="spots">🔥 Осталось мест: <span>3</span></div>
+  <h1>Я выберу одну девушку для бесплатной личной работы со мной</h1>
+  <p>Заполни анкету честно и подробно — чем глубже я пойму твою ситуацию, тем выше шанс что выберу именно тебя</p>
+  <div class="spots">🔥 Всего 1 место</div>
 </div>
 
 <div class="form-wrap">
 
   <div class="steps-indicator" id="stepsIndicator"></div>
 
-  <form id="castdevForm" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+  <form id="castdevForm" action="https://formspree.io/f/xpqkwavg" method="POST">
 
   <!-- SECTION 1: INTRO + О ТЕБЕ -->
   <div class="section active" id="section-1">
     <div class="intro-block">
-      <p><strong>Привет.</strong> Я отбираю 3 девушки, с которыми буду работать бесплатно — и превращать их результат в реальный кейс.</p>
-      <p>Это не «конкурс на красивую историю». Я выбираю тех, чья ситуация требует реальной работы — и с кем могу дать результат, который покажет другим женщинам: это возможно.</p>
-      <p><strong>Заполни анкету честно. Одним словом не отвечай — раскройся.</strong></p>
+      <p><strong>Привет.</strong> Я выбираю одну девушку, с которой буду работать бесплатно — и превращу её результат в реальный кейс.</p>
+      <p>Это не «конкурс на красивую историю». Я выбираю того, чья ситуация требует настоящей работы — и с кем я смогу дать результат, который покажет другим женщинам: это реально и это возможно.</p>
+      <p><strong>Одним словом не отвечай — раскройся. Чем честнее и подробнее, тем выше шанс что выберу именно тебя.</strong></p>
     </div>
 
     <div class="section-header">
@@ -255,6 +255,27 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
       <label>Что ты уже пробовала? Что помогло, что нет?</label>
       <div class="hint">Статьи, видео, книги, консультации, курсы, советы подруг — всё что пробовала</div>
       <textarea name="Что пробовала" placeholder="Смотрела ролики в ютубе, читала про либидо... пробовала поговорить с ним, но стало неловко..."></textarea>
+    </div>
+
+    <div class="question" id="q-dream">
+      <label>А теперь — представь, что прошло 6 месяцев и всё изменилось. <span class="req">*</span></label>
+      <div class="hint">Как выглядит твоя интимная жизнь? Что ты чувствуешь? Что изменилось в отношениях с собой и с партнёром? Опиши максимально конкретно — это важно.</div>
+      <textarea name="Желаемый результат (6 месяцев)" id="dreamText" placeholder="Я наконец чувствую желание — не по расписанию, а по-настоящему. Оргазм с партнёром стал нормой, а не лотереей. Я перестала думать во время секса о том, как выгляжу..." required minlength="60"></textarea>
+      <div class="char-counter" id="dreamCounter">0 / минимум 60 символов</div>
+      <div class="error-msg">Опиши желаемый результат — минимум 60 символов</div>
+    </div>
+
+    <div class="question">
+      <label>Что тебя больше всего пугает или останавливает в работе над этой темой?</label>
+      <div class="hint">Честно — это важная часть анкеты</div>
+      <div class="options-grid single">
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f1" value="Страшно признать что есть проблема"><label for="f1"><div class="check"></div>Страшно признать вслух что есть проблема</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f2" value="Боюсь что не поможет или снова разочаруюсь"><label for="f2"><div class="check"></div>Боюсь что не поможет — уже разочаровывалась</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f3" value="Стыдно говорить об этом даже с психологом"><label for="f3"><div class="check"></div>Стыдно говорить об этом даже со специалистом</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f4" value="Боюсь реакции партнёра если узнает что работаю с этим"><label for="f4"><div class="check"></div>Боюсь реакции партнёра</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f5" value="Не верю что у меня что-то изменится"><label for="f5"><div class="check"></div>Не верю что у меня это изменится</label></div>
+        <div class="option-item"><input type="checkbox" name="Страхи и барьеры" id="f6" value="Нет страхов — готова работать"><label for="f6"><div class="check"></div>Нет страхов — готова работать</label></div>
+      </div>
     </div>
 
     <div class="btn-wrap">
@@ -352,6 +373,23 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <div class="option-item"><input type="radio" name="Готовность платить" id="p3" value="200-500 евро"><label for="p3"><div class="check"></div>200–500€</label></div>
         <div class="option-item"><input type="radio" name="Готовность платить" id="p4" value="500+ евро если уверена в результате"><label for="p4"><div class="check"></div>500€+ если уверена в результате</label></div>
       </div>
+    </div>
+
+    <div class="question">
+      <label>Слышала ли ты раньше о курсе «Секреты женского наслаждения»?</label>
+      <div class="options-grid single">
+        <div class="option-item"><input type="radio" name="Знает о курсе" id="aw1" value="Нет, первый раз слышу"><label for="aw1"><div class="check"></div>Нет, первый раз слышу</label></div>
+        <div class="option-item"><input type="radio" name="Знает о курсе" id="aw2" value="Слышала, но не изучала"><label for="aw2"><div class="check"></div>Слышала — но не изучала подробно</label></div>
+        <div class="option-item"><input type="radio" name="Знает о курсе" id="aw3" value="Смотрела вебинар"><label for="aw3"><div class="check"></div>Смотрела бесплатный вебинар</label></div>
+        <div class="option-item"><input type="radio" name="Знает о курсе" id="aw4" value="Хотела купить но что-то остановило"><label for="aw4"><div class="check"></div>Хотела купить — но что-то остановило</label></div>
+        <div class="option-item"><input type="radio" name="Знает о курсе" id="aw5" value="Уже покупала продукты Екатерины"><label for="aw5"><div class="check"></div>Уже покупала продукты Екатерины</label></div>
+      </div>
+    </div>
+
+    <div class="question">
+      <label>Что должно произойти, чтобы ты решилась вложить в решение этого вопроса прямо сейчас?</label>
+      <div class="hint">Не «правильный ответ» — а честный. Что тебе нужно увидеть, услышать, понять?</div>
+      <textarea name="Триггер принятия решения" placeholder="Мне нужно увидеть реальные результаты других. Или понять что это работает именно для моей ситуации, а не в общем..."></textarea>
     </div>
 
     <div class="question">
@@ -507,6 +545,9 @@ function validateSection(num){
     const main = document.getElementById('mainText');
     const mainQ = document.getElementById('q-main');
     if(main.value.trim().length < 80){mainQ.classList.add('has-error');valid=false;}else{mainQ.classList.remove('has-error');}
+    const dream = document.getElementById('dreamText');
+    const dreamQ = document.getElementById('q-dream');
+    if(dream && dream.value.trim().length < 60){dreamQ.classList.add('has-error');valid=false;}else if(dreamQ){dreamQ.classList.remove('has-error');}
   }
   if(num===5){
     const contact = sec.querySelector('[name="Контакт (TG или IG)"]');
@@ -541,7 +582,7 @@ function prevSection(from){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// Char counter
+// Char counters
 const mainText = document.getElementById('mainText');
 const mainCounter = document.getElementById('mainCounter');
 if(mainText){
@@ -549,6 +590,15 @@ if(mainText){
     const len = this.value.length;
     mainCounter.textContent = len + (len<80?' / минимум 80 символов':' символов ✓');
     mainCounter.className = 'char-counter' + (len<80?' warning':'');
+  });
+}
+const dreamText = document.getElementById('dreamText');
+const dreamCounter = document.getElementById('dreamCounter');
+if(dreamText){
+  dreamText.addEventListener('input',function(){
+    const len = this.value.length;
+    dreamCounter.textContent = len + (len<60?' / минимум 60 символов':' символов ✓');
+    dreamCounter.className = 'char-counter' + (len<60?' warning':'');
   });
 }
 
