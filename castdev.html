@@ -116,22 +116,44 @@ textarea{resize:vertical;min-height:120px;line-height:1.6;}
 .err-group{color:var(--rose);font-size:12px;margin-top:6px;font-weight:500;display:none;}
 .err-group.show{display:block;}
 
+/* CHEER BANNERS */
+.cheer{border-radius:14px;padding:18px 20px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px;}
+.cheer .ci{font-size:26px;flex-shrink:0;line-height:1;}
+.cheer .ct strong{display:block;font-size:14px;font-weight:700;margin-bottom:4px;}
+.cheer .ct span{font-size:13px;line-height:1.55;}
+.cheer.green{background:linear-gradient(135deg,#E8F5EE,#F0FAF4);border:1px solid rgba(58,154,106,.2);}
+.cheer.green .ct strong{color:#2A7A54;}
+.cheer.green .ct span{color:#3D8A60;}
+.cheer.purple{background:linear-gradient(135deg,#F3EFF8,#EEE8F5);border:1px solid rgba(123,92,116,.2);}
+.cheer.purple .ct strong{color:var(--plum);}
+.cheer.purple .ct span{color:var(--mauve);}
+.cheer.rose{background:linear-gradient(135deg,#FDF5F0,#FAF0EA);border:1px solid rgba(196,133,106,.2);}
+.cheer.rose .ct strong{color:#9A5040;}
+.cheer.rose .ct span{color:var(--rose);}
+.cheer.warm{background:linear-gradient(135deg,#FFF8F0,#FFF3E6);border:1px solid rgba(196,133,106,.25);}
+.cheer.warm .ct strong{color:#8A4A2A;}
+.cheer.warm .ct span{color:#B06A3A;}
+
 /* SUCCESS */
-#success-screen{display:none;text-align:center;padding:60px 20px;}
-#success-screen .s-icon{font-size:64px;margin-bottom:20px;}
-#success-screen h2{font-size:26px;font-weight:800;color:var(--plum);margin-bottom:12px;}
-#success-screen .s-sub{font-size:15px;color:#555;max-width:420px;margin:0 auto 28px;line-height:1.7;}
-.gift-card{background:linear-gradient(135deg,var(--plum),#4A2D6A);border-radius:20px;padding:28px;margin-bottom:20px;position:relative;overflow:hidden;text-align:left;}
-.gift-card::before{content:'';position:absolute;top:-30%;right:-10%;width:60%;height:160%;background:radial-gradient(ellipse,rgba(196,133,106,.2) 0%,transparent 70%);}
-.gift-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);color:var(--blush);font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(255,255,255,.2);}
-.gift-card h3{color:white;font-size:20px;font-weight:800;margin-bottom:10px;}
-.gift-card p{color:var(--blush);font-size:14px;line-height:1.6;margin-bottom:20px;}
-.gift-btn{display:inline-flex;align-items:center;gap:10px;background:var(--rose);color:white;padding:14px 28px;border-radius:30px;font-size:15px;font-weight:700;text-decoration:none;transition:all .2s;}
-.gift-btn:hover{background:#b06a50;transform:translateY(-2px);}
-.tg-cta{background:white;border-radius:16px;padding:24px;margin-top:16px;border:1px solid var(--mid);text-align:left;}
-.tg-cta p{font-size:14px;color:#444;line-height:1.7;margin-bottom:14px;}
-.tg-cta a.tg-link{display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#2AABEE,#1A8BC6);color:white;padding:14px 24px;border-radius:30px;font-size:15px;font-weight:700;text-decoration:none;transition:all .2s;width:100%;}
-.tg-cta a.tg-link:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(42,171,238,.35);}
+#success-screen{display:none;padding:52px 0 20px;}
+#success-screen .s-icon{font-size:60px;text-align:center;margin-bottom:16px;}
+#success-screen h2{font-size:24px;font-weight:800;color:var(--plum);margin-bottom:10px;text-align:center;}
+#success-screen .s-sub{font-size:14px;color:#666;max-width:400px;margin:0 auto 28px;line-height:1.7;text-align:center;}
+.gifts-block{background:linear-gradient(135deg,var(--plum) 0%,#4A2D6A 100%);border-radius:22px;padding:28px 24px;position:relative;overflow:hidden;}
+.gifts-block::before{content:'';position:absolute;top:-30%;right:-10%;width:55%;height:160%;background:radial-gradient(ellipse,rgba(196,133,106,.25) 0%,transparent 70%);pointer-events:none;}
+.gifts-block .gtag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.15);color:var(--blush);font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:18px;border:1px solid rgba(255,255,255,.2);}
+.gifts-block h3{color:white;font-size:19px;font-weight:800;margin-bottom:14px;line-height:1.35;}
+.gifts-list{list-style:none;padding:0;margin:0 0 22px;}
+.gifts-list li{display:flex;align-items:flex-start;gap:11px;margin-bottom:12px;}
+.gifts-list li .gli{font-size:20px;flex-shrink:0;line-height:1.2;}
+.gifts-list li .glt strong{display:block;color:white;font-size:14px;font-weight:700;margin-bottom:2px;}
+.gifts-list li .glt span{color:rgba(255,255,255,.6);font-size:12px;line-height:1.4;}
+.tg-btn-main{display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#2AABEE,#1485B8);color:white;padding:16px 24px;border-radius:30px;font-size:16px;font-weight:800;text-decoration:none;transition:all .2s;width:100%;}
+.tg-btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(42,171,238,.45);}
+.tg-links-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:14px;flex-wrap:wrap;}
+.tg-links-row span{color:rgba(255,255,255,.45);font-size:12px;}
+.tg-links-row a{color:rgba(255,255,255,.75);font-size:12px;font-weight:600;text-decoration:none;}
+.tg-links-row a:hover{color:white;text-decoration:underline;}
 .refill-btn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:var(--lite);color:var(--mauve);border:1.5px solid var(--mid);padding:12px 24px;border-radius:30px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;}
 .refill-btn:hover{border-color:var(--rose);color:var(--rose);}
 
@@ -234,6 +256,13 @@ textarea{resize:vertical;min-height:120px;line-height:1.6;}
 
   <!-- SECTION 2 -->
   <div class="section" id="section-2">
+    <div class="cheer green">
+      <div class="ci">🎉</div>
+      <div class="ct">
+        <strong>Отличный старт!</strong>
+        <span>Ты уже сделала первый шаг — и это важнее, чем кажется. Впереди самое интересное — расскажи мне о себе, и я постараюсь помочь именно тебе.</span>
+      </div>
+    </div>
     <div class="section-header">
       <div class="section-num">2</div>
       <div><div class="section-title">Твой запрос</div><div class="section-sub">Самая важная часть, не торопись</div></div>
@@ -316,6 +345,13 @@ textarea{resize:vertical;min-height:120px;line-height:1.6;}
 
   <!-- SECTION 3 -->
   <div class="section" id="section-3">
+    <div class="cheer purple">
+      <div class="ci">💜</div>
+      <div class="ct">
+        <strong>Ты большая умница — уже половина позади!</strong>
+        <span>То, что ты так честно и подробно отвечаешь — это уже начало твоей трансформации. Я это вижу и ценю. Осталось совсем немного.</span>
+      </div>
+    </div>
     <div class="section-header">
       <div class="section-num">3</div>
       <div><div class="section-title">Отношения и партнёр</div><div class="section-sub">Если нет партнёра, выбери соответствующий вариант</div></div>
@@ -360,6 +396,13 @@ textarea{resize:vertical;min-height:120px;line-height:1.6;}
 
   <!-- SECTION 4 -->
   <div class="section" id="section-4">
+    <div class="cheer rose">
+      <div class="ci">🔥</div>
+      <div class="ct">
+        <strong>Ты на правильном пути — я в тебя верю!</strong>
+        <span>Три шага позади, и ты не сдалась. Именно такой смелости и открытости не хватает многим. Ещё один шаг — и подарок уже твой.</span>
+      </div>
+    </div>
     <div class="section-header">
       <div class="section-num">4</div>
       <div><div class="section-title">Опыт и готовность</div><div class="section-sub">Помогает мне понять, что именно тебе нужно</div></div>
@@ -436,6 +479,13 @@ textarea{resize:vertical;min-height:120px;line-height:1.6;}
 
   <!-- SECTION 5 -->
   <div class="section" id="section-5">
+    <div class="cheer warm">
+      <div class="ci">🌟</div>
+      <div class="ct">
+        <strong>Последний шаг! Твой процесс трансформации уже запустился</strong>
+        <span>Я уже читала такие анкеты — и знаю: то, что ты здесь, значит, ты готова к переменам. Жду не дождусь прочитать твои ответы 🌸</span>
+      </div>
+    </div>
     <div class="section-header">
       <div class="section-num">5</div>
       <div><div class="section-title">Последний шаг</div><div class="section-sub">Уже совсем скоро твой подарок 🎁</div></div>
@@ -496,27 +546,33 @@ textarea{resize:vertical;min-height:120px;line-height:1.6;}
   <div id="success-screen">
     <div class="s-icon">🎉</div>
     <h2>Спасибо! Анкета отправлена</h2>
-    <p class="s-sub">Я лично прочту твои ответы. Если выберу тебя, напишу в течение нескольких дней. А пока твой подарок уже здесь!</p>
+    <p class="s-sub">Я лично прочту каждое слово. Если выберу тебя — напишу в течение нескольких дней. А пока забирай свои подарки!</p>
 
-    <div class="gift-card">
-      <div class="gift-tag">🎁 Подарок каждой участнице</div>
-      <h3>RED ROOM: приложение с секс-сценариями</h3>
-      <p>50+ эксклюзивных сценариев для яркой интимной жизни. Открой прямо сейчас, твой 24-часовой доступ уже активен.</p>
-      <a href="https://secretcoach.place/" target="_blank" class="gift-btn">🔴 Открыть RED ROOM →</a>
-    </div>
-
-    <div class="tg-cta">
-      <p style="font-size:15px;font-weight:700;color:var(--plum);margin-bottom:10px;">Хочешь получить доступ к RED ROOM и запись вебинара «Секреты женского удовольствия»?</p>
-      <p>Просто напиши мне в Telegram — вышлю все материалы сразу 💌</p>
-      <a href="https://t.me/Secret_coach_manager" target="_blank" class="tg-link" style="margin-bottom:16px;">✈️ Написать в Telegram</a>
-      <div style="background:#F3EFF8;border-radius:12px;padding:16px;margin-top:16px;text-align:center;">
-        <p style="font-size:13px;color:var(--mauve);margin-bottom:10px;line-height:1.6;">Или нажми на ссылку напрямую:</p>
-        <p style="font-size:15px;font-weight:700;margin-bottom:6px;">
-          <a href="https://t.me/Secret_coach_manager" target="_blank" style="color:var(--plum);text-decoration:none;">t.me/Secret_coach_manager</a>
-        </p>
-        <p style="font-size:14px;color:var(--mauve);">
-          <a href="https://t.me/Secret_coach_manager" target="_blank" style="color:var(--rose);font-weight:600;text-decoration:none;">@Secret_coach_manager</a>
-        </p>
+    <div class="gifts-block">
+      <div class="gtag">🎁 Для тебя — два подарка</div>
+      <h3>Забери доступ к RED ROOM и запись вебинара прямо сейчас</h3>
+      <ul class="gifts-list">
+        <li>
+          <div class="gli">🔴</div>
+          <div class="glt">
+            <strong>RED ROOM — приложение с секс-сценариями</strong>
+            <span>50+ эксклюзивных сценариев для ярких ощущений. 24-часовой доступ ждёт тебя.</span>
+          </div>
+        </li>
+        <li>
+          <div class="gli">🎥</div>
+          <div class="glt">
+            <strong>Вебинар «Секреты женского удовольствия»</strong>
+            <span>Запись закрытого вебинара Екатерины — только для участниц анкеты.</span>
+          </div>
+        </li>
+      </ul>
+      <a href="https://t.me/Secret_coach_manager" target="_blank" class="tg-btn-main">✈️ Написать в Telegram и забрать подарки</a>
+      <div class="tg-links-row">
+        <span>или напрямую:</span>
+        <a href="https://t.me/Secret_coach_manager" target="_blank">t.me/Secret_coach_manager</a>
+        <span>·</span>
+        <a href="https://t.me/Secret_coach_manager" target="_blank">@Secret_coach_manager</a>
       </div>
     </div>
 
