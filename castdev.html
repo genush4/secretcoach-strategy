@@ -8,25 +8,58 @@
 :root{
   --plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;
   --cream:#FAF7F4;--lite:#F5F0EC;--dark:#1E1428;--mid:#DDD5CC;
-  --green:#3A9A6A;
+  --green:#3A9A6A;--green-light:#E8F5EE;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--dark);min-height:100vh;}
 
-/* PROGRESS */
-.progress-wrap{position:fixed;top:0;left:0;width:100%;height:4px;background:rgba(0,0,0,.1);z-index:100;}
-.progress-bar{height:4px;background:linear-gradient(90deg,var(--rose),var(--mauve));width:0%;transition:width .4s ease;}
+/* TOP PROGRESS BAR */
+.top-bar{position:fixed;top:0;left:0;width:100%;z-index:200;background:white;border-bottom:1px solid var(--mid);padding:10px 20px;display:flex;align-items:center;gap:14px;}
+.top-bar-fill{flex:1;height:8px;background:var(--mid);border-radius:10px;overflow:hidden;}
+.top-bar-fill-inner{height:100%;background:linear-gradient(90deg,var(--green),#5ABF8A);border-radius:10px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+.top-bar-label{font-size:12px;font-weight:700;color:var(--mauve);white-space:nowrap;min-width:70px;text-align:right;}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,var(--plum) 0%,#4A2D6A 100%);padding:60px 24px 50px;text-align:center;}
-.hero-badge{display:inline-block;background:var(--rose);color:white;font-size:11px;font-weight:700;padding:6px 18px;border-radius:20px;letter-spacing:.05em;margin-bottom:20px;text-transform:uppercase;}
-.hero h1{color:white;font-size:28px;font-weight:800;max-width:600px;margin:0 auto 14px;line-height:1.3;}
-.hero p{color:var(--blush);font-size:15px;max-width:500px;margin:0 auto;line-height:1.6;}
-.hero .spots{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:white;font-size:13px;padding:10px 20px;border-radius:30px;margin-top:20px;}
-.hero .spots span{background:var(--rose);color:white;font-weight:800;padding:2px 10px;border-radius:10px;}
+.hero{background:linear-gradient(135deg,var(--plum) 0%,#4A2D6A 60%,#3D1F5A 100%);padding:72px 24px 52px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-40%;left:-20%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(196,133,106,.15) 0%,transparent 70%);pointer-events:none;}
+.hero-gift{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);backdrop-filter:blur(4px);color:white;font-size:12px;font-weight:700;padding:8px 18px;border-radius:20px;letter-spacing:.04em;margin-bottom:22px;border:1px solid rgba(255,255,255,.2);}
+.hero-gift span{font-size:16px;}
+.hero h1{color:white;font-size:27px;font-weight:800;max-width:580px;margin:0 auto 16px;line-height:1.35;}
+.hero-sub{color:var(--blush);font-size:15px;max-width:500px;margin:0 auto 24px;line-height:1.65;}
+.hero-cards{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:520px;margin:0 auto;}
+.hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:14px 18px;flex:1;min-width:200px;text-align:left;}
+.hero-card .hc-icon{font-size:22px;margin-bottom:8px;}
+.hero-card .hc-title{color:white;font-size:13px;font-weight:700;margin-bottom:4px;}
+.hero-card .hc-text{color:rgba(255,255,255,.65);font-size:12px;line-height:1.5;}
 
 /* FORM CONTAINER */
-.form-wrap{max-width:640px;margin:0 auto;padding:40px 20px 80px;}
+.form-wrap{max-width:640px;margin:0 auto;padding:32px 20px 80px;}
+
+/* STEP PROGRESS */
+.steps-progress{background:white;border-radius:16px;padding:18px 20px;margin-bottom:24px;border:1px solid var(--mid);}
+.steps-list{display:flex;align-items:center;gap:0;position:relative;}
+.step-item{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;z-index:1;}
+.step-item:not(:last-child)::after{content:'';position:absolute;top:16px;left:50%;width:100%;height:2px;background:var(--mid);z-index:0;transition:background .4s;}
+.step-item.done:not(:last-child)::after{background:var(--green);}
+.step-circle{width:32px;height:32px;border-radius:50%;border:2px solid var(--mid);background:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--mauve);transition:all .3s;position:relative;z-index:2;}
+.step-item.active .step-circle{border-color:var(--rose);background:var(--rose);color:white;}
+.step-item.done .step-circle{border-color:var(--green);background:var(--green);color:white;font-size:14px;}
+.step-label{font-size:10px;color:var(--mauve);margin-top:5px;text-align:center;font-weight:500;line-height:1.2;}
+.step-item.active .step-label{color:var(--rose);font-weight:700;}
+.step-item.done .step-label{color:var(--green);}
+@media(max-width:480px){.step-label{font-size:9px;}.step-circle{width:26px;height:26px;font-size:11px;}}
+
+/* CHEERING BANNER */
+.cheer-block{background:linear-gradient(135deg,var(--green-light),#F0FAF4);border-radius:12px;padding:16px 20px;margin-bottom:24px;border:1px solid rgba(58,154,106,.2);display:flex;align-items:center;gap:14px;}
+.cheer-block .cheer-icon{font-size:28px;flex-shrink:0;}
+.cheer-block .cheer-text strong{display:block;font-size:14px;font-weight:700;color:#2A7A54;margin-bottom:2px;}
+.cheer-block .cheer-text span{font-size:13px;color:#3D8A60;line-height:1.5;}
+.cheer-block.purple{background:linear-gradient(135deg,#F3EFF8,#EEE8F5);border-color:rgba(123,92,116,.2);}
+.cheer-block.purple .cheer-text strong{color:var(--plum);}
+.cheer-block.purple .cheer-text span{color:var(--mauve);}
+.cheer-block.rose{background:linear-gradient(135deg,#FDF5F0,#FAF0EA);border-color:rgba(196,133,106,.2);}
+.cheer-block.rose .cheer-text strong{color:#9A5040;}
+.cheer-block.rose .cheer-text span{color:var(--rose);}
 
 /* SECTIONS */
 .section{background:white;border-radius:16px;padding:28px;margin-bottom:20px;border:1px solid var(--mid);display:none;animation:fadeUp .4s ease;}
@@ -97,9 +130,10 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 /* CHAR COUNTER */
 .char-counter{font-size:11px;color:var(--mauve);text-align:right;margin-top:4px;}
 .char-counter.warning{color:var(--rose);}
+.char-counter.ok{color:var(--green);font-weight:600;}
 
 /* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:30px;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all .2s;font-family:inherit;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:30px;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all .2s;font-family:inherit;}
 .btn-primary{background:linear-gradient(135deg,var(--rose),#b06a50);color:white;width:100%;}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,133,106,.35);}
 .btn-secondary{background:var(--lite);color:var(--mauve);border:1.5px solid var(--mid);}
@@ -112,21 +146,24 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 .consent-block input[type=checkbox]{margin-top:3px;accent-color:var(--rose);width:16px;height:16px;flex-shrink:0;cursor:pointer;}
 .consent-block label{font-size:13px;color:#555;line-height:1.5;cursor:pointer;}
 
-/* PROGRESS DOTS */
-.steps-indicator{display:flex;justify-content:center;gap:8px;margin-bottom:28px;}
-.step-dot{width:8px;height:8px;border-radius:50%;background:var(--mid);transition:all .3s;}
-.step-dot.active{background:var(--rose);width:24px;border-radius:4px;}
-.step-dot.done{background:var(--mauve);}
-
 /* SUCCESS */
 #success-screen{display:none;text-align:center;padding:60px 20px;}
 #success-screen .success-icon{font-size:64px;margin-bottom:20px;}
 #success-screen h2{font-size:26px;font-weight:800;color:var(--plum);margin-bottom:12px;}
-#success-screen p{font-size:15px;color:#555;max-width:420px;margin:0 auto;line-height:1.7;}
-#success-screen .next-steps{background:white;border-radius:16px;padding:24px;margin-top:28px;border:1px solid var(--mid);text-align:left;}
-#success-screen .next-steps h3{font-size:15px;font-weight:700;color:var(--plum);margin-bottom:14px;}
-#success-screen .next-steps ul{padding-left:20px;}
-#success-screen .next-steps li{font-size:13px;color:#555;margin-bottom:8px;line-height:1.5;}
+#success-screen .success-sub{font-size:15px;color:#555;max-width:420px;margin:0 auto 28px;line-height:1.7;}
+
+.gift-card{background:linear-gradient(135deg,var(--plum),#4A2D6A);border-radius:20px;padding:28px;margin-bottom:20px;position:relative;overflow:hidden;}
+.gift-card::before{content:'';position:absolute;top:-30%;right:-10%;width:60%;height:160%;background:radial-gradient(ellipse,rgba(196,133,106,.2) 0%,transparent 70%);}
+.gift-card .gift-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);color:var(--blush);font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(255,255,255,.2);}
+.gift-card h3{color:white;font-size:20px;font-weight:800;margin-bottom:10px;}
+.gift-card p{color:var(--blush);font-size:14px;line-height:1.6;margin-bottom:20px;}
+.gift-btn{display:inline-flex;align-items:center;gap:10px;background:var(--rose);color:white;padding:14px 28px;border-radius:30px;font-size:15px;font-weight:700;text-decoration:none;transition:all .2s;}
+.gift-btn:hover{background:#b06a50;transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,133,106,.4);}
+
+.next-steps{background:white;border-radius:16px;padding:24px;margin-top:16px;border:1px solid var(--mid);text-align:left;}
+.next-steps h3{font-size:15px;font-weight:700;color:var(--plum);margin-bottom:14px;}
+.next-steps ul{padding-left:20px;}
+.next-steps li{font-size:13px;color:#555;margin-bottom:8px;line-height:1.5;}
 
 /* VALIDATION */
 .error-msg{color:var(--rose);font-size:12px;margin-top:4px;display:none;}
@@ -137,39 +174,81 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
   .hero h1{font-size:22px;}
   .section{padding:20px 16px;}
   .btn{padding:13px 20px;font-size:14px;}
+  .hero-cards{flex-direction:column;}
+  .top-bar{padding:8px 14px;}
 }
 </style>
 </head>
 <body>
 
-<div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+<!-- TOP PROGRESS BAR -->
+<div class="top-bar">
+  <div class="top-bar-fill"><div class="top-bar-fill-inner" id="topBar" style="width:10%"></div></div>
+  <div class="top-bar-label" id="topLabel">Шаг 1 из 5</div>
+</div>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">Закрытый отбор</div>
-  <h1>Я выберу одну девушку для бесплатной личной работы со мной</h1>
-  <p>Заполни анкету честно и подробно — чем глубже я пойму твою ситуацию, тем выше шанс что выберу именно тебя</p>
-  <div class="spots">🔥 Всего 1 место</div>
+  <div class="hero-gift"><span>🎁</span> Подарок каждой участнице</div>
+  <h1>Расскажи мне о себе — и я помогу каждой из вас приблизиться к мечте</h1>
+  <p class="hero-sub">Я читаю каждую анкету лично. Одну девушку выберу для глубокой личной работы бесплатно — а каждая, кто ответит честно, получит кое-что особенное от меня в подарок</p>
+  <div class="hero-cards">
+    <div class="hero-card">
+      <div class="hc-icon">🌸</div>
+      <div class="hc-title">1 место — личная работа со мной</div>
+      <div class="hc-text">Выберу девушку, чья ситуация откликается мне больше всего — и проведу её к реальному результату бесплатно</div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-icon">🔴</div>
+      <div class="hc-title">Всем — доступ к RED ROOM</div>
+      <div class="hc-text">Каждая участница получит ссылку на наше эксклюзивное приложение с секс-сценариями — чтобы уже сегодня сделать шаг к ярким ощущениям</div>
+    </div>
+  </div>
 </div>
 
 <div class="form-wrap">
 
-  <div class="steps-indicator" id="stepsIndicator"></div>
+  <!-- STEPS PROGRESS -->
+  <div class="steps-progress">
+    <div class="steps-list" id="stepsProgress">
+      <div class="step-item active" id="step-1">
+        <div class="step-circle">1</div>
+        <div class="step-label">О тебе</div>
+      </div>
+      <div class="step-item" id="step-2">
+        <div class="step-circle">2</div>
+        <div class="step-label">Запрос</div>
+      </div>
+      <div class="step-item" id="step-3">
+        <div class="step-circle">3</div>
+        <div class="step-label">Отношения</div>
+      </div>
+      <div class="step-item" id="step-4">
+        <div class="step-circle">4</div>
+        <div class="step-label">Опыт</div>
+      </div>
+      <div class="step-item" id="step-5">
+        <div class="step-circle">5</div>
+        <div class="step-label">Финал</div>
+      </div>
+    </div>
+  </div>
 
   <form id="castdevForm" action="https://formspree.io/f/xpqkwavg" method="POST">
 
-  <!-- SECTION 1: INTRO + О ТЕБЕ -->
+  <!-- SECTION 1: О ТЕБЕ -->
   <div class="section active" id="section-1">
     <div class="intro-block">
-      <p><strong>Привет.</strong> Я выбираю одну девушку, с которой буду работать бесплатно — и превращу её результат в реальный кейс.</p>
-      <p>Это не «конкурс на красивую историю». Я выбираю того, чья ситуация требует настоящей работы — и с кем я смогу дать результат, который покажет другим женщинам: это реально и это возможно.</p>
-      <p><strong>Одним словом не отвечай — раскройся. Чем честнее и подробнее, тем выше шанс что выберу именно тебя.</strong></p>
+      <p><strong>Привет.</strong> Я выбираю одну девушку, с которой буду работать бесплатно — и превращу её результат в живой кейс, который вдохновит других женщин.</p>
+      <p>Но я хочу помочь каждой, кто сюда пришёл. Поэтому <strong>все участницы</strong>, ответившие честно и подробно, получат 24-часовой доступ к нашему приложению RED ROOM — эксклюзивные сценарии для яркой интимной жизни.</p>
+      <p><strong>Отвечай как другу — без фильтра. Чем честнее и откровеннее, тем больше я смогу тебе дать.</strong></p>
     </div>
 
     <div class="section-header">
       <div class="section-num">1</div>
       <div>
         <div class="section-title">О тебе</div>
-        <div class="section-sub">Пара базовых вопросов</div>
+        <div class="section-sub">Пара базовых вопросов — совсем быстро</div>
       </div>
     </div>
 
@@ -200,7 +279,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
       <label>Есть дети?</label>
       <div class="options-grid">
         <div class="option-item"><input type="radio" name="Дети" id="ch1" value="Нет"><label for="ch1"><div class="check"></div>Нет</label></div>
-        <div class="option-item"><input type="radio" name="Дети" id="ch2" value="Да, 1+"><label for="ch2"><div class="check"></div>Да</label></div>
+        <div class="option-item"><input type="radio" name="Дети" id="ch2" value="Да"><label for="ch2"><div class="check"></div>Да</label></div>
       </div>
     </div>
 
@@ -211,11 +290,20 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
   <!-- SECTION 2: ТВОЙ ЗАПРОС -->
   <div class="section" id="section-2">
+
+    <div class="cheer-block">
+      <div class="cheer-icon">🎉</div>
+      <div class="cheer-text">
+        <strong>Отличное начало!</strong>
+        <span>Первый шаг позади. Теперь самое важное — расскажи мне о себе по-настоящему. Здесь нет правильных и неправильных ответов.</span>
+      </div>
+    </div>
+
     <div class="section-header">
       <div class="section-num">2</div>
       <div>
         <div class="section-title">Твой запрос</div>
-        <div class="section-sub">Раскройся — это самая важная часть</div>
+        <div class="section-sub">Раскройся — это самая важная часть анкеты</div>
       </div>
     </div>
 
@@ -259,7 +347,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
     <div class="question" id="q-dream">
       <label>А теперь — представь, что прошло 6 месяцев и всё изменилось. <span class="req">*</span></label>
-      <div class="hint">Как выглядит твоя интимная жизнь? Что ты чувствуешь? Что изменилось в отношениях с собой и с партнёром? Опиши максимально конкретно — это важно.</div>
+      <div class="hint">Как выглядит твоя интимная жизнь? Что ты чувствуешь? Опиши максимально конкретно — это важно для меня.</div>
       <textarea name="Желаемый результат (6 месяцев)" id="dreamText" placeholder="Я наконец чувствую желание — не по расписанию, а по-настоящему. Оргазм с партнёром стал нормой, а не лотереей. Я перестала думать во время секса о том, как выгляжу..." required minlength="60"></textarea>
       <div class="char-counter" id="dreamCounter">0 / минимум 60 символов</div>
       <div class="error-msg">Опиши желаемый результат — минимум 60 символов</div>
@@ -286,6 +374,15 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
   <!-- SECTION 3: ОТНОШЕНИЯ -->
   <div class="section" id="section-3">
+
+    <div class="cheer-block purple">
+      <div class="cheer-icon">💜</div>
+      <div class="cheer-text">
+        <strong>Ты молодец — уже половина позади!</strong>
+        <span>То, что ты здесь и отвечаешь честно — это уже шаг к себе. Осталось ещё 3 коротких блока.</span>
+      </div>
+    </div>
+
     <div class="section-header">
       <div class="section-num">3</div>
       <div>
@@ -329,6 +426,15 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
   <!-- SECTION 4: ОПЫТ С ПРОДУКТАМИ -->
   <div class="section" id="section-4">
+
+    <div class="cheer-block rose">
+      <div class="cheer-icon">🔥</div>
+      <div class="cheer-text">
+        <strong>Уже почти! Остался 1 шаг после этого</strong>
+        <span>Ты открываешься — и это смело. Именно такая честность помогает мне подобрать для тебя самое нужное.</span>
+      </div>
+    </div>
+
     <div class="section-header">
       <div class="section-num">4</div>
       <div>
@@ -388,7 +494,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
     <div class="question">
       <label>Что должно произойти, чтобы ты решилась зайти на курс прямо сейчас?</label>
-      <div class="hint">Не «правильный ответ» — а честный. Что тебе нужно увидеть, услышать или понять, чтобы сказать «да»?</div>
+      <div class="hint">Не «правильный ответ» — а честный. Что тебе нужно увидеть, услышать или понять?</div>
       <textarea name="Триггер принятия решения" placeholder="Мне нужно увидеть реальные результаты других. Или понять что это сработает именно в моей ситуации, а не в общем..."></textarea>
     </div>
 
@@ -417,6 +523,15 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
   <!-- SECTION 5: КОНТАКТ + ФИНАЛ -->
   <div class="section" id="section-5">
+
+    <div class="cheer-block" style="background:linear-gradient(135deg,#FFF3E0,#FFF8F0);border-color:rgba(196,133,106,.3);">
+      <div class="cheer-icon">🌟</div>
+      <div class="cheer-text">
+        <strong style="color:#8A5030;">Финальный шаг! Ты уже почти там</strong>
+        <span style="color:var(--rose);">Осталось только оставить контакт — и сразу после отправки я пришлю тебе твой подарок 🎁</span>
+      </div>
+    </div>
+
     <div class="section-header">
       <div class="section-num">5</div>
       <div>
@@ -474,7 +589,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
     </div>
 
     <button type="submit" class="btn btn-primary" id="submitBtn" style="font-size:16px;padding:16px 32px;">
-      ✨ Отправить анкету
+      ✨ Отправить анкету и получить подарок
     </button>
 
     <p style="font-size:12px;color:var(--mauve);text-align:center;margin-top:14px">Я лично читаю каждую анкету. Отвечу в течение 3–5 дней.</p>
@@ -488,15 +603,25 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 
   <!-- SUCCESS SCREEN -->
   <div id="success-screen">
-    <div class="success-icon">🤍</div>
+    <div class="success-icon">🎉</div>
     <h2>Анкета отправлена!</h2>
-    <p>Я лично прочту твою анкету. Если ты среди выбранных — напишу тебе в течение нескольких дней.</p>
+    <p class="success-sub">Я лично прочту твою анкету. Если ты среди выбранных — напишу тебе в течение нескольких дней. А пока — твой подарок уже ждёт!</p>
+
+    <div class="gift-card">
+      <div class="gift-tag">🎁 Подарок каждой участнице</div>
+      <h3>RED ROOM — приложение с секс-сценариями</h3>
+      <p>50+ эксклюзивных сценариев, которые помогут тебе уже сегодня сделать шаг к ярким ощущениям, близости и настоящему удовольствию. Твой доступ — прямо сейчас.</p>
+      <a href="https://secretcoach.place/" target="_blank" class="gift-btn">
+        🔴 Открыть RED ROOM →
+      </a>
+    </div>
+
     <div class="next-steps">
-      <h3>Пока ждёшь ответа:</h3>
+      <h3>Пока ждёшь ответа от меня:</h3>
       <ul>
-        <li>Посмотри бесплатный вебинар «Секреты женского удовольствия» — там много важного про твой запрос</li>
-        <li>Подпишись на мой Instagram / Telegram — там я делюсь практиками и кейсами каждую неделю</li>
-        <li>Если вопрос горит — напиши мне напрямую в директ</li>
+        <li>🎥 Посмотри бесплатный вебинар «Секреты женского удовольствия» — там много важного по твоей теме</li>
+        <li>📲 Подпишись на мой Instagram / Telegram — там я делюсь практиками и кейсами каждую неделю</li>
+        <li>💌 Если вопрос горит — напиши мне напрямую в директ</li>
       </ul>
     </div>
   </div>
@@ -507,25 +632,28 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 const TOTAL_SECTIONS = 5;
 let currentSection = 1;
 
-// Init dots
-function initDots(){
-  const wrap = document.getElementById('stepsIndicator');
-  wrap.innerHTML = '';
-  for(let i=1;i<=TOTAL_SECTIONS;i++){
-    const dot = document.createElement('div');
-    dot.className = 'step-dot' + (i===1?' active':'');
-    dot.id = 'dot-'+i;
-    wrap.appendChild(dot);
-  }
-}
-initDots();
+const STEP_LABELS = ['О тебе','Запрос','Отношения','Опыт','Финал'];
 
 function updateProgress(){
-  const pct = ((currentSection-1)/(TOTAL_SECTIONS-1))*100;
-  document.getElementById('progressBar').style.width = pct+'%';
+  // Top bar
+  const pct = Math.round(((currentSection-1)/(TOTAL_SECTIONS-1))*100);
+  document.getElementById('topBar').style.width = Math.max(10,pct)+'%';
+  document.getElementById('topLabel').textContent = 'Шаг '+currentSection+' из '+TOTAL_SECTIONS;
+
+  // Step indicators
   for(let i=1;i<=TOTAL_SECTIONS;i++){
-    const dot = document.getElementById('dot-'+i);
-    dot.className = 'step-dot' + (i===currentSection?' active':(i<currentSection?' done':''));
+    const el = document.getElementById('step-'+i);
+    const circle = el.querySelector('.step-circle');
+    el.className = 'step-item';
+    if(i < currentSection){
+      el.classList.add('done');
+      circle.textContent = '✓';
+    } else if(i === currentSection){
+      el.classList.add('active');
+      circle.textContent = i;
+    } else {
+      circle.textContent = i;
+    }
   }
 }
 
@@ -554,7 +682,13 @@ function validateSection(num){
     const contactQ = document.getElementById('q-contact');
     const consent3 = document.getElementById('consent3');
     if(!contact.value.trim()){contactQ.classList.add('has-error');valid=false;}else{contactQ.classList.remove('has-error');}
-    if(!consent3.checked){valid=false;consent3.parentElement.style.outline='2px solid var(--rose)';consent3.parentElement.style.borderRadius='8px';}else{consent3.parentElement.style.outline='none';}
+    if(!consent3.checked){
+      valid=false;
+      consent3.parentElement.style.outline='2px solid var(--rose)';
+      consent3.parentElement.style.borderRadius='8px';
+    } else {
+      consent3.parentElement.style.outline='none';
+    }
   }
   return valid;
 }
@@ -588,8 +722,13 @@ const mainCounter = document.getElementById('mainCounter');
 if(mainText){
   mainText.addEventListener('input',function(){
     const len = this.value.length;
-    mainCounter.textContent = len + (len<80?' / минимум 80 символов':' символов ✓');
-    mainCounter.className = 'char-counter' + (len<80?' warning':'');
+    if(len < 80){
+      mainCounter.textContent = len+' / минимум 80 символов';
+      mainCounter.className = 'char-counter warning';
+    } else {
+      mainCounter.textContent = len+' символов ✓';
+      mainCounter.className = 'char-counter ok';
+    }
   });
 }
 const dreamText = document.getElementById('dreamText');
@@ -597,8 +736,13 @@ const dreamCounter = document.getElementById('dreamCounter');
 if(dreamText){
   dreamText.addEventListener('input',function(){
     const len = this.value.length;
-    dreamCounter.textContent = len + (len<60?' / минимум 60 символов':' символов ✓');
-    dreamCounter.className = 'char-counter' + (len<60?' warning':'');
+    if(len < 60){
+      dreamCounter.textContent = len+' / минимум 60 символов';
+      dreamCounter.className = 'char-counter warning';
+    } else {
+      dreamCounter.textContent = len+' символов ✓';
+      dreamCounter.className = 'char-counter ok';
+    }
   });
 }
 
@@ -621,8 +765,9 @@ document.getElementById('castdevForm').addEventListener('submit', async function
     });
     if(res.ok){
       document.getElementById('castdevForm').style.display='none';
-      document.getElementById('stepsIndicator').style.display='none';
-      document.getElementById('progressBar').style.width='100%';
+      document.querySelector('.steps-progress').style.display='none';
+      document.getElementById('topBar').style.width='100%';
+      document.getElementById('topLabel').textContent='Готово! 🎉';
       document.getElementById('success-screen').style.display='block';
       window.scrollTo({top:0,behavior:'smooth'});
     } else {
@@ -634,6 +779,9 @@ document.getElementById('castdevForm').addEventListener('submit', async function
     btn.disabled = false;
   }
 });
+
+// Init
+updateProgress();
 </script>
 </body>
 </html>
