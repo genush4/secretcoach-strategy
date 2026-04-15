@@ -3,673 +3,1199 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SecretCoach — Сценарий клиентского кейса</title>
+<title>SecretCoach — Сценарий кейса как сериала</title>
 <style>
 :root{
   --plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;
   --cream:#FAF7F4;--lite:#F5F0EC;--dark:#1E1428;--mid:#DDD5CC;
-  --green:#3A9A6A;--gold:#D4A843;
+  --green:#3A9A6A;--gold:#D4A843;--tg:#2AABEE;--ig:#E1306C;
+  --orange:#E07A2F;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--dark);}
 
-/* NAV */
-.nav{background:var(--plum);padding:16px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;}
-.nav a{color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;font-weight:500;}
+.nav{background:var(--plum);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;}
+.nav-title{color:white;font-weight:800;font-size:14px;margin-right:auto;}
+.nav a{color:rgba(255,255,255,.55);font-size:12px;text-decoration:none;font-weight:500;}
 .nav a:hover{color:white;}
-.nav-title{color:white;font-weight:800;font-size:15px;margin-right:auto;}
 
-/* HERO */
-.hero{background:linear-gradient(135deg,var(--plum),#5A2D7A);padding:60px 24px 50px;text-align:center;}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);color:var(--blush);font-size:12px;font-weight:700;padding:7px 16px;border-radius:20px;margin-bottom:20px;border:1px solid rgba(255,255,255,.2);}
-.hero h1{color:white;font-size:32px;font-weight:900;max-width:700px;margin:0 auto 14px;line-height:1.25;}
-.hero p{color:var(--blush);font-size:16px;max-width:560px;margin:0 auto;line-height:1.6;}
-.hero-stats{display:flex;gap:16px;justify-content:center;margin-top:28px;flex-wrap:wrap;}
-.hstat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:14px 22px;text-align:center;}
-.hstat .n{color:white;font-size:22px;font-weight:900;}
-.hstat .l{color:rgba(255,255,255,.6);font-size:11px;margin-top:3px;}
+.hero{background:linear-gradient(135deg,#1E1428 0%,#3D1F5A 60%,#2D1F42 100%);padding:60px 24px 48px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-40%;left:-20%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(196,133,106,.12) 0%,transparent 70%);pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(196,133,106,.2);color:var(--blush);font-size:11px;font-weight:700;padding:7px 16px;border-radius:20px;margin-bottom:20px;border:1px solid rgba(196,133,106,.3);}
+.hero h1{color:white;font-size:30px;font-weight:900;max-width:680px;margin:0 auto 14px;line-height:1.25;}
+.hero p{color:rgba(255,255,255,.6);font-size:15px;max-width:560px;margin:0 auto 28px;line-height:1.65;}
+.hero-stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.hstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 20px;text-align:center;}
+.hstat .n{color:white;font-size:20px;font-weight:900;}
+.hstat .l{color:rgba(255,255,255,.5);font-size:10px;margin-top:2px;text-transform:uppercase;letter-spacing:.04em;}
 
-/* MAIN */
-.container{max-width:900px;margin:0 auto;padding:48px 20px 80px;}
+.container{max-width:960px;margin:0 auto;padding:48px 20px 100px;}
 
-/* SECTION TITLES */
-.s-title{font-size:22px;font-weight:900;color:var(--plum);margin-bottom:6px;}
-.s-sub{font-size:14px;color:var(--mauve);margin-bottom:28px;line-height:1.5;}
-.divider{height:1px;background:var(--mid);margin:48px 0;}
+.block-title{font-size:22px;font-weight:900;color:var(--plum);margin-bottom:6px;}
+.block-sub{font-size:14px;color:var(--mauve);margin-bottom:28px;line-height:1.5;}
+.divider{height:1px;background:var(--mid);margin:52px 0;}
 
-/* CONCEPT BOX */
-.concept{background:linear-gradient(135deg,#1E1428,#2D1F42);border-radius:20px;padding:32px;margin-bottom:40px;position:relative;overflow:hidden;}
-.concept::before{content:'';position:absolute;top:-30%;right:-10%;width:60%;height:180%;background:radial-gradient(ellipse,rgba(196,133,106,.15) 0%,transparent 70%);}
-.concept h2{color:white;font-size:24px;font-weight:900;margin-bottom:12px;}
-.concept p{color:rgba(255,255,255,.7);font-size:14px;line-height:1.7;margin-bottom:16px;}
-.concept .clist{list-style:none;padding:0;}
-.concept .clist li{color:rgba(255,255,255,.8);font-size:14px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;gap:12px;align-items:flex-start;line-height:1.5;}
-.concept .clist li:last-child{border:none;}
-.concept .clist li .ico{flex-shrink:0;font-size:18px;}
+/* CONCEPT */
+.concept{background:linear-gradient(135deg,#1E1428,#2D1F42);border-radius:20px;padding:32px;margin-bottom:24px;position:relative;overflow:hidden;}
+.concept::after{content:'';position:absolute;top:-20%;right:-5%;width:50%;height:160%;background:radial-gradient(ellipse,rgba(196,133,106,.12) 0%,transparent 70%);}
+.concept h2{color:white;font-size:22px;font-weight:900;margin-bottom:14px;}
+.concept p{color:rgba(255,255,255,.65);font-size:14px;line-height:1.7;margin-bottom:0;}
+.concept ul{margin-top:14px;list-style:none;padding:0;}
+.concept ul li{color:rgba(255,255,255,.75);font-size:13px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:12px;line-height:1.5;}
+.concept ul li:last-child{border:none;}
+.concept ul li .ci{flex-shrink:0;font-size:16px;}
 
-/* PHASES */
-.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:40px;}
-.phase{background:white;border-radius:16px;padding:22px;border:1px solid var(--mid);border-top:4px solid var(--rose);}
-.phase.p2{border-top-color:var(--mauve);}
-.phase.p3{border-top-color:var(--green);}
-.phase .ph-num{font-size:11px;font-weight:700;color:var(--rose);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
-.phase.p2 .ph-num{color:var(--mauve);}
-.phase.p3 .ph-num{color:var(--green);}
-.phase h3{font-size:16px;font-weight:800;color:var(--plum);margin-bottom:8px;}
-.phase p{font-size:13px;color:#555;line-height:1.6;}
+/* TIMOCHKO BOX */
+.timochko-box{background:linear-gradient(135deg,#1A0F2E,#2A1545);border:1px solid rgba(196,133,106,.25);border-radius:20px;padding:30px;margin-bottom:24px;}
+.timochko-box h3{color:var(--blush);font-size:18px;font-weight:900;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.tmech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:0;}
+.tmech{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px;}
+.tmech .tm-icon{font-size:22px;margin-bottom:8px;}
+.tmech h4{color:white;font-size:13px;font-weight:800;margin-bottom:6px;}
+.tmech p{color:rgba(255,255,255,.55);font-size:12px;line-height:1.6;}
+@media(max-width:600px){.tmech-grid{grid-template-columns:1fr;}}
 
-/* DAY CARDS */
-.day-card{background:white;border-radius:16px;padding:24px;margin-bottom:16px;border:1px solid var(--mid);position:relative;}
-.day-card .dc-top{display:flex;align-items:flex-start;gap:16px;margin-bottom:16px;}
-.day-badge{background:var(--plum);color:white;font-size:12px;font-weight:800;padding:6px 14px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
-.day-badge.insta{background:linear-gradient(135deg,#E1306C,#833AB4);}
-.day-badge.tg{background:linear-gradient(135deg,#2AABEE,#1A8BC6);}
-.day-badge.both{background:linear-gradient(135deg,var(--rose),var(--mauve));}
-.day-title{font-size:16px;font-weight:800;color:var(--plum);line-height:1.3;}
-.day-subtitle{font-size:13px;color:var(--mauve);margin-top:3px;}
-.day-body{font-size:13px;color:#444;line-height:1.7;}
-.day-body .label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mauve);margin-bottom:6px;margin-top:14px;}
-.day-body .label:first-child{margin-top:0;}
-.script-box{background:var(--lite);border-radius:10px;padding:14px 16px;margin:8px 0;font-size:13px;color:#333;line-height:1.7;border-left:3px solid var(--rose);}
-.script-box.tg{border-left-color:#2AABEE;}
-.hook-box{background:#FFF3E0;border-radius:10px;padding:12px 16px;margin:8px 0;font-size:13px;color:#7A4A10;line-height:1.6;border-left:3px solid var(--gold);}
-.tip-box{background:#E8F5EE;border-radius:10px;padding:12px 16px;margin:8px 0;font-size:13px;color:#2A5A40;line-height:1.6;border-left:3px solid var(--green);}
-.visual-box{background:#F3EFF8;border-radius:10px;padding:12px 16px;margin:8px 0;font-size:13px;color:var(--plum);line-height:1.6;border-left:3px solid var(--mauve);}
+/* CAMERA SHYNESS BOX */
+.camera-box{background:#FFF8E8;border:1px solid rgba(212,168,67,.3);border-radius:16px;padding:24px;margin-bottom:24px;}
+.camera-box h3{color:#7A4A10;font-size:16px;font-weight:900;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.camera-list{list-style:none;padding:0;}
+.camera-list li{font-size:13px;color:#5A3A08;padding:8px 0;border-bottom:1px solid rgba(212,168,67,.2);display:flex;gap:10px;line-height:1.6;}
+.camera-list li:last-child{border:none;}
+.camera-list li .bul{flex-shrink:0;font-size:15px;}
 
-/* TAGS */
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
-.tag{background:var(--lite);border:1px solid var(--mid);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--mauve);font-weight:600;}
-.tag.hot{background:#FDF0EC;border-color:#F0B090;color:#9A5030;}
-.tag.sell{background:#E8F5EE;border-color:#90D0A8;color:#2A5A40;}
+/* CLIFFHANGER FORMULA */
+.cliff-formula{background:linear-gradient(135deg,#1E3A2D,#2A5A40);border-radius:16px;padding:24px;margin-bottom:24px;}
+.cliff-formula h3{color:#7DFFC7;font-size:16px;font-weight:900;margin-bottom:16px;}
+.cliff-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px;}
+.cliff-row:last-child{margin-bottom:0;}
+.cliff-num{background:rgba(125,255,199,.15);border:1px solid rgba(125,255,199,.2);color:#7DFFC7;font-size:12px;font-weight:900;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.cliff-row p{color:rgba(255,255,255,.75);font-size:13px;line-height:1.6;}
+.cliff-row strong{color:white;}
+
+/* ACT PHASES */
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:40px;}
+.act{background:white;border-radius:16px;padding:20px;border:1px solid var(--mid);border-top:4px solid var(--rose);}
+.act.a2{border-top-color:var(--mauve);}
+.act.a3{border-top-color:var(--green);}
+.act-label{font-size:10px;font-weight:700;color:var(--rose);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
+.act.a2 .act-label{color:var(--mauve);}
+.act.a3 .act-label{color:var(--green);}
+.act h3{font-size:15px;font-weight:800;color:var(--plum);margin-bottom:7px;}
+.act p{font-size:12px;color:#555;line-height:1.6;}
+@media(max-width:600px){.acts{grid-template-columns:1fr;}}
+
+/* DAY CARD */
+.day{background:white;border-radius:18px;border:1px solid var(--mid);margin-bottom:20px;overflow:hidden;}
+.day-head{padding:20px 24px 16px;border-bottom:1px solid var(--lite);display:flex;align-items:flex-start;gap:16px;}
+.day-num{background:var(--plum);color:white;font-size:13px;font-weight:900;padding:6px 16px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.day-num.tizer{background:var(--mauve);}
+.day-num.act2{background:#4A2D6A;}
+.day-num.act3{background:var(--green);}
+.day-num.finale{background:linear-gradient(135deg,var(--rose),#8A4A30);}
+.day-info .dt{font-size:17px;font-weight:800;color:var(--plum);line-height:1.3;}
+.day-info .ds{font-size:12px;color:var(--mauve);margin-top:3px;}
+.day-goal{background:#F3EFF8;border-radius:8px;padding:7px 12px;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--mauve);margin-top:8px;}
+
+.day-body{padding:20px 24px;}
+
+/* FORMAT BLOCKS */
+.fmt{margin-bottom:20px;}
+.fmt-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;padding:6px 12px;border-radius:8px;width:fit-content;}
+.fmt-label.stories{background:linear-gradient(135deg,rgba(225,48,108,.12),rgba(131,58,180,.08));color:#9A1060;}
+.fmt-label.circle{background:rgba(225,48,108,.08);color:#C4006A;}
+.fmt-label.reels{background:linear-gradient(135deg,rgba(225,48,108,.1),rgba(131,58,180,.08));color:#7B1090;}
+.fmt-label.tg{background:rgba(42,171,238,.1);color:#0A80B0;}
+
+.script{background:var(--lite);border-radius:12px;padding:16px 18px;margin:8px 0;font-size:13px;color:#333;line-height:1.8;border-left:3px solid var(--rose);}
+.script.tg{border-left-color:var(--tg);}
+.script.gold{border-left-color:var(--gold);background:#FFF8E8;}
+.script .sc-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mauve);margin-bottom:8px;display:block;}
+.script em{color:var(--rose);font-style:normal;font-weight:700;}
+.script.tg em{color:var(--tg);}
+
+.hook{background:#FFF8E8;border:1px solid rgba(212,168,67,.3);border-radius:10px;padding:13px 16px;margin:8px 0;font-size:13px;color:#7A4A10;line-height:1.65;}
+.hook::before{content:'🪝 Хук: ';font-weight:800;}
+
+.visual{background:#F3EFF8;border:1px solid rgba(123,92,116,.15);border-radius:10px;padding:12px 16px;margin:8px 0;font-size:12px;color:var(--plum);line-height:1.6;}
+.visual::before{content:'🎬 Визуал/съёмка: ';font-weight:700;color:var(--mauve);}
+
+.tip{background:#E8F5EE;border:1px solid rgba(58,154,106,.2);border-radius:10px;padding:12px 16px;margin:8px 0;font-size:12px;color:#2A5A40;line-height:1.6;}
+.tip::before{content:'💡 ';font-weight:700;}
+
+.micro{background:rgba(224,122,47,.08);border:1px solid rgba(224,122,47,.2);border-radius:10px;padding:12px 16px;margin:8px 0;font-size:12px;color:#7A3A08;line-height:1.65;}
+.micro::before{content:'🔍 Микро-деталь: ';font-weight:800;}
+
+.poll-box{background:linear-gradient(135deg,rgba(225,48,108,.06),rgba(131,58,180,.04));border:1px solid rgba(225,48,108,.15);border-radius:10px;padding:13px 16px;margin:8px 0;font-size:13px;color:#6A0040;line-height:1.6;}
+.poll-box::before{content:'📊 Вовлечение: ';font-weight:800;}
+
+.cliffhanger{background:linear-gradient(135deg,#1E1428,#2D1F42);border-radius:12px;padding:14px 18px;margin:10px 0;display:flex;align-items:flex-start;gap:12px;}
+.cliffhanger .ch-icon{font-size:20px;flex-shrink:0;}
+.cliffhanger .ch-text{color:rgba(255,255,255,.85);font-size:13px;line-height:1.55;}
+.cliffhanger .ch-text strong{color:#FFD88A;display:block;font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+
+/* WEBINAR CTA */
+.webinar-cta{background:linear-gradient(135deg,#C4856A,#8A4A30);border-radius:20px;padding:30px;text-align:center;margin-top:40px;}
+.webinar-cta h3{color:white;font-size:20px;font-weight:900;margin-bottom:10px;}
+.webinar-cta p{color:rgba(255,255,255,.8);font-size:14px;line-height:1.65;margin-bottom:18px;}
+.webinar-cta .wscript{background:rgba(255,255,255,.1);border-radius:12px;padding:16px 20px;text-align:left;font-size:13px;color:rgba(255,255,255,.9);line-height:1.8;margin-bottom:12px;}
+
+/* WEBINAR POINT */
+.webinar-point{background:linear-gradient(135deg,rgba(196,133,106,.08),rgba(138,74,48,.05));border:1px solid rgba(196,133,106,.25);border-radius:12px;padding:14px 18px;margin:8px 0;font-size:13px;color:#6A3A18;line-height:1.65;}
+.webinar-point::before{content:'🎥 Точка на вебинар: ';font-weight:800;}
+
+/* DOPAMINE NOTE */
+.dopamine{background:linear-gradient(135deg,rgba(255,60,120,.06),rgba(60,0,100,.04));border:1px solid rgba(180,0,80,.15);border-radius:12px;padding:14px 18px;margin:8px 0;}
+.dopamine-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#9A0050;margin-bottom:6px;}
+.dopamine p{font-size:13px;color:#5A0030;line-height:1.65;}
 
 /* SELLING MECHANICS */
-.mechanic{background:white;border-radius:14px;padding:20px;margin-bottom:12px;border:1px solid var(--mid);display:flex;gap:16px;align-items:flex-start;}
-.mech-num{background:var(--rose);color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0;}
-.mech-body h4{font-size:14px;font-weight:700;color:var(--plum);margin-bottom:4px;}
-.mech-body p{font-size:13px;color:#555;line-height:1.6;}
+.mechanic{background:white;border-radius:14px;padding:18px 20px;margin-bottom:10px;border:1px solid var(--mid);display:flex;gap:14px;align-items:flex-start;}
+.mnum{background:var(--rose);color:white;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0;margin-top:2px;}
+.mbody h4{font-size:14px;font-weight:700;color:var(--plum);margin-bottom:4px;}
+.mbody p{font-size:13px;color:#555;line-height:1.6;}
 
-/* RESULT STORY */
-.result-arc{background:linear-gradient(135deg,var(--plum),#4A2D6A);border-radius:20px;padding:28px;color:white;margin-bottom:40px;}
-.result-arc h3{font-size:20px;font-weight:900;margin-bottom:20px;}
-.arc-steps{display:flex;flex-direction:column;gap:0;}
-.arc-step{display:flex;gap:16px;position:relative;}
-.arc-step:not(:last-child)::after{content:'';position:absolute;left:15px;top:36px;width:2px;height:calc(100% - 20px);background:rgba(255,255,255,.15);}
-.arc-dot{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:2px;}
-.arc-step.climax .arc-dot{background:var(--rose);border-color:var(--rose);}
-.arc-content{padding-bottom:20px;}
-.arc-content .at{color:rgba(255,255,255,.5);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
-.arc-content .ah{color:white;font-size:14px;font-weight:700;margin-bottom:4px;}
-.arc-content .ad{color:rgba(255,255,255,.65);font-size:13px;line-height:1.5;}
+.sell-tag{display:inline-flex;align-items:center;gap:5px;background:#E8F5EE;border:1px solid rgba(58,154,106,.2);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:#2A5A40;margin:3px;}
+.hot-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(196,133,106,.1);border:1px solid rgba(196,133,106,.2);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;color:#8A4A20;margin:3px;}
 
-/* INSTAGRAM STORIES FORMAT */
-.stories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:20px;}
-.story-frame{background:var(--plum);border-radius:16px;padding:20px 16px;text-align:center;aspect-ratio:9/16;display:flex;flex-direction:column;justify-content:space-between;max-height:280px;}
-.story-frame .sf-top{font-size:10px;color:rgba(255,255,255,.5);font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
-.story-frame .sf-mid{color:white;font-size:13px;font-weight:700;line-height:1.4;}
-.story-frame .sf-mid .em{font-size:28px;display:block;margin-bottom:8px;}
-.story-frame .sf-bot{font-size:10px;color:rgba(255,255,255,.4);}
-
-/* CTA BLOCK */
-.cta-block{background:linear-gradient(135deg,#C4856A,#8A4A30);border-radius:20px;padding:28px;text-align:center;margin-top:40px;}
-.cta-block h3{color:white;font-size:20px;font-weight:900;margin-bottom:10px;}
-.cta-block p{color:rgba(255,255,255,.8);font-size:14px;line-height:1.6;margin-bottom:0;}
-
-@media(max-width:600px){.hero h1{font-size:24px;}.stories-grid{grid-template-columns:repeat(2,1fr);}.phases{grid-template-columns:1fr;}}
+.act-divider{display:flex;align-items:center;gap:14px;margin:30px 0;}
+.act-divider-line{flex:1;height:1px;background:var(--mid);}
+.act-divider-label{background:var(--plum);color:white;font-size:11px;font-weight:800;padding:5px 16px;border-radius:20px;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em;}
+.act-divider-label.a2{background:#4A2D6A;}
+.act-divider-label.a3{background:var(--green);}
 </style>
 </head>
 <body>
 
 <div class="nav">
-  <span class="nav-title">SecretCoach — Клиентский кейс</span>
+  <span class="nav-title">SecretCoach — Сценарий кейса</span>
   <a href="index.html">Главная</a>
   <a href="03_content.html">Контент</a>
   <a href="04_vsl_funnel.html">Воронка</a>
 </div>
 
 <div class="hero">
-  <div class="hero-badge">🎬 Продающий мини-сериал</div>
-  <h1>Клиентский кейс как реалити-шоу</h1>
-  <p>Не скучный «отзыв», а живая история трансформации — за которой хочется следить, переживать и ждать финала</p>
+  <div class="hero-badge">🎬 Реалити-шоу про отношения · 14 серий</div>
+  <h1>«Следила каждый день и не могла оторваться» — клиентский кейс как сериал</h1>
+  <p>Не отзыв в конце работы. Живой сюжет, за которым невозможно не следить: с поворотами, неожиданными реакциями партнёра и финалом, после которого подписчицы сами пишут «как попасть на вебинар»</p>
   <div class="hero-stats">
-    <div class="hstat"><div class="n">14</div><div class="l">дней истории</div></div>
-    <div class="hstat"><div class="n">3</div><div class="l">акта драмы</div></div>
-    <div class="hstat"><div class="n">5</div><div class="l">точек продаж</div></div>
-    <div class="hstat"><div class="n">2</div><div class="l">платформы</div></div>
+    <div class="hstat"><div class="n">14</div><div class="l">серий</div></div>
+    <div class="hstat"><div class="n">3</div><div class="l">акта</div></div>
+    <div class="hstat"><div class="n">5</div><div class="l">точек на вебинар</div></div>
+    <div class="hstat"><div class="n">0</div><div class="l">прямых продаж</div></div>
   </div>
 </div>
 
 <div class="container">
 
-  <!-- КОНЦЕПЦИЯ -->
-  <div class="concept">
-    <h2>🎬 Концепция: «Дневник трансформации»</h2>
-    <p>Люди не покупают курсы — они покупают <strong>надежду на результат</strong>. Твоя задача: показать живую девушку, которая <em>такая же как они</em>, и провести её через трансформацию у всех на глазах. Не пост с результатом в конце, а сериал, где зрители переживают вместе с героиней.</p>
-    <ul class="clist">
-      <li><div class="ico">🎭</div><div>Героиня — не идеальная, а настоящая. Со страхами, сомнениями, неловкостью. Это и делает её «своей».</div></li>
-      <li><div class="ico">📺</div><div>Формат: реалити + документалка. Ты — ведущая, она — участница. Зрители — соучастники.</div></li>
-      <li><div class="ico">🔮</div><div>Интрига с первой сториз: «Я начинаю эксперимент с одной девушкой. Она согласилась показать всё — даже то, о чём молчала годами».</div></li>
-      <li><div class="ico">💡</div><div>Каждый день — маленькое открытие или поворот. Не инфа, а эмоция: удивление, слёзы, смех, прорыв.</div></li>
-      <li><div class="ico">🛒</div><div>Продажа — органично встроена в историю, не «в лоб». Зрители сами просят ссылку.</div></li>
-    </ul>
-  </div>
+<!-- КОНЦЕПЦИЯ: РЕАЛИТИ-ШОУ ПРО СВИДАНИЕ -->
+<div class="concept">
+  <h2>🎭 Формат: реалити-шоу про отношения изнутри</h2>
+  <p>Помнишь, как было интересно следить за кем-то, кто шёл на свидание? Ты не могла оторваться: получил ли цветы, написал ли сам, что он сказал в конце вечера. Вот именно этот формат. Только история про то, как женщина меняет своё отношение к себе и к интимной жизни — и как партнёр начинает реагировать по-другому, даже не зная почему.</p>
+  <ul>
+    <li><div class="ci">📺</div><div><strong style="color:white">Главный принцип: реакция партнёра = дофамин.</strong> Зрительницы следят не за техниками, а за тем, что происходит у героини дома. Написал ли сам. Купил ли цветы. Позвал ли куда-то. Это удерживает лучше любого крючка.</div></li>
+    <li><div class="ci">🔮</div><div><strong style="color:white">Катя — ведущая реалити-шоу.</strong> Она наблюдает, комментирует, объясняет механику. Героиня — участница, которую зрительницы начинают воспринимать как себя.</div></li>
+    <li><div class="ci">🎯</div><div><strong style="color:white">Каждый день — одна эмоция, один вопрос без ответа.</strong> «Что было дальше?» — именно это заставляет возвращаться завтра. Никогда не закрывай интригу в тот же день.</div></li>
+    <li><div class="ci">📷</div><div><strong style="color:white">Зажатость перед камерой = живость контента.</strong> Если героиня мнётся, смотрит в сторону, говорит «ой, не знаю как сказать» — это лучше любого постановочного видео. Не нужно быть блогером.</div></li>
+    <li><div class="ci">💡</div><div><strong style="color:white">Продажи встроены как «откуда это».</strong> Зрительницы видят результат, хотят то же самое — Катя говорит «это из системы, которую я объясняю на вебинаре». Не реклама, а ответ на вопрос.</div></li>
+  </ul>
+</div>
 
-  <!-- 3 ФАЗЫ -->
-  <h2 class="s-title">Три акта истории</h2>
-  <p class="s-sub">Классическая драматургия: завязка — конфликт — развязка. Работает в кино, работает в инстаграме.</p>
-
-  <div class="phases">
-    <div class="phase">
-      <div class="ph-num">Акт I · Дни 1-4</div>
-      <h3>Знакомство и боль</h3>
-      <p>Показываем героиню. Раскрываем её ситуацию так, чтобы половина подписчиц сказала «это про меня». Зрители начинают за неё болеть.</p>
+<!-- БЛОК ТИМОЧКО -->
+<div class="timochko-box">
+  <h3>⚡ 4 механики, которые не дают отписаться</h3>
+  <div class="tmech-grid">
+    <div class="tmech">
+      <div class="tm-icon">🎣</div>
+      <h4>Инфоповод как шоу</h4>
+      <p>«Я взяла одну девушку и провела эксперимент — буду показывать всё». Это не анонс продукта, это начало сериала. Люди подписываются на историю, не на рекламу.</p>
     </div>
-    <div class="phase p2">
-      <div class="ph-num">Акт II · Дни 5-10</div>
-      <h3>Работа и трансформация</h3>
-      <p>Реальный процесс: сомнения, маленькие победы, неловкие моменты, первые сдвиги. Каждый день — что-то новое. Зрители ждут следующей серии.</p>
+    <div class="tmech">
+      <div class="tm-icon">🎢</div>
+      <h4>Незакрытая петля каждый день</h4>
+      <p>Каждая серия заканчивается вопросом без ответа: «Что он ответил? Написал ли?» Мозг не может успокоиться, пока не получит закрытие — человек возвращается завтра.</p>
     </div>
-    <div class="phase p3">
-      <div class="ph-num">Акт III · Дни 11-14</div>
-      <h3>Кульминация и результат</h3>
-      <p>Финальный прорыв. Слёзы (хорошие). Её слова о том, что изменилось. Зрители хотят то же самое — и ты даёшь им ссылку.</p>
+    <div class="tmech">
+      <div class="tm-icon">🔍</div>
+      <h4>Микро-детали быта</h4>
+      <p>«У неё дома нет цветов. Последний раз он дарил 8 марта.» Конкретная деталь вместо абстракции. Зрительницы узнают свой дом, свои отношения.</p>
     </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- СЮЖЕТНАЯ ДУГА -->
-  <div class="result-arc">
-    <h3>🎬 Сюжетная дуга: от «у меня всё плохо» до «я не знала что так бывает»</h3>
-    <div class="arc-steps">
-      <div class="arc-step">
-        <div class="arc-dot">1</div>
-        <div class="arc-content">
-          <div class="at">День 1 — Открытие</div>
-          <div class="ah">«Она согласилась. Но попросила не показывать лицо»</div>
-          <div class="ad">Первое появление героини. Анонимно, но живо. Голос, переписка — без лица. Зрители чувствуют её страх и уважают его.</div>
-        </div>
-      </div>
-      <div class="arc-step">
-        <div class="arc-dot">2</div>
-        <div class="arc-content">
-          <div class="at">День 2 — Признание</div>
-          <div class="ah">«Она рассказала мне то, что не говорила никому»</div>
-          <div class="ad">Фрагмент из созвона (с разрешения). Её история. Узнаваемая боль. «Я 3 года имитировала».</div>
-        </div>
-      </div>
-      <div class="arc-step">
-        <div class="arc-dot">3</div>
-        <div class="arc-content">
-          <div class="at">День 4 — Первый барьер</div>
-          <div class="ah">«Она написала: я не смогу это сделать»</div>
-          <div class="ad">Драма. Она хочет сдаться на первом же задании. Зрители переживают, пишут поддержку. Вовлечённость взрывается.</div>
-        </div>
-      </div>
-      <div class="arc-step">
-        <div class="arc-dot">4</div>
-        <div class="arc-content">
-          <div class="at">День 6 — Первый сдвиг</div>
-          <div class="ah">«Сегодня она написала кое-что важное»</div>
-          <div class="ad">Небольшой прорыв. Не результат, но луч света. Оставляем интригу: «она ещё не знает, что самое интересное впереди».</div>
-        </div>
-      </div>
-      <div class="arc-step">
-        <div class="arc-dot">5</div>
-        <div class="arc-content">
-          <div class="at">День 9 — Поворот</div>
-          <div class="ah">«Она позвонила мне в слезах. Но это были другие слёзы»</div>
-          <div class="ad">Эмоциональный пик. Что-то произошло. Подробности — в следующей сторис. Зрители не могут оторваться.</div>
-        </div>
-      </div>
-      <div class="arc-step climax">
-        <div class="arc-dot">🔥</div>
-        <div class="arc-content">
-          <div class="at">День 12-14 — Кульминация</div>
-          <div class="ah">«Она попросила разрешения рассказать всё сама»</div>
-          <div class="ad">Финал. Героиня говорит сама — голосом или текстом. Её слова о том, что изменилось. Это лучший отзыв — потому что он живой.</div>
-        </div>
-      </div>
+    <div class="tmech">
+      <div class="tm-icon">🤝</div>
+      <h4>Ненаигранность через провалы</h4>
+      <p>Когда техника не сработала, когда она растерялась, когда не смогла себя заставить — это золото. Идеальный результат продаёт хуже, чем живой путь с ошибками.</p>
     </div>
   </div>
+</div>
 
-  <div class="divider"></div>
+<!-- ЗАЖАТОСТЬ ПЕРЕД КАМЕРОЙ -->
+<div class="camera-box">
+  <h3>📷 Если героиня зажимается перед камерой — это не проблема, это инструмент</h3>
+  <ul class="camera-list">
+    <li><div class="bul">✅</div><div><strong>Короткие кружочки 30-60 сек</strong> — не надо «выступать». Одна мысль, одна эмоция. Как будто подруге голосовое.</div></li>
+    <li><div class="bul">✅</div><div><strong>Смотреть не в камеру, а на экран</strong> — в режиме видеозвонка. Снимать как будто разговаривает с Катей.</div></li>
+    <li><div class="bul">✅</div><div><strong>Снимать в движении</strong> — за кофе, идя куда-то, перед зеркалом. Движение снимает деревянность.</div></li>
+    <li><div class="bul">✅</div><div><strong>Если не смогла снять — скрин переписки с Катей.</strong> Её сообщение «не могу поверить что происходит» + Катин комментарий = готовый контент.</div></li>
+    <li><div class="bul">✅</div><div><strong>Нервозность = достоверность.</strong> «Слушайте, она так волнуется, что не смотрит в камеру» — зрительницы чувствуют что это настоящее.</div></li>
+    <li><div class="bul">✅</div><div><strong>Голосовое Кате → Катя пересказывает.</strong> Если вообще не может снять — Катя рассказывает её словами в своём кружочке. «Она мне только что написала...»</div></li>
+  </ul>
+</div>
 
-  <!-- ПОСУТОЧНЫЙ СЦЕНАРИЙ -->
-  <h2 class="s-title">Посуточный сценарий</h2>
-  <p class="s-sub">Конкретные тексты, хуки и визуальные идеи. Адаптируй под живую ситуацию.</p>
+<!-- ФОРМУЛА КЛИФФХЭНГЕРА -->
+<div class="cliff-formula">
+  <h3>⏸ Формула крючка между сериями</h3>
+  <div class="cliff-row">
+    <div class="cliff-num">1</div>
+    <p><strong>Начни следующую сцену, не заканчивай её.</strong> «Она попробовала кое-что вечером. Утром написала мне. Я не ожидала такого.» — это всё. Оставь на завтра.</p>
+  </div>
+  <div class="cliff-row">
+    <div class="cliff-num">2</div>
+    <p><strong>Конкретная деталь без объяснения.</strong> «Сегодня дома появились цветы. Она сама не поняла почему.» — не объясняй связь. Пусть зрительница додумает и придёт за ответом.</p>
+  </div>
+  <div class="cliff-row">
+    <div class="cliff-num">3</div>
+    <p><strong>Эмоция без события.</strong> «Я прочитала её сообщение и просто сидела, смотрела в окно. Такое бывает раз в несколько лет в работе.» — зрительница хочет знать ЧТО ОНА НАПИСАЛА.</p>
+  </div>
+  <div class="cliff-row">
+    <div class="cliff-num">4</div>
+    <p><strong>Вопрос к аудитории как крючок.</strong> «А у тебя когда последний раз партнёр написал просто так, без повода? Завтра расскажу что написал ЕЙ.»</p>
+  </div>
+</div>
 
-  <!-- ДЕНЬ 1 -->
-  <div class="day-card">
-    <div class="dc-top">
-      <div>
-        <span class="day-badge both">День 1</span>
-        <div class="day-title" style="margin-top:8px;">Анонс. «Я начинаю эксперимент»</div>
-        <div class="day-subtitle">Цель: интрига, вовлечение, первые вопросы в директ</div>
-      </div>
-    </div>
-    <div class="day-body">
-      <div class="label">📱 Instagram Stories (3-4 сторис)</div>
-      <div class="hook-box">Хук сторис 1: «Я делаю кое-что, чего не делала раньше. Слежу за своей ученицей в прямом эфире — и буду показывать вам всё.»</div>
-      <div class="visual-box">Визуал: тёмный фон, крупный текст. Или видео Кати без конкретики — интригующий взгляд, пауза, «расскажу скоро».</div>
-      <div class="script-box">
-        Сторис 2 — текст: «Её зовут [имя или псевдоним]. Ей [возраст]. Она [статус: замужем / в отношениях]. Она согласилась показать свой путь честно — с самого начала. Даже то, что обычно молчат.»
-      </div>
-      <div class="script-box">
-        Сторис 3 — опрос или вопрос: «Что ты чувствуешь, когда думаешь о своей интимной жизни?» / варианты: «всё хорошо» / «есть что менять» / «даже думать не хочу»
-      </div>
-      <div class="label">✈️ Telegram — пост</div>
-      <div class="script-box tg">
-        Сегодня начинаю кое-что необычное.
+<!-- 3 АКТА -->
+<h2 class="block-title">Три акта истории</h2>
+<p class="block-sub">Классическая структура: завязка — конфликт — катарсис. Каждый акт — своя эмоция. Зрительница проходит путь вместе с героиней.</p>
+<div class="acts">
+  <div class="act">
+    <div class="act-label">Акт I · Дни 0-4</div>
+    <h3>«Это как в моей жизни»</h3>
+    <p>Знакомство. Боль героини = боль зрительницы. «Я думала только у меня так». Они начинают за неё болеть. Хотят знать что будет.</p>
+  </div>
+  <div class="act a2">
+    <div class="act-label">Акт II · Дни 5-10</div>
+    <h3>«Что-то происходит»</h3>
+    <p>Эксперимент в действии. Первые небольшие знаки. Провалы. Неожиданные реакции партнёра. Зрительницы не могут оторваться — это как следить за чужим свиданием.</p>
+  </div>
+  <div class="act a3">
+    <div class="act-label">Акт III · Дни 11-14</div>
+    <h3>«Я не думала что так бывает»</h3>
+    <p>Кульминация. Слёзы (хорошие). Партнёр изменился. Героиня говорит сама. Зрительницы хотят то же самое — получают ссылку на вебинар.</p>
+  </div>
+</div>
 
-Одна девушка согласилась поработать со мной — и разрешила показывать процесс вам. Не результат в конце, а живой путь: от первого разговора до финала.
+<div class="divider"></div>
 
-Я не знаю, чем это закончится. Она тоже не знает. Но мы обе решили, что это важно показать.
+<!-- ПОСУТОЧНЫЙ СЦЕНАРИЙ -->
+<h2 class="block-title">Посуточный сценарий: 14 серий</h2>
+<p class="block-sub">Конкретные тексты, съёмочные ситуации и механики вовлечения. Живые моменты всегда важнее сценария — это ориентир, не скрипт.</p>
 
-Следите. Будет честно.
-      </div>
-      <div class="tags"><span class="tag hot">интрига</span><span class="tag">вовлечение</span><span class="tag">знакомство</span></div>
+<!-- ===== ТИЗЕР ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num tizer">За 2 дня — Тизер</div>
+    <div class="day-info">
+      <div class="dt">«Затеяла кое-что. Скажу послезавтра.»</div>
+      <div class="ds">Не объясняй. Только интрига. Собираем ждущих.</div>
+      <div class="day-goal">🎯 Цель: создать ожидание, первый вопрос «что происходит?»</div>
     </div>
   </div>
-
-  <!-- ДЕНЬ 2 -->
-  <div class="day-card">
-    <div class="dc-top">
-      <div>
-        <span class="day-badge insta">День 2</span>
-        <div class="day-title" style="margin-top:8px;">Её история. «Она рассказала мне то, что не говорила никому»</div>
-        <div class="day-subtitle">Цель: узнавание, эмпатия, «это про меня»</div>
+  <div class="day-body">
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя</div>
+      <div class="script">
+        <span class="sc-label">Неформально, без подготовки, можно с кофе в руке</span>
+        «Девочки, я кое-что затеяла. Скажу уже через два дня. Такого у меня в блоге ещё не было. Вот честно — я немного нервничаю даже. Просто ждите.»<br><br>
+        Пауза. Лёгкая улыбка. Всё. Никаких объяснений.
       </div>
     </div>
-    <div class="day-body">
-      <div class="label">📱 Instagram Stories</div>
-      <div class="hook-box">Хук: «Мы вчера созвонились. И она сказала мне кое-что. Я попросила разрешения поделиться — она согласилась.»</div>
-      <div class="script-box">
-        «Три года. Три года она [описание ситуации — адаптируй под реальность подруги]. Муж не знает. Подруги не знают. Она думала, что у неё "просто так устроено". Что она "не такая как все".»
-
-        [пауза — следующая сторис]
-
-        «Когда она это произнесла вслух — я увидела, как она выдохнула. Первый раз за долгое время.»
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1 — тёмный фон, крупный текст</span>
+        «Через два дня начинаю кое-что, что никогда не делала в блоге. Ставь 🔥 если хочешь увидеть первой.»
       </div>
-      <div class="visual-box">Визуал: скрин переписки с закрытым именем. Или аудиосообщение с волной (без воспроизведения). Создаёт ощущение интимности.</div>
-      <div class="script-box">
-        Сторис с вопросом аудитории: «А ты когда-нибудь чувствовала что-то похожее?» (ответ в директ или голосование да/нет)
+      <div class="script">
+        <span class="sc-label">Сторис 2 — опрос</span>
+        «Следишь за теми, кто меняет свою жизнь прямо на твоих глазах?»<br>
+        Варианты: «Да, обожаю такое» / «Очень зависит от темы»
       </div>
-      <div class="label">✈️ Telegram — пост</div>
-      <div class="script-box tg">
-        Вчера мы созвонились с [именем/псевдонимом].
+    </div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Затеяла кое-что.
 
-Она рассказала мне свою историю. Я не буду пересказывать детали — это её история. Но я скажу одно:
+Послезавтра расскажу. Это не курс, не марафон и не розыгрыш. Это кое-что живое.
 
-Таких историй я слышу очень много. От женщин, которые выглядят счастливыми снаружи. Которые улыбаются на фото. Которые «в порядке».
-
-Только внутри что-то давно не так.
-
-Если тебе откликается — просто напиши мне «да» в ответ. Мне важно знать, что вы здесь.
+Ждите.
       </div>
-      <div class="tags"><span class="tag hot">узнавание</span><span class="tag">эмпатия</span><span class="tag">вовлечение в директ</span></div>
+    </div>
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>Больше ничего не говори. Именно недосказанность создаёт максимальный интерес. Если начнёшь объяснять — интрига рассыпается.</div>
     </div>
   </div>
+</div>
 
-  <!-- ДЕНЬ 3 -->
-  <div class="day-card">
-    <div class="dc-top">
-      <div>
-        <span class="day-badge insta">День 3</span>
-        <div class="day-title" style="margin-top:8px;">Что стоит за проблемой. Образовательный момент через её историю</div>
-        <div class="day-subtitle">Цель: экспертность + «ах вот почему» + ещё глубже в историю</div>
-      </div>
-    </div>
-    <div class="day-body">
-      <div class="label">📱 Instagram Stories</div>
-      <div class="script-box">
-        «Когда [имя] описала мне свою ситуацию — я сразу поняла, что происходит. Это называется [термин или описание — без умничанья, простыми словами].
+<!-- ===== ДЕНЬ 1 ===== -->
+<div class="act-divider">
+  <div class="act-divider-line"></div>
+  <div class="act-divider-label">Акт I — Знакомство и боль · Дни 1-4</div>
+  <div class="act-divider-line"></div>
+</div>
 
-        Это не "характер". Это не "так устроена". Это конкретный механизм — и он меняется. Я видела это десятки раз.»
-      </div>
-      <div class="hook-box">Крючок в конце: «Завтра мы начинаем работу. Я немного волнуюсь. Она — очень.»</div>
-      <div class="tip-box">Совет по подаче: не объясняй слишком много. Один инсайт, один вывод. Оставь желание узнать продолжение.</div>
-      <div class="label">✈️ Telegram</div>
-      <div class="script-box tg">
-        Хочу кое-что объяснить.
-
-Когда женщина говорит «у меня нет желания» или «я не чувствую ничего» — это не значит что с ней что-то не так. Это значит что где-то в системе есть блок.
-
-Как пробка в трубе. Вода есть. Трубы целые. Просто где-то заткнуто.
-
-У [имя] я вижу именно это. И знаю, где пробка.
-
-Завтра начинаем.
-      </div>
-      <div class="tags"><span class="tag">экспертность</span><span class="tag hot">интрига</span></div>
+<div class="day">
+  <div class="day-head">
+    <div class="day-num">День 1</div>
+    <div class="day-info">
+      <div class="dt">«Знакомьтесь. Это [Имя]. Она согласилась показать всё.»</div>
+      <div class="ds">Запуск сериала. Завязка. Зрительницы знакомятся с героиней.</div>
+      <div class="day-goal">🎯 Цель: вовлечение, первый вопрос «а она выдержит?», узнавание себя в ней</div>
     </div>
   </div>
-
-  <!-- ДЕНЬ 4 -->
-  <div class="day-card">
-    <div class="dc-top">
-      <div>
-        <span class="day-badge both">День 4</span>
-        <div class="day-title" style="margin-top:8px;">Первый барьер. «Она написала: я не могу»</div>
-        <div class="day-subtitle">Цель: ДРАМА. Зрители переживают, пишут поддержку, вовлекаются</div>
+  <div class="day-body">
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя (2-3 мин)</div>
+      <div class="script">
+        <span class="sc-label">Говорит тепло, чуть взволнованно, как когда делишься чем-то важным</span>
+        «Вчера я обещала рассказать что затеяла. Вот.<br><br>
+        Я взяла одну девушку — её зовут [Имя] — и мы решили сделать кое-что необычное. Я буду работать с ней как с клиенткой, а она будет показывать вам всё. Не результат через месяц. Живой процесс. Каждый день.<br><br>
+        Почему я это делаю? Потому что когда-то я сама была такой девушкой. И никто не показывал мне, что это меняется. Я хочу, чтобы вы увидели это вживую.<br><br>
+        Знакомьтесь — [Имя].»
       </div>
     </div>
-    <div class="day-body">
-      <div class="hook-box">Это самый важный день. Конфликт = вовлечённость. Не придумывай — найди реальный момент сопротивления. Он будет.</div>
-      <div class="label">📱 Instagram Stories</div>
-      <div class="script-box">
-        «Вчера дала ей первое задание. Простое, казалось бы.
-
-        Сегодня утром пришло сообщение: "Катя, я не смогла. Я попробовала, но мне стало так неловко, что я остановилась. Может, я просто не способна на это?"
-
-        [скрин с закрытым именем]
-
-        Это. Происходит. Всегда.»
-
-        [следующая сторис]
-
-        «Это не слабость. Это сопротивление. Именно так выглядит первый шаг к изменениям. Она не сломалась — она столкнулась с тем, что мешало ей годами.
-
-        Мы продолжаем.»
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories (4-5 сторис)</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1 — Катя в кадре или видео</span>
+        «Сегодня начинаем. Вот та девушка, о которой я говорила. Её зовут [Имя]. Она согласилась открыто рассказывать о своём пути. О том, о чём обычно молчат.»
       </div>
-      <div class="script-box">
-        Вопрос аудитории: «Была ли у тебя такая ситуация — когда хотела изменить что-то, но на первом шаге опускались руки?»
+      <div class="script">
+        <span class="sc-label">Сторис 2 — Фото или видео героини, короткое представление</span>
+        «[Имя], [возраст] лет. Замужем / в отношениях [N] лет. Она пришла ко мне с одним ощущением: "Я устала притворяться что всё хорошо в постели. Но не знаю как это изменить и возможно ли вообще."»
       </div>
-      <div class="tip-box">Скорее всего придёт шквал ответов «да». Репости часть в сторис — это усилит эффект и покажет масштаб проблемы.</div>
-      <div class="label">✈️ Telegram</div>
-      <div class="script-box tg">
-        Сегодня сложный день.
-
-[Имя] написала что не смогла выполнить первое задание. Почувствовала неловкость и остановилась.
-
-Я её прекрасно понимаю. Я сама через это проходила.
-
-Знаешь, что самое парадоксальное в работе с телесностью и сексуальностью? Самое большое сопротивление возникает именно там, где больше всего нужны изменения.
-
-Это не случайность. Это защитный механизм психики.
-
-Мы разобрались. Продолжаем.
+      <div class="script">
+        <span class="sc-label">Сторис 3 — вопрос к аудитории</span>
+        «Было ли у тебя когда-нибудь ощущение что секс — это что-то, что нужно просто пережить?»<br>
+        Опрос: «Да, знакомо» / «Нет, у меня не так»
       </div>
-      <div class="tags"><span class="tag hot">драма</span><span class="tag hot">вовлечение</span><span class="tag sell">доверие к эксперту</span></div>
+      <div class="micro">Попроси [Имя] сфоткать что-нибудь из своей обычной жизни — утренний кофе, любимый угол комнаты. Пусть зрительницы видят её пространство. Это создаёт эффект «я её знаю».</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Сегодня начинаем.
+
+Я взяла одну девушку на работу и буду показывать вам всё. Не красивый результат в конце, а живой процесс: с самого начала, с моментами, которые обычно скрывают.
+
+Её зовут [Имя]. Она согласилась говорить открыто.
+
+Я делаю это потому, что сама когда-то была такой девушкой. И никто не показывал мне что выход есть.
+
+Пишу каждый день. Следите.
+      </div>
+    </div>
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец сторис</strong>«Завтра [Имя] расскажет мне кое-что, что она не говорила никому. Я попрошу разрешения поделиться.»</div>
     </div>
   </div>
+</div>
 
-  <!-- ДЕНЬ 5-6 -->
-  <div class="day-card">
-    <div class="dc-top">
-      <div>
-        <span class="day-badge insta">Дни 5-6</span>
-        <div class="day-title" style="margin-top:8px;">Процесс и первые сдвиги</div>
-        <div class="day-subtitle">Цель: показать работу, сохранить интригу, дать надежду</div>
-      </div>
-    </div>
-    <div class="day-body">
-      <div class="label">📱 День 5 — «За кулисами»</div>
-      <div class="script-box">
-        «Сегодня не буду рассказывать подробностей — это интимно. Но скажу одно: [имя] сегодня сделала кое-что, чего никогда не делала раньше.
-
-        Она сказала: "Я не думала что это возможно для меня."
-
-        Я улыбнулась. Потому что знала — это только начало.»
-      </div>
-      <div class="label">📱 День 6 — Образовательная вставка (через её историю)</div>
-      <div class="script-box">
-        «[Имя] сегодня спросила меня: "Почему мне так сложно просто быть в своём теле?" Это такой важный вопрос.
-
-        [Короткий ответ — 2-3 предложения. Экспертно, но просто.]
-
-        Именно над этим мы сейчас и работаем.»
-      </div>
-      <div class="hook-box">Хук в конце дня 6: «Завтра расскажу кое-что, что она мне призналась. Это изменило моё понимание её ситуации.»</div>
-      <div class="tags"><span class="tag">процесс</span><span class="tag">экспертность</span><span class="tag hot">интрига</span></div>
+<!-- ===== ДЕНЬ 2 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num">День 2</div>
+    <div class="day-info">
+      <div class="dt">«Она сказала мне то, что молчала несколько лет»</div>
+      <div class="ds">Её история. Момент узнавания. «Это прямо про меня.»</div>
+      <div class="day-goal">🎯 Цель: эмпатия, волна «я тоже так» в директ, ощущение «я не одна»</div>
     </div>
   </div>
-
-  <!-- ДЕНЬ 7 -->
-  <div class="day-card">
-    <div class="dc-top">
-      <div>
-        <span class="day-badge tg">День 7</span>
-        <div class="day-title" style="margin-top:8px;">Середина пути. Промежуточный итог + первая мягкая продажа</div>
-        <div class="day-subtitle">Цель: зафиксировать прогресс, первое упоминание курса — органично</div>
+  <div class="day-body">
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя</div>
+      <div class="script">
+        «Мы сегодня созвонились с [Именем]. Долго разговаривали.<br><br>
+        Знаешь что меня поражает каждый раз? Когда женщина впервые произносит это вслух — она как будто выдыхает. Первый раз за несколько лет.<br><br>
+        [Имя] сказала мне: "Я столько лет думала что я просто холодная. Что у меня так устроено. Что это навсегда." Она думала что она одна такая.<br><br>
+        Знаешь сколько таких девушек пишет мне каждый день?»
       </div>
     </div>
-    <div class="day-body">
-      <div class="label">📱 Instagram Stories</div>
-      <div class="script-box">
-        «Неделя работы с [именем]. Хочу зафиксировать, что уже изменилось.
-
-        [3 конкретных пункта — адаптируй под реальность]
-
-        Это не магия. Это методика. Та же, что лежит в основе моего курса "Секреты женского наслаждения".
-
-        [Имя] проходит индивидуальную работу. Но всё, что она делает — часть этой же системы.»
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1-2 — [Имя] своими словами (видео или цитата в тексте)</span>
+        Если готова снять кружочек — отлично. Если нет — цитата её словами крупным текстом на нейтральном фоне:<br><br>
+        «"Я несколько лет имитировала. Просто потому что не знала как объяснить что мне нужно что-то другое. И секс постепенно превратился в то, что нужно просто сделать."»<br><br>
+        <em>Катя добавляет: «Она разрешила показать. Прочитала — и сердце сжалось.»</em>
       </div>
-      <div class="tip-box">Это первое естественное упоминание курса. Не "купи", а "вот откуда это". Зрители сами начнут спрашивать.</div>
-      <div class="label">✈️ Telegram — пост с CTA</div>
-      <div class="script-box tg">
-        Неделя прошла.
-
-Если бы неделю назад я сказала [имени], что она будет [конкретный пример прогресса] — она бы не поверила.
-
-Но это произошло. Не потому что она "особенная". А потому что у неё была система и поддержка.
-
-Именно это и есть моя работа.
-
-Если хочешь узнать, как это работает — вот ссылка на бесплатный вебинар [ссылка]. Там я объясняю механику.
+      <div class="script">
+        <span class="sc-label">Сторис 3 — Катя реагирует</span>
+        «Когда она это сказала, я вспомнила себя. Я сама через это проходила. Это называется не "холодность". У этого есть конкретная причина и конкретный выход.»
       </div>
-      <div class="tags"><span class="tag sell">мягкая продажа</span><span class="tag">промежуток</span></div>
+      <div class="script">
+        <span class="sc-label">Сторис 4 — вопрос к аудитории</span>
+        «Ты когда-нибудь думала что ты просто "не такая"? Что тебе уже не изменить?»<br>
+        Ответ в директ или опрос.
+      </div>
+      <div class="tip">Если придут ответы «да» — сделай сторис-подборку с ответами (без ников): «Смотрите сколько вас. Вы не одни.» Это один из самых вовлекающих форматов — люди пересылают такое.</div>
     </div>
-  </div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Сегодня [Имя] рассказала мне свою историю.
 
-  <!-- ДЕНЬ 9 -->
-  <div class="day-card">
-    <div class="dc-top">
-      <div>
-        <span class="day-badge both">День 9</span>
-        <div class="day-title" style="margin-top:8px;">Эмоциональный пик. «Она позвонила в слезах»</div>
-        <div class="day-subtitle">Цель: максимальная эмоция, ожидание финала</div>
+Несколько лет имитировала. Думала что она "холодная". Что у неё "так устроено".
+
+Знаешь что самое болезненное? Не сама ситуация. А одиночество внутри неё. Ощущение "я одна такая" — вот что давит сильнее всего.
+
+Спрошу прямо: было ли у тебя когда-нибудь что-то похожее? Напиши просто "да" в ответ. Мне важно понять сколько вас здесь.
       </div>
     </div>
-    <div class="day-body">
-      <div class="hook-box">Этот день нужно готовить. Реальный момент прорыва — поймай его. Попроси её написать голосовое или скинуть скрин переписки.</div>
-      <div class="label">📱 Instagram Stories</div>
-      <div class="script-box">
-        «Сегодня она мне позвонила.
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>«Завтра объясню ей и вам — что за этим стоит на самом деле. Это не характер. Это механизм. И он меняется. [Имя] пока не верит. Но я видела это сотни раз.»</div>
+    </div>
+  </div>
+</div>
 
-        Я не ожидала. Она не предупреждала.
-
-        Она плакала. Но это были хорошие слёзы — я сразу поняла.
-
-        Она сказала: "Я не думала, что в [возраст] лет ещё можно что-то открыть в себе. Я думала, что у меня уже так навсегда."»
-
-        [пауза]
-
-        «Я не сказала ничего. Просто сидела и улыбалась в трубку.»
+<!-- ===== ДЕНЬ 3 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num">День 3</div>
+    <div class="day-info">
+      <div class="dt">«Это не характер. Объясняю что происходит на самом деле.»</div>
+      <div class="ds">Экспертный момент через её историю. Один инсайт, просто.</div>
+      <div class="day-goal">🎯 Цель: доверие к Кате как эксперту, «ах вот почему», сохранения в stories</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="fmt">
+      <div class="fmt-label reels">🎬 Reels (30-45 сек)</div>
+      <div class="hook">«Почему у некоторых женщин секс — это удовольствие, а у других — обязанность? Это не характер. Вот в чём дело.»</div>
+      <div class="script">
+        <span class="sc-label">Говорящая голова, один конкретный механизм</span>
+        Катя объясняет «газ и тормоз» — буквально за 30 секунд, без терминов:<br><br>
+        «У каждой из нас есть газ — то, что включает желание. И тормоз — то, что его блокирует. Стресс. Усталость. Тревога. Ощущение что ты не сексуальная. Всё это давит на педаль тормоза. И газ просто не успевает включиться. Это не "так устроена природа". Это можно изменить.»<br><br>
+        В конце: «Именно с этим я сейчас работаю с [Именем].»
       </div>
-      <div class="script-box">
-        Крючок: «Что именно с ней произошло — расскажу завтра. Она разрешила.»
-      </div>
-      <div class="label">✈️ Telegram</div>
-      <div class="script-box tg">
-        Сегодня [имя] позвонила мне.
-
-Я не буду пересказывать всё. Это её история.
-
-Но одну вещь скажу.
-
-Она спросила: "Почему мне никто раньше об этом не говорил? Почему это не рассказывают в школе, в семье, нигде?"
-
-Я не знала, что ответить. Потому что у меня нет ответа на этот вопрос.
-
-Но я знаю, что могу изменить это хотя бы для тех, кто рядом.
-
-Завтра — продолжение.
-      </div>
-      <div class="tags"><span class="tag hot">кульминация</span><span class="tag hot">эмоция</span><span class="tag sell">доверие</span></div>
+      <div class="visual">Снимай стоя у окна или у светлой стены. Тёплый свет. Говорит прямо в камеру, без бумажки. Если запинается — оставь. Живее.</div>
     </div>
-  </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        «Когда [Имя] описала мне свою ситуацию — я сразу поняла где блок. Это не "так устроена природа". Это конкретный механизм. Называется "система торможения". Она есть у каждой женщины. Просто у некоторых она перегружена.»<br><br>
+        [следующая]<br><br>
+        «Завтра даю [Имени] первое задание. Я ещё не сказала ей какое. Она немного нервничает. Я тоже — никогда не знаешь как человек отреагирует на первом шаге.»
+      </div>
+      <div class="visual">Можно показать листок с заметками или открытый ноутбук — ощущение "рабочего процесса". Зрительницы чувствуют что видят закулисье.</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Хочу рассказать кое-что важное.
 
-  <!-- ДЕНЬ 11-12 -->
-  <div class="day-card">
-    <div class="dc-top">
-      <div>
-        <span class="day-badge both">Дни 11-12</span>
-        <div class="day-title" style="margin-top:8px;">Результат и продажа</div>
-        <div class="day-subtitle">Цель: показать конкретный результат, открыть продажу</div>
+Когда женщина говорит "у меня нет желания" или "я ничего не чувствую" — это не диагноз. Это сигнал.
+
+Газ и тормоз. У большинства женщин тормоза перегружены. Стресс, усталость, тревога, стыд — всё это давит на педаль тормоза. И газ просто не успевает.
+
+У [Имени] я вижу именно это. Мы знаем где тормоз. Завтра начинаем его убирать.
+
+Следите — буду рассказывать всё.
       </div>
     </div>
-    <div class="day-body">
-      <div class="label">📱 День 11 — Результат</div>
-      <div class="script-box">
-        «[Имя] попросила разрешения сказать кое-что сама. Я дала ей экран.»
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>«Завтра — первое задание. Посмотрим что произойдёт. Я попрошу [Имя] написать мне сразу после.»</div>
+    </div>
+  </div>
+</div>
 
-        [её слова — текст или голос. Реальные. Неотредактированные. Именно это и продаёт.]
+<!-- ===== ДЕНЬ 4 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num">День 4</div>
+    <div class="day-info">
+      <div class="dt">«Она написала: "Катя, я не смогла." — и это нормально»</div>
+      <div class="ds">Первый барьер. Главный момент первого акта. Зрительницы начинают за неё болеть.</div>
+      <div class="day-goal">🎯 Цель: максимальная эмпатия, вовлечённость, «я тоже так бросала»</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="tip">Это ключевой день. Провал на первом шаге — самый вовлекающий момент. Найди реальный момент сопротивления — он будет. «Мне неловко», «я остановилась», «не смогла себя заставить» — это золото. Не пытайся его сгладить.</div>
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя</div>
+      <div class="script">
+        «Дала [Имени] первое задание. Казалось бы простое. Сегодня утром получила сообщение:<br><br>
+        "Катя, я не смогла. Стало так неловко что я остановилась на середине. Может я правда не способна?"<br><br>
+        [пауза]<br><br>
+        Хочу сказать всем кто сейчас смотрит — и всем кто когда-нибудь бросал что-то на первом шаге. Вот что я ей ответила.<br><br>
+        Это. Нормально. Сопротивление возникает именно там, где нужны изменения больше всего. Если бы было легко — значит мы копаем не в ту сторону. Мы продолжаем.»
       </div>
-      <div class="tip-box">Реальные слова клиента в конце кейса — это 80% продающего эффекта. Попроси её написать голосовое или написать текст своими словами. Чем неровнее и живее — тем лучше.</div>
-      <div class="label">📱 День 12 — Продажа через историю</div>
-      <div class="script-box">
-        «То, через что прошла [имя] за [N] дней — это и есть основа курса "Секреты женского наслаждения".
-
-        Не в индивидуальном формате, но та же методика. Те же инструменты. Те же открытия.
-
-        Сейчас открыта запись. Ссылка в шапке профиля.
-
-        Если тебе откликалась её история — скорее всего, это про тебя тоже.»
+    </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1 — скрин переписки</span>
+        Скрин сообщения от [Имени] — «Катя, я не смогла».<br>
+        Катя пишет поверх: «Это происходит всегда. У всех. Именно в этот момент большинство сдаётся.»
       </div>
-      <div class="label">✈️ Telegram — финальный пост с продажей</div>
-      <div class="script-box tg">
-        Мы завершили работу с [именем].
-
-Я не буду делать красивое резюме. Просто скажу: когда она написала мне в первый день, она не верила, что что-то изменится.
-
-Сегодня она написала совсем другое. И я с её разрешения покажу это в сторис.
-
-Курс, который лежит в основе нашей работы: "Секреты женского наслаждения".
-
-Если хочешь тот же результат — самостоятельно, в своём темпе, с поддержкой — вот ссылка: [ссылка]
-
-Старт [дата]. Мест ограничено.
+      <div class="script">
+        <span class="sc-label">Сторис 2 — Катя в кадре</span>
+        «Знаете что она сделала дальше? Написала ещё раз через два часа: "Я попробовала снова. Получилось не так как надо. Но я попробовала."<br><br>
+        Вот это и есть работа.»
       </div>
-      <div class="tags"><span class="tag sell">прямая продажа</span><span class="tag hot">эмоция</span><span class="tag sell">CTA</span></div>
+      <div class="poll-box">«А у тебя было — хотела что-то изменить, но первый шаг не вышел и ты бросила?» Ответ в директ. Репостни лучшие ответы анонимно в следующих сторис.</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Сегодня сложный день.
+
+[Имя] написала что не смогла выполнить первое задание. Почувствовала неловкость — и остановилась.
+
+Я ей объяснила: это не провал. Это первое столкновение с тем, что держало её годами. Психика защищает то, что привыкла считать нормой. Даже если эта норма причиняет боль.
+
+Через два часа она написала снова: попробовала ещё раз. Не идеально. Но попробовала.
+
+Прорываться через это и есть работа.
+
+Мы продолжаем. Следите.
+      </div>
+    </div>
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>«Завтра расскажу что произошло после того, как мы не сдались. И кое-что интересное — партнёр [Имени] ни о чём не знает. Но кое-что уже заметил. Хотя она ещё ничего не делала.»</div>
     </div>
   </div>
+</div>
 
-  <div class="divider"></div>
+<!-- ===== АКТ II ===== -->
+<div class="act-divider">
+  <div class="act-divider-line"></div>
+  <div class="act-divider-label a2">Акт II — Эксперимент · Дни 5-10</div>
+  <div class="act-divider-line"></div>
+</div>
 
-  <!-- ПРОДАЮЩИЕ МЕХАНИКИ -->
-  <h2 class="s-title">5 встроенных механик продаж</h2>
-  <p class="s-sub">Не «рекламные вставки», а органичные моменты, когда зрители сами хотят купить</p>
-
-  <div class="mechanic">
-    <div class="mech-num">1</div>
-    <div class="mech-body">
-      <h4>Идентификация через боль героини</h4>
-      <p>Когда описываешь её ситуацию — половина подписчиц думает «это про меня». Ни один рекламный текст так не работает. Дальше они уже не просто наблюдатели — они соучастники. Им хочется того же, что получит она.</p>
+<!-- ===== ДЕНЬ 5 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num act2">День 5</div>
+    <div class="day-info">
+      <div class="dt">«Она попробовала. Он написал ей. Сам. Просто так.»</div>
+      <div class="ds">Первый знак. Первое «вау». Зрительницы понимают что это работает — хотя ещё не понимают как.</div>
+      <div class="day-goal">🎯 Цель: дофаминовый удар, «не может быть», желание узнать что она сделала</div>
     </div>
   </div>
+  <div class="day-body">
+    <div class="dopamine">
+      <div class="dopamine-label">Дофаминовая петля</div>
+      <p>Реакция партнёра — главный крючок этого дня. Он ничего не знает о работе с Катей. Просто почувствовал что-то изменилось. И написал. Это то, за чем будут следить как за свиданием — получил ли цветы, написал ли сам.</p>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя</div>
+      <div class="script">
+        «Вчера [Имя] наконец попробовала то, что я ей дала. Не скажу пока что именно — это её пространство.<br><br>
+        Но скажу вот что. Сегодня утром, в 11:30 — я запомнила время — она прислала мне скрин.<br><br>
+        Партнёр написал ей. Просто так. Спросил как у неё дела. Написал что скучает.<br><br>
+        [Имя] написала мне рядом: "Катя, он не писал мне так среди дня уже наверное год."<br><br>
+        [пауза, лёгкая улыбка]<br><br>
+        Вот так это работает.»
+      </div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1 — скрин переписки [Имени] с партнёром (с разрешения)</span>
+        Его сообщение «скучаю» или «как ты там». Катя добавляет текстом: «Он не знает что она работает со мной. Просто почувствовал что-то изменилось.»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 2 — цитата [Имени]</span>
+        «Она написала мне: "Я уже не помню когда он писал мне первым среди дня."»<br><br>
+        Катя поверх: «Вот ради этих моментов я и делаю то, что делаю.»
+      </div>
+      <div class="poll-box">«Когда твой партнёр в последний раз написал тебе просто так, без повода?» Ответ в директ. Это даст тебе волну откликов и покажет боль аудитории.</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Сегодня утром получила скрин от [Имени].
 
-  <div class="mechanic">
-    <div class="mech-num">2</div>
-    <div class="mech-body">
-      <h4>Доверие через процесс (не обещания)</h4>
-      <p>Ты не говоришь «мой курс крутой». Ты показываешь живую работу день за днём. Это в 10 раз убедительнее любого лендинга. Зрители видят метод в действии.</p>
+Её партнёр написал ей. Просто так. "Привет, как ты там, скучаю."
+
+Она написала мне рядом со скрином: "Катя, он не писал мне так где-то год."
+
+Он ничего не знает о нашей работе. Просто почувствовал что-то.
+
+Это происходит потому, что когда меняется что-то внутри — меняется то, что ты транслируешь снаружи. Партнёры чувствуют это раньше, чем понимают.
+
+Это только начало.
+      </div>
+    </div>
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>«Завтра — следующий шаг. Я дала [Имени] задание про коммуникацию с партнёром. Она написала мне: "Катя, я боюсь. Что если он не поймёт?" Что я ей ответила — завтра.»</div>
     </div>
   </div>
+</div>
 
-  <div class="mechanic">
-    <div class="mech-num">3</div>
-    <div class="mech-body">
-      <h4>Вопросы в директ как точка входа в продажу</h4>
-      <p>После каждого эмоционального момента задавай вопрос аудитории. Они отвечают в директ. Ты отвечаешь — и органично упоминаешь курс. Тёплые лиды сами приходят к тебе.</p>
+<!-- ===== ДЕНЬ 6 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num act2">День 6</div>
+    <div class="day-info">
+      <div class="dt">«Почему так сложно сказать партнёру что тебе нужно?»</div>
+      <div class="ds">Экспертный рилс через её вопрос. Образование как часть истории.</div>
+      <div class="day-goal">🎯 Цель: охват через Reels, сохранения, пересылы, экспертность Кати</div>
     </div>
   </div>
+  <div class="day-body">
+    <div class="fmt">
+      <div class="fmt-label reels">🎬 Reels (45-60 сек)</div>
+      <div class="hook">«[Имя] задала мне вопрос: почему так страшно сказать партнёру что тебе нужно в постели? Даже когда вы вместе 5 лет. Вот мой ответ.»</div>
+      <div class="script">
+        <span class="sc-label">Говорящая голова, один конкретный инсайт</span>
+        «Потому что нас учили что "нормальная женщина" не говорит об этом. Что "он сам должен знать". Что если скажешь — он подумает что ты ненормальная или что он плохой. Мы несём этот стыд годами и молчим. А партнёр не знает. И всё остаётся как есть.<br><br>
+        [Имя] боялась этого разговора несколько лет. Вчера она его начала. Что произошло — расскажет она сама.»
+      </div>
+      <div class="visual">Снимай с тёплым светом, можно в кафе или дома. В конце добавь текстовую подложку: «Твой партнёр хочет тебя радовать — он просто не знает как».</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1-2 — что произошло после разговора [Имени] с партнёром</span>
+        «[Имя] мне написала вчера ночью. Они поговорили. Она сказала мне: "Это было неловко первые три минуты. А потом он обнял меня и сказал что рад что я наконец сказала."»<br><br>
+        Катя поверх: «Вот что происходит когда говоришь. Не то, чего боишься.»
+      </div>
+      <div class="poll-box">«Ты когда-нибудь говорила партнёру открыто что тебе нужно в постели?» Варианты: «Да, это меняет всё» / «Нет, боюсь / не знаю как» / «Хочу попробовать»</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+[Имя] задала мне сегодня вопрос, который задают многие.
 
-  <div class="mechanic">
-    <div class="mech-num">4</div>
-    <div class="mech-body">
-      <h4>«Она делает то, что есть в курсе»</h4>
-      <p>Периодически упоминай: «это упражнение из модуля 3 моего курса» или «именно об этом механизме я говорю на вебинаре». Не реклама — контекст. Но продающий контекст.</p>
+"Почему я так боюсь сказать ему что мне нужно? Мы вместе пять лет. Почему это так сложно?"
+
+Ответ: потому что нас не учили этому. Нас учили что "нормальная женщина" не говорит об этом вслух. Что партнёр "должен сам догадаться". И мы несём это молча годами.
+
+Вчера [Имя] поговорила с ним. Написала мне в 23:00: "Было неловко три минуты. Потом он меня обнял."
+
+Вот так это работает.
+      </div>
+    </div>
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>«На следующей неделе — самое интересное. Я дала [Имени] задание из раздела, о котором женщины обычно молчат. Она написала: "Катя, ты серьёзно?". Следите.»</div>
     </div>
   </div>
+</div>
 
-  <div class="mechanic">
-    <div class="mech-num">5</div>
-    <div class="mech-body">
-      <h4>Финальный отзыв как живое доказательство</h4>
-      <p>Голос или текст самой героини в финале — это самый мощный продающий элемент. Попроси её ответить на вопрос: «Что изменилось? Что ты скажешь девушкам, которые сомневаются?» Это закрывает все возражения.</p>
+<!-- ===== ДЕНЬ 7 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num act2">День 7</div>
+    <div class="day-info">
+      <div class="dt">«Неделя. Вот что изменилось — и я не ожидала такого быстро»</div>
+      <div class="ds">Промежуточный итог. Первое органичное упоминание вебинара.</div>
+      <div class="day-goal">🎯 Цель: зафиксировать прогресс + первая точка входа на вебинар</div>
     </div>
   </div>
-
-  <div class="divider"></div>
-
-  <!-- СТОРИС-ФОРМАТЫ -->
-  <h2 class="s-title">Форматы сторис по дням</h2>
-  <p class="s-sub">Чередуй — не должно быть «ещё один текстовый слайд»</p>
-
-  <div class="stories-grid">
-    <div class="story-frame">
-      <div class="sf-top">День 1</div>
-      <div class="sf-mid"><span class="em">🎬</span>Видео Кати с интригой. Без деталей. «Скоро расскажу»</div>
-      <div class="sf-bot">формат: видео 15 сек</div>
+  <div class="day-body">
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя + [Имя] вместе (созвон) или по очереди</div>
+      <div class="script">
+        Катя: «Неделя. Хочу зафиксировать что уже изменилось у [Имени]. Три конкретных момента:<br><br>
+        Первый: она перестала "уходить головой" во время близости — это был её главный блок.<br>
+        Второй: она впервые за долгое время сказала партнёру что ей нужно — и он услышал.<br>
+        Третий: [вставь реальный момент из их работы].<br><br>
+        [Имя] — хочешь добавить что-то своими словами?»<br><br>
+        [Имя] говорит от себя. Пусть говорит как может — не гладко, с паузами. Это сильнее любого текста.
+      </div>
     </div>
-    <div class="story-frame" style="background:linear-gradient(135deg,#3D1F5A,#2D1F42)">
-      <div class="sf-top">День 2</div>
-      <div class="sf-mid"><span class="em">💬</span>Скрин переписки с закрытым именем</div>
-      <div class="sf-bot">формат: скрин + текст</div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        «То, что делает [Имя] — это часть системы, которую я преподаю. Той же системы, которую я разбираю на своём вебинаре "Секреты женского удовольствия".<br><br>
+        Если тебе откликается её история — вебинар для тебя. Ссылка в шапке профиля.»
+      </div>
+      <div class="tip">Это первое упоминание вебинара. Без «купи» и «успей» — просто «вот откуда это». Поставь ссылку в шапку профиля и добавь наклейку-ссылку в сторис. Смотри кто переходит.</div>
     </div>
-    <div class="story-frame" style="background:linear-gradient(135deg,#4A2D6A,#2D1F42)">
-      <div class="sf-top">День 4</div>
-      <div class="sf-mid"><span class="em">😢</span>«Она написала: я не смогла» — скрин + реакция Кати</div>
-      <div class="sf-bot">формат: скрин + голос</div>
-    </div>
-    <div class="story-frame" style="background:linear-gradient(135deg,#C4856A,#8A4A30)">
-      <div class="sf-top">День 7</div>
-      <div class="sf-mid"><span class="em">✨</span>Промежуточный итог. Список изменений. Мягкое упоминание курса.</div>
-      <div class="sf-bot">формат: текст слайд</div>
-    </div>
-    <div class="story-frame" style="background:linear-gradient(135deg,#1E3A5F,#0F1F35)">
-      <div class="sf-top">День 9</div>
-      <div class="sf-mid"><span class="em">🔥</span>Голосовое сообщение от неё. Или видео без лица.</div>
-      <div class="sf-bot">формат: аудио / видео</div>
-    </div>
-    <div class="story-frame" style="background:linear-gradient(135deg,#2A7A54,#1A4A34)">
-      <div class="sf-top">День 12</div>
-      <div class="sf-mid"><span class="em">🌸</span>Её финальные слова. Продажа через её голос.</div>
-      <div class="sf-bot">формат: цитата + CTA</div>
-    </div>
-  </div>
+    <div class="webinar-point">Первое органичное упоминание. Контекст: «эта система работает — и она же на вебинаре». Не продажа, а связь между историей и методом.</div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Неделя работы с [Именем].
 
-  <div class="divider"></div>
+Если бы неделю назад я сказала ей что она будет открыто говорить с партнёром о своих желаниях и что он скажет "рад что ты наконец сказала" — она бы не поверила.
 
-  <!-- ПРАКТИЧЕСКИЕ СОВЕТЫ -->
-  <h2 class="s-title">Практически важные детали</h2>
-  <p class="s-sub">То, что делает разницу между «интересно» и «не могу оторваться»</p>
+Но это произошло. Не потому что она особенная. А потому что у неё была система.
 
-  <div class="day-card">
-    <div class="day-body">
-      <div class="label">Имя и анонимность</div>
-      <p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:14px;">
-        Используй псевдоним — реальный, живой. «Маша», «Алина», «Вика». Не «клиентка N». Псевдоним создаёт личность. Плюс скажи: «она попросила не показывать лицо, но разрешила рассказывать» — это вызывает доверие, не подозрение.
-      </p>
-      <div class="label">Ритм публикаций</div>
-      <p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:14px;">
-        Instagram Stories: каждый день, 3-5 сторис. Telegram: через день, один хороший пост. Не заваливай — создавай ожидание. Лучше меньше, но каждая сторис с крючком на следующую.
-      </p>
-      <div class="label">Крючок в конце каждой сессии</div>
-      <div class="tip-box">Каждый день заканчивай на интриге. «Завтра расскажу, что она сделала» / «Следующая сторис — её слова, не мои» / «Завтра будет сложный день» — зрители сохраняют аккаунт в «избранное».</div>
-      <div class="label">Вовлекай зрителей</div>
-      <p style="font-size:13px;color:#444;line-height:1.7;margin-bottom:14px;">
-        «Как бы ты поступила на её месте?» / «Ты узнаёшь себя?» / «Что бы ты ей сказала?» — люди, которые оставили ответ, следят до конца. Это психология.
-      </p>
-      <div class="label">Один реальный момент лучше десяти придуманных</div>
-      <div class="tip-box">Попроси её скидывать тебе голосовые или скрины реакций. Реальная неровная речь, настоящие слёзы, искренняя неловкость — это в 100 раз мощнее любого написанного сценария. Используй реальность как материал.</div>
+Эта же система — в основе моего вебинара "Секреты женского удовольствия". Там я объясняю механику: почему это работает именно так и с чего начать.
+
+Если хочешь понять — вот запись: [ссылка на вебинар]
+      </div>
+    </div>
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>«На следующей неделе — поворот, которого я сама не ожидала. [Имя] попробовала кое-что новое. И партнёр... В общем. Следите за сторис.»</div>
     </div>
   </div>
+</div>
 
-  <div class="cta-block">
-    <h3>🎬 Итог: это не отзыв. Это сериал.</h3>
-    <p>Люди не помнят факты — они помнят истории. Дай им историю, за которой они будут следить 14 дней. К финалу они будут так же хотеть её результата, как она сама. И купят — не потому что их убедили, а потому что они уже мысленно внутри.</p>
+<!-- ===== ДЕНЬ 8 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num act2">День 8</div>
+    <div class="day-info">
+      <div class="dt">«Она пробовала снять кружочек. Удалила. Показываю что написала.»</div>
+      <div class="ds">Момент подлинности. Зажатость перед камерой = живость истории.</div>
+      <div class="day-goal">🎯 Цель: «она настоящая», эмпатия, «я бы тоже не смогла снять»</div>
+    </div>
   </div>
+  <div class="day-body">
+    <div class="tip">Золотой момент. Она не смогла снять — и это лучше чем смогла. Используй это честно. Зрительницы узнают себя — «я тоже бы не смогла на камеру».</div>
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя</div>
+      <div class="script">
+        «[Имя] пробовала записать вам кружочек сегодня. Пять раз. Удаляла каждый раз.<br><br>
+        Написала мне: "Катя, я не могу. Как только включаю камеру — всё исчезает, что хотела сказать."<br><br>
+        [смеётся]<br><br>
+        Она зато написала мне голосовое. Вот что она сказала — передам её словами.<br><br>
+        "Я сегодня попробовала то, что ты давала. Это было... странно. Приятно, но странно. Как будто первый раз слышишь новую музыку — ты её не знаешь, но она тебе уже нравится."<br><br>
+        Я думаю это лучше любого кружочка.»
+      </div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1 — скрин переписки</span>
+        «[Имя]: Катя я пробовала 5 раз снять кружок, каждый раз удаляла»<br>
+        «Катя: хорошо, тогда напиши голосовое»<br><br>
+        Катя добавляет: «Иногда самое настоящее — это то, что не для камеры.»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 2-3 — Катя пересказывает её слова</span>
+        «Она написала: "как будто слышишь новую музыку — ты её ещё не знаешь, но тебе уже нравится."<br><br>
+        Именно так это и происходит на первом этапе. Тело начинает учиться чувствовать.»
+      </div>
+      <div class="poll-box">«Ты бы смогла снимать на камеру свой путь — если бы это помогло другим?» Варианты: «Да, легко» / «Только анонимно» / «Нет, никогда»</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+[Имя] сегодня пробовала записать вам кружочек. Пять раз. Каждый раз удаляла.
+
+Зато написала мне голосовое.
+
+Она сказала: "Это было как первый раз услышать новую музыку — ты её не знаешь, но тебе уже нравится."
+
+Вот так начинается. Не взрывом. А тихим "странно, но приятно".
+
+Завтра расскажу что было дальше.
+      </div>
+    </div>
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>«Завтра у [Имени] кое-что произошло вечером. Партнёр ничего не знал. Но предложил кое-что, чего не делал давно. Расскажу завтра.»</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ДЕНЬ 9 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num act2">День 9</div>
+    <div class="day-info">
+      <div class="dt">«Он устроил ей свидание. Дома. Без предупреждения.»</div>
+      <div class="ds">Поворот сюжета. Партнёр меняется — хотя не знает о работе с Катей.</div>
+      <div class="day-goal">🎯 Цель: «вот это да», удивление, желание того же самого</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="dopamine">
+      <div class="dopamine-label">Главный дофаминовый момент второго акта</div>
+      <p>Конкретная деталь без лишних объяснений. Он купил вино. Убрал телефон. Зажёг свечи. Что-то одно конкретное. Не обобщение "всё изменилось", а один живой момент.</p>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя (эмоционально)</div>
+      <div class="script">
+        «Сегодня утром [Имя] написала мне. И я просто сидела и улыбалась несколько минут, не отвечала.<br><br>
+        Вчера вечером она пришла домой. Он убрал телефон — просто так. Открыл вино. Сказал: "Хочу провести вечер с тобой по-настоящему."<br><br>
+        Они так не делали. Давно.<br><br>
+        Он ничего не знает о нашей работе. Просто почувствовал что она рядом по-другому.<br><br>
+        [пауза]<br><br>
+        Это. Происходит. Когда меняется что-то внутри — меняется то, что ты отдаёшь в пространство. И партнёр это ловит. Даже не понимая почему.»
+      </div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1 — текст на фоне, её слова</span>
+        «Он убрал телефон. Открыл вино. Сказал: "Хочу провести вечер с тобой по-настоящему."»<br><br>
+        Катя: «[Имя] написала мне это утром. Они так не делали давно.»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 2 — объяснение механики</span>
+        «Он ничего не знал о нашей работе. Просто почувствовал что она рядом по-другому. Когда меняется внутри — партнёр ловит это. Не слова. Энергию.»
+      </div>
+      <div class="micro">Если [Имя] сфоткала бокалы или свечи в тот вечер — попроси прислать. Одна фотография-деталь сильнее любого описания. Дома были цветы или нет — это создаёт реалистичную картину.</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Сегодня утром получила сообщение от [Имени].
+
+Вчера вечером он убрал телефон, открыл вино и сказал: "Хочу провести вечер с тобой по-настоящему."
+
+Они так не делали уже давно.
+
+Он ничего не знает о нашей работе. Просто что-то почувствовал.
+
+Когда что-то меняется внутри тебя — это меняет то, что ты транслируешь в пространство. Партнёры это улавливают раньше, чем ты успеваешь объяснить.
+
+Финал уже скоро. Готовьтесь.
+      </div>
+    </div>
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>«Осталось 5 дней. Расскажу кое-что важное — про технику, которую мы с [Именем] разбирали на этой неделе. Та самая, после которой она написала: "Катя, я не думала что я на такое способна."»</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ДЕНЬ 10 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num act2">День 10</div>
+    <div class="day-info">
+      <div class="dt">«Я не думала что я на такое способна» — 10-й день, важный инсайт»</div>
+      <div class="ds">Экспертный рилс. Вторая точка на вебинар. Пауза перед финалом.</div>
+      <div class="day-goal">🎯 Цель: охват, сохранения, вторая точка входа на вебинар</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="fmt">
+      <div class="fmt-label reels">🎬 Reels (45-60 сек)</div>
+      <div class="hook">«3 вещи, которые убивают желание — и большинство женщин не знают что это происходит.»</div>
+      <div class="script">
+        <span class="sc-label">Три конкретных пункта, просто и быстро</span>
+        «Первое: секс как обязанность. Когда он "должен быть", а не "хочется" — тело выключается.<br><br>
+        Второе: голова работает во время близости. Оценивает. Как я выгляжу. Достаточно ли я хороша. Что он думает. И тело следует за головой — замерзает.<br><br>
+        Третье: накопленная усталость и слова, которые не были сказаны. Невысказанное остаётся в теле.<br><br>
+        Именно это я разбирала с [Именем]. Именно об этом — на моём вебинаре. Ссылка в шапке.»
+      </div>
+    </div>
+    <div class="webinar-point">Вторая точка на вебинар. Контекст: «три вещи — именно это на вебинаре». Без давления, просто связь.</div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Пока [Имя] готовится рассказать вам всё — хочу сказать кое-что.
+
+За 10 дней я не делала с ней ничего "волшебного". Только система. Та же, что я объясняю на вебинаре "Секреты женского удовольствия".
+
+Если тебе откликается история [Имени] — значит, тебе тоже нужна эта информация. Не потому что "что-то не так". А потому что никто не объяснял.
+
+Запись вебинара: [ссылка]
+
+И следите — финал уже послезавтра.
+      </div>
+    </div>
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>«Завтра [Имя] рассказывает сама. Я попросила её записать видео своими словами — без сценария, без подготовки. Она написала мне: "Катя, я не знаю смогу ли. Но попробую."»</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== АКТ III ===== -->
+<div class="act-divider">
+  <div class="act-divider-line"></div>
+  <div class="act-divider-label a3">Акт III — Кульминация · Дни 11-14</div>
+  <div class="act-divider-line"></div>
+</div>
+
+<!-- ===== ДЕНЬ 11 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num act3">День 11</div>
+    <div class="day-info">
+      <div class="dt">«Дома появились цветы. Она сама не знает почему.»</div>
+      <div class="ds">Конкретный физический знак трансформации. Деталь быта как доказательство.</div>
+      <div class="day-goal">🎯 Цель: «невероятно», желание того же, эмоциональный подъём перед финалом</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="micro">Один живой факт лучше ста слов. Цветы дома — или подарок, или неожиданное предложение куда-то пойти. Что-то конкретное что появилось в её жизни. Пусть она сфотографирует и пришлёт тебе.</div>
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя</div>
+      <div class="script">
+        «[Имя] написала мне сегодня утром. Просто фотографию. Цветы на столе.<br><br>
+        И подпись: "Он принёс. Просто так. Говорит 'захотел тебя порадовать'. Он не делал так... я уже не помню когда."<br><br>
+        [пауза]<br><br>
+        Знаешь, я всегда говорю клиенткам: работаем с тобой — меняется пространство вокруг тебя. Партнёр не знает что происходит. Просто чувствует что рядом с тобой хорошо. И хочет быть рядом больше.<br><br>
+        Это не магия. Это физика.»
+      </div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1 — фото цветов (от неё)</span>
+        Катя пишет поверх: «Он принёс. Просто так. "Захотел тебя порадовать."»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 2 — Катя объясняет</span>
+        «Это происходит потому что меняется она — и меняется то, что она транслирует. Он ловит это раньше, чем она успела ему что-то объяснить.»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 3 — вопрос к аудитории</span>
+        «Когда твой партнёр в последний раз делал что-то просто так — без повода, без праздника?»<br>
+        Ответ в директ.
+      </div>
+      <div class="tip">Если у неё нет цветов — любая другая конкретная деталь: он написал неожиданное сообщение, предложил куда-то пойти, приготовил что-то. Одна деталь. Конкретная.</div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Сегодня утром [Имя] прислала мне фотографию.
+
+Цветы на столе. Подпись: "Он принёс. Просто так. Говорит 'захотел тебя порадовать'."
+
+Он не знает о нашей работе. Просто чувствует что рядом с ней хорошо. И хочет быть рядом.
+
+Я всегда говорю: работаешь с собой — меняется пространство вокруг. Партнёр это ловит.
+
+Завтра [Имя] расскажет всё сама. Ждите.
+      </div>
+    </div>
+    <div class="cliffhanger">
+      <div class="ch-icon">⏸</div>
+      <div class="ch-text"><strong>Крючок в конец</strong>«Завтра — она сама. Видео. Своими словами. Я не знаю что именно она скажет. Но знаю что я буду слушать и не смогу не плакать.»</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ДЕНЬ 12 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num act3">День 12</div>
+    <div class="day-info">
+      <div class="dt">«Она говорит сама. Без сценария.»</div>
+      <div class="ds">Кульминация. Живой отзыв. Самый мощный момент всей истории.</div>
+      <div class="day-goal">🎯 Цель: максимальная эмоция, живой отзыв, третья точка на вебинар</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="tip">Самый важный день. Попроси [Имя] записать видео или голосовое своими словами, без подготовки. Вопросы для неё: «Что было в начале? Что ты думала тогда? Что изменилось? Что ты скажешь женщинам, которые сомневаются?» Неровная речь, паузы, слёзы — всё оставь. Это в 100 раз сильнее любого написанного текста.</div>
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — [Имя] говорит сама (главное видео всей серии)</div>
+      <div class="script gold">
+        <span class="sc-label">НЕ давать ей сценарий. Пусть говорит как получится.</span>
+        Катя предлагает только вопросы — она отвечает своими словами:<br><br>
+        «Что было в самом начале?»<br>
+        «Что ты думала о себе тогда?»<br>
+        «Что изменилось?»<br>
+        «Что ты скажешь девушке, которая сейчас сомневается — стоит ли?»<br><br>
+        Катя потом добавляет свой кружочек — молча слушает, говорит: «Вот. Я не добавлю ничего.»
+      </div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="script">
+        <span class="sc-label">День 12 — выводим на вебинар</span>
+        «То, через что прошла [Имя] — это результат работы с конкретной системой. Я объясняю эту систему на вебинаре "Секреты женского удовольствия". Если история [Имени] — про тебя. Значит вебинар тоже про тебя. Ссылка в шапке.»
+      </div>
+      <div class="script">
+        <span class="sc-label">Наклейка со ссылкой на вебинар + вопрос</span>
+        «Что тебя больше всего зацепило в истории [Имени]?» — ответ в директ.
+      </div>
+    </div>
+    <div class="webinar-point">Третья точка на вебинар. Контекст: живой результат — и он достижим через систему на вебинаре. Самый сильный момент для перехода.</div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+Двенадцать дней.
+
+[Имя] пришла ко мне с ощущением что она "холодная" и "не способная". Что у неё "уже навсегда так".
+
+Сегодня она записала видео своими словами. Я не давала ей сценарий. Посмотрите в сторис — там всё.
+
+Одна фраза, которую она сказала, остаётся у меня в голове: "Я не знала что я вообще так умею. Я думала это не для меня."
+
+Именно это меня держит в этой работе.
+
+Если откликается — приходи на вебинар. Ссылка: [ссылка]
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ДЕНЬ 13 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num act3">День 13</div>
+    <div class="day-info">
+      <div class="dt">«Отвечаю на то, что вы писали всё это время»</div>
+      <div class="ds">Q&A из директа. Закрытие возражений через вопросы аудитории.</div>
+      <div class="day-goal">🎯 Цель: снять оставшиеся сомнения, четвёртая точка на вебинар</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories — Q&A сессия</div>
+      <div class="script">
+        <span class="sc-label">Катя отвечает на реальные вопросы из директа. Форматы: короткое видео или текст.</span>
+        <em>«А это работает если у нас уже давно нет близости?»</em> — «Именно с этого обычно и начинаем. Это не стена — это сигнал что пора.»<br><br>
+        <em>«А если партнёр не хочет меняться?»</em> — «Работаем с тобой. Партнёр меняется следом — как было у [Имени]. Без его участия.»<br><br>
+        <em>«Это реально или постановка?»</em> — «[Имя] живёт в [город], у неё есть работа, семья, она не блогер. Хотите, она вам сама ответит в комментах?»<br><br>
+        <em>«Я стесняюсь заниматься этим»</em> — «[Имя] снимала кружочек пять раз и удаляла. Стеснение — это норма. Не препятствие.»
+      </div>
+      <div class="script">
+        <span class="sc-label">Финал Q&A</span>
+        «Всё что я рассказывала эти дни — это часть системы. Та же система на вебинаре. Если ты смотрела все серии и тебе откликалось — ты уже знаешь что тебе туда. Ссылка в шапке.»
+      </div>
+    </div>
+    <div class="webinar-point">Четвёртая точка. Контекст: «всё что рассказывала — это система, она на вебинаре». Логичный итог двухнедельной истории.</div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="script tg">
+За эти две недели мне написали очень много.
+
+Самый частый вопрос: "Это правда работает или красивая история?"
+
+Отвечу честно. [Имя] — реальная девушка. Реальные отношения. Реальные результаты. Не всё шло гладко — вы видели дни когда не получалось, когда она боялась, когда партнёр ещё ничего не замечал.
+
+Именно поэтому я и показывала всё — а не только красивый финал.
+
+Если хочешь понять как это работает — вебинар всё объяснит. Ссылка: [ссылка]
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ДЕНЬ 14 — ФИНАЛ ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-num finale">День 14 — Финал</div>
+    <div class="day-info">
+      <div class="dt">«Четырнадцать дней. Это финал. И начало.»</div>
+      <div class="ds">Закрытие истории. Личная история Кати. Финальное приглашение на вебинар.</div>
+      <div class="day-goal">🎯 Цель: катарсис, «я тоже хочу», финальный переход на вебинар</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Финальный кружочек — Катя (личная история)</div>
+      <div class="script">
+        <span class="sc-label">Это самый личный кружочек. Говорит медленно, тепло. Из сердца.</span>
+        «Мы закончили. Четырнадцать дней.<br><br>
+        Я хочу сказать кое-что напоследок. Я сама была такой девушкой. Я сама лежала рядом с любимым человеком и чувствовала внутри пустоту. Думала — это нормально. Что у всех так. Что я просто не создана для этого.<br><br>
+        Потом я поняла что это не правда. Что это был не характер — а отсутствие знания и практики. И когда я это поняла — всё изменилось. Сначала медленно. Потом быстро.<br><br>
+        [Имя] доказала это вам за четырнадцать дней. И она — не исключение. Она — правило.<br><br>
+        Если ты смотрела всё это время и думала "это про меня" — значит для тебя это тоже правило, а не исключение.<br><br>
+        Начни с вебинара. Он уже ждёт. Ссылка в шапке.»
+      </div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Instagram Stories — финальные</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1 — подведение итогов</span>
+        «14 дней. [Имя] пришла с ощущением что она "холодная". Ушла с цветами дома, новым разговором с партнёром и ощущением что она умеет больше, чем думала.»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 2 — личная Катина история (коротко)</span>
+        «Я сама была такой. И я знаю что это меняется. Вебинар — с чего я начинала бы, если бы знала тогда то, что знаю сейчас.»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 3 — финальный призыв</span>
+        «"Секреты женского удовольствия" — вебинар в записи. Смотришь когда удобно. Ссылка в шапке.»<br><br>
+        Наклейка с ссылкой.
+      </div>
+    </div>
+    <div class="webinar-point">Пятая финальная точка. Контекст: итог 14-дневного пути — и его начало доступно прямо сейчас через вебинар. Максимальное желание действовать.</div>
+    <div class="fmt">
+      <div class="fmt-label tg">✈️ Telegram — финальный пост</div>
+      <div class="script tg">
+История [Имени] завершена.
+
+14 дней. Цветы дома. Свидание без повода. Разговор, которого не было несколько лет. И ощущение, которое она описала так: "Я не знала что я вообще так умею."
+
+Для меня это не конец. Это начало — для каждой из вас, кто смотрел и думал: "Это про меня."
+
+Я записала вебинар именно для таких моментов. Называется "Секреты женского удовольствия". Там я объясняю всё — от механики желания до конкретных шагов.
+
+Бесплатно. В записи. В своём темпе.
+
+Ссылка: [ссылка на вебинар]
+
+Если посмотришь — напиши мне. Хочу знать что тебе откликнулось.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ПРОДАЮЩАЯ МЕХАНИКА -->
+<h2 class="block-title">Как это продаёт — 5 механик</h2>
+<p class="block-sub">Зрительница не чувствует что ей продают. Она чувствует что хочет то же самое.</p>
+
+<div class="mechanic">
+  <div class="mnum">1</div>
+  <div class="mbody">
+    <h4>Следит за историей — переживает вместе</h4>
+    <p>Когда человек эмоционально вложен в историю — он воспринимает результат как свой желаемый исход. Финальное «я хочу то же самое» возникает само, без убеждения.</p>
+  </div>
+</div>
+<div class="mechanic">
+  <div class="mnum">2</div>
+  <div class="mbody">
+    <h4>Реакция партнёра = живое доказательство</h4>
+    <p>Цветы, сообщение «скучаю», свидание дома — это не слова о результате, это сам результат. Зрительница видит изменение в реальной жизни, а не читает обещание.</p>
+  </div>
+</div>
+<div class="mechanic">
+  <div class="mnum">3</div>
+  <div class="mbody">
+    <h4>Провалы и зажатость = доверие</h4>
+    <p>Когда показываешь что не получалось, что она удаляла видео, что боялась — зрительница не видит рекламу. Она видит настоящего человека. Доверие к нему переходит на эксперта.</p>
+  </div>
+</div>
+<div class="mechanic">
+  <div class="mnum">4</div>
+  <div class="mbody">
+    <h4>Незакрытые петли удерживают ежедневно</h4>
+    <p>Каждый день заканчивается вопросом без ответа. Мозг не терпит незавершённости — человек возвращается завтра. За 14 дней формируется привычка следить за блогом.</p>
+  </div>
+</div>
+<div class="mechanic">
+  <div class="mnum">5</div>
+  <div class="mbody">
+    <h4>Вебинар — как «откуда это», а не как реклама</h4>
+    <p>Катя не говорит «купи». Она говорит «это из системы на вебинаре». Зрительница сама приходит к мысли «хочу эту систему». Это называется спрос, который создаёт сама аудитория.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ФИНАЛЬНЫЙ CTA -->
+<div class="webinar-cta">
+  <h3>5 точек перехода на вебинар «Секреты женского удовольствия»</h3>
+  <p>Ни одна не звучит как реклама. Каждая — логичное продолжение истории.</p>
+  <div class="wscript">
+    🗓 <strong>День 7</strong> — «Это часть системы, которую я преподаю — она же на вебинаре»<br>
+    🗓 <strong>День 10</strong> — «3 вещи, которые убивают желание — всё это на вебинаре»<br>
+    🗓 <strong>День 12</strong> — «Живой результат — он достижим через систему на вебинаре»<br>
+    🗓 <strong>День 13</strong> — «Всё что рассказывала — это система. Она на вебинаре.»<br>
+    🗓 <strong>День 14</strong> — «Начни с вебинара. Он уже ждёт.»
+  </div>
+  <div style="margin-top:14px;">
+    <span class="sell-tag">✅ Бесплатно</span>
+    <span class="sell-tag">✅ В записи</span>
+    <span class="sell-tag">✅ Без прямых продаж в серии</span>
+    <span class="hot-tag">🔥 5 органичных касаний</span>
+    <span class="hot-tag">🔥 Спрос создаёт сама история</span>
+  </div>
+</div>
 
 </div>
 </body>
