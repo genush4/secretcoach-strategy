@@ -3,377 +3,335 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SecretCoach — «Встреча в Барсе» · 2 дня</title>
+<title>SecretCoach — Встреча в Барсе · Съёмочный план</title>
 <style>
 :root{
   --plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;
   --cream:#FAF7F4;--lite:#F5F0EC;--dark:#1E1428;--mid:#DDD5CC;
-  --green:#3A9A6A;--gold:#D4A843;--tg:#2AABEE;--warm:#FFF4EE;
+  --green:#3A9A6A;--tg:#2AABEE;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--dark);}
-
 .nav{background:var(--plum);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;}
 .nav-title{color:white;font-weight:800;font-size:14px;margin-right:auto;}
-.nav a{color:rgba(255,255,255,.55);font-size:12px;text-decoration:none;font-weight:500;}
+.nav a{color:rgba(255,255,255,.55);font-size:12px;text-decoration:none;}
 .nav a:hover{color:white;}
 
-.hero{background:linear-gradient(135deg,#1E1428 0%,#3D1F5A 60%,#2D1F42 100%);padding:56px 24px 44px;text-align:center;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-40%;left:-20%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(196,133,106,.12) 0%,transparent 70%);pointer-events:none;}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(196,133,106,.2);color:var(--blush);font-size:11px;font-weight:700;padding:7px 16px;border-radius:20px;margin-bottom:18px;border:1px solid rgba(196,133,106,.3);}
-.hero h1{color:white;font-size:28px;font-weight:900;max-width:640px;margin:0 auto 12px;line-height:1.25;}
-.hero p{color:rgba(255,255,255,.6);font-size:14px;max-width:500px;margin:0 auto;line-height:1.7;}
+.hero{background:var(--plum);padding:48px 24px 36px;text-align:center;}
+.hero-badge{display:inline-flex;background:rgba(196,133,106,.2);color:var(--blush);font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(196,133,106,.3);}
+.hero h1{color:white;font-size:26px;font-weight:900;max-width:600px;margin:0 auto 10px;line-height:1.25;}
+.hero p{color:rgba(255,255,255,.55);font-size:13px;max-width:480px;margin:0 auto;}
 
-.container{max-width:920px;margin:0 auto;padding:44px 20px 100px;}
+.container{max-width:860px;margin:0 auto;padding:40px 20px 100px;}
 
-.block-title{font-size:21px;font-weight:900;color:var(--plum);margin-bottom:6px;}
-.block-sub{font-size:14px;color:var(--mauve);margin-bottom:26px;line-height:1.5;}
-.divider{height:1px;background:var(--mid);margin:44px 0;}
+/* SECTION HEADER */
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;margin-top:40px;}
+.sec-head:first-child{margin-top:0;}
+.sec-badge{background:var(--plum);color:white;font-size:11px;font-weight:900;padding:5px 14px;border-radius:20px;white-space:nowrap;}
+.sec-badge.orange{background:#D4620A;}
+.sec-badge.green{background:var(--green);}
+.sec-badge.rose{background:var(--rose);}
+.sec-title{font-size:16px;font-weight:800;color:var(--plum);}
+.divider{height:1px;background:var(--mid);margin:32px 0;}
 
-/* WHY */
-.why{background:linear-gradient(135deg,#1E1428,#2D1F42);border-radius:18px;padding:28px;margin-bottom:22px;position:relative;overflow:hidden;}
-.why::after{content:'';position:absolute;top:-20%;right:-5%;width:50%;height:160%;background:radial-gradient(ellipse,rgba(196,133,106,.10) 0%,transparent 70%);pointer-events:none;}
-.why h2{color:white;font-size:18px;font-weight:900;margin-bottom:14px;}
-.why ul{list-style:none;padding:0;}
-.why ul li{color:rgba(255,255,255,.75);font-size:13px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:12px;line-height:1.55;}
-.why ul li:last-child{border:none;}
+/* ACTION CARD */
+.action{background:white;border:1px solid var(--mid);border-radius:14px;padding:16px 18px;margin-bottom:10px;}
+.action-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.fmt-pill{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:6px;white-space:nowrap;}
+.fp-circle{background:rgba(225,48,108,.08);color:#C4006A;}
+.fp-stories{background:linear-gradient(135deg,rgba(225,48,108,.1),rgba(131,58,180,.06));color:#9A1060;}
+.fp-reels{background:rgba(131,58,180,.08);color:#7B1090;}
+.fp-tg{background:rgba(42,171,238,.1);color:#0A80B0;}
+.action-label{font-size:12px;font-weight:800;color:var(--plum);}
+.action p{font-size:13px;color:#333;line-height:1.75;}
+.action .say{background:var(--lite);border-left:3px solid var(--rose);border-radius:8px;padding:12px 14px;margin-top:10px;font-size:13px;color:#333;line-height:1.8;}
+.action .say.tg-say{border-left-color:var(--tg);background:#F0F8FF;}
+.action .say .sl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin-bottom:6px;display:block;}
 
-/* SHOOT TIPS */
-.shoot-box{background:var(--warm);border:1px solid rgba(196,133,106,.2);border-radius:16px;padding:22px;margin-bottom:22px;}
-.shoot-box h3{font-size:14px;font-weight:900;color:var(--plum);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-.shoot-item{display:flex;gap:11px;padding:8px 0;border-bottom:1px solid rgba(196,133,106,.12);font-size:13px;color:#333;line-height:1.55;}
-.shoot-item:last-child{border:none;}
-.shoot-item .si{font-size:15px;flex-shrink:0;margin-top:1px;}
+/* INTERVIEW BOX */
+.interview-box{background:linear-gradient(135deg,#1E1428,#2D1F42);border-radius:14px;padding:22px;margin-bottom:10px;}
+.interview-box h4{color:var(--blush);font-size:14px;font-weight:900;margin-bottom:4px;}
+.interview-box .ib-sub{color:rgba(255,255,255,.5);font-size:12px;margin-bottom:16px;}
+.q-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);}
+.q-item:last-child{border:none;}
+.q-num{background:rgba(196,133,106,.2);color:var(--blush);font-size:11px;font-weight:900;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.q-item p{color:rgba(255,255,255,.8);font-size:13px;line-height:1.6;}
+.q-item p strong{color:white;display:block;margin-bottom:2px;}
 
-/* DAY CARD */
-.day{background:white;border-radius:18px;border:1px solid var(--mid);margin-bottom:18px;overflow:hidden;}
-.day-head{padding:18px 22px 14px;border-bottom:1px solid var(--lite);display:flex;align-items:flex-start;gap:14px;}
-.day-badge{color:white;font-size:12px;font-weight:900;padding:6px 15px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
-.db-tizer{background:var(--mauve);}
-.db-d1{background:var(--plum);}
-.db-d2{background:linear-gradient(135deg,#C4856A,#8A4A30);}
-.day-info .dt{font-size:16px;font-weight:800;color:var(--plum);line-height:1.3;}
-.day-info .ds{font-size:12px;color:var(--mauve);margin-top:3px;line-height:1.5;}
-.day-body{padding:18px 22px;}
+/* IDEAS GRID */
+.ideas{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px;}
+.idea{background:white;border:1px solid var(--mid);border-radius:12px;padding:16px;}
+.idea .i-icon{font-size:20px;margin-bottom:7px;}
+.idea h4{font-size:13px;font-weight:800;color:var(--plum);margin-bottom:5px;}
+.idea p{font-size:12px;color:#555;line-height:1.6;}
+@media(max-width:580px){.ideas{grid-template-columns:1fr;}}
 
-/* FORMAT */
-.fmt{margin-bottom:16px;}
-.fmt-label{display:flex;align-items:center;gap:7px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px;padding:5px 11px;border-radius:7px;width:fit-content;}
-.fmt-label.stories{background:linear-gradient(135deg,rgba(225,48,108,.12),rgba(131,58,180,.08));color:#9A1060;}
-.fmt-label.circle{background:rgba(225,48,108,.08);color:#C4006A;}
-.fmt-label.reels{background:linear-gradient(135deg,rgba(225,48,108,.1),rgba(131,58,180,.08));color:#7B1090;}
-.fmt-label.tg{background:rgba(42,171,238,.1);color:#0A80B0;}
+/* NOTE */
+.note{background:#FFF8E8;border:1px solid rgba(212,168,67,.25);border-radius:10px;padding:12px 15px;font-size:12px;color:#7A4A10;line-height:1.6;margin-bottom:10px;}
+.note strong{display:block;margin-bottom:3px;}
 
-.script{background:var(--lite);border-radius:11px;padding:14px 16px;margin:7px 0;font-size:13px;color:#333;line-height:1.8;border-left:3px solid var(--rose);}
-.script.tg{border-left-color:var(--tg);}
-.script .sc-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mauve);margin-bottom:7px;display:block;}
-.script em{color:var(--rose);font-style:normal;font-weight:700;}
-
-.visual{background:#F3EFF8;border:1px solid rgba(123,92,116,.15);border-radius:9px;padding:11px 15px;margin:7px 0;font-size:12px;color:var(--plum);line-height:1.6;}
-.visual::before{content:'📷 Снимаем: ';font-weight:800;color:var(--mauve);}
-
-.tip{background:#E8F5EE;border:1px solid rgba(58,154,106,.2);border-radius:9px;padding:11px 15px;margin:7px 0;font-size:12px;color:#2A5A40;line-height:1.6;}
-.tip::before{content:'💡 ';font-weight:700;}
-
-.micro{background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.2);border-radius:9px;padding:11px 15px;margin:7px 0;font-size:12px;color:#7A4A10;line-height:1.6;}
-.micro::before{content:'🔍 Деталь: ';font-weight:800;}
-
-.hook{background:#FFF8E8;border:1px solid rgba(212,168,67,.25);border-radius:9px;padding:12px 15px;margin:7px 0;font-size:13px;color:#7A4A10;line-height:1.65;}
-.hook::before{content:'🪝 Хук: ';font-weight:800;}
-
-/* TAG ROW */
-.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;}
-.tag{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:5px 13px;font-size:11px;font-weight:700;}
-.tag.warm{background:rgba(196,133,106,.1);border:1px solid rgba(196,133,106,.2);color:#8A4A20;}
-.tag.green{background:#E8F5EE;border:1px solid rgba(58,154,106,.2);color:#2A5A40;}
+/* TAG */
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px;}
+.tag{font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;background:var(--lite);border:1px solid var(--mid);color:var(--mauve);}
 </style>
 </head>
 <body>
 
 <div class="nav">
-  <span class="nav-title">SecretCoach — Встреча в Барсе</span>
+  <span class="nav-title">Встреча в Барсе — съёмочный план</span>
   <a href="index.html">Главная</a>
   <a href="case_scenario.html">Кейс 14 дней</a>
   <a href="castdev.html">Анкета</a>
 </div>
 
 <div class="hero">
-  <div class="hero-badge">🌊 2 дня · Живой контент</div>
-  <h1>«Еду к своей девочке в Барселону» — тёплый контент-сценарий</h1>
-  <p>Никакой драмы и сюжетных дуг. Просто два дня — Катя и её клиентка вместе. Тепло, смех, разговоры. Аудитория видит кто такая Катя в жизни — не только в Zoom.</p>
+  <div class="hero-badge">✈️ 2 дня · Съёмочный план</div>
+  <h1>Встреча с клиенткой в Барселоне</h1>
+  <p>Что снять, что сказать, какие вопросы задать. Конкретно.</p>
 </div>
 
 <div class="container">
 
-<!-- ПОЧЕМУ ЭТО РАБОТАЕТ -->
-<div class="why">
-  <h2>Зачем это снимать</h2>
-  <ul>
-    <li><span>🧡</span><div><strong style="color:white">Показывает Катю как человека, а не только как эксперта.</strong> Она едет, смеётся, пьёт кофе со своей клиенткой. Это невозможно подделать — и именно поэтому вызывает доверие.</div></li>
-    <li><span>🌍</span><div><strong style="color:white">«Она едет к своей клиентке в другую страну»</strong> — само по себе говорит об отношении. Без слов. Аудитория это считывает мгновенно.</div></li>
-    <li><span>🎬</span><div><strong style="color:white">Контент снимается сам.</strong> Барселона, кафе, улица — это уже визуал. Не нужно ничего придумывать, просто жить и иногда доставать телефон.</div></li>
-    <li><span>💬</span><div><strong style="color:white">Люди следят за людьми, а не за продуктами.</strong> Зрительница видит эти два дня и думает: «Вот бы так же — чтобы Катя была рядом». Это и есть продажа без продажи.</div></li>
-  </ul>
+<!-- ===== ТИЗЕР ===== -->
+<div class="sec-head">
+  <div class="sec-badge">До поездки</div>
+  <div class="sec-title">Тизер — 1 штука, не больше</div>
 </div>
 
-<!-- ЧТО СНИМАТЬ -->
-<div class="shoot-box">
-  <h3>📷 Что снимать — короткий список</h3>
-  <div class="shoot-item"><span class="si">✅</span><div><strong>Момент встречи</strong> — как увиделись. 10 секунд. Со стороны или selfie. Самый ценный кадр всей поездки.</div></div>
-  <div class="shoot-item"><span class="si">✅</span><div><strong>За столом — общий план</strong> — разговаривают, смеются. Лицо клиентки — под стикером или со спины.</div></div>
-  <div class="shoot-item"><span class="si">✅</span><div><strong>Детали</strong> — руки, кофе, что-то на столе. Один тёплый крупный план вместо тысячи слов.</div></div>
-  <div class="shoot-item"><span class="si">✅</span><div><strong>Прогулка по Барсе</strong> — идут рядом, разговаривают. Снимать сзади или сбоку. Барселона на фоне.</div></div>
-  <div class="shoot-item"><span class="si">✅</span><div><strong>Кружочек клиентки</strong> — 30-60 сек, голос, стикер на лицо. Один вопрос: «Что для тебя изменилось?»</div></div>
-  <div class="shoot-item"><span class="si">✅</span><div><strong>Прощание</strong> — обнялись, разошлись. 5 секунд. Никаких слов не нужно.</div></div>
-  <div class="shoot-item"><span class="si">💡</span><div><strong>Если клиентка зажимается перед камерой</strong> — не снимай её. Снимай Катю, которая рассказывает ЧТО клиентка ей только что сказала. Это работает так же.</div></div>
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-circle">Кружочек</span>
+    <span class="action-label">Катя — 30 секунд</span>
+  </div>
+  <p>Снимай где угодно. Пакуешь чемодан, в такси, дома. Главное — без подготовки.</p>
+  <div class="say">
+    «Еду к одной из своих клиенток. Она живёт в Барселоне. Мы давно хотели встретиться вживую — и вот. Буду снимать. Завтра покажу.»
+  </div>
 </div>
 
 <div class="divider"></div>
-<h2 class="block-title">Сценарий: тизер + 2 дня</h2>
-<p class="block-sub">Конкретные тексты. Не сценарий для заучивания — ориентир. Живые слова всегда лучше.</p>
-
-<!-- ===== ТИЗЕР ===== -->
-<div class="day">
-  <div class="day-head">
-    <div class="day-badge db-tizer">За день — Тизер</div>
-    <div class="day-info">
-      <div class="dt">«Еду к своей девочке в Барселону»</div>
-      <div class="ds">Один кружочек или сторис. Больше ничего. Пусть ждут.</div>
-    </div>
-  </div>
-  <div class="day-body">
-    <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек — Катя</div>
-      <div class="script">
-        <span class="sc-label">В аэропорту, в такси, дома с чемоданом — где угодно, где естественно</span>
-        «Завтра еду в Барселону к своей клиентке. Мы давно это планировали. Немного нервничаю — хорошим таким волнением. Буду снимать.»
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label stories">📱 Stories</div>
-      <div class="script">
-        Фото чемодана / посадочного / аэропорта.<br>
-        Текст поверх: «Еду к своей девочке 🌊 Барселона»<br><br>
-        Больше ничего. Пусть интрига работает сама.
-      </div>
-    </div>
-    <div class="hook">«Куда именно еду — сторис завтра. Следи.»</div>
-  </div>
-</div>
 
 <!-- ===== ДЕНЬ 1 ===== -->
-<div class="day">
-  <div class="day-head">
-    <div class="day-badge db-d1">День 1 — Встреча</div>
-    <div class="day-info">
-      <div class="dt">Прилетела, увиделись, ресторан вечером</div>
-      <div class="ds">Эмоция дня: «вот они, вживую». Тепло, смех, первый разговор.</div>
-    </div>
+<div class="sec-head">
+  <div class="sec-badge orange">День 1</div>
+  <div class="sec-title">Прилёт — встреча — обед/ужин</div>
+</div>
+
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-stories">Stories</span>
+    <span class="action-label">Первый кадр по прилёте</span>
   </div>
-  <div class="day-body">
+  <p>Фото или видео — аэропорт, улица, кафе. Текст поверх: <strong>«Здесь. Еду к ней.»</strong> Всё.</p>
+</div>
 
-    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin-bottom:10px;">Утро — прилёт</h4>
-
-    <div class="fmt">
-      <div class="fmt-label stories">📱 Stories из самолёта или по прилёте</div>
-      <div class="script">
-        <span class="sc-label">Вид из окна, или первый кадр Барселоны</span>
-        «Здесь. Сейчас едем встречаться.»<br><br>
-        Или просто фото города без слов — пусть подписчицы сами напишут «ой куда?»
-      </div>
-    </div>
-    <div class="visual">Такси в город, первые кадры улиц — 3-4 секунды в сторис. Никакого текста. Атмосфера.</div>
-
-    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin:18px 0 10px;">День — встреча и прогулка</h4>
-
-    <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек — Катя после встречи</div>
-      <div class="script">
-        «Мы только что увиделись. Вот это чувство когда человека знаешь по голосу, по переписке — и вдруг он живой, рядом. Стоит перед тобой.<br><br>
-        Мы обнялись — и сразу начали болтать. Как будто сто лет знакомы.<br><br>
-        Барселона, солнце, она рядом. Хорошо.»
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label stories">📱 Stories — серия из 3-4 штук</div>
-      <div class="script">
-        <span class="sc-label">Сторис 1 — момент встречи или первый совместный кадр</span>
-        Катя и силуэт клиентки / вид со спины / обе смотрят куда-то вперёд.<br>
-        Текст: «Вот она. Наконец вживую ❤️»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 2 — прогулка</span>
-        Видео — идут по улице, разговаривают. 5-7 секунд. Никакого текста или одно слово: «Барселона»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 3 — детали</span>
-        Крупный план: два стакана с кофе, её рука, что-то характерное для места.<br>
-        Текст: «Вот так выглядит работа иногда»
-      </div>
-    </div>
-    <div class="micro">Одна живая деталь про неё — не про результаты, а про человека. «Она заказала тот же кофе что я.» «Она смеётся точно так как описывала.» «У неё дома такая же кружка.» Одна фраза — и зрительница уже её знает.</div>
-
-    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin:18px 0 10px;">Вечер — ресторан</h4>
-
-    <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек — Катя вечером</div>
-      <div class="script">
-        «Только что вышли из ресторана. Сидели там несколько часов. Разговаривали, ели, смеялись. Потом вдруг — серьёзный разговор. Она сказала мне кое-что про свои изменения — и я просто замолчала на секунду.<br><br>
-        Она позволила поделиться. Скажу завтра её словами.»
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label stories">📱 Stories из ресторана</div>
-      <div class="script">
-        <span class="sc-label">Фото со стола — еда, атмосфера, тепло</span>
-        Текст: «Этот вечер буду помнить долго»
-      </div>
-      <div class="script">
-        <span class="sc-label">Если хочет — кружочек клиентки (голос, стикер)</span>
-        Один вопрос: «Как тебе эти дни?» — и она говорит что хочет, сколько хочет.
-      </div>
-    </div>
-    <div class="hook">«Завтра она скажет кое-что, что я хочу чтобы вы услышали её словами. Следите.»</div>
-    <div class="fmt">
-      <div class="fmt-label tg">✈️ Telegram</div>
-      <div class="script tg">
-Первый день в Барселоне.
-
-Мы встретились с [Имя/«моей девочкой»]. Обнялись. Начали болтать — и не останавливались несколько часов.
-
-Знаете что я каждый раз думаю, когда вижу своих клиенток вживую? Что за каждым нашим звонком стоит живой человек с живой жизнью. И встретить его вот так — это что-то особенное.
-
-Завтра расскажу что она мне сказала за ужином.
-      </div>
-    </div>
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-stories">Stories</span>
+    <span class="action-label">Момент встречи — снимает кто угодно третий или selfie</span>
+  </div>
+  <p>Как увиделись. 5-10 секунд. Обнялись, смеётся, что-то сказала. Лицо клиентки — стикер или в кадре если она согласна.</p>
+  <div class="say">
+    Текст поверх: «Наконец вживую» — и всё. Никаких объяснений.
   </div>
 </div>
 
-<!-- ===== ДЕНЬ 2 ===== -->
-<div class="day">
-  <div class="day-head">
-    <div class="day-badge db-d2">День 2 — Финал</div>
-    <div class="day-info">
-      <div class="dt">Прогулка, её слова, прощание</div>
-      <div class="ds">Эмоция дня: тепло, благодарность, «хочу так же». Без пафоса.</div>
-    </div>
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-circle">Кружочек</span>
+    <span class="action-label">Катя — сразу после встречи, пока эмоция свежая</span>
   </div>
-  <div class="day-body">
+  <div class="say">
+    «Только что увиделись. Знаете это ощущение — когда человека знаешь по голосу, по переписке, и вдруг он живой перед тобой? Классно. Сейчас идём обедать.»
+  </div>
+</div>
 
-    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin-bottom:10px;">Утро</h4>
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-stories">Stories</span>
+    <span class="action-label">В кафе / ресторане — 2-3 кадра</span>
+  </div>
+  <p>Снимай что на столе. Два блюда, два стакана. Катя что-то говорит клиентке и они смеются. <strong>Никакой постановки — просто нажала запись и положила телефон.</strong></p>
+</div>
 
-    <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек — Катя утром</div>
-      <div class="script">
-        «Доброе утро из Барселоны. Сегодня последний день. Встречаемся ещё раз, потом я улетаю.<br><br>
-        Вчера она сказала мне за ужином: "[одна фраза своими словами — что изменилось в её жизни или отношениях]."<br><br>
-        Просто оставлю это здесь.»
-      </div>
-    </div>
-    <div class="visual">Утренний кадр из окна отеля / первый кофе / улица Барселоны рано утром. Без слов или «Buenos días ☀️»</div>
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-circle">Кружочек клиентки</span>
+    <span class="action-label">Первый — за едой или после. Анонимно если надо.</span>
+  </div>
+  <p>Задай ей <strong>один вопрос вслух</strong> и включи запись:</p>
+  <div class="say">
+    <span class="sl">Вопрос Кати в кадре</span>
+    «Расскажи — зачем ты вообще начала работать со мной? Что тебя привело?»
+  </div>
+  <p style="margin-top:10px;font-size:12px;color:#777;">Она отвечает. Не перебивай. Пусть говорит сколько хочет. Это и есть контент.</p>
+</div>
 
-    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin:18px 0 10px;">День — финальная прогулка и её слова</h4>
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-tg">Telegram</span>
+    <span class="action-label">Пост вечером дня 1</span>
+  </div>
+  <div class="say tg-say">
+    <span class="sl">Текст</span>
+Первый день в Барселоне.
 
-    <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек клиентки (если готова)</div>
-      <div class="script">
-        <span class="sc-label">Снимает она сама или Катя держит телефон. Лицо под стикером — окей.</span>
-        Катя задаёт один вопрос вслух: «Расскажи что для тебя изменилось. Своими словами.»<br><br>
-        Дальше — она говорит. Катя молчит. Не перебивает.<br><br>
-        <em>30-60 секунд неотредактированной речи = лучший контент всей поездки.</em>
-      </div>
-    </div>
-    <div class="tip">Если она не готова на кружочек — попроси написать голосовое. Катя потом в своём кружочке зачитает или перескажет её словами. Работает так же сильно.</div>
-    <div class="fmt">
-      <div class="fmt-label stories">📱 Stories — финальная серия</div>
-      <div class="script">
-        <span class="sc-label">Сторис 1 — прогулка, атмосферное видео</span>
-        Они идут. Разговаривают. Снимать со спины, Барселона вокруг.<br>
-        Текст: «Последние часы»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 2 — её цитата крупным текстом</span>
-        Одна фраза которую она сказала — без комментариев.<br><br>
-        Пример: «"Я не думала что можно вот так — знать себя"»<br>
-        Катя добавляет только: «Её слова.»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 3 — прощание</span>
-        Обнялись. Финальный кадр. Текст: «Скоро увидимся снова ❤️»<br>
-        Или просто кадр без слов.
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label reels">🎬 Reels — смонтировать после</div>
-      <div class="script">
-        <span class="sc-label">30-45 сек. Монтаж лучших кадров двух дней. Тёплая инструментальная музыка.</span>
-        Нарезка: встреча, кофе, прогулка, смех, прощание. Без слов. Текст в начале:<br><br>
-        «Когда работа — это про людей»<br><br>
-        Или: «Барселона. Мои клиентки — мои люди.»
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label tg">✈️ Telegram — итоговый пост</div>
-      <div class="script tg">
-Возвращаюсь домой.
+Встретились с [Имя/«моей клиенткой»]. Пообедали, поговорили.
 
-Два дня в Барселоне с [«моей девочкой»/Имя]. Ресторан, прогулки, разговоры.
-
-Она сказала мне кое-что, что я долго буду помнить: «[её цитата]».
-
-Знаете что я поняла? Результаты — это не только то, что происходит в спальне. Это когда человек начинает по-другому чувствовать себя. Разговаривать. Смотреть на себя.
-
-Вот за этим я и делаю то, что делаю.
-
-Если тебе откликается — вебинар «Секреты женского удовольствия» уже ждёт: [ссылка]
-      </div>
-    </div>
-
-    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin:18px 0 10px;">Дома — кружочек после возвращения</h4>
-    <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек — Катя дома</div>
-      <div class="script">
-        «Я дома. Только положила чемодан.<br><br>
-        Знаете что самое странное после таких поездок? Ты возвращаешься — а внутри что-то изменилось. Не у клиентки. У тебя.<br><br>
-        Я лечу к своим девочкам не потому что "так надо". А потому что мне самой это нужно. Напоминание — зачем я этим занимаюсь.<br><br>
-        Спасибо [Имя] за эти два дня.»
-      </div>
-    </div>
+Она мне сегодня сказала кое-что — завтра покажу её словами. Это стоит услышать.
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- ИТОГ -->
-<h2 class="block-title">Три вещи которые этот контент делает сам</h2>
-<p class="block-sub">Без скриптов и объяснений — просто потому что так снято.</p>
+<!-- ===== ДЕНЬ 2 — ИНТЕРВЬЮ ===== -->
+<div class="sec-head">
+  <div class="sec-badge rose">День 2 — главное</div>
+  <div class="sec-title">Разбор кейса + интервью с клиенткой</div>
+</div>
 
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px;">
-  <div style="background:white;border:1px solid var(--mid);border-radius:16px;padding:18px;">
-    <div style="font-size:24px;margin-bottom:8px;">🧡</div>
-    <div style="font-size:13px;font-weight:800;color:var(--plum);margin-bottom:6px;">Показывает Катю-человека</div>
-    <div style="font-size:12px;color:#555;line-height:1.6;">Не эксперт за ноутбуком. Живой человек, который едет, обнимает, смеётся.</div>
+<div class="note">
+  <strong>Главная съёмка всей поездки.</strong>
+  Садитесь вместе — в кафе, дома у неё, на улице. Катя задаёт вопросы. Клиентка отвечает. Снимается на штатив или держит кто-то третий. Лицо — со стикером или камера берёт только Катю пока говорит клиентка.
+</div>
+
+<!-- ИНТЕРВЬЮ-БЛОК -->
+<div class="interview-box">
+  <h4>Вопросы для интервью с клиенткой</h4>
+  <div class="ib-sub">Задавай по одному. Дай договорить. Не комментируй между вопросами.</div>
+
+  <div class="q-item">
+    <div class="q-num">1</div>
+    <p><strong>Стартовая точка</strong>«С чем ты пришла? Опиши своими словами — что было до того как мы начали работать?»</p>
   </div>
-  <div style="background:white;border:1px solid var(--mid);border-radius:16px;padding:18px;">
-    <div style="font-size:24px;margin-bottom:8px;">💫</div>
-    <div style="font-size:13px;font-weight:800;color:var(--plum);margin-bottom:6px;">Создаёт желание «так же»</div>
-    <div style="font-size:12px;color:#555;line-height:1.6;">Зрительница видит тёплые отношения и думает: «Хочу чтобы Катя так же относилась ко мне».</div>
+  <div class="q-item">
+    <div class="q-num">2</div>
+    <p><strong>Страх или сомнение</strong>«Был момент когда ты думала — ну это не для меня, не сработает? Что тогда думала?»</p>
   </div>
-  <div style="background:white;border:1px solid var(--mid);border-radius:16px;padding:18px;">
-    <div style="font-size:24px;margin-bottom:8px;">🔗</div>
-    <div style="font-size:13px;font-weight:800;color:var(--plum);margin-bottom:6px;">Продаёт без продажи</div>
-    <div style="font-size:12px;color:#555;line-height:1.6;">Один пост в конце с вебинаром — и это не реклама, это логичный следующий шаг после тёплой истории.</div>
+  <div class="q-item">
+    <div class="q-num">3</div>
+    <p><strong>Первый сдвиг</strong>«Когда ты почувствовала что что-то меняется? Что это был за момент?»</p>
+  </div>
+  <div class="q-item">
+    <div class="q-num">4</div>
+    <p><strong>Конкретный результат</strong>«Что изменилось — конкретно? Не "стало лучше", а что именно. В отношениях, в себе, дома.»</p>
+  </div>
+  <div class="q-item">
+    <div class="q-num">5</div>
+    <p><strong>Партнёр / отношения</strong>«Партнёр что-то заметил? Он говорил что-то? Что изменилось между вами?»</p>
+  </div>
+  <div class="q-item">
+    <div class="q-num">6</div>
+    <p><strong>Финал</strong>«Что бы ты сказала девушке, которая сейчас сидит и думает — ну не знаю, вдруг не для меня?»</p>
   </div>
 </div>
-@media(max-width:600px){div[style*="repeat(3,1fr)"]{grid-template-columns:1fr!important;}}
 
-<div class="tag-row">
-  <span class="tag warm">✈️ 2 дня</span>
-  <span class="tag warm">🙈 Анонимность клиентки</span>
-  <span class="tag warm">🎬 Reels + кружочки + stories</span>
-  <span class="tag green">✅ 0 наигранности</span>
-  <span class="tag green">✅ Снимается само собой</span>
-  <span class="tag green">✅ Один органичный переход на вебинар</span>
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-reels">Reels</span>
+    <span class="action-label">Нарезка из интервью — 45-60 сек</span>
+  </div>
+  <p>Монтируешь после. Берёшь самые сильные 3-4 ответа — по 5-10 секунд каждый. Никакой музыки под голос, только субтитры. Хук в начале — её первая фраза про «до».</p>
+  <div class="say">
+    <span class="sl">Подводка Кати перед интервью (отдельно снять)</span>
+    «Мы с ней поработали [X недель/месяцев]. Я попросила её рассказать сама. Без моей редактуры. Вот что она говорит.»
+  </div>
+</div>
+
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-reels">Reels — второй вариант</span>
+    <span class="action-label">Катя делает разбор кейса прямо с ней рядом</span>
+  </div>
+  <p>Катя в кадре рассказывает историю клиентки — с чем пришла, что делали, что получилось. Клиентка рядом, иногда добавляет или кивает. Живой разбор кейса, 60-90 секунд.</p>
+  <div class="say">
+    <span class="sl">Хук в начало</span>
+    «Вот эта девушка пришла ко мне [N месяцев] назад с одной проблемой. Сейчас расскажу что было и что стало — она разрешила.»
+  </div>
+</div>
+
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-circle">Кружочек Кати — итог</span>
+    <span class="action-label">После съёмки, пока всё свежее</span>
+  </div>
+  <div class="say">
+    «Только что сняли с ней интервью. Я уже столько раз слышала истории от клиенток — но каждый раз как первый. Она сказала одну фразу, которую я не могу выкинуть из головы: "[цитата]." Видео скоро.»
+  </div>
+</div>
+
+<div class="action">
+  <div class="action-top">
+    <span class="fmt-pill fp-tg">Telegram</span>
+    <span class="action-label">Пост с цитатой клиентки</span>
+  </div>
+  <div class="say tg-say">
+    <span class="sl">Текст</span>
+Сегодня взяла у неё интервью.
+
+Спросила: «Что изменилось конкретно?»
+
+Она сказала: «[её слова дословно].»
+
+Именно ради таких слов я делаю то, что делаю.
+
+Видео в сторис и в ленте. Если хочешь понять с чего начать — вебинар уже ждёт: [ссылка]
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== ЕЩЁ ИДЕИ ===== -->
+<div class="sec-head">
+  <div class="sec-badge green">Дополнительно</div>
+  <div class="sec-title">Ещё 4 формата которые можно снять за эти 2 дня</div>
+</div>
+
+<div class="ideas">
+  <div class="idea">
+    <div class="i-icon">🎙</div>
+    <h4>Подкаст-формат — 10-15 мин</h4>
+    <p>Снимать неподвижно. Катя задаёт вопросы, клиентка отвечает. Потом нарезать на короткие Reels по 1 минуте — каждый на отдельную тему: «про желание», «про партнёра», «про стыд».</p>
+  </div>
+  <div class="idea">
+    <div class="i-icon">📱</div>
+    <h4>Stories-«было/стало»</h4>
+    <p>Клиентка описывает словами точку А — Катя накладывает текст. Потом точка Б — снова её слова. Два кадра, никакой музыки, только текст. Работает как самостоятельный вирусный формат.</p>
+  </div>
+  <div class="idea">
+    <div class="i-icon">💬</div>
+    <h4>«Один совет от неё»</h4>
+    <p>Один кружочек. Один вопрос: «Что бы ты посоветовала себе той, которая только думает начать?» Она отвечает. Публикуй отдельно — работает как самостоятельная единица контента.</p>
+  </div>
+  <div class="idea">
+    <div class="i-icon">🔄</div>
+    <h4>Катя переспрашивает «а помнишь...»</h4>
+    <p>Катя вслух вспоминает момент из их работы: «А помнишь ты написала мне вот это» — клиентка реагирует вживую. Её живая реакция = контент. Снимать не готовясь.</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ПЕРЕХОД К АНКЕТЕ -->
+<div class="action" style="border-color:rgba(196,133,106,.3);background:rgba(196,133,106,.04);">
+  <div class="action-top">
+    <span class="fmt-pill fp-circle">Кружочек Кати — дома после возвращения</span>
+    <span class="action-label">Переход к анкете / вебинару</span>
+  </div>
+  <div class="say">
+    «Вернулась домой. Вот что я думаю после этих двух дней.<br><br>
+    Я работаю так со всеми своими девочками. Не ты ко мне, а мы вместе. И я не исчезаю после оплаты — вы это уже видели.<br><br>
+    Если хочешь начать — заполни анкету [ссылка]. Или начни с вебинара — там я объясняю всё с нуля: [ссылка].»
+  </div>
+</div>
+
+<div class="tags">
+  <span class="tag">✈️ 2 дня</span>
+  <span class="tag">🎙 Интервью с клиенткой</span>
+  <span class="tag">🎬 Reels из кейса</span>
+  <span class="tag">⚪ 4-5 кружочков</span>
+  <span class="tag">📋 6 конкретных вопросов</span>
+  <span class="tag">0 постановки</span>
 </div>
 
 </div>
