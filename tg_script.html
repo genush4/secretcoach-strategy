@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecretCoach — Скрипт переписки в Telegram</title>
+<style>
+:root{
+  --plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;
+  --cream:#FAF7F4;--lite:#F5F0EC;--dark:#1E1428;--mid:#DDD5CC;
+  --green:#3A9A6A;--gold:#D4A843;--tg:#2AABEE;
+  --red:#C03030;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--dark);}
+
+.nav{background:var(--plum);padding:13px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;}
+.nav-title{color:white;font-weight:800;font-size:14px;margin-right:auto;}
+.nav a{color:rgba(255,255,255,.5);font-size:12px;text-decoration:none;font-weight:500;}
+.nav a:hover{color:white;}
+
+.hero{background:linear-gradient(135deg,#1E1428 0%,#3D1F5A 60%,#2D1F42 100%);padding:52px 24px 40px;text-align:center;}
+.hero-badge{display:inline-flex;background:rgba(42,171,238,.2);color:#7FD6F7;font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(42,171,238,.3);}
+.hero h1{color:white;font-size:26px;font-weight:900;max-width:600px;margin:0 auto 10px;line-height:1.25;}
+.hero p{color:rgba(255,255,255,.55);font-size:13px;max-width:500px;margin:0 auto;}
+
+.container{max-width:840px;margin:0 auto;padding:40px 20px 100px;}
+
+/* OVERVIEW CARDS */
+.overview{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:32px;}
+.ov{background:white;border:1px solid var(--mid);border-radius:12px;padding:14px;text-align:center;}
+.ov .on{font-size:22px;font-weight:900;color:var(--plum);}
+.ov .ol{font-size:10px;color:var(--mauve);font-weight:600;margin-top:3px;text-transform:uppercase;letter-spacing:.04em;}
+@media(max-width:580px){.overview{grid-template-columns:repeat(2,1fr);}}
+
+/* GOLDEN RULE */
+.golden{background:linear-gradient(135deg,#2A1A0A,#3A2510);border:1px solid rgba(212,168,67,.3);border-radius:16px;padding:22px;margin-bottom:28px;}
+.golden h3{color:var(--gold);font-size:14px;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.golden-list{list-style:none;padding:0;}
+.golden-list li{color:rgba(255,255,255,.75);font-size:13px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:10px;line-height:1.55;}
+.golden-list li:last-child{border:none;}
+
+/* STEP BLOCK */
+.step{background:white;border:1px solid var(--mid);border-radius:16px;margin-bottom:14px;overflow:hidden;}
+.step-head{padding:16px 20px;border-bottom:1px solid var(--lite);display:flex;align-items:center;gap:12px;}
+.step-num{color:white;font-size:12px;font-weight:900;padding:5px 14px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.sn-1{background:var(--tg);}
+.sn-2{background:var(--mauve);}
+.sn-3a{background:var(--green);}
+.sn-3b{background:#E07A2F;}
+.sn-mini{background:var(--rose);}
+.sn-obj{background:#888;}
+.step-head-info{flex:1;}
+.step-head-info .sh-title{font-size:15px;font-weight:800;color:var(--plum);line-height:1.3;}
+.step-head-info .sh-sub{font-size:11px;color:var(--mauve);margin-top:2px;}
+.step-timing{font-size:11px;font-weight:700;color:var(--mauve);white-space:nowrap;background:var(--lite);padding:4px 10px;border-radius:8px;}
+
+.step-body{padding:18px 20px;}
+
+/* TG MESSAGE BUBBLE */
+.tg-msg{background:#EBF5FB;border-radius:0 12px 12px 12px;padding:14px 16px;margin:8px 0;font-size:13px;color:#1A1A2E;line-height:1.8;position:relative;max-width:90%;}
+.tg-msg::before{content:'';position:absolute;top:0;left:-7px;width:0;height:0;border-top:8px solid #EBF5FB;border-left:8px solid transparent;}
+.tg-msg .tg-from{font-size:10px;font-weight:800;color:var(--tg);text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px;display:block;}
+.tg-msg em{color:var(--tg);font-style:normal;font-weight:700;}
+.tg-msg .placeholder{color:#888;font-style:italic;}
+
+/* CLIENT BUBBLE */
+.client-msg{background:#F5F0EC;border-radius:12px 0 12px 12px;padding:12px 15px;margin:8px 0 8px auto;font-size:13px;color:#333;line-height:1.75;max-width:80%;text-align:right;position:relative;}
+.client-msg::before{content:'';position:absolute;top:0;right:-7px;width:0;height:0;border-top:8px solid #F5F0EC;border-right:8px solid transparent;}
+.client-msg .client-label{font-size:10px;font-weight:800;color:var(--mauve);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;display:block;}
+
+/* BRANCH */
+.branch-box{border:1px solid var(--mid);border-radius:12px;padding:14px 16px;margin:12px 0;}
+.branch-box.yes{border-color:rgba(58,154,106,.3);background:#F0FAF4;}
+.branch-box.no{border-color:rgba(224,122,47,.3);background:#FFF6F0;}
+.branch-label{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.branch-box.yes .branch-label{color:var(--green);}
+.branch-box.no .branch-label{color:#D4620A;}
+
+/* NOTE */
+.note{background:#FFF8E8;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin:8px 0;font-size:12px;color:#7A4A10;line-height:1.6;}
+.note strong{display:block;margin-bottom:2px;}
+
+/* MINI PRODUCTS GRID */
+.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:4px;}
+.mini-card{background:white;border:1px solid var(--mid);border-radius:12px;padding:14px;}
+.mini-card h4{font-size:12px;font-weight:800;color:var(--plum);margin-bottom:4px;}
+.mini-card .mc-for{font-size:11px;color:var(--mauve);margin-bottom:6px;font-style:italic;}
+.mini-card .mc-pitch{font-size:12px;color:#444;line-height:1.55;}
+@media(max-width:580px){.mini-grid{grid-template-columns:1fr;}}
+
+/* OBJECTIONS */
+.obj-row{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start;}
+.obj-q{background:#F0F4FF;border-radius:8px;padding:10px 12px;font-size:12px;color:#333;flex:1;font-style:italic;line-height:1.55;}
+.obj-a{background:#E8F5EE;border-radius:8px;padding:10px 12px;font-size:12px;color:#1A4A30;flex:2;line-height:1.55;}
+.obj-divider{width:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--mauve);font-size:16px;padding-top:6px;}
+
+/* SIGNAL */
+.signal-list{list-style:none;padding:0;}
+.signal-item{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--lite);font-size:13px;line-height:1.55;color:#333;}
+.signal-item:last-child{border:none;}
+.signal-item .sico{font-size:15px;flex-shrink:0;margin-top:1px;}
+
+/* FLOW DIAGRAM */
+.flow{background:var(--plum);border-radius:16px;padding:24px;margin-bottom:20px;}
+.flow h3{color:white;font-size:14px;font-weight:900;margin-bottom:18px;}
+.flow-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.flow-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:8px 14px;color:white;font-size:12px;font-weight:700;text-align:center;flex:1;}
+.flow-box.trig{background:rgba(42,171,238,.2);border-color:rgba(42,171,238,.3);}
+.flow-box.green{background:rgba(58,154,106,.2);border-color:rgba(58,154,106,.3);}
+.flow-box.orange{background:rgba(224,122,47,.2);border-color:rgba(224,122,47,.3);}
+.flow-arr{color:rgba(255,255,255,.4);font-size:18px;flex-shrink:0;}
+
+/* SECTION DIVIDER */
+.sdiv{display:flex;align-items:center;gap:12px;margin:32px 0 20px;}
+.sdiv-line{flex:1;height:1px;background:var(--mid);}
+.sdiv-label{background:var(--plum);color:white;font-size:11px;font-weight:800;padding:5px 14px;border-radius:20px;white-space:nowrap;}
+.sdiv-label.tg{background:var(--tg);}
+.sdiv-label.green{background:var(--green);}
+.sdiv-label.orange{background:#E07A2F;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <span class="nav-title">SecretCoach — Скрипт TG</span>
+  <a href="index.html">Главная</a>
+  <a href="castdev.html">Анкета</a>
+  <a href="case_scenario.html">Кейс</a>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">💬 Telegram · Скрипт продаж</div>
+  <h1>Алгоритм переписки с девушкой после анкеты</h1>
+  <p>От первого «Привет» до оплаты. Пошагово, с текстами и ветками.</p>
+</div>
+
+<div class="container">
+
+<div class="overview">
+  <div class="ov"><div class="on">3</div><div class="ol">ключевых сообщения</div></div>
+  <div class="ov"><div class="on">2</div><div class="ol">ветки продажи</div></div>
+  <div class="ov"><div class="on">6</div><div class="ol">мини-продуктов</div></div>
+  <div class="ov"><div class="on">5</div><div class="ol">отработок возражений</div></div>
+</div>
+
+<!-- ЗОЛОТЫЕ ПРАВИЛА -->
+<div class="golden">
+  <h3>⚡ Правила переписки — перед тем как начать</h3>
+  <ul class="golden-list">
+    <li><span>1.</span><div><strong style="color:white">Читай анкету до ответа.</strong> Она уже рассказала всё о себе. Первое сообщение должно показать что ты её прочитала — хотя бы одна деталь из анкеты.</div></li>
+    <li><span>2.</span><div><strong style="color:white">Один вопрос за раз.</strong> Не задавай три вопроса в одном сообщении. Человек отвечает только на последний — остальное теряется.</div></li>
+    <li><span>3.</span><div><strong style="color:white">Не торопись с продажей.</strong> Сначала дай ценность (вебинар + Red Room), потом спроси про неё, потом предлагай. Пропустишь шаг — потеряешь контакт.</div></li>
+    <li><span>4.</span><div><strong style="color:white">Голосовые продают лучше текста.</strong> После 2-3 текстовых сообщений — отправь голосовое. Голос создаёт ощущение живого человека, а не автоответа.</div></li>
+    <li><span>5.</span><div><strong style="color:white">Не продавай — помогай выбрать.</strong> «Мне кажется тебе подойдёт Х, потому что ты написала Y» — это не продажа, это рекомендация. Разница огромная.</div></li>
+  </ul>
+</div>
+
+<!-- СХЕМА ПОТОКА -->
+<div class="flow">
+  <h3>Общая схема</h3>
+  <div class="flow-row">
+    <div class="flow-box trig">Она написала в TG после анкеты</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box">Сообщение 1: приветствие + оба подарка</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box">Она отвечает / смотрит материалы</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-box">Сообщение 2 (день +1): как вебинар? + вопрос про неё</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box">Она рассказывает запрос</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box">Сообщение 3: предложение флагмана</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-box green">Да → флагман «Секрет женского удовольствия»</div>
+    <div class="flow-arr">или</div>
+    <div class="flow-box orange">Не сейчас → мини-продукт по запросу</div>
+  </div>
+</div>
+
+<!-- ===== СООБЩЕНИЕ 1 ===== -->
+<div class="sdiv">
+  <div class="sdiv-line"></div>
+  <div class="sdiv-label tg">Сообщение 1 — сразу как написала</div>
+  <div class="sdiv-line"></div>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <div class="step-num sn-1">Шаг 1</div>
+    <div class="step-head-info">
+      <div class="sh-title">Приветствие + оба подарка + просьба об обратной связи</div>
+      <div class="sh-sub">Отправляешь сразу. Три сообщения подряд — не одно длинное.</div>
+    </div>
+    <div class="step-timing">Сразу</div>
+  </div>
+  <div class="step-body">
+
+    <div class="note"><strong>Перед отправкой: открой её анкету.</strong> Найди одну деталь — возраст, ситуацию, что-то что она написала. Вставь в первое сообщение. Она почувствует что её читали, а не что это рассылка.</div>
+
+    <div class="tg-msg">
+      <span class="tg-from">Катя — сообщение 1 из 3</span>
+      Привет, <span class="placeholder">[Имя]</span>! 🤍<br><br>
+      Так рада что ты написала. Я читала твою анкету — и <span class="placeholder">[одна деталь из анкеты, например: «ты написала что уже несколько лет чувствуешь себя в отношениях не собой» / «то что ты описала про ощущение пустоты — это очень знакомо многим девушкам»]</span>.<br><br>
+      Это огромная смелость — открыться и написать честно. Правда. Большинство молчат годами.
+    </div>
+
+    <div class="tg-msg">
+      <span class="tg-from">Катя — сообщение 2 из 3</span>
+      Как и обещала — твои подарки 🎁<br><br>
+      <em>🔴 Red Room — доступ на 24 часа:</em><br>
+      <span class="placeholder">[ссылка на приложение]</span><br>
+      Это наше закрытое приложение с готовыми сценариями для интимной жизни — конкретные сценарии, техники, идеи для разнообразия. Зайди сегодня пока доступ активен — там есть кое-что, что точно тебя удивит.<br><br>
+      <em>🎥 Вебинар «Секреты женского удовольствия» — запись:</em><br>
+      <span class="placeholder">[ссылка на вебинар]</span><br>
+      Это не очередной вебинар про «полюби себя». Там я объясняю конкретную механику — почему у женщин пропадает желание, почему голова и тело работают вразнобой, и что с этим делать пошагово. 60 минут. Смотришь в своём темпе.
+    </div>
+
+    <div class="tg-msg">
+      <span class="tg-from">Катя — сообщение 3 из 3</span>
+      Когда посмотришь вебинар — напиши мне, пожалуйста. Что откликнулось, что удивило, что захотелось спросить.<br><br>
+      Мне правда важно это знать. Я читаю каждый ответ 🤍
+    </div>
+
+    <div class="note">
+      <strong>Почему три сообщения, а не одно?</strong>
+      Одно длинное сообщение читают по диагонали. Три коротких — читают каждое. Кроме того, три уведомления подряд создают ощущение живого человека, а не автоотправки.
+    </div>
+  </div>
+</div>
+
+<!-- ===== СООБЩЕНИЕ 2 ===== -->
+<div class="sdiv">
+  <div class="sdiv-line"></div>
+  <div class="sdiv-label">Сообщение 2 — следующий день</div>
+  <div class="sdiv-line"></div>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <div class="step-num sn-2">Шаг 2</div>
+    <div class="step-head-info">
+      <div class="sh-title">Проверка + вопрос про её ситуацию</div>
+      <div class="sh-sub">Цель: понять её запрос и готовность двигаться дальше</div>
+    </div>
+    <div class="step-timing">+1 день</div>
+  </div>
+  <div class="step-body">
+
+    <div class="note">
+      <strong>Если она ещё не ответила на первое сообщение — это нормально.</strong> Отправляй второе сообщение через 24 часа в любом случае. Не «ты смотрела?» — это давит. А мягко и с интересом к ней.
+    </div>
+
+    <div class="tg-msg">
+      <span class="tg-from">Катя — вариант А (она не ответила)</span>
+      Привет 🤍 Как ты? Успела заглянуть в Red Room или посмотреть вебинар?<br><br>
+      Ничего страшного если нет — жизнь, всё понимаю. Просто хотела спросить — что сейчас для тебя самое актуальное? Что больше всего хочется изменить или разобраться?
+    </div>
+
+    <div class="tg-msg">
+      <span class="tg-from">Катя — вариант Б (она ответила что посмотрела)</span>
+      Как вебинар? Что больше всего зацепило?<br><br>
+      И хочу спросить про тебя — <span class="placeholder">[деталь из анкеты]</span>. Это сейчас актуально? Расскажи немного — что происходит, что хочется изменить. Я хочу понять твою ситуацию, прежде чем что-то предлагать.
+    </div>
+
+    <div class="note">
+      <strong>Голосовое вместо текста — идеально для этого шага.</strong>
+      Запиши 30-секундное голосовое вместо или после текста. «Привет, это Катя — хотела спросить...» Открываемость и ответы на голосовые значительно выше.
+    </div>
+
+    <p style="font-size:13px;font-weight:700;color:var(--plum);margin:16px 0 10px;">Она отвечает — что слушать в её ответе:</p>
+    <ul class="signal-list">
+      <li><span class="sico">🔴</span><div><strong>«У нас давно нет близости / муж не инициирует / стало скучно»</strong> — запрос на страсть в отношениях. Флагман или «Взрослые игры».</div></li>
+      <li><span class="sico">🟠</span><div><strong>«Я сама не хочу / нет желания / не чувствую себя»</strong> — запрос на либидо и ощущения. Флагман или «Оргазмы и либидо».</div></li>
+      <li><span class="sico">🟡</span><div><strong>«Хочу быть лучше в постели / он не доволен / техники»</strong> — запрос на навыки. «Минет», «Позы», «Секстинг».</div></li>
+      <li><span class="sico">🟢</span><div><strong>«Хочу всё сразу / хочу понять себя глубже»</strong> — флагман.</div></li>
+      <li><span class="sico">🔵</span><div><strong>«Просто было интересно / посмотрела вебинар»</strong> — она ещё не прогрета. Задай ещё один вопрос глубже: «А если представить идеальную интимную жизнь — что в ней есть?»</div></li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- ===== СООБЩЕНИЕ 3 — ВЕТКИ ===== -->
+<div class="sdiv">
+  <div class="sdiv-line"></div>
+  <div class="sdiv-label">Сообщение 3 — предложение</div>
+  <div class="sdiv-line"></div>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <div class="step-num sn-3a">Ветка А</div>
+    <div class="step-head-info">
+      <div class="sh-title">Флагман «Секрет женского удовольствия»</div>
+      <div class="sh-sub">Когда: она рассказала запрос, он глубокий, она вовлечена в разговор</div>
+    </div>
+    <div class="step-timing">Флагман</div>
+  </div>
+  <div class="step-body">
+
+    <div class="tg-msg">
+      <span class="tg-from">Катя</span>
+      Слушай, я читаю тебя — и вижу очень чётко что происходит. <span class="placeholder">[1-2 предложения про её конкретную ситуацию своими словами — это показывает что ты слышала]</span>.<br><br>
+      Это именно то, с чем я работаю в своём флагманском курсе «Секрет женского удовольствия». Там не просто теория — это пошаговая система: от понимания своего тела до конкретных техник и коммуникации с партнёром.<br><br>
+      Я точно знаю что тебе это поможет — потому что ты уже сделала главное: честно описала что происходит. Это самый сложный шаг.<br><br>
+      Рассказать тебе подробнее как устроен курс?
+    </div>
+
+    <div class="branch-box yes">
+      <div class="branch-label">✅ Она говорит «да, расскажи»</div>
+      <div class="tg-msg" style="background:#E8F8EF;margin:0;">
+        <span class="tg-from">Катя</span>
+        Курс состоит из <span class="placeholder">[N]</span> модулей. Мы идём от основ — как работает женское желание — до практических техник: оральные, мануальные, секстинг, разнообразие.<br><br>
+        Плюс отдельный блок про коммуникацию с партнёром — как говорить о своих желаниях без неловкости.<br><br>
+        Всё в записи, в своём темпе. Плюс поддержка в чате.<br><br>
+        Стоимость — <span class="placeholder">[цена]</span>.<br><br>
+        Есть вопросы? Или сразу скажу как зайти?
+      </div>
+    </div>
+
+    <div class="branch-box no">
+      <div class="branch-label">❌ «Дорого / не сейчас / подумаю»</div>
+      <p style="font-size:12px;color:#7A3A08;margin-bottom:8px;">Не давить. Перейти к мини-продукту через её запрос.</p>
+      <div class="tg-msg" style="background:#FFF0E8;margin:0;">
+        <span class="tg-from">Катя</span>
+        Понимаю. Тогда давай начнём с чего-то конкретного — того что прямо сейчас актуально для тебя.<br><br>
+        Скажи — что из этого сейчас самое болезненное: <span class="placeholder">[называешь 2-3 варианта исходя из её запроса]</span>?
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <div class="step-num sn-3b">Ветка Б</div>
+    <div class="step-head-info">
+      <div class="sh-title">Мини-продукты — по запросу</div>
+      <div class="sh-sub">Когда: не готова к флагману сейчас — предлагаешь точечное решение</div>
+    </div>
+    <div class="step-timing">Мини-продукт</div>
+  </div>
+  <div class="step-body">
+
+    <div class="mini-grid">
+
+      <div class="mini-card">
+        <h4>🔥 Взрослые игры / Как вернуть страсть</h4>
+        <div class="mc-for">Для кого: «скучно», «рутина», «он не инициирует»</div>
+        <div class="mc-pitch">
+          «Слушай, есть отличный старт — курс про то, как вернуть огонь в отношения без разговора "нам надо поговорить". Конкретные игры, сценарии, идеи. Хочешь попробуем с этого?»
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h4>💋 Оральные техники / Минет</h4>
+        <div class="mc-for">Для кого: «хочу быть лучше», «не уверена в себе», «он мало получает удовольствия»</div>
+        <div class="mc-pitch">
+          «Есть конкретный практический курс по этой теме — без воды, только техники и уверенность. Девочки говорят что после него мужчины становятся совсем другими 😄 Рассказать подробнее?»
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h4>⚡ Оргазмы и либидо</h4>
+        <div class="mc-for">Для кого: «нет желания», «не чувствую», «давно не было оргазма»</div>
+        <div class="mc-pitch">
+          «Это как раз про то что ты описала. Курс помогает разобраться почему желание пропадает и как его вернуть — через понимание своего тела, а не через силу воли. Это работает.»
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h4>📱 Секстинг</h4>
+        <div class="mc-for">Для кого: «мало общаемся», «он отдалился», «хочу удивить»</div>
+        <div class="mc-pitch">
+          «Один из самых простых способов разогреть отношения — текст. Есть курс как писать так, чтобы он думал о тебе весь день. Без пошлости — с умом и игрой. Интересно?»
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h4>🛏 Позы</h4>
+        <div class="mc-for">Для кого: «хочу разнообразия», «одно и то же», «скучно физически»</div>
+        <div class="mc-pitch">
+          «Есть практический курс — не просто Камасутра, а позы под разные ситуации и ощущения. С объяснением что и почему работает для женского удовольствия. Быстро внедряется.»
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h4>🎮 Эротические игры для пар</h4>
+        <div class="mc-for">Для кого: «хочу чего-то нового», «хочу чтобы он включился», «надоела инициатива только с моей стороны»</div>
+        <div class="mc-pitch">
+          «Игры работают потому что снимают неловкость. Не надо объяснять — просто играешь. И он сам начинает включаться. Есть классный формат именно под это.»
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tg-msg" style="margin-top:14px;">
+      <span class="tg-from">Катя — шаблон предложения мини-продукта</span>
+      Слушай, исходя из того что ты описала — мне кажется тебе сейчас точнее всего подойдёт <span class="placeholder">[название]</span>.<br><br>
+      <span class="placeholder">[1-2 предложения почему именно этот — связь с её словами]</span><br><br>
+      Хочешь расскажу что там внутри и сколько стоит?
+    </div>
+
+    <div class="note">
+      <strong>Важно: не перечисляй все продукты сразу.</strong>
+      Предложи один — самый точный под её запрос. Список из 6 продуктов парализует выбор. Одна чёткая рекомендация работает лучше.
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== ОТРАБОТКА ВОЗРАЖЕНИЙ ===== -->
+<div class="sdiv">
+  <div class="sdiv-line"></div>
+  <div class="sdiv-label orange">Возражения</div>
+  <div class="sdiv-line"></div>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <div class="step-num sn-obj">Возражения</div>
+    <div class="step-head-info">
+      <div class="sh-title">Что она скажет — и что отвечать</div>
+      <div class="sh-sub">Без давления. Слышим — отвечаем — не настаиваем.</div>
+    </div>
+  </div>
+  <div class="step-body">
+
+    <div class="obj-row">
+      <div class="obj-q">«Дорого»</div>
+      <div class="obj-divider">→</div>
+      <div class="obj-a">«Понимаю. Скажи — а если сравнить с одной консультацией у сексолога или парного психолога — это уже дороже одного часа. Здесь же система на [N недель]. Но если сейчас не время — давай начнём с мини-формата, там стоимость другая. Что для тебя сейчас реальная сумма?»</div>
+    </div>
+
+    <div class="obj-row">
+      <div class="obj-q">«Мне надо подумать»</div>
+      <div class="obj-divider">→</div>
+      <div class="obj-a">«Конечно. Могу спросить — что вызывает сомнения? Иногда я могу сразу ответить и это снимает вопрос. А если просто нужно время — ок, напиши когда будешь готова, я здесь.»</div>
+    </div>
+
+    <div class="obj-row">
+      <div class="obj-q">«Это же не поможет, у меня особый случай»</div>
+      <div class="obj-divider">→</div>
+      <div class="obj-a">«Я слышу это очень часто. И почти всегда оказывается что "особый случай" — это просто непонимание механики. Расскажи подробнее — что именно ты имеешь в виду? Хочу понять твою ситуацию.»</div>
+    </div>
+
+    <div class="obj-row">
+      <div class="obj-q">«Я стесняюсь / неловко»</div>
+      <div class="obj-divider">→</div>
+      <div class="obj-a">«Это нормально — и это первое что проходит когда начинаешь. Ты уже сделала самый стрёмный шаг — написала мне честно о своей ситуации. По сравнению с этим курс — просто учёба в безопасном пространстве.»</div>
+    </div>
+
+    <div class="obj-row">
+      <div class="obj-q">«Партнёр не знает / не поддержит»</div>
+      <div class="obj-divider">→</div>
+      <div class="obj-a">«Большинство девочек проходят курс без ведома партнёра — и партнёр начинает замечать изменения сам, без объяснений. Я видела это сотни раз. Не нужно его "подключать" — нужно начать с себя.»</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== КЕЙСЫ В ПЕРЕПИСКЕ ===== -->
+<div class="sdiv">
+  <div class="sdiv-line"></div>
+  <div class="sdiv-label green">Дополнительно</div>
+  <div class="sdiv-line"></div>
+</div>
+
+<div class="step">
+  <div class="step-head">
+    <div class="step-num sn-mini">Кейсы</div>
+    <div class="step-head-info">
+      <div class="sh-title">Когда и как отправлять кейсы клиенток в переписке</div>
+      <div class="sh-sub">Правильный момент: после того как она рассказала запрос, до предложения продукта</div>
+    </div>
+  </div>
+  <div class="step-body">
+
+    <div class="note">
+      <strong>Не отправляй кейс первым сообщением.</strong>
+      Кейс работает как доказательство после того, как она уже рассказала о себе. Тогда ты говоришь: «У меня была клиентка с похожей ситуацией — вот что произошло». Это не реклама, это релевантный пример.
+    </div>
+
+    <div class="tg-msg">
+      <span class="tg-from">Катя — шаблон подводки к кейсу</span>
+      Знаешь, ты мне напомнила одну девушку, с которой я работала <span class="placeholder">[полгода назад / в прошлом году]</span>. Она описывала ситуацию очень похоже — <span class="placeholder">[1 предложение про её похожую боль]</span>.<br><br>
+      Через <span class="placeholder">[N недель]</span> работы она написала мне: «<span class="placeholder">[её цитата про результат]</span>».<br><br>
+      Это не исключение — это то, что происходит когда работаешь системно, а не пытаешься "просто стараться больше".
+    </div>
+
+    <p style="font-size:13px;font-weight:700;color:var(--plum);margin:16px 0 10px;">Заготовь 3-4 кейса под разные запросы:</p>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+
+      <div style="background:var(--lite);border-radius:10px;padding:13px;border:1px solid var(--mid);">
+        <div style="font-size:11px;font-weight:800;color:var(--mauve);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Запрос: нет желания</div>
+        <div style="font-size:12px;color:#333;line-height:1.6;">«Клиентка, 34 года, замужем 7 лет. Написала: нет желания вообще, будто выключили. Через 3 недели: "Я не думала что так вообще бывает — я сама его хочу первая."»</div>
+      </div>
+
+      <div style="background:var(--lite);border-radius:10px;padding:13px;border:1px solid var(--mid);">
+        <div style="font-size:11px;font-weight:800;color:var(--mauve);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Запрос: скука / рутина</div>
+        <div style="font-size:12px;color:#333;line-height:1.6;">«Девушка в отношениях 5 лет, говорила "всё одинаково, он не старается". Через месяц: "Он сам предложил то, о чём я мечтала — я ничего не просила."»</div>
+      </div>
+
+      <div style="background:var(--lite);border-radius:10px;padding:13px;border:1px solid var(--mid);">
+        <div style="font-size:11px;font-weight:800;color:var(--mauve);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Запрос: неуверенность в себе</div>
+        <div style="font-size:12px;color:#333;line-height:1.6;">«Написала: "Боюсь что я плохая в постели, он ничего не говорит но я чувствую." После курса по техникам: "Он сказал это был лучший секс в нашей жизни."»</div>
+      </div>
+
+      <div style="background:var(--lite);border-radius:10px;padding:13px;border:1px solid var(--mid);">
+        <div style="font-size:11px;font-weight:800;color:var(--mauve);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Запрос: нет оргазма</div>
+        <div style="font-size:12px;color:#333;line-height:1.6;">«31 год, написала что никогда не было оргазма с партнёром. Через 2 недели: "Катя, это случилось. Я плакала."»</div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</div>
+</body>
+</html>
