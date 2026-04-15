@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SecretCoach — Сценарий «Встреча в Барселоне»</title>
+<title>SecretCoach — «Встреча в Барсе» · 2 дня</title>
 <style>
 :root{
   --plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;
   --cream:#FAF7F4;--lite:#F5F0EC;--dark:#1E1428;--mid:#DDD5CC;
-  --green:#3A9A6A;--gold:#D4A843;--tg:#2AABEE;--ig:#E1306C;
-  --warm:#F5EDE8;--warm2:#EAD9CF;
+  --green:#3A9A6A;--gold:#D4A843;--tg:#2AABEE;--warm:#FFF4EE;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--dark);}
@@ -19,643 +18,362 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:v
 .nav a{color:rgba(255,255,255,.55);font-size:12px;text-decoration:none;font-weight:500;}
 .nav a:hover{color:white;}
 
-.hero{background:linear-gradient(135deg,#1E1428 0%,#3D1F5A 60%,#2D1F42 100%);padding:60px 24px 48px;text-align:center;position:relative;overflow:hidden;}
+.hero{background:linear-gradient(135deg,#1E1428 0%,#3D1F5A 60%,#2D1F42 100%);padding:56px 24px 44px;text-align:center;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-40%;left:-20%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(196,133,106,.12) 0%,transparent 70%);pointer-events:none;}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(196,133,106,.2);color:var(--blush);font-size:11px;font-weight:700;padding:7px 16px;border-radius:20px;margin-bottom:20px;border:1px solid rgba(196,133,106,.3);}
-.hero h1{color:white;font-size:30px;font-weight:900;max-width:700px;margin:0 auto 14px;line-height:1.25;}
-.hero p{color:rgba(255,255,255,.6);font-size:15px;max-width:560px;margin:0 auto 28px;line-height:1.65;}
-.hero-stats{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.hstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px 20px;text-align:center;}
-.hstat .n{color:white;font-size:20px;font-weight:900;}
-.hstat .l{color:rgba(255,255,255,.5);font-size:10px;margin-top:2px;text-transform:uppercase;letter-spacing:.04em;}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(196,133,106,.2);color:var(--blush);font-size:11px;font-weight:700;padding:7px 16px;border-radius:20px;margin-bottom:18px;border:1px solid rgba(196,133,106,.3);}
+.hero h1{color:white;font-size:28px;font-weight:900;max-width:640px;margin:0 auto 12px;line-height:1.25;}
+.hero p{color:rgba(255,255,255,.6);font-size:14px;max-width:500px;margin:0 auto;line-height:1.7;}
 
-.container{max-width:960px;margin:0 auto;padding:48px 20px 100px;}
+.container{max-width:920px;margin:0 auto;padding:44px 20px 100px;}
 
-.block-title{font-size:22px;font-weight:900;color:var(--plum);margin-bottom:6px;}
-.block-sub{font-size:14px;color:var(--mauve);margin-bottom:28px;line-height:1.5;}
-.divider{height:1px;background:var(--mid);margin:48px 0;}
+.block-title{font-size:21px;font-weight:900;color:var(--plum);margin-bottom:6px;}
+.block-sub{font-size:14px;color:var(--mauve);margin-bottom:26px;line-height:1.5;}
+.divider{height:1px;background:var(--mid);margin:44px 0;}
 
-/* CONCEPT */
-.concept{background:linear-gradient(135deg,#1E1428,#2D1F42);border-radius:20px;padding:32px;margin-bottom:24px;position:relative;overflow:hidden;}
-.concept::after{content:'';position:absolute;top:-20%;right:-5%;width:50%;height:160%;background:radial-gradient(ellipse,rgba(196,133,106,.12) 0%,transparent 70%);pointer-events:none;}
-.concept h2{color:white;font-size:21px;font-weight:900;margin-bottom:14px;}
-.concept p{color:rgba(255,255,255,.65);font-size:14px;line-height:1.7;margin-bottom:0;}
-.concept ul{margin-top:14px;list-style:none;padding:0;}
-.concept ul li{color:rgba(255,255,255,.75);font-size:13px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:12px;line-height:1.55;}
-.concept ul li:last-child{border:none;}
-.concept ul li .ci{flex-shrink:0;font-size:16px;}
+/* WHY */
+.why{background:linear-gradient(135deg,#1E1428,#2D1F42);border-radius:18px;padding:28px;margin-bottom:22px;position:relative;overflow:hidden;}
+.why::after{content:'';position:absolute;top:-20%;right:-5%;width:50%;height:160%;background:radial-gradient(ellipse,rgba(196,133,106,.10) 0%,transparent 70%);pointer-events:none;}
+.why h2{color:white;font-size:18px;font-weight:900;margin-bottom:14px;}
+.why ul{list-style:none;padding:0;}
+.why ul li{color:rgba(255,255,255,.75);font-size:13px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;gap:12px;line-height:1.55;}
+.why ul li:last-child{border:none;}
 
-/* WHY BOX */
-.why-box{background:linear-gradient(135deg,#1A3020,#2A5040);border-radius:18px;padding:28px;margin-bottom:24px;}
-.why-box h3{color:#7DFFC7;font-size:17px;font-weight:900;margin-bottom:16px;}
-.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
-.why-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px;}
-.why-item .wi{font-size:22px;margin-bottom:8px;}
-.why-item h4{color:white;font-size:13px;font-weight:800;margin-bottom:5px;}
-.why-item p{color:rgba(255,255,255,.55);font-size:12px;line-height:1.6;}
-@media(max-width:600px){.why-grid{grid-template-columns:1fr;}}
+/* SHOOT TIPS */
+.shoot-box{background:var(--warm);border:1px solid rgba(196,133,106,.2);border-radius:16px;padding:22px;margin-bottom:22px;}
+.shoot-box h3{font-size:14px;font-weight:900;color:var(--plum);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.shoot-item{display:flex;gap:11px;padding:8px 0;border-bottom:1px solid rgba(196,133,106,.12);font-size:13px;color:#333;line-height:1.55;}
+.shoot-item:last-child{border:none;}
+.shoot-item .si{font-size:15px;flex-shrink:0;margin-top:1px;}
 
-/* ANON BOX */
-.anon-box{background:#FFF8E8;border:1px solid rgba(212,168,67,.3);border-radius:16px;padding:22px;margin-bottom:24px;}
-.anon-box h3{color:#7A4A10;font-size:15px;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.anon-list{list-style:none;padding:0;}
-.anon-list li{font-size:13px;color:#5A3A08;padding:7px 0;border-bottom:1px solid rgba(212,168,67,.15);display:flex;gap:10px;line-height:1.6;}
-.anon-list li:last-child{border:none;}
+/* DAY CARD */
+.day{background:white;border-radius:18px;border:1px solid var(--mid);margin-bottom:18px;overflow:hidden;}
+.day-head{padding:18px 22px 14px;border-bottom:1px solid var(--lite);display:flex;align-items:flex-start;gap:14px;}
+.day-badge{color:white;font-size:12px;font-weight:900;padding:6px 15px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.db-tizer{background:var(--mauve);}
+.db-d1{background:var(--plum);}
+.db-d2{background:linear-gradient(135deg,#C4856A,#8A4A30);}
+.day-info .dt{font-size:16px;font-weight:800;color:var(--plum);line-height:1.3;}
+.day-info .ds{font-size:12px;color:var(--mauve);margin-top:3px;line-height:1.5;}
+.day-body{padding:18px 22px;}
 
-/* PHASE CARD */
-.phase{background:white;border-radius:18px;border:1px solid var(--mid);margin-bottom:20px;overflow:hidden;}
-.phase-head{padding:20px 24px 16px;border-bottom:1px solid var(--lite);display:flex;align-items:flex-start;gap:16px;}
-.phase-badge{color:white;font-size:12px;font-weight:900;padding:6px 16px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
-.ph0{background:#7B5C74;}
-.ph1{background:var(--plum);}
-.ph2{background:#E07A2F;}
-.ph3{background:linear-gradient(135deg,#C4856A,#8A4A30);}
-.ph4{background:var(--green);}
-.phase-info .pt{font-size:17px;font-weight:800;color:var(--plum);line-height:1.3;}
-.phase-info .ps{font-size:12px;color:var(--mauve);margin-top:3px;}
-.phase-goal{background:#F3EFF8;border-radius:8px;padding:7px 12px;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--mauve);margin-top:8px;}
-
-.phase-body{padding:20px 24px;}
-
-/* FORMAT LABELS */
-.fmt{margin-bottom:18px;}
-.fmt-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;padding:6px 12px;border-radius:8px;width:fit-content;}
+/* FORMAT */
+.fmt{margin-bottom:16px;}
+.fmt-label{display:flex;align-items:center;gap:7px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:9px;padding:5px 11px;border-radius:7px;width:fit-content;}
 .fmt-label.stories{background:linear-gradient(135deg,rgba(225,48,108,.12),rgba(131,58,180,.08));color:#9A1060;}
 .fmt-label.circle{background:rgba(225,48,108,.08);color:#C4006A;}
 .fmt-label.reels{background:linear-gradient(135deg,rgba(225,48,108,.1),rgba(131,58,180,.08));color:#7B1090;}
 .fmt-label.tg{background:rgba(42,171,238,.1);color:#0A80B0;}
-.fmt-label.shoot{background:rgba(58,154,106,.1);color:#1A6A3A;}
 
-.script{background:var(--lite);border-radius:12px;padding:15px 17px;margin:8px 0;font-size:13px;color:#333;line-height:1.8;border-left:3px solid var(--rose);}
+.script{background:var(--lite);border-radius:11px;padding:14px 16px;margin:7px 0;font-size:13px;color:#333;line-height:1.8;border-left:3px solid var(--rose);}
 .script.tg{border-left-color:var(--tg);}
 .script .sc-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mauve);margin-bottom:7px;display:block;}
 .script em{color:var(--rose);font-style:normal;font-weight:700;}
 
-.hook{background:#FFF8E8;border:1px solid rgba(212,168,67,.3);border-radius:10px;padding:13px 16px;margin:8px 0;font-size:13px;color:#7A4A10;line-height:1.65;}
-.hook::before{content:'🪝 Хук: ';font-weight:800;}
+.visual{background:#F3EFF8;border:1px solid rgba(123,92,116,.15);border-radius:9px;padding:11px 15px;margin:7px 0;font-size:12px;color:var(--plum);line-height:1.6;}
+.visual::before{content:'📷 Снимаем: ';font-weight:800;color:var(--mauve);}
 
-.visual{background:#F3EFF8;border:1px solid rgba(123,92,116,.15);border-radius:10px;padding:12px 16px;margin:8px 0;font-size:12px;color:var(--plum);line-height:1.6;}
-.visual::before{content:'🎬 Снимаем: ';font-weight:700;color:var(--mauve);}
-
-.tip{background:#E8F5EE;border:1px solid rgba(58,154,106,.2);border-radius:10px;padding:12px 16px;margin:8px 0;font-size:12px;color:#2A5A40;line-height:1.6;}
+.tip{background:#E8F5EE;border:1px solid rgba(58,154,106,.2);border-radius:9px;padding:11px 15px;margin:7px 0;font-size:12px;color:#2A5A40;line-height:1.6;}
 .tip::before{content:'💡 ';font-weight:700;}
 
-.cliffhanger{background:linear-gradient(135deg,#1E1428,#2D1F42);border-radius:12px;padding:14px 18px;margin:10px 0;display:flex;align-items:flex-start;gap:12px;}
-.cliffhanger .ch-icon{font-size:20px;flex-shrink:0;}
-.cliffhanger .ch-text{color:rgba(255,255,255,.85);font-size:13px;line-height:1.55;}
-.cliffhanger .ch-text strong{color:#FFD88A;display:block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+.micro{background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.2);border-radius:9px;padding:11px 15px;margin:7px 0;font-size:12px;color:#7A4A10;line-height:1.6;}
+.micro::before{content:'🔍 Деталь: ';font-weight:800;}
 
-.webinar-point{background:linear-gradient(135deg,rgba(196,133,106,.08),rgba(138,74,48,.05));border:1px solid rgba(196,133,106,.25);border-radius:12px;padding:13px 17px;margin:8px 0;font-size:13px;color:#6A3A18;line-height:1.65;}
-.webinar-point::before{content:'🎥 Переход на анкету/вебинар: ';font-weight:800;}
+.hook{background:#FFF8E8;border:1px solid rgba(212,168,67,.25);border-radius:9px;padding:12px 15px;margin:7px 0;font-size:13px;color:#7A4A10;line-height:1.65;}
+.hook::before{content:'🪝 Хук: ';font-weight:800;}
 
-.emotion-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(196,133,106,.1);border:1px solid rgba(196,133,106,.2);border-radius:20px;padding:5px 13px;font-size:11px;font-weight:700;color:#8A4A20;margin:3px;}
-.trust-tag{display:inline-flex;align-items:center;gap:5px;background:#E8F5EE;border:1px solid rgba(58,154,106,.2);border-radius:20px;padding:5px 13px;font-size:11px;font-weight:700;color:#2A5A40;margin:3px;}
-
-/* SHOOT LIST */
-.shoot-list{list-style:none;padding:0;margin:0;}
-.shoot-list li{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--lite);font-size:13px;line-height:1.55;color:#333;}
-.shoot-list li:last-child{border:none;}
-.shoot-list li .sn{background:var(--plum);color:white;font-size:10px;font-weight:900;min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
-
-/* CHECKLIST BOX */
-.checklist-box{background:white;border:1px solid var(--mid);border-radius:16px;padding:22px;margin-bottom:20px;}
-.checklist-box h4{font-size:14px;font-weight:800;color:var(--plum);margin-bottom:14px;}
-.check-item{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--lite);font-size:13px;color:#333;line-height:1.55;}
-.check-item:last-child{border:none;}
-.check-item .ck{color:var(--green);font-size:16px;flex-shrink:0;margin-top:1px;}
-
-/* PHASE DIVIDER */
-.phase-divider{display:flex;align-items:center;gap:14px;margin:28px 0 20px;}
-.phase-divider-line{flex:1;height:1px;background:var(--mid);}
-.phase-divider-label{background:var(--plum);color:white;font-size:11px;font-weight:800;padding:5px 16px;border-radius:20px;white-space:nowrap;}
-.phase-divider-label.orange{background:#E07A2F;}
-.phase-divider-label.barca{background:linear-gradient(135deg,#C4856A,#8A4A30);}
-.phase-divider-label.green{background:var(--green);}
+/* TAG ROW */
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;}
+.tag{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:5px 13px;font-size:11px;font-weight:700;}
+.tag.warm{background:rgba(196,133,106,.1);border:1px solid rgba(196,133,106,.2);color:#8A4A20;}
+.tag.green{background:#E8F5EE;border:1px solid rgba(58,154,106,.2);color:#2A5A40;}
 </style>
 </head>
 <body>
 
 <div class="nav">
-  <span class="nav-title">SecretCoach — Сценарий «Встреча в Барселоне»</span>
+  <span class="nav-title">SecretCoach — Встреча в Барсе</span>
   <a href="index.html">Главная</a>
   <a href="case_scenario.html">Кейс 14 дней</a>
   <a href="castdev.html">Анкета</a>
 </div>
 
 <div class="hero">
-  <div class="hero-badge">✈️ Реалити-формат · Живая встреча</div>
-  <h1>«Я еду в Барселону к своей подписчице» — сценарий тёплого кейса</h1>
-  <p>Не онлайн-история. Не отзыв на экране. Катя лично едет к своей подписчице — и весь путь показывает аудитории. Это создаёт близость, доверие и желание быть на её месте.</p>
-  <div class="hero-stats">
-    <div class="hstat"><div class="n">4</div><div class="l">фазы</div></div>
-    <div class="hstat"><div class="n">~2</div><div class="l">недели + встреча</div></div>
-    <div class="hstat"><div class="n">1</div><div class="l">живая встреча в Барсе</div></div>
-    <div class="hstat"><div class="n">0</div><div class="l">прямых продаж</div></div>
-  </div>
+  <div class="hero-badge">🌊 2 дня · Живой контент</div>
+  <h1>«Еду к своей девочке в Барселону» — тёплый контент-сценарий</h1>
+  <p>Никакой драмы и сюжетных дуг. Просто два дня — Катя и её клиентка вместе. Тепло, смех, разговоры. Аудитория видит кто такая Катя в жизни — не только в Zoom.</p>
 </div>
 
 <div class="container">
 
-<!-- КОНЦЕПЦИЯ -->
-<div class="concept">
-  <h2>💡 Почему это работает сильнее обычного кейса</h2>
-  <p>Онлайн-кейс — это история на экране. А когда эксперт садится в самолёт ради своей подписчицы — это поступок. Люди не следят за контентом, они следят за поступками. Личная встреча превращает историю в событие, которое хочется пересылать и обсуждать.</p>
+<!-- ПОЧЕМУ ЭТО РАБОТАЕТ -->
+<div class="why">
+  <h2>Зачем это снимать</h2>
   <ul>
-    <li><div class="ci">✈️</div><div><strong style="color:white">Поездка = инфоповод.</strong> «Я еду в Барселону к своей подписчице» — это само по себе новость. Аудитория хочет знать: а зачем? а как они познакомились? а что там произошло?</div></li>
-    <li><div class="ci">🤝</div><div><strong style="color:white">Живая встреча = доказательство реальности.</strong> Стол в ресторане, кофе, смех — это нельзя нафотошопить. Когда зрительница видит это, у неё одна мысль: «значит это настоящее».</div></li>
-    <li><div class="ci">🌟</div><div><strong style="color:white">«Я выбрала одну из вас».</strong> Анкета — это не просто форма, это конкурс на близость с Катей. Каждая читательница думает: «А вдруг следующей буду я?»</div></li>
-    <li><div class="ci">🫂</div><div><strong style="color:white">Тепло без наигранности.</strong> Нет сценария финального объятия. Просто два человека сидят в кафе, смеются, говорят. Снимай это — именно это и есть контент.</div></li>
-    <li><div class="ci">📋</div><div><strong style="color:white">Естественный переход к анкете.</strong> После встречи — «девочки, следующей буду встречаться с кем-то из вас. Заполни анкету». Не продажа, а приглашение в историю.</div></li>
+    <li><span>🧡</span><div><strong style="color:white">Показывает Катю как человека, а не только как эксперта.</strong> Она едет, смеётся, пьёт кофе со своей клиенткой. Это невозможно подделать — и именно поэтому вызывает доверие.</div></li>
+    <li><span>🌍</span><div><strong style="color:white">«Она едет к своей клиентке в другую страну»</strong> — само по себе говорит об отношении. Без слов. Аудитория это считывает мгновенно.</div></li>
+    <li><span>🎬</span><div><strong style="color:white">Контент снимается сам.</strong> Барселона, кафе, улица — это уже визуал. Не нужно ничего придумывать, просто жить и иногда доставать телефон.</div></li>
+    <li><span>💬</span><div><strong style="color:white">Люди следят за людьми, а не за продуктами.</strong> Зрительница видит эти два дня и думает: «Вот бы так же — чтобы Катя была рядом». Это и есть продажа без продажи.</div></li>
   </ul>
 </div>
 
-<!-- ПОЧЕМУ ЭТОТ ФОРМАТ БЬЁТ -->
-<div class="why-box">
-  <h3>⚡ 4 причины почему это запоминается</h3>
-  <div class="why-grid">
-    <div class="why-item">
-      <div class="wi">🎟</div>
-      <h4>Эффект избранности</h4>
-      <p>Из всех подписчиц Катя выбрала одну. К ней едет. Это ставит избранную на пьедестал — и у остальных появляется желание оказаться на её месте.</p>
-    </div>
-    <div class="why-item">
-      <div class="wi">🧡</div>
-      <h4>Тепло как бренд</h4>
-      <p>Катя — не просто эксперт в Zoom. Она едет, обнимается, сидит за столом. Это формирует образ: «Катя — это человек, который рядом».</p>
-    </div>
-    <div class="why-item">
-      <div class="wi">🎬</div>
-      <h4>Контент сам снимается</h4>
-      <p>Ресторан, улица, разговор — это уже готовые кадры. Не надо придумывать визуал. Жизнь и есть самый лучший режиссёр.</p>
-    </div>
-    <div class="why-item">
-      <div class="wi">📣</div>
-      <h4>Аудитория пересылает</h4>
-      <p>«Посмотри как она поехала к своей подписчице в другую страну!» — такое пересылают подругам. Это органический охват, который не купишь.</p>
-    </div>
-  </div>
-</div>
-
-<!-- АНОНИМНОСТЬ -->
-<div class="anon-box">
-  <h3>🙈 Про анонимность: как показать человека без лица</h3>
-  <ul class="anon-list">
-    <li><span>✅</span><div><strong>Смайлик-стикер поверх лица</strong> — стандартно, все привыкли. Добавляй в сторис через встроенный редактор. Достаточно.</div></li>
-    <li><span>✅</span><div><strong>Снимать со спины или сбоку</strong> — за столиком в ресторане, идёте по улице. Силуэт виден, человек настоящий — лица нет.</div></li>
-    <li><span>✅</span><div><strong>Руки, кофе, детали</strong> — крупный план рук с чашкой, её записная книжка, её реакция плечом и смехом. Ощущение реального присутствия без лица.</div></li>
-    <li><span>✅</span><div><strong>Голосовые без видео</strong> — её голос в кружочке Кати: «Она написала мне вот что» + воспроизводит голосовое. Голос = личность.</div></li>
-    <li><span>✅</span><div><strong>Имя она сама выбирает</strong> — настоящее или придуманное. Главное чтобы оно было одно и то же на протяжении всей истории.</div></li>
-    <li><span>⚠️</span><div><strong>Сказать аудитории честно</strong> — «Она участвует анонимно — просила не показывать лицо. Это её право и я его уважаю.» Это добавляет доверие, не убирает его.</div></li>
-  </ul>
+<!-- ЧТО СНИМАТЬ -->
+<div class="shoot-box">
+  <h3>📷 Что снимать — короткий список</h3>
+  <div class="shoot-item"><span class="si">✅</span><div><strong>Момент встречи</strong> — как увиделись. 10 секунд. Со стороны или selfie. Самый ценный кадр всей поездки.</div></div>
+  <div class="shoot-item"><span class="si">✅</span><div><strong>За столом — общий план</strong> — разговаривают, смеются. Лицо клиентки — под стикером или со спины.</div></div>
+  <div class="shoot-item"><span class="si">✅</span><div><strong>Детали</strong> — руки, кофе, что-то на столе. Один тёплый крупный план вместо тысячи слов.</div></div>
+  <div class="shoot-item"><span class="si">✅</span><div><strong>Прогулка по Барсе</strong> — идут рядом, разговаривают. Снимать сзади или сбоку. Барселона на фоне.</div></div>
+  <div class="shoot-item"><span class="si">✅</span><div><strong>Кружочек клиентки</strong> — 30-60 сек, голос, стикер на лицо. Один вопрос: «Что для тебя изменилось?»</div></div>
+  <div class="shoot-item"><span class="si">✅</span><div><strong>Прощание</strong> — обнялись, разошлись. 5 секунд. Никаких слов не нужно.</div></div>
+  <div class="shoot-item"><span class="si">💡</span><div><strong>Если клиентка зажимается перед камерой</strong> — не снимай её. Снимай Катю, которая рассказывает ЧТО клиентка ей только что сказала. Это работает так же.</div></div>
 </div>
 
 <div class="divider"></div>
-<h2 class="block-title">Четыре фазы сценария</h2>
-<p class="block-sub">От анкеты до объятий в Барселоне. Каждая фаза — своя эмоция и своя задача.</p>
+<h2 class="block-title">Сценарий: тизер + 2 дня</h2>
+<p class="block-sub">Конкретные тексты. Не сценарий для заучивания — ориентир. Живые слова всегда лучше.</p>
 
-<!-- ===== ФАЗА 0 — АНКЕТА И ВЫБОР ===== -->
-<div class="phase-divider">
-  <div class="phase-divider-line"></div>
-  <div class="phase-divider-label">Фаза 0 — Запуск · 2-3 дня</div>
-  <div class="phase-divider-line"></div>
-</div>
-
-<div class="phase">
-  <div class="phase-head">
-    <div class="phase-badge ph0">Фаза 0</div>
-    <div class="phase-info">
-      <div class="pt">«Я выбираю одну из вас — и мы встретимся лично»</div>
-      <div class="ps">Анонс анкеты. Интрига максимальная: что за встреча? зачем? где?</div>
-      <div class="phase-goal">🎯 Цель: собрать заявки, создать ажиотаж вокруг анкеты</div>
+<!-- ===== ТИЗЕР ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-badge db-tizer">За день — Тизер</div>
+    <div class="day-info">
+      <div class="dt">«Еду к своей девочке в Барселону»</div>
+      <div class="ds">Один кружочек или сторис. Больше ничего. Пусть ждут.</div>
     </div>
   </div>
-  <div class="phase-body">
+  <div class="day-body">
     <div class="fmt">
       <div class="fmt-label circle">⚪ Кружочек — Катя</div>
       <div class="script">
-        <span class="sc-label">Неформально, можно идя куда-то или за кофе</span>
-        «Я кое-что придумала. Я выбираю одну девушку из вас — и мы с ней работаем вместе. Но это ещё не всё. В конце я к ней приеду. Лично. Вживую.<br><br>
-        Почему? Потому что мне важно видеть своих девочек не только на экране. И потому что хочу, чтобы вы увидели — за каждой историей стоит живой человек.<br><br>
-        Заполни анкету — ссылка в шапке. Я читаю каждую.»
+        <span class="sc-label">В аэропорту, в такси, дома с чемоданом — где угодно, где естественно</span>
+        «Завтра еду в Барселону к своей клиентке. Мы давно это планировали. Немного нервничаю — хорошим таким волнением. Буду снимать.»
       </div>
     </div>
     <div class="fmt">
-      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="fmt-label stories">📱 Stories</div>
       <div class="script">
-        <span class="sc-label">Сторис 1 — интрига</span>
-        «Затеяла кое-что. Выбираю одну из вас. Мы будем работать вместе — и в конце я к ней приеду.»<br><br>
-        Опрос: «Ты бы заполнила анкету?» → «Да!» / «Расскажи подробнее»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 2 — зачем это Кате</span>
-        «Я делаю это потому что хочу показать вам: результаты — настоящие. Живые. Не только на скринах. Хочу приехать, обнять свою подписчицу и сказать: смотрите, вот она, вот её путь.»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 3 — анонс анкеты</span>
-        «Анкета в шапке профиля. Я читаю каждую историю. Выбираю ту, с кем готова работать вживую. Если в тебе что-то отзывается — заполни.»<br><br>
-        Наклейка-ссылка на анкету.
+        Фото чемодана / посадочного / аэропорта.<br>
+        Текст поверх: «Еду к своей девочке 🌊 Барселона»<br><br>
+        Больше ничего. Пусть интрига работает сама.
       </div>
     </div>
+    <div class="hook">«Куда именно еду — сторис завтра. Следи.»</div>
+  </div>
+</div>
+
+<!-- ===== ДЕНЬ 1 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-badge db-d1">День 1 — Встреча</div>
+    <div class="day-info">
+      <div class="dt">Прилетела, увиделись, ресторан вечером</div>
+      <div class="ds">Эмоция дня: «вот они, вживую». Тепло, смех, первый разговор.</div>
+    </div>
+  </div>
+  <div class="day-body">
+
+    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin-bottom:10px;">Утро — прилёт</h4>
+
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Stories из самолёта или по прилёте</div>
+      <div class="script">
+        <span class="sc-label">Вид из окна, или первый кадр Барселоны</span>
+        «Здесь. Сейчас едем встречаться.»<br><br>
+        Или просто фото города без слов — пусть подписчицы сами напишут «ой куда?»
+      </div>
+    </div>
+    <div class="visual">Такси в город, первые кадры улиц — 3-4 секунды в сторис. Никакого текста. Атмосфера.</div>
+
+    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin:18px 0 10px;">День — встреча и прогулка</h4>
+
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя после встречи</div>
+      <div class="script">
+        «Мы только что увиделись. Вот это чувство когда человека знаешь по голосу, по переписке — и вдруг он живой, рядом. Стоит перед тобой.<br><br>
+        Мы обнялись — и сразу начали болтать. Как будто сто лет знакомы.<br><br>
+        Барселона, солнце, она рядом. Хорошо.»
+      </div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Stories — серия из 3-4 штук</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1 — момент встречи или первый совместный кадр</span>
+        Катя и силуэт клиентки / вид со спины / обе смотрят куда-то вперёд.<br>
+        Текст: «Вот она. Наконец вживую ❤️»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 2 — прогулка</span>
+        Видео — идут по улице, разговаривают. 5-7 секунд. Никакого текста или одно слово: «Барселона»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 3 — детали</span>
+        Крупный план: два стакана с кофе, её рука, что-то характерное для места.<br>
+        Текст: «Вот так выглядит работа иногда»
+      </div>
+    </div>
+    <div class="micro">Одна живая деталь про неё — не про результаты, а про человека. «Она заказала тот же кофе что я.» «Она смеётся точно так как описывала.» «У неё дома такая же кружка.» Одна фраза — и зрительница уже её знает.</div>
+
+    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin:18px 0 10px;">Вечер — ресторан</h4>
+
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек — Катя вечером</div>
+      <div class="script">
+        «Только что вышли из ресторана. Сидели там несколько часов. Разговаривали, ели, смеялись. Потом вдруг — серьёзный разговор. Она сказала мне кое-что про свои изменения — и я просто замолчала на секунду.<br><br>
+        Она позволила поделиться. Скажу завтра её словами.»
+      </div>
+    </div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Stories из ресторана</div>
+      <div class="script">
+        <span class="sc-label">Фото со стола — еда, атмосфера, тепло</span>
+        Текст: «Этот вечер буду помнить долго»
+      </div>
+      <div class="script">
+        <span class="sc-label">Если хочет — кружочек клиентки (голос, стикер)</span>
+        Один вопрос: «Как тебе эти дни?» — и она говорит что хочет, сколько хочет.
+      </div>
+    </div>
+    <div class="hook">«Завтра она скажет кое-что, что я хочу чтобы вы услышали её словами. Следите.»</div>
     <div class="fmt">
       <div class="fmt-label tg">✈️ Telegram</div>
       <div class="script tg">
-Решила сделать кое-что необычное.
+Первый день в Барселоне.
 
-Я выбираю одну из вас. Мы начинаем работать вместе — онлайн. А в конце я к ней приеду лично. Чтобы вы видели не только экран, а живого человека с живой историей.
+Мы встретились с [Имя/«моей девочкой»]. Обнялись. Начали болтать — и не останавливались несколько часов.
 
-Анкета: [ссылка на castdev]
+Знаете что я каждый раз думаю, когда вижу своих клиенток вживую? Что за каждым нашим звонком стоит живой человек с живой жизнью. И встретить его вот так — это что-то особенное.
 
-Я читаю каждую. Выбираю ту, чья ситуация мне откликнется. И потом показываю вам всё — с самого начала.
+Завтра расскажу что она мне сказала за ужином.
       </div>
-    </div>
-    <div class="cliffhanger">
-      <div class="ch-icon">⏸</div>
-      <div class="ch-text"><strong>Крючок</strong>«Куда именно я поеду — скажу после того как выберу. Следите.»</div>
     </div>
   </div>
 </div>
 
-<!-- ===== ФАЗА 1 — ВЫБОР ===== -->
-<div class="phase">
-  <div class="phase-head">
-    <div class="phase-badge ph0">Выбор</div>
-    <div class="phase-info">
-      <div class="pt">«Я выбрала. Вот кого.»</div>
-      <div class="ps">Объявление выбора. Знакомство с героиней (анонимно).</div>
-      <div class="phase-goal">🎯 Цель: «интересно кто она», первая волна вопросов и вовлечения</div>
+<!-- ===== ДЕНЬ 2 ===== -->
+<div class="day">
+  <div class="day-head">
+    <div class="day-badge db-d2">День 2 — Финал</div>
+    <div class="day-info">
+      <div class="dt">Прогулка, её слова, прощание</div>
+      <div class="ds">Эмоция дня: тепло, благодарность, «хочу так же». Без пафоса.</div>
     </div>
   </div>
-  <div class="phase-body">
+  <div class="day-body">
+
+    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin-bottom:10px;">Утро</h4>
+
     <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек — Катя</div>
+      <div class="fmt-label circle">⚪ Кружочек — Катя утром</div>
       <div class="script">
-        «Я прочитала все анкеты. И выбрала. Её зовут [имя — настоящее или придуманное]. Она живёт в [город / страна]. И вы уже скоро узнаете почему именно она.<br><br>
-        [Имя], если ты сейчас смотришь — привет. Начинаем.»
+        «Доброе утро из Барселоны. Сегодня последний день. Встречаемся ещё раз, потом я улетаю.<br><br>
+        Вчера она сказала мне за ужином: "[одна фраза своими словами — что изменилось в её жизни или отношениях]."<br><br>
+        Просто оставлю это здесь.»
+      </div>
+    </div>
+    <div class="visual">Утренний кадр из окна отеля / первый кофе / улица Барселоны рано утром. Без слов или «Buenos días ☀️»</div>
+
+    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin:18px 0 10px;">День — финальная прогулка и её слова</h4>
+
+    <div class="fmt">
+      <div class="fmt-label circle">⚪ Кружочек клиентки (если готова)</div>
+      <div class="script">
+        <span class="sc-label">Снимает она сама или Катя держит телефон. Лицо под стикером — окей.</span>
+        Катя задаёт один вопрос вслух: «Расскажи что для тебя изменилось. Своими словами.»<br><br>
+        Дальше — она говорит. Катя молчит. Не перебивает.<br><br>
+        <em>30-60 секунд неотредактированной речи = лучший контент всей поездки.</em>
+      </div>
+    </div>
+    <div class="tip">Если она не готова на кружочек — попроси написать голосовое. Катя потом в своём кружочке зачитает или перескажет её словами. Работает так же сильно.</div>
+    <div class="fmt">
+      <div class="fmt-label stories">📱 Stories — финальная серия</div>
+      <div class="script">
+        <span class="sc-label">Сторис 1 — прогулка, атмосферное видео</span>
+        Они идут. Разговаривают. Снимать со спины, Барселона вокруг.<br>
+        Текст: «Последние часы»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 2 — её цитата крупным текстом</span>
+        Одна фраза которую она сказала — без комментариев.<br><br>
+        Пример: «"Я не думала что можно вот так — знать себя"»<br>
+        Катя добавляет только: «Её слова.»
+      </div>
+      <div class="script">
+        <span class="sc-label">Сторис 3 — прощание</span>
+        Обнялись. Финальный кадр. Текст: «Скоро увидимся снова ❤️»<br>
+        Или просто кадр без слов.
       </div>
     </div>
     <div class="fmt">
-      <div class="fmt-label stories">📱 Instagram Stories</div>
+      <div class="fmt-label reels">🎬 Reels — смонтировать после</div>
       <div class="script">
-        <span class="sc-label">Сторис 1 — объявление</span>
-        «Я выбрала. Познакомьтесь — [Имя].»<br><br>
-        Фото без лица: силуэт, вид сзади, или красивый кадр со смайликом поверх лица.
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 2 — почему именно она</span>
-        «Я выбрала её потому что в её анкете было одно предложение, которое я не могла забыть. Она написала: "[одна фраза из её анкеты — максимально узнаваемая для аудитории]."<br><br>
-        Это было так честно, что я поняла: вот с ней.»
-      </div>
-      <div class="poll-box" style="background:rgba(225,48,108,.05);border:1px solid rgba(225,48,108,.15);border-radius:10px;padding:13px 16px;margin:8px 0;font-size:13px;color:#6A0040;line-height:1.6;">
-        📊 «Что ты написала бы в анкете — если бы заполняла?» Ответ в директ. Это даст новую волну заявок.
+        <span class="sc-label">30-45 сек. Монтаж лучших кадров двух дней. Тёплая инструментальная музыка.</span>
+        Нарезка: встреча, кофе, прогулка, смех, прощание. Без слов. Текст в начале:<br><br>
+        «Когда работа — это про людей»<br><br>
+        Или: «Барселона. Мои клиентки — мои люди.»
       </div>
     </div>
     <div class="fmt">
-      <div class="fmt-label tg">✈️ Telegram</div>
+      <div class="fmt-label tg">✈️ Telegram — итоговый пост</div>
       <div class="script tg">
-Выбрала.
+Возвращаюсь домой.
 
-Её зовут [Имя]. Она написала в анкете кое-что, что я не смогла забыть: "[цитата]."
+Два дня в Барселоне с [«моей девочкой»/Имя]. Ресторан, прогулки, разговоры.
 
-Мы начинаем работать. Я буду рассказывать вам всё. А в конце — к ней приеду.
+Она сказала мне кое-что, что я долго буду помнить: «[её цитата]».
 
-Следите.
+Знаете что я поняла? Результаты — это не только то, что происходит в спальне. Это когда человек начинает по-другому чувствовать себя. Разговаривать. Смотреть на себя.
+
+Вот за этим я и делаю то, что делаю.
+
+Если тебе откликается — вебинар «Секреты женского удовольствия» уже ждёт: [ссылка]
       </div>
     </div>
-    <div class="cliffhanger">
-      <div class="ch-icon">⏸</div>
-      <div class="ch-text"><strong>Крючок</strong>«Куда именно я еду — скажу ближе к концу. Сначала — работа.»</div>
-    </div>
-  </div>
-</div>
 
-<!-- ===== ФАЗА 1 — ОНЛАЙН-РАБОТА ===== -->
-<div class="phase-divider">
-  <div class="phase-divider-line"></div>
-  <div class="phase-divider-label">Фаза 1 — Онлайн · 7-10 дней</div>
-  <div class="phase-divider-line"></div>
-</div>
-
-<div class="phase">
-  <div class="phase-head">
-    <div class="phase-badge ph1">Фаза 1</div>
-    <div class="phase-info">
-      <div class="pt">Онлайн-работа с промежуточными результатами</div>
-      <div class="ps">Кружочки, скрины переписки, маленькие победы, один провал. История разворачивается постепенно.</div>
-      <div class="phase-goal">🎯 Цель: вовлечение в процесс, ожидание финальной встречи</div>
-    </div>
-  </div>
-  <div class="phase-body">
-
-    <div class="tip">Не нужно каждый день делать большой контент. Достаточно 3-4 касания за всю онлайн-фазу. Остальное время — тизеры и крючки.</div>
-
-    <h4 style="font-size:13px;font-weight:800;color:var(--plum);margin:14px 0 10px;">Касание 1 — Начало работы</h4>
+    <h4 style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin:18px 0 10px;">Дома — кружочек после возвращения</h4>
     <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек — Катя</div>
+      <div class="fmt-label circle">⚪ Кружочек — Катя дома</div>
       <div class="script">
-        «Сегодня мы с [Именем] провели первую сессию. Долго разговаривали.<br><br>
-        Знаете что я поняла сразу? Её история — это история очень многих из вас. Она думала что она одна такая. Оказалось — нет.<br><br>
-        Начинаем работать. Она немного нервничает. Я — нет. Я видела это сотни раз. И знаю что будет дальше.»
-      </div>
-    </div>
-    <div class="cliffhanger">
-      <div class="ch-icon">⏸</div>
-      <div class="ch-text"><strong>Крючок</strong>«Попросила [Имя] написать мне через три дня. Она сказала: "Катя, а что если ничего не изменится?" Что я ей ответила — в следующем кружочке.»</div>
-    </div>
-
-    <h4 style="font-size:13px;font-weight:800;color:var(--plum);margin:18px 0 10px;">Касание 2 — Промежуточный результат</h4>
-    <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек — Катя</div>
-      <div class="script">
-        «[Имя] написала мне сегодня. Голосовым. Я сейчас вам перескажу её слова потому что она пока ещё не готова снимать на камеру — и это нормально.<br><br>
-        Она сказала: "[передаёт её слова своими устами — 2-3 предложения про первый маленький сдвиг]."<br><br>
-        Это маленький шаг. Но именно из таких маленьких шагов и строится всё остальное.»
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label stories">📱 Instagram Stories</div>
-      <div class="script">
-        <span class="sc-label">Скрин переписки с [Именем] — её сообщение о первом сдвиге</span>
-        Катя добавляет поверх: «Она разрешила показать. Читаю и думаю: вот ради этого.»
-      </div>
-    </div>
-
-    <h4 style="font-size:13px;font-weight:800;color:var(--plum);margin:18px 0 10px;">Касание 3 — Объявление поездки</h4>
-    <div class="tip">Это самый важный момент онлайн-фазы. Объявление поездки — это инфоповод, который создаёт ажиотаж.</div>
-    <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек — Катя (взволнованно, с улыбкой)</div>
-      <div class="script">
-        «Девочки. Я кое-что решила.<br><br>
-        [Имя] живёт в Барселоне. И я... я еду к ней. Лично.<br><br>
-        [пауза, улыбается]<br><br>
-        Я хочу её обнять. Хочу посмотреть на неё вживую. Хочу чтобы вы увидели не просто скрины переписки, а живую встречу двух людей.<br><br>
-        Дата уже назначена. Следите.»
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label stories">📱 Instagram Stories</div>
-      <div class="script">
-        <span class="sc-label">Сторис 1 — Катя в кадре</span>
-        «Я еду в Барселону. К своей подписчице. Вживую.»<br><br>
-        Опрос: «Ты бы полетела к своей подписчице?» → «Да, конечно» / «Это вообще реально?»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 2 — объяснение</span>
-        «Почему? Потому что я всегда говорю: мои отношения с вами — это не про лайки. Это про людей. И [Имя] — живой человек, который прошла реальный путь. Я хочу встретить её лично.»
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label tg">✈️ Telegram</div>
-      <div class="script tg">
-Я только что купила билет в Барселону.
-
-К [Имени].
-
-Мне важно встретить её лично. Посмотреть в глаза. Услышать её голос не через экран.
-
-Следите — буду снимать всё.
-      </div>
-    </div>
-    <div class="cliffhanger">
-      <div class="ch-icon">⏸</div>
-      <div class="ch-text"><strong>Крючок</strong>«[Имя] ещё не знает что именно мы будем делать в Барселоне. Я пока не сказала.»</div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== ФАЗА 2 — ПОЕЗДКА ===== -->
-<div class="phase-divider">
-  <div class="phase-divider-line"></div>
-  <div class="phase-divider-label orange">Фаза 2 — Дорога и первая встреча</div>
-  <div class="phase-divider-line"></div>
-</div>
-
-<div class="phase">
-  <div class="phase-head">
-    <div class="phase-badge ph2">Фаза 2</div>
-    <div class="phase-info">
-      <div class="pt">В дороге, в аэропорту, первые кадры Барсы</div>
-      <div class="ps">Катя едет. Зрительница следит в реальном времени.</div>
-      <div class="phase-goal">🎯 Цель: ощущение «я вместе с ней», предвкушение встречи</div>
-    </div>
-  </div>
-  <div class="phase-body">
-
-    <div class="fmt">
-      <div class="fmt-label circle">⚪ Кружочек — Катя в аэропорту или в самолёте</div>
-      <div class="script">
-        «Я в аэропорту. Лечу к [Имени].<br><br>
-        Знаете, я немного волнуюсь. Мы общались только онлайн. А сейчас увидимся вживую. Интересно как это будет.<br><br>
-        Буду снимать всё. Следите за сторис.»
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label stories">📱 Instagram Stories — серия из аэропорта/самолёта</div>
-      <div class="script">
-        <span class="sc-label">Сторис 1 — кадр из аэропорта с текстом</span>
-        «Летим к [Имени] ✈️ Барселона»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 2 — вид из иллюминатора или в самолёте</span>
-        Катя поверх: «Через [X] часов увижу её вживую. Немного нервничаю как на первом свидании.»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 3 — первый кадр Барселоны</span>
-        «Я здесь. [Имя] ждёт.»
-      </div>
-    </div>
-    <div class="visual">Снимай по дороге: кадр багажа, посадочный (без данных), вид города из такси. Это создаёт ощущение реального путешествия, а не постановки.</div>
-    <div class="cliffhanger">
-      <div class="ch-icon">⏸</div>
-      <div class="ch-text"><strong>Крючок</strong>«Едем на встречу. [Имя] только что написала: "Катя, я страшно нервничаю." Я тоже.»</div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== ФАЗА 3 — ВСТРЕЧА В БАРСЕЛОНЕ ===== -->
-<div class="phase-divider">
-  <div class="phase-divider-line"></div>
-  <div class="phase-divider-label barca">Фаза 3 — Встреча в Барселоне · главный день</div>
-  <div class="phase-divider-line"></div>
-</div>
-
-<div class="phase">
-  <div class="phase-head">
-    <div class="phase-badge ph3">Фаза 3 — Главная</div>
-    <div class="phase-info">
-      <div class="pt">Ресторан, прогулка, разговор, её слова о себе</div>
-      <div class="ps">Это кульминация всей истории. Снимаем живо, без постановки.</div>
-      <div class="phase-goal">🎯 Цель: тепло, эмоция, «я хочу так же», переход на анкету</div>
-    </div>
-  </div>
-  <div class="phase-body">
-
-    <div class="tip">Главное правило этого дня: <strong>не режиссируй</strong>. Сядьте за стол, закажите что-то, поговорите — и пусть кто-то снимает вас со стороны или Катя периодически берёт телефон. Живой разговор сильнее любого скрипта.</div>
-
-    <h4 style="font-size:13px;font-weight:800;color:var(--plum);margin:14px 0 10px;">Что снимать в этот день</h4>
-    <ul class="shoot-list">
-      <li><div class="sn">1</div><div><strong>Момент встречи</strong> — как они увиделись впервые. Пусть кто-то снимет на телефон со стороны. Даже 10 секунд — этого достаточно.</div></li>
-      <li><div class="sn">2</div><div><strong>За столом — общий план</strong> — две женщины за кофе/едой, разговаривают. Лица [Имени] не видно или стикер. Снимать с чуть большого расстояния — атмосфера важнее деталей.</div></li>
-      <li><div class="sn">3</div><div><strong>Детали: руки, стаканы, тарелки</strong> — крупным планом. Это создаёт тёплую текстуру «настоящего момента».</div></li>
-      <li><div class="sn">4</div><div><strong>Прогулка по улице</strong> — идут рядом, разговаривают. Снимать сзади или в профиль — Барселона на фоне, две фигуры. Без звука или с фоновой музыкой.</div></li>
-      <li><div class="sn">5</div><div><strong>Кружочек — [Имя] говорит своими словами</strong> — анонимно (голос + стикер или снимать не в лицо). Что изменилось. Что она чувствует.</div></li>
-      <li><div class="sn">6</div><div><strong>Финальный кадр — рядом стоят или сидят</strong> — смеются, обнимаются, или просто рядом. Силуэты, тёплый свет. Лицо [Имени] под стикером — окей.</div></li>
-    </ul>
-
-    <h4 style="font-size:13px;font-weight:800;color:var(--plum);margin:18px 0 10px;">Сторис в день встречи</h4>
-    <div class="fmt">
-      <div class="fmt-label stories">📱 Instagram Stories — серия из Барселоны</div>
-      <div class="script">
-        <span class="sc-label">Сторис 1 — первый кадр вместе (анонимно)</span>
-        «Мы встретились. Вот она.»<br>
-        Фото — Катя и силуэт [Имени] на фоне Барселоны.
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 2 — кадр за столом</span>
-        «Сидим, едим, разговариваем. Как будто знакомы сто лет. Хотя в реале видимся впервые.»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 3 — кружочек [Имени] (голос, лицо под стикером)</span>
-        Она говорит своими словами: что было, что изменилось, как она сейчас.<br><br>
-        <em>Не давай сценарий. Задай один вопрос: "Расскажи как ты сейчас." И включи запись.</em>
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 4 — Катя в кадре, эмоционально</span>
-        «Я смотрю на неё и думаю... это вот оно. Ради этого я занимаюсь тем, чем занимаюсь. Не ради лайков. А вот ради этого момента.»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 5 — прогулка, атмосферное видео</span>
-        Музыка, никакого текста или просто: «Барселона. [Имя]. Хорошо.»
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label reels">🎬 Reels из встречи (монтируешь потом)</div>
-      <div class="visual">Монтаж из кадров дня: 30-45 секунд. Музыка тёплая, без лирики. Нарезка: встреча, кофе за столом, прогулка, финальный кадр рядом. Никаких слов — только картинка и музыка. Текст поверх: «Когда твоя подписчица в другой стране и ты просто едешь к ней.»</div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label tg">✈️ Telegram — вечером того же дня</div>
-      <div class="script tg">
-Сегодня был особенный день.
-
-Я увидела [Имя] вживую.
-
-Мы сидели в ресторане, пили кофе, разговаривали. Потом шли по Барселоне. Она рассказывала мне что изменилось. Я слушала.
-
-Знаете что меня поразило? Она говорила об этом так спокойно. Без дрожи в голосе. Три недели назад она писала мне что "не верит что у неё получится." Сегодня она говорила об этом как о чём-то очевидном.
-
-Вот что такое трансформация.
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== ФАЗА 4 — РЕЗУЛЬТАТ И ПЕРЕХОД ===== -->
-<div class="phase-divider">
-  <div class="phase-divider-line"></div>
-  <div class="phase-divider-label green">Фаза 4 — Результат и CTA</div>
-  <div class="phase-divider-line"></div>
-</div>
-
-<div class="phase">
-  <div class="phase-head">
-    <div class="phase-badge ph4">Фаза 4</div>
-    <div class="phase-info">
-      <div class="pt">«Следующей буду у кого-то из вас» — переход к новой анкете</div>
-      <div class="ps">Итог истории. Тёплый финал. Приглашение быть следующей.</div>
-      <div class="phase-goal">🎯 Цель: «хочу так же», переход на анкету или вебинар</div>
-    </div>
-  </div>
-  <div class="phase-body">
-    <div class="fmt">
-      <div class="fmt-label circle">⚪ Финальный кружочек — Катя</div>
-      <div class="script">
-        <span class="sc-label">После возвращения. Тепло, без пафоса.</span>
-        «Я вернулась домой. И первое что сделала — написала [Имени]: "Я так рада что поехала."<br><br>
-        Знаешь, есть что-то особенное в том, чтобы увидеть человека вживую после работы. Ты видишь его совсем по-другому. Не как "клиентку" — а как человека, которого ты сопроводила куда-то важному.<br><br>
-        [пауза]<br><br>
-        Мне хочется делать это ещё. Поэтому — анкета снова открыта. Следующая встреча будет с кем-то из вас.»
-      </div>
-    </div>
-    <div class="fmt">
-      <div class="fmt-label stories">📱 Instagram Stories — финальные</div>
-      <div class="script">
-        <span class="sc-label">Сторис 1 — итог словами [Имени]</span>
-        Её цитата крупным текстом. Что она сказала о своём результате — своими словами.<br><br>
-        Катя добавляет: «Это она. Своими словами. Без моей редактуры.»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 2 — мостик к аудитории</span>
-        «Девочки, я веду [Имя] точно так же, как я буду вести вас в курсе. За ручку. С видео, с обратной связью, с тем что работает именно для тебя.»
-      </div>
-      <div class="script">
-        <span class="sc-label">Сторис 3 — приглашение</span>
-        «Следующую встречу я планирую ещё. Анкета открыта — ссылка в шапке. Или — если хочешь начать прямо сейчас — вебинар уже ждёт тебя. Там я объясняю с чего начать.»
-      </div>
-    </div>
-    <div class="webinar-point">Двойной переход: на анкету (для тех кто хочет работать с Катей лично) и на вебинар (для тех кто хочет начать самостоятельно прямо сейчас).</div>
-    <div class="fmt">
-      <div class="fmt-label tg">✈️ Telegram — финальный пост</div>
-      <div class="script tg">
-История с [Именем] закончилась. Но знаете что?
-
-Я уже думаю о следующей.
-
-Потому что я поняла: мне важно видеть вас не только на экране. Мне важно встречаться. Разговаривать. Обнимать, если захочется.
-
-Анкета снова открыта: [ссылка]
-
-А если хочешь начать прямо сейчас — не дожидаясь встречи — вебинар "Секреты женского удовольствия" уже в записи:
-
-[ссылка на вебинар]
-
-Напиши мне. Мне важно знать что тебе откликнулось.
+        «Я дома. Только положила чемодан.<br><br>
+        Знаете что самое странное после таких поездок? Ты возвращаешься — а внутри что-то изменилось. Не у клиентки. У тебя.<br><br>
+        Я лечу к своим девочкам не потому что "так надо". А потому что мне самой это нужно. Напоминание — зачем я этим занимаюсь.<br><br>
+        Спасибо [Имя] за эти два дня.»
       </div>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
-
-<!-- ЧТО ГОТОВИТЬ ЗАРАНЕЕ -->
-<h2 class="block-title">Что подготовить до начала</h2>
-<p class="block-sub">Чтобы история шла гладко — эти вещи нужно решить на берегу.</p>
-
-<div class="checklist-box">
-  <h4>✅ Договорённости с [Именем]</h4>
-  <div class="check-item"><span class="ck">✓</span><div>Объяснить формат: онлайн-работа + личная встреча в Барселоне. Спросить согласие на публикацию (анонимно).</div></div>
-  <div class="check-item"><span class="ck">✓</span><div>Уточнить: какие форматы она готова? Скрины переписки — да? Голосовые (без видео) — да? Кружочки со стикером — может быть?</div></div>
-  <div class="check-item"><span class="ck">✓</span><div>Выбрать имя для публикаций — настоящее или придуманное. Использовать одно и то же везде.</div></div>
-  <div class="check-item"><span class="ck">✓</span><div>Договориться что она пишет тебе промежуточно — реальные реакции, голосовые, скрины. Это и есть контент.</div></div>
-  <div class="check-item"><span class="ck">✓</span><div>Подтвердить дату встречи в Барселоне заранее — объявить аудитории только когда дата точная.</div></div>
-</div>
-
-<div class="checklist-box">
-  <h4>📸 Что снять в Барселоне — шорт-лист</h4>
-  <div class="check-item"><span class="ck">✓</span><div>Момент встречи (10-15 секунд, со стороны) — самое ценное видео всей истории</div></div>
-  <div class="check-item"><span class="ck">✓</span><div>За столом — общий план, они разговаривают. Лица [Имени] не видно или стикер.</div></div>
-  <div class="check-item"><span class="ck">✓</span><div>Детали: руки, чашки, блюда — тёплая атмосфера без слов</div></div>
-  <div class="check-item"><span class="ck">✓</span><div>Прогулка — со спины, Барселона на фоне</div></div>
-  <div class="check-item"><span class="ck">✓</span><div>Кружочек [Имени] — голос + стикер на лице. Один вопрос: «Как ты сейчас?»</div></div>
-  <div class="check-item"><span class="ck">✓</span><div>Финальный кадр вместе — силуэты, тёплый свет, обнялись или просто рядом</div></div>
-</div>
-
-<div class="divider" style="margin:32px 0;"></div>
 
 <!-- ИТОГ -->
-<div class="concept">
-  <h2>🎯 Три эмоции которые должна унести зрительница</h2>
-  <ul>
-    <li><div class="ci">🧡</div><div><strong style="color:white">«Катя — живой человек, не просто блогер.»</strong> Она едет. Обнимает. Сидит за столом. Это формирует образ эксперта, который рядом.</div></li>
-    <li><div class="ci">💫</div><div><strong style="color:white">«[Имя] — это я. И она изменилась.»</strong> Когда зрительница узнаёт себя в героине и видит её результат — она хочет того же. Без убеждения.</div></li>
-    <li><div class="ci">🚀</div><div><strong style="color:white">«Следующей хочу быть я.»</strong> Эффект избранности работает в обе стороны: тот кто уже в истории — на пьедестале. Остальные хотят туда.</div></li>
-  </ul>
-</div>
+<h2 class="block-title">Три вещи которые этот контент делает сам</h2>
+<p class="block-sub">Без скриптов и объяснений — просто потому что так снято.</p>
 
-<div style="margin-top:16px;text-align:center;">
-  <span class="emotion-tag">🧡 Тёплый образ Кати</span>
-  <span class="emotion-tag">✈️ Реальная встреча</span>
-  <span class="trust-tag">✅ Анонимность соблюдена</span>
-  <span class="trust-tag">✅ 0 наигранности</span>
-  <span class="trust-tag">✅ Переход на анкету органичный</span>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px;">
+  <div style="background:white;border:1px solid var(--mid);border-radius:16px;padding:18px;">
+    <div style="font-size:24px;margin-bottom:8px;">🧡</div>
+    <div style="font-size:13px;font-weight:800;color:var(--plum);margin-bottom:6px;">Показывает Катю-человека</div>
+    <div style="font-size:12px;color:#555;line-height:1.6;">Не эксперт за ноутбуком. Живой человек, который едет, обнимает, смеётся.</div>
+  </div>
+  <div style="background:white;border:1px solid var(--mid);border-radius:16px;padding:18px;">
+    <div style="font-size:24px;margin-bottom:8px;">💫</div>
+    <div style="font-size:13px;font-weight:800;color:var(--plum);margin-bottom:6px;">Создаёт желание «так же»</div>
+    <div style="font-size:12px;color:#555;line-height:1.6;">Зрительница видит тёплые отношения и думает: «Хочу чтобы Катя так же относилась ко мне».</div>
+  </div>
+  <div style="background:white;border:1px solid var(--mid);border-radius:16px;padding:18px;">
+    <div style="font-size:24px;margin-bottom:8px;">🔗</div>
+    <div style="font-size:13px;font-weight:800;color:var(--plum);margin-bottom:6px;">Продаёт без продажи</div>
+    <div style="font-size:12px;color:#555;line-height:1.6;">Один пост в конце с вебинаром — и это не реклама, это логичный следующий шаг после тёплой истории.</div>
+  </div>
+</div>
+@media(max-width:600px){div[style*="repeat(3,1fr)"]{grid-template-columns:1fr!important;}}
+
+<div class="tag-row">
+  <span class="tag warm">✈️ 2 дня</span>
+  <span class="tag warm">🙈 Анонимность клиентки</span>
+  <span class="tag warm">🎬 Reels + кружочки + stories</span>
+  <span class="tag green">✅ 0 наигранности</span>
+  <span class="tag green">✅ Снимается само собой</span>
+  <span class="tag green">✅ Один органичный переход на вебинар</span>
 </div>
 
 </div>
