@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecretCoach — Скрипт вебинара 6 мая</title>
+<style>
+:root{
+  --plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;
+  --cream:#FAF7F4;--lite:#F5F0EC;--dark:#1E1428;--mid:#DDD5CC;
+  --green:#3A9A6A;--gold:#D4A843;--red:#C03030;--orange:#D4620A;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--dark);}
+.nav{background:var(--plum);padding:13px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;}
+.nav-title{color:white;font-weight:800;font-size:14px;margin-right:auto;}
+.nav a{color:rgba(255,255,255,.5);font-size:12px;text-decoration:none;}
+.nav a:hover{color:white;}
+
+.hero{background:linear-gradient(135deg,#1E1428,#2D1F42);padding:48px 24px 36px;text-align:center;}
+.hero-badge{display:inline-flex;background:rgba(212,168,67,.2);color:var(--gold);font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(212,168,67,.3);}
+.hero h1{color:white;font-size:26px;font-weight:900;max-width:640px;margin:0 auto 10px;line-height:1.25;}
+.hero p{color:rgba(255,255,255,.5);font-size:13px;max-width:500px;margin:0 auto;}
+.hero-meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+.hm{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:8px 16px;color:rgba(255,255,255,.75);font-size:12px;font-weight:700;}
+
+.container{max-width:860px;margin:0 auto;padding:36px 20px 100px;}
+
+/* BLOCK */
+.block{background:white;border:1px solid var(--mid);border-radius:16px;margin-bottom:14px;overflow:hidden;}
+.block-head{padding:14px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--lite);}
+.bnum{color:white;font-size:11px;font-weight:900;padding:5px 14px;border-radius:20px;white-space:nowrap;}
+.bn-hook{background:#7B1090;}
+.bn-pain{background:var(--red);}
+.bn-story{background:var(--mauve);}
+.bn-edu{background:var(--plum);}
+.bn-demo{background:var(--orange);}
+.bn-sale{background:linear-gradient(135deg,#C4856A,#8A4A30);}
+.bn-close{background:var(--green);}
+.block-head-info .bh-title{font-size:15px;font-weight:800;color:var(--plum);}
+.block-head-info .bh-sub{font-size:11px;color:var(--mauve);margin-top:2px;}
+.btime{font-size:11px;font-weight:700;background:var(--lite);padding:4px 10px;border-radius:8px;color:var(--mauve);white-space:nowrap;}
+.block-body{padding:18px 20px;}
+
+/* SCRIPT LINE */
+.say{background:var(--lite);border-left:3px solid var(--rose);border-radius:0 10px 10px 0;padding:13px 15px;margin:8px 0;font-size:13px;color:#333;line-height:1.8;}
+.say .say-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);margin-bottom:6px;display:block;}
+.say em{color:var(--rose);font-style:normal;font-weight:700;}
+.say.gold{border-left-color:var(--gold);background:#FFF8E8;}
+.say.green{border-left-color:var(--green);background:#F0FAF4;}
+.say.red-l{border-left-color:var(--red);background:#FFF0F0;}
+.say.sale-l{border-left-color:var(--rose);background:rgba(196,133,106,.06);}
+
+/* NOTE */
+.note{background:#FFF8E8;border:1px solid rgba(212,168,67,.2);border-radius:9px;padding:11px 14px;margin:8px 0;font-size:12px;color:#7A4A10;line-height:1.6;}
+.note strong{font-weight:900;display:block;margin-bottom:3px;}
+.note.green-note{background:#F0FAF4;border-color:rgba(58,154,106,.2);color:#1A5A30;}
+.note.red-note{background:#FFF0F0;border-color:rgba(192,48,48,.2);color:#7A1010;}
+
+/* BULLET LIST */
+.blist{list-style:none;padding:0;}
+.blist li{display:flex;gap:9px;padding:7px 0;border-bottom:1px solid var(--lite);font-size:13px;color:#333;line-height:1.55;}
+.blist li:last-child{border:none;}
+.blist li::before{content:'→';color:var(--mauve);flex-shrink:0;margin-top:1px;}
+
+/* SELL BOX */
+.sell-box{background:linear-gradient(135deg,#1E1428,#3D1F5A);border-radius:14px;padding:22px;margin:10px 0;}
+.sell-box h4{color:var(--blush);font-size:15px;font-weight:900;margin-bottom:14px;}
+.sell-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
+.sell-row:last-child{margin-bottom:0;}
+.sn{background:rgba(196,133,106,.2);border:1px solid rgba(196,133,106,.3);color:var(--blush);font-size:11px;font-weight:900;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.sell-row p{color:rgba(255,255,255,.8);font-size:13px;line-height:1.6;}
+.sell-row p strong{color:white;}
+
+/* PRICE BOX */
+.price-box{background:white;border:2px solid var(--rose);border-radius:14px;padding:18px;margin:10px 0;text-align:center;}
+.price-box .pb-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--rose);margin-bottom:6px;}
+.price-box .pb-price{font-size:28px;font-weight:900;color:var(--plum);}
+.price-box .pb-old{font-size:14px;color:#999;text-decoration:line-through;margin-bottom:4px;}
+.price-box .pb-desc{font-size:12px;color:#666;margin-top:6px;line-height:1.5;}
+
+/* OBJECTION MINI */
+.obj-mini{border-radius:10px;padding:12px 14px;margin:7px 0;display:flex;gap:12px;}
+.obj-mini.q-side{background:#F0F4FF;border:1px solid rgba(100,120,200,.15);}
+.obj-mini.a-side{background:#F0FAF4;border:1px solid rgba(58,154,106,.15);}
+.obj-mini .om-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;display:block;}
+.obj-mini.q-side .om-label{color:#3040A0;}
+.obj-mini.a-side .om-label{color:var(--green);}
+.obj-mini p{font-size:13px;color:#333;line-height:1.6;}
+
+/* FLOW */
+.flow-row{display:flex;gap:10px;align-items:center;margin-bottom:8px;}
+.flow-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:7px 14px;color:rgba(255,255,255,.8);font-size:12px;font-weight:700;flex:1;text-align:center;}
+.flow-arr{color:rgba(255,255,255,.3);font-size:16px;flex-shrink:0;}
+
+/* SDIV */
+.sdiv{display:flex;align-items:center;gap:12px;margin:28px 0 16px;}
+.sdiv-line{flex:1;height:1px;background:var(--mid);}
+.sdiv-label{background:var(--plum);color:white;font-size:11px;font-weight:800;padding:5px 14px;border-radius:20px;white-space:nowrap;}
+
+/* TIMING BAR */
+.timing-bar{background:white;border:1px solid var(--mid);border-radius:12px;padding:14px 18px;margin-bottom:20px;display:flex;gap:8px;flex-wrap:wrap;}
+.tb-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#444;}
+.tb-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <span class="nav-title">Скрипт вебинара 6 мая</span>
+  <a href="index.html">Главная</a>
+  <a href="may_plan.html">План</a>
+  <a href="tg_script.html">TG скрипт</a>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">🎥 Вебинар · 6 мая · Вечер</div>
+  <h1>«Техники, которыми владеют единицы» — скрипт вебинара</h1>
+  <p>Структура, тезисы, переходы, продажа в конце. Не заучивай — говори своими словами.</p>
+  <div class="hero-meta">
+    <div class="hm">⏱ ~60 минут</div>
+    <div class="hm">🎯 Продажа бандла 3 курсов</div>
+    <div class="hm">📅 6 мая, вечер</div>
+    <div class="hm">🎂 Подводка к ДР 8 мая</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ТАЙМИНГ -->
+<div class="timing-bar">
+  <span style="font-size:12px;font-weight:800;color:var(--plum);margin-right:4px;">Тайминг:</span>
+  <div class="tb-item"><div class="tb-dot" style="background:#7B1090;"></div>Хук — 5 мин</div>
+  <div class="tb-item"><div class="tb-dot" style="background:var(--red);"></div>Боль — 10 мин</div>
+  <div class="tb-item"><div class="tb-dot" style="background:var(--mauve);"></div>История Кати — 7 мин</div>
+  <div class="tb-item"><div class="tb-dot" style="background:var(--plum);"></div>Контент — 20 мин</div>
+  <div class="tb-item"><div class="tb-dot" style="background:var(--orange);"></div>Демо-техника — 8 мин</div>
+  <div class="tb-item"><div class="tb-dot" style="background:var(--rose);"></div>Продажа — 10 мин</div>
+</div>
+
+<div class="note">
+  <strong>Главное правило вебинара:</strong>
+  Не скрипт для заучивания — это тезисы. Говори своими словами. Если уйдёшь в сторону и расскажешь живую историю — это лучше любого написанного текста. Структура нужна чтобы не потерять нить и вовремя выйти на продажу.
+</div>
+
+<!-- ===== БЛОК 1: ХУК ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="bnum bn-hook">Блок 1 · 5 мин</div>
+    <div class="block-head-info">
+      <div class="bh-title">Хук — зачем они пришли и что получат</div>
+      <div class="bh-sub">Первые 2 минуты решают останутся ли они</div>
+    </div>
+    <div class="btime">0:00 – 5:00</div>
+  </div>
+  <div class="block-body">
+    <div class="say">
+      <span class="say-label">Открытие — сразу в суть</span>
+      «Привет. Я рада что вы здесь. Сегодня я расскажу о вещах, о которых не говорят ни в одном женском журнале, ни в обычной сексологии. Это то, чем владеют единицы женщин — и именно эти женщины чувствуют себя в постели иначе. Уверенно. Желанно. Живо.<br><br>
+      Я не буду говорить час. Где-то 60 минут — и вы уйдёте с конкретными знаниями, которые можно применить уже сегодня вечером.»
+    </div>
+    <div class="say">
+      <span class="say-label">Представление — кто такая Катя (коротко, 1 мин)</span>
+      «Меня зовут Катя, я сексолог. Я работаю с женщинами — и помогаю им вернуть себе ощущение от близости, которое они или никогда не знали, или давно потеряли. За [N] лет практики я видела всё — от полного отсутствия желания до отношений где секс стал обязанностью. И я знаю: это меняется. Не за год, не за месяц терапии. Быстрее.»
+    </div>
+    <div class="say gold">
+      <span class="say-label">Обещание — что будет на вебинаре</span>
+      «Сегодня три вещи. Первое — почему одни женщины притягивают партнёра как магнит, а другие стараются больше и получают меньше. Второе — конкретная техника, которую я покажу прямо здесь. И третье — я расскажу о кое-чём важном в конце. Это связано с моим днём рождения. Но об этом позже.»
+    </div>
+    <div class="note"><strong>Зачем упоминать день рождения в начале?</strong> Создаёт интригу — люди остаются до конца чтобы узнать «что за подарок». Не объясняй сразу.</div>
+  </div>
+</div>
+
+<!-- ===== БЛОК 2: БОЛЬ ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="bnum bn-pain">Блок 2 · 10 мин</div>
+    <div class="block-head-info">
+      <div class="bh-title">Боль — называем то, о чём они молчат</div>
+      <div class="bh-sub">Когда человек слышит «это про меня» — он больше не уходит</div>
+    </div>
+    <div class="btime">5:00 – 15:00</div>
+  </div>
+  <div class="block-body">
+    <div class="say red-l">
+      <span class="say-label">Открывающий вопрос — в чат</span>
+      «Скажите мне в чат — да или нет. Бывало у вас такое: вы в постели с партнёром, тело рядом — а голова где-то в другом месте? Думаете о делах, о том как выглядите, что он думает... Вместо того чтобы просто быть там?»<br><br>
+      <em>[Пауза. Прочитай несколько ответов вслух.]</em>
+    </div>
+    <div class="say">
+      <span class="say-label">Описание боли — называй узнаваемо</span>
+      «Я вижу много "да". И это не случайность. Это очень распространённая история.<br><br>
+      Женщина старается. Она хочет быть хорошей партнёршей. Она читает статьи, смотрит что-то, пробует новое. Но внутри — ощущение что что-то не работает. Что другие женщины умеют что-то, чего она не знает.<br><br>
+      Или другая история: желания нет вообще. Не потому что партнёр плохой. Просто — нет. Как выключили.<br><br>
+      Или — всё нормально, но скучно. Одно и то же. Предсказуемо. И непонятно как это изменить не превратив всё в неловкий разговор.»
+    </div>
+    <div class="say">
+      <span class="say-label">Почему так происходит — один чёткий механизм</span>
+      «Вот почему это происходит. У женщины две системы — газ и тормоз. Газ — это всё что включает желание. Тормоз — всё что его блокирует: стресс, усталость, тревога, стыд, "как я выгляжу", "достаточно ли я хороша".<br><br>
+      У большинства женщин тормоза перегружены. Не потому что они холодные или что-то с ними не так. А потому что никто не объяснял как работает эта система. И тем более — как её изменить.<br><br>
+      Сегодня я объясню. И покажу.»
+    </div>
+    <div class="note"><strong>Ключевой момент этого блока:</strong> не перечислять боли списком — рассказывать как истории. «Женщина которая...» Люди узнают себя в персонаже, не в пункте списка.</div>
+  </div>
+</div>
+
+<!-- ===== БЛОК 3: ИСТОРИЯ КАТИ ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="bnum bn-story">Блок 3 · 7 мин</div>
+    <div class="block-head-info">
+      <div class="bh-title">Личная история Кати — «я сама была такой»</div>
+      <div class="bh-sub">Мост доверия. Она такая же — только прошла путь раньше.</div>
+    </div>
+    <div class="btime">15:00 – 22:00</div>
+  </div>
+  <div class="block-body">
+    <div class="say">
+      <span class="say-label">Своя история — коротко и честно</span>
+      «Я расскажу кое-что личное. Я сама была такой женщиной. Я знаю как это — лежать рядом с человеком которого любишь и чувствовать внутри пустоту. Думать что это нормально. Что у всех так.<br><br>
+      Я стала изучать эту тему не потому что это было модно. А потому что мне самой было нужно. И когда я начала понимать — как это устроено, что именно работает — всё изменилось. Не сразу. Но изменилось.<br><br>
+      Именно поэтому я занимаюсь тем, чем занимаюсь. Не чтобы читать лекции. А чтобы показывать путь — который я сама прошла.»
+    </div>
+    <div class="say gold">
+      <span class="say-label">Переход к теме — «что отличает тех женщин»</span>
+      «Я много работала с женщинами которые чувствуют себя в близости по-другому. Уверенно. Присутствующими. Желанными. И я заметила — у них есть что-то общее. Не внешность. Не возраст. Не длина отношений.<br><br>
+      У них есть определённые навыки и понимание. Которым можно научиться. Вот о чём я хочу рассказать сегодня.»
+    </div>
+  </div>
+</div>
+
+<!-- ===== БЛОК 4: КОНТЕНТ ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="bnum bn-edu">Блок 4 · 20 мин</div>
+    <div class="block-head-info">
+      <div class="bh-title">Контент — «3 техники которыми владеют единицы»</div>
+      <div class="bh-sub">Реальная ценность. Не всё — только то что удивляет и запоминается.</div>
+    </div>
+    <div class="btime">22:00 – 42:00</div>
+  </div>
+  <div class="block-body">
+
+    <div class="note"><strong>Принцип: давать вкусно, но не всё.</strong> Каждая техника — это «открывашка». Даёшь инсайт, показываешь почему это работает, намекаешь что есть больше. Не превращай в учебник.</div>
+
+    <div class="say">
+      <span class="say-label">Техника 1 — Присутствие (убираем «ментальный стоп»)</span>
+      «Первое — и самое важное. Присутствие. Большинство женщин во время близости думают. Оценивают себя. Беспокоятся. И тело следует за головой — закрывается.<br><br>
+      Есть простая практика которую я даю клиенткам: пять вдохов и один вопрос — "Что я сейчас чувствую в теле?" Не что думаю. Не как выгляжу. Что <em>чувствую</em>. Это переключает режим с "наблюдателя" на "участника". Буквально за 30 секунд.<br><br>
+      Попробуйте сегодня — просто как практику перед сном. Не в контексте близости. Просто лечь и спросить себя.»
+    </div>
+
+    <div class="say">
+      <span class="say-label">Техника 2 — Провокация через текст (сексуальная переписка)</span>
+      «Второе — то, чем пользуются очень мало женщин. И совершенно зря.<br><br>
+      Самый простой способ разогреть отношения — это не что-то в спальне. Это то что происходит <em>до</em>. В течение дня. В телефоне.<br><br>
+      Одно сообщение. Правильное. Отправленное в правильный момент. Меняет настрой партнёра на весь вечер. Он не знает почему — но он хочет быть рядом с вами.<br><br>
+      Я не говорю про откровенные фото. Я говорю про игру. Про намёк. Про слова которые включают воображение. Это искусство — и ему можно научиться за несколько дней.»
+    </div>
+
+    <div class="say">
+      <span class="say-label">Техника 3 — Язык прикосновения (мануальные техники — вводно)</span>
+      «И третье. То, о чём почти не говорят открыто.<br><br>
+      Большинство людей прикасаются к партнёру автоматически. Привычно. Предсказуемо. Партнёр знает что будет дальше — и предвкушение исчезает.<br><br>
+      Есть конкретные техники прикосновения — скорость, давление, паузы, направление — которые создают совершенно другой опыт. Это не сложно. Это просто нужно знать.<br><br>
+      Подробнее об этом я расскажу чуть позже — есть место где я это разбираю полностью.»
+    </div>
+
+    <div class="note green-note"><strong>Взаимодействие с чатом в середине блока:</strong> «Напишите в чат — какая из трёх тем вам сейчас актуальнее всего?» Это удерживает внимание и даёт понять что говорить дальше.</div>
+  </div>
+</div>
+
+<!-- ===== БЛОК 5: ДЕМО ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="bnum bn-demo">Блок 5 · 8 мин</div>
+    <div class="block-head-info">
+      <div class="bh-title">Демо-техника — одна вещь которую они унесут домой</div>
+      <div class="bh-sub">Живой пример. Что-то конкретное, применимое сегодня вечером.</div>
+    </div>
+    <div class="btime">42:00 – 50:00</div>
+  </div>
+  <div class="block-body">
+    <div class="say">
+      <span class="say-label">Техника сексуального напряжения через паузу</span>
+      «Хочу показать вам одну конкретную вещь. Это техника которую я называю "пауза напряжения".<br><br>
+      Большинство людей в близости двигаются к цели. Быстрее, интенсивнее, дальше. Это убивает напряжение. Потому что напряжение живёт в паузе — в том моменте между "ещё нет" и "уже да".<br><br>
+      Конкретно: в момент когда обычно всё ускоряется — остановитесь. Не уйдите. Просто остановитесь. Посмотрите. Подождите 3-5 секунд. Ничего не делайте.<br><br>
+      Что происходит с партнёром в эти секунды — это именно то ощущение которое он будет вспоминать потом. Не что вы делали. А этот момент паузы.<br><br>
+      Это применимо в любой ситуации. Попробуйте — и напишите мне потом что было.»
+    </div>
+    <div class="note"><strong>После демо — вопрос в чат:</strong> «Кто уже пробовал что-то похожее? Что заметили?» Это создаёт активность и удерживает до продажи.</div>
+  </div>
+</div>
+
+<!-- ===== БЛОК 6: ПРОДАЖА ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="bnum bn-sale">Блок 6 · 10 мин</div>
+    <div class="block-head-info">
+      <div class="bh-title">Продажа — бандл 3 курсов + подводка к ДР</div>
+      <div class="bh-sub">Спокойно, без давления. Это предложение, а не уговаривание.</div>
+    </div>
+    <div class="btime">50:00 – 60:00</div>
+  </div>
+  <div class="block-body">
+
+    <div class="say sale-l">
+      <span class="say-label">Переход к продаже — через день рождения</span>
+      «Я обещала рассказать кое-что в конце. Через два дня — 8 мая — мой день рождения.<br><br>
+      И я решила сделать кое-что необычное. Обычно в свой день рождения ждёшь подарков. Я хочу сделать по-другому — и подарить что-то вам.<br><br>
+      Прямо сейчас, пока вы здесь — я открываю предпродажу по самой низкой цене которая будет. Специально для тех кто пришёл на вебинар.»
+    </div>
+
+    <div class="sell-box">
+      <h4>Что входит в бандл</h4>
+      <div class="sell-row"><div class="sn">1</div><p><strong>Курс по секстингу</strong> — сексуальная переписка, провокация, игра словами. Как писать так чтобы он думал о тебе весь день.</p></div>
+      <div class="sell-row"><div class="sn">2</div><p><strong>Курс «Оргазмы и либидо»</strong> — почему желание пропадает и как его вернуть. Механика женского удовольствия без воды.</p></div>
+      <div class="sell-row"><div class="sn">3</div><p><strong>Курс «Взрослые игры»</strong> — как вернуть огонь в отношения. Сценарии, игры, идеи для разнообразия без неловкого разговора.</p></div>
+    </div>
+
+    <div class="price-box">
+      <div class="pb-label">🔥 Цена для участников вебинара — только сегодня и завтра</div>
+      <div class="pb-old">Обычная цена: [N×3] €</div>
+      <div class="pb-price">[ЦЕНА БАНДЛА] €</div>
+      <div class="pb-desc">С 8 мая цена вырастет. Каждый день — выше.<br>Ссылка в чате прямо сейчас 👇</div>
+    </div>
+
+    <div class="say sale-l">
+      <span class="say-label">Питч — почему брать сейчас</span>
+      «Три курса. Каждый — отдельная тема. Секстинг, желание, разнообразие. Это то о чём мы говорили сегодня — только в глубину, с практикой, шаг за шагом.<br><br>
+      Всё в записи. Смотришь когда удобно. Нет дедлайна на просмотр.<br><br>
+      Ссылка уже в чате. <em>[вставить ссылку в чат]</em>.<br><br>
+      Если вы уже покупали один из этих курсов раньше — напишите мне в личку, подберём что вам подходит из оставшихся.»
+    </div>
+
+    <div class="note"><strong>Важно сказать про «уже покупали».</strong> Часть аудитории имела предыдущие покупки — они должны знать что есть решение, иначе просто не купят.</div>
+
+    <div class="say green">
+      <span class="say-label">Дожим — что будет 8 мая</span>
+      «8 мая — мой день рождения — я открою продажу для всех. Цена будет выше. Потом ещё выше.<br><br>
+      Те кто здесь сейчас — берут по самой вкусной цене которая вообще будет.<br><br>
+      У вас есть сегодня и завтра. Потом — другая цена.»
+    </div>
+  </div>
+</div>
+
+<!-- ===== БЛОК 7: ЗАКРЫТИЕ ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="bnum bn-close">Блок 7 · 3 мин</div>
+    <div class="block-head-info">
+      <div class="bh-title">Закрытие — тёплое и без давления</div>
+      <div class="bh-sub">Последние слова запоминаются. Сделай их живыми.</div>
+    </div>
+    <div class="btime">57:00 – 60:00</div>
+  </div>
+  <div class="block-body">
+    <div class="say green">
+      «Я рада что вы были здесь сегодня. Правда.<br><br>
+      Возьмите хотя бы одну вещь из того что я рассказала — и попробуйте. Сегодня. Не откладывайте.<br><br>
+      Если есть вопросы — пишите мне в Telegram, я отвечаю. Ссылка в шапке.<br><br>
+      Спасибо. До встречи.»
+    </div>
+    <div class="note green-note">
+      <strong>После вебинара — сразу:</strong>
+      Кружочек в сторис — «Вебинар закончился. Ссылка на бандл ещё живёт до завтра» + дублируй ссылку в TG-канал.
+    </div>
+  </div>
+</div>
+
+<div class="sdiv">
+  <div class="sdiv-line"></div>
+  <div class="sdiv-label">Отработка возражений в чате — во время продажи</div>
+  <div class="sdiv-line"></div>
+</div>
+
+<div class="obj-mini q-side"><span class="om-label">Вопрос в чате</span><p>«А это подойдёт если у меня нет партнёра?»</p></div>
+<div class="obj-mini a-side"><span class="om-label">Ответ вслух</span><p>«Да — и это один из лучших моментов начать. Ты работаешь с собой, со своим пониманием. Когда партнёр появится — ты уже знаешь что тебе нужно.»</p></div>
+
+<div class="obj-mini q-side"><span class="om-label">Вопрос в чате</span><p>«А я уже покупала один курс раньше»</p></div>
+<div class="obj-mini a-side"><span class="om-label">Ответ вслух</span><p>«Напиши мне в личку — подберём что тебе подходит из оставшихся двух по специальной цене.»</p></div>
+
+<div class="obj-mini q-side"><span class="om-label">Вопрос в чате</span><p>«Сколько времени занимает?»</p></div>
+<div class="obj-mini a-side"><span class="om-label">Ответ вслух</span><p>«Каждый курс — это несколько часов материала. Смотришь в своём темпе. Можно за выходные, можно за две недели — как удобно.»</p></div>
+
+<div class="obj-mini q-side"><span class="om-label">Вопрос в чате</span><p>«Это не стыдно / что скажет муж?»</p></div>
+<div class="obj-mini a-side"><span class="om-label">Ответ вслух</span><p>«Большинство проходят без ведома партнёра. А потом партнёр замечает изменения сам — и очень доволен. Не нужно ничего объяснять.»</p></div>
+
+<div class="sdiv">
+  <div class="sdiv-line"></div>
+  <div class="sdiv-label">После вебинара — план на 5 дней</div>
+  <div class="sdiv-line"></div>
+</div>
+
+<div class="block">
+  <div class="block-head">
+    <div class="bnum" style="background:var(--gold);">6–12 мая</div>
+    <div class="block-head-info">
+      <div class="bh-title">Что делать каждый день после вебинара</div>
+    </div>
+  </div>
+  <div class="block-body">
+    <ul class="blist">
+      <li><strong>6 мая (после вебинара)</strong> — кружочек «вебинар закончился, ссылка ещё живёт до завтра» + пост в TG</li>
+      <li><strong>7 мая</strong> — дожим для тех кто был на вебинаре. «Завтра мой день рождения — сегодня последний день этой цены»</li>
+      <li><strong>8 мая (ДР)</strong> — сторис с ДР + «Открываю для всех. Но цена уже выше.» Новая ссылка.</li>
+      <li><strong>9–10 мая</strong> — ежедневные сторис: отзывы первых купивших + напоминание что цена растёт</li>
+      <li><strong>11–12 мая</strong> — финальные 2 дня. Таймер, «последний шанс», закрытие продаж</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
