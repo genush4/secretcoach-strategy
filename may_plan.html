@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecretCoach — План май–июнь</title>
+<style>
+:root{
+  --plum:#2D1F42;--rose:#C4856A;--blush:#E8C5B5;--mauve:#7B5C74;
+  --cream:#FAF7F4;--lite:#F5F0EC;--dark:#1E1428;--mid:#DDD5CC;
+  --green:#3A9A6A;--gold:#D4A843;--red:#C03030;--orange:#D4620A;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--dark);}
+
+.nav{background:var(--plum);padding:13px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;}
+.nav-title{color:white;font-weight:800;font-size:14px;margin-right:auto;}
+.nav a{color:rgba(255,255,255,.5);font-size:12px;text-decoration:none;}
+.nav a:hover{color:white;}
+
+.hero{background:linear-gradient(135deg,#1E1428,#2D1F42);padding:48px 24px 36px;text-align:center;}
+.hero-badge{display:inline-flex;background:rgba(196,133,106,.2);color:var(--blush);font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(196,133,106,.3);}
+.hero h1{color:white;font-size:26px;font-weight:900;max-width:640px;margin:0 auto 10px;line-height:1.25;}
+.hero p{color:rgba(255,255,255,.5);font-size:13px;max-width:500px;margin:0 auto;}
+
+.container{max-width:880px;margin:0 auto;padding:36px 20px 100px;}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:32px;margin-bottom:40px;}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--mid);}
+.tl-item{position:relative;margin-bottom:10px;}
+.tl-item::before{content:'';position:absolute;left:-26px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--mid);border:2px solid white;}
+.tl-item.active::before{background:var(--rose);}
+.tl-item.green::before{background:var(--green);}
+.tl-item.gold::before{background:var(--gold);}
+.tl-item.deadline::before{background:var(--red);}
+
+/* DATE CARD */
+.dc{background:white;border:1px solid var(--mid);border-radius:14px;padding:14px 16px;}
+.dc-date{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;}
+.dc.rose .dc-date{color:var(--rose);}
+.dc.green .dc-date{color:var(--green);}
+.dc.gold .dc-date{color:var(--gold);}
+.dc.red .dc-date{color:var(--red);}
+.dc.plum .dc-date{color:var(--plum);}
+.dc h3{font-size:14px;font-weight:800;color:var(--plum);margin-bottom:7px;line-height:1.3;}
+.dc ul{list-style:none;padding:0;}
+.dc ul li{font-size:12px;color:#444;padding:4px 0;border-bottom:1px solid var(--lite);display:flex;gap:8px;line-height:1.5;}
+.dc ul li:last-child{border:none;}
+.dc ul li::before{content:'→';color:var(--mauve);flex-shrink:0;}
+
+/* FUNNEL BLOCK */
+.funnel{background:linear-gradient(135deg,#1E1428,#2D1F42);border-radius:18px;padding:26px;margin-bottom:24px;}
+.funnel h3{color:white;font-size:16px;font-weight:900;margin-bottom:18px;}
+.funnel-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;}
+.fn{background:rgba(196,133,106,.2);border:1px solid rgba(196,133,106,.3);color:var(--blush);font-size:12px;font-weight:900;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.funnel-step p{color:rgba(255,255,255,.8);font-size:13px;line-height:1.6;}
+.funnel-step p strong{color:white;}
+.funnel-arr{text-align:center;color:rgba(255,255,255,.2);font-size:18px;margin-bottom:8px;padding-left:14px;}
+
+/* PRICE LADDER */
+.price-ladder{background:white;border:1px solid var(--mid);border-radius:14px;overflow:hidden;margin-bottom:20px;}
+.price-row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-bottom:1px solid var(--lite);}
+.price-row:last-child{border:none;}
+.price-row .pr-day{font-size:11px;font-weight:800;color:var(--mauve);min-width:80px;}
+.price-row .pr-price{font-size:14px;font-weight:900;color:var(--plum);min-width:80px;}
+.price-row .pr-note{font-size:12px;color:#666;}
+.price-row.highlight{background:rgba(58,154,106,.04);}
+.price-row.red-row{background:rgba(192,48,48,.03);}
+
+/* CHECKLIST */
+.checklist{background:white;border:1px solid var(--mid);border-radius:14px;padding:18px;margin-bottom:16px;}
+.checklist h4{font-size:13px;font-weight:900;color:var(--plum);margin-bottom:13px;display:flex;align-items:center;gap:8px;}
+.ci{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--lite);font-size:13px;color:#333;line-height:1.55;}
+.ci:last-child{border:none;}
+.ci .cbox{width:16px;height:16px;border:2px solid var(--mid);border-radius:4px;flex-shrink:0;margin-top:1px;}
+.ci .cdl{font-size:10px;font-weight:800;color:var(--rose);white-space:nowrap;margin-top:2px;}
+
+/* MINI COURSES TABLE */
+.mc-table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden;border:1px solid var(--mid);margin-bottom:20px;}
+.mc-table th{background:var(--plum);color:white;font-size:11px;font-weight:800;padding:10px 14px;text-align:left;text-transform:uppercase;letter-spacing:.04em;}
+.mc-table td{padding:11px 14px;font-size:12px;border-bottom:1px solid var(--lite);color:#333;vertical-align:top;}
+.mc-table tr:last-child td{border:none;}
+.mc-table tr:nth-child(even) td{background:#FAFAF8;}
+.mc-role{font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;}
+.mc-role.warm{background:rgba(212,168,67,.15);color:#7A4A10;}
+.mc-role.lead{background:rgba(196,133,106,.15);color:#8A4A20;}
+.mc-role.main{background:rgba(58,154,106,.15);color:#1A5A30;}
+
+/* ALERT */
+.alert{border-radius:12px;padding:14px 16px;margin-bottom:14px;font-size:13px;line-height:1.6;}
+.alert.orange{background:rgba(212,100,10,.07);border:1px solid rgba(212,100,10,.2);color:#7A3A08;}
+.alert.green{background:rgba(58,154,106,.07);border:1px solid rgba(58,154,106,.2);color:#1A5A30;}
+.alert.red{background:rgba(192,48,48,.06);border:1px solid rgba(192,48,48,.2);color:#7A1010;}
+.alert strong{display:block;margin-bottom:4px;font-weight:900;}
+
+/* SECTION TITLE */
+.sec{margin:32px 0 14px;}
+.sec h2{font-size:18px;font-weight:900;color:var(--plum);margin-bottom:3px;}
+.sec p{font-size:13px;color:var(--mauve);}
+.divider{height:1px;background:var(--mid);margin:30px 0;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <span class="nav-title">SecretCoach — План май–июнь</span>
+  <a href="index.html">Главная</a>
+  <a href="tg_script.html">Скрипт TG</a>
+  <a href="castdev.html">Анкета</a>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">🗓 Май–Июнь 2026 · Рабочий план</div>
+  <h1>Расшифровка голосовых: задачи, дедлайны, схемы</h1>
+  <p>Всё что было в голосовых — структурировано, расставлено по датам, с конкретными действиями</p>
+</div>
+
+<div class="container">
+
+<!-- ГЛАВНАЯ ИДЕЯ -->
+<div class="alert orange">
+  <strong>Главная мысль из голосовых:</strong>
+  Времени мало, расписание плотное. Нужно использовать ближайшие недели максимально эффективно: провести вебинар 6 мая, продать мини-курсы бандлом, прогреть к большому курсу по минету — и успеть его снять до отъезда в начале июня.
+</div>
+
+<!-- ОБЩАЯ СХЕМА -->
+<div class="funnel">
+  <h3>Общая воронка: апрель → июнь</h3>
+  <div class="funnel-step"><div class="fn">1</div><p><strong>Сейчас → 5 мая</strong> — греем аудиторию в канале. Контент, переливаем людей, ищем бартер-рекламу.</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn">2</div><p><strong>6 мая вечер</strong> — вебинар. Тема: «сексуальные техники гейш / фишки которыми владеет единица». ~1 час. Даём ценность, поднимаем проблематику. В конце — открываем предпродажу.</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn">3</div><p><strong>6–7 мая</strong> — продажа бандла из 3 мини-курсов для тех кто был на вебинаре. По самой низкой цене.</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn">4</div><p><strong>8 мая (день рождения)</strong> — открываем продажу для всех. Цена уже выше. 5 дней с ежедневным повышением.</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn">5</div><p><strong>В мини-курсах</strong> — везде прогрев к большому курсу по минету. Предзапись со скидкой + бонус за предоплату.</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn">6</div><p><strong>Середина мая — приезд в Киев</strong> — снимаем оставшиеся видео курса по минету (~2-3 недели съёмок).</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn">7</div><p><strong>Конец мая</strong> — греем к курсу по минету, проводим отдельный вебинар по теме, запускаем продажи.</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn">8</div><p><strong>Начало июня</strong> — курс идёт, люди учатся. Отъезд ~8 июня — к этому моменту всё должно крутиться само.</p></div>
+</div>
+
+<!-- ТАЙМЛАЙН ПО ДАТАМ -->
+<div class="sec"><h2>Даты и дедлайны</h2></div>
+
+<div class="timeline">
+
+  <div class="tl-item active">
+    <div class="dc rose">
+      <div class="dc-date">Сейчас → 5 мая · Прогрев</div>
+      <h3>Греем канал, переливаем аудиторию</h3>
+      <ul>
+        <li>Ежедневный контент в Telegram-канале — прогрев к теме вебинара</li>
+        <li>Анонс вебинара 6 мая — тема, время, почему стоит прийти</li>
+        <li>Найти 1-2 человека для бартер-рекламы, переслать их аудиторию к себе</li>
+        <li>Прогрев анкеты (castdev) — переливать на неё параллельно</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tl-item gold">
+    <div class="dc gold">
+      <div class="dc-date">6 мая вечером · Ключевой день</div>
+      <h3>🎥 Вебинар «Техники гейш / Фишки которыми владеет единица»</h3>
+      <ul>
+        <li>Не про минет — это берём в конец мая. Тема: сексуальные техники, которых никто не знает</li>
+        <li>Формат: 60 минут. Проблематика → ценность → немного практики → продажа</li>
+        <li>В конце вебинара: «Я открываю предпродажу прямо сейчас — для вас, перед своим днём рождения»</li>
+        <li>Предложение: бандл из 3 мини-курсов по специальной цене только для участников вебинара</li>
+        <li>Дать ссылку прямо в эфире — пока люди горячие</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tl-item green">
+    <div class="dc green">
+      <div class="dc-date">7 мая · Досыл</div>
+      <h3>Дожим тех кто был на вебинаре</h3>
+      <ul>
+        <li>Сторис + TG: «Вчера на вебинаре открыла предпродажу. Цена действует только сегодня.»</li>
+        <li>Напоминание в личку тем кто написал но не купил</li>
+        <li>Записи вебинара — отправить тем кто просил, в конце снова ссылка на покупку</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tl-item gold">
+    <div class="dc gold">
+      <div class="dc-date">8 мая · День рождения 🎂</div>
+      <h3>Открытая продажа для всех — «подарок себе и вам»</h3>
+      <ul>
+        <li>Сторис + TG + пост: «Сегодня мой день рождения. Открываю продажу для всех — но цена уже выше чем вчера»</li>
+        <li>Запускаем 5-дневную лестницу цен (см. ниже)</li>
+        <li>Можно снять кружочек: «Мне [N] лет. Я решила сделать вам подарок...»</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tl-item active">
+    <div class="dc rose">
+      <div class="dc-date">8–12 мая · 5 дней продаж</div>
+      <h3>Ежедневное повышение цены</h3>
+      <ul>
+        <li>Каждый день: сторис с напоминанием + таймер / «осталось X часов по этой цене»</li>
+        <li>Дни 1-2: цена минимальная</li>
+        <li>Дни 3-4: цена средняя</li>
+        <li>День 5: финальная цена</li>
+        <li>Параллельно: в мини-курсах уже открыта предзапись на курс по минету</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="dc plum">
+      <div class="dc-date">Середина мая · Приезд в Киев</div>
+      <h3>Съёмки курса по минету</h3>
+      <ul>
+        <li>Проверить что уже снято — смонтировать готовые видео</li>
+        <li>Составить список оставшихся видео к съёмке</li>
+        <li>Снимать по плану — ~2-3 недели</li>
+        <li>Параллельно: прогрев аудитории к теме минета в контенте</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tl-item gold">
+    <div class="dc gold">
+      <div class="dc-date">Конец мая</div>
+      <h3>Вебинар по минету + запуск большого курса</h3>
+      <ul>
+        <li>Провести отдельный вебинар по теме минета — прогрев, ценность, продажа</li>
+        <li>Открыть продажи большого курса по минету</li>
+        <li>Те кто оставил предзапись с предоплатой — получают доступ первыми + бонус</li>
+        <li>Курс стартует: люди начинают учиться</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tl-item deadline">
+    <div class="dc red">
+      <div class="dc-date">~8 июня · Дедлайн</div>
+      <h3>🚨 Отъезд. Всё должно крутиться само к этой дате.</h3>
+      <ul>
+        <li>Курс по минету запущен и идёт автоматически</li>
+        <li>Money-чат работает без участия — контент запланирован</li>
+        <li>Скрипт переписки у менеджера</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ЛЕСТНИЦА ЦЕН -->
+<div class="sec"><h2>Лестница цен: 8–12 мая</h2><p>5 дней, цена растёт. Создаёт срочность без давления.</p></div>
+
+<div class="price-ladder">
+  <div class="price-row highlight">
+    <div class="pr-day">6 мая (веб)</div>
+    <div class="pr-price" style="color:var(--green);">Цена 1 🔥</div>
+    <div class="pr-note">Только для участников вебинара. Самая низкая. Ограничено по времени до конца эфира / до утра 7-го.</div>
+  </div>
+  <div class="price-row highlight">
+    <div class="pr-day">7 мая</div>
+    <div class="pr-price" style="color:var(--green);">Цена 1</div>
+    <div class="pr-note">Ещё держим для тех кто был на вебинаре. Последний день этой цены.</div>
+  </div>
+  <div class="price-row">
+    <div class="pr-day">8–9 мая</div>
+    <div class="pr-price">Цена 2</div>
+    <div class="pr-note">Открытая продажа. Выше на [N] евро. В честь дня рождения — но уже дороже.</div>
+  </div>
+  <div class="price-row">
+    <div class="pr-day">10–11 мая</div>
+    <div class="pr-price">Цена 3</div>
+    <div class="pr-note">Ещё выше. Напоминания каждый день.</div>
+  </div>
+  <div class="price-row red-row">
+    <div class="pr-day">12 мая</div>
+    <div class="pr-price" style="color:var(--red);">Финал</div>
+    <div class="pr-note">Последний день. Максимальная цена. Сторис с таймером обратного отсчёта.</div>
+  </div>
+</div>
+
+<!-- МИНИ-КУРСЫ БАНДЛ -->
+<div class="sec"><h2>Бандл из 3 мини-курсов</h2><p>Что продаём 6–12 мая. Каждый ведёт на курс по минету.</p></div>
+
+<div class="alert orange">
+  <strong>Важно: люди уже покупали по одному курсу.</strong>
+  Учитываем это — предлагаем «добери до комплекта». Кто купил курс А — берёт Б и В. Не платят за то что уже есть.
+</div>
+
+<table class="mc-table">
+  <thead>
+    <tr>
+      <th>Курс</th>
+      <th>Для кого</th>
+      <th>Роль в воронке</th>
+      <th>Ведёт к</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Секстинг</strong><br><span style="color:var(--mauve);font-size:11px;">Уже снят. ~29€</span></td>
+      <td>Хочет разогреть партнёра, держать интерес, не знает как писать</td>
+      <td><span class="mc-role warm">Прогрев</span></td>
+      <td>Минет — переписка ведёт к живой встрече</td>
+    </tr>
+    <tr>
+      <td><strong>Оргазмы и либидо</strong></td>
+      <td>Нет желания, не чувствует себя, давно без оргазма</td>
+      <td><span class="mc-role warm">Прогрев</span></td>
+      <td>Минет — понимание своего тела → техники</td>
+    </tr>
+    <tr>
+      <td><strong>Позы / Взрослые игры</strong></td>
+      <td>Скучно, рутина, хочет разнообразия</td>
+      <td><span class="mc-role lead">Лид-магнит</span></td>
+      <td>Минет — следующий уровень разнообразия</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert green">
+  <strong>В каждом мини-курсе — блок про курс по минету.</strong>
+  Не просто упоминание. Конкретный момент в видео: «Это я разбираю глубже в курсе по минету. Кто хочет попасть первым — предзапись ниже.»
+  Плюс в money-чате между видео — дожимающие сообщения с важностью темы.
+</div>
+
+<!-- ПРЕДЗАПИСЬ НА МИНЕТ-КУРС -->
+<div class="sec"><h2>Предзапись на большой курс по минету</h2></div>
+
+<div class="funnel" style="background:linear-gradient(135deg,#1A3020,#2A5040);">
+  <h3>Как работает предзапись</h3>
+  <div class="funnel-step"><div class="fn" style="background:rgba(125,255,199,.15);color:#7DFFC7;border-color:rgba(125,255,199,.2);">1</div><p>Человек смотрит мини-курс → видит призыв оставить предзапись</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn" style="background:rgba(125,255,199,.15);color:#7DFFC7;border-color:rgba(125,255,199,.2);">2</div><p>Заполняет анкету предзаписи + вносит предоплату (небольшую, символическую)</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn" style="background:rgba(125,255,199,.15);color:#7DFFC7;border-color:rgba(125,255,199,.2);">3</div><p><strong style="color:white">Сразу получает бонус</strong> — мини-курс / чек-лист / доступ к чему-то закрытому</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn" style="background:rgba(125,255,199,.15);color:#7DFFC7;border-color:rgba(125,255,199,.2);">4</div><p>Ждёт ~2 недели → курс открывается. К этому моменту уже «горячий».</p></div>
+  <div class="funnel-arr">↓</div>
+  <div class="funnel-step"><div class="fn" style="background:rgba(125,255,199,.15);color:#7DFFC7;border-color:rgba(125,255,199,.2);">5</div><p>Доплачивает остаток при старте курса (или всё было сразу — на усмотрение)</p></div>
+</div>
+
+<!-- MONEY-ЧАТ -->
+<div class="sec"><h2>Money-чат мини-курсов</h2><p>Что должно происходить в чате между видео</p></div>
+
+<div class="checklist">
+  <h4>📋 Контент money-чата — структура</h4>
+  <div class="ci"><div class="cbox"></div><div>После каждого видео — 1 дожимающее сообщение. Не просто «посмотрели? круто». А: «Вот что это даёт вашим отношениям в реальности...»</div><div class="cdl">В момент выхода видео</div></div>
+  <div class="ci"><div class="cbox"></div><div>Кейс клиентки — по теме видео. 2-3 предложения: ситуация → что делала → результат.</div><div class="cdl">Через день после видео</div></div>
+  <div class="ci"><div class="cbox"></div><div>Напоминание о предзаписи на минет-курс — через нативную подводку: «Это вы только начали. В курсе по минету мы идём глубже...»</div><div class="cdl">После 2-3 видео</div></div>
+  <div class="ci"><div class="cbox"></div><div>Вопрос к участницам — чтобы они писали, вовлекались: «Что уже попробовали? Какая реакция?»</div><div class="cdl">Середина курса</div></div>
+  <div class="ci"><div class="cbox"></div><div>Финальный дожим — «Курс заканчивается. Следующий шаг — минет-курс. Предзапись закрывается через 48 часов.»</div><div class="cdl">Последнее видео</div></div>
+</div>
+
+<!-- ЧЕК-ЛИСТ ЗАДАЧ -->
+<div class="sec"><h2>Чек-лист: что нужно сделать и когда</h2></div>
+
+<div class="checklist">
+  <h4>⚡ До 5 мая</h4>
+  <div class="ci"><div class="cbox"></div><div>Выбрать тему вебинара 6 мая (не минет — «гейши / техники которыми владеет единица»)</div><div class="cdl">До 30 апр</div></div>
+  <div class="ci"><div class="cbox"></div><div>Написать анонс вебинара для сторис и Telegram</div><div class="cdl">До 1 мая</div></div>
+  <div class="ci"><div class="cbox"></div><div>Определить состав бандла из 3 мини-курсов и финальную цену каждого уровня</div><div class="cdl">До 2 мая</div></div>
+  <div class="ci"><div class="cbox"></div><div>Настроить ссылку на оплату бандла (один линк)</div><div class="cdl">До 4 мая</div></div>
+  <div class="ci"><div class="cbox"></div><div>Найти 1-2 аккаунта для бартер-рекламы, договориться</div><div class="cdl">До 5 мая</div></div>
+  <div class="ci"><div class="cbox"></div><div>Подготовить структуру вебинара (не скрипт — тезисы, 4-5 блоков)</div><div class="cdl">До 5 мая</div></div>
+</div>
+
+<div class="checklist">
+  <h4>🎥 6–12 мая — вебинар и продажи</h4>
+  <div class="ci"><div class="cbox"></div><div>Провести вебинар. В конце — прямая ссылка на бандл.</div><div class="cdl">6 мая, вечер</div></div>
+  <div class="ci"><div class="cbox"></div><div>Дожим после вебинара — сторис, TG, ответы на вопросы</div><div class="cdl">7 мая</div></div>
+  <div class="ci"><div class="cbox"></div><div>Пост в честь дня рождения + открытие продаж для всех</div><div class="cdl">8 мая</div></div>
+  <div class="ci"><div class="cbox"></div><div>Ежедневные сторис с лестницей цен (5 дней)</div><div class="cdl">8–12 мая</div></div>
+  <div class="ci"><div class="cbox"></div><div>Добавить в мини-курсы блок про предзапись на минет-курс</div><div class="cdl">До старта продаж</div></div>
+</div>
+
+<div class="checklist">
+  <h4>🎬 Середина мая — съёмки в Киеве</h4>
+  <div class="ci"><div class="cbox"></div><div>Проверить что уже снято для минет-курса, смонтировать готовое</div><div class="cdl">День приезда</div></div>
+  <div class="ci"><div class="cbox"></div><div>Составить список недостающих видео для съёмки</div><div class="cdl">День приезда</div></div>
+  <div class="ci"><div class="cbox"></div><div>Прописать структуру money-чата (5 сообщений по шаблону выше)</div><div class="cdl">Неделя 1</div></div>
+  <div class="ci"><div class="cbox"></div><div>Отснять все видео курса по минету</div><div class="cdl">До конца мая</div></div>
+  <div class="ci"><div class="cbox"></div><div>Смонтировать финальные видео</div><div class="cdl">До конца мая</div></div>
+</div>
+
+<div class="checklist">
+  <h4>🚀 Конец мая — запуск минет-курса</h4>
+  <div class="ci"><div class="cbox"></div><div>Прогрев к теме в контенте — 1-2 недели</div><div class="cdl">20-28 мая</div></div>
+  <div class="ci"><div class="cbox"></div><div>Вебинар по теме минета — прогрев, ценность, продажа</div><div class="cdl">27-30 мая</div></div>
+  <div class="ci"><div class="cbox"></div><div>Открыть продажи большого курса</div><div class="cdl">После вебинара</div></div>
+  <div class="ci"><div class="cbox"></div><div>Убедиться что money-чат и скрипты работают без участия</div><div class="cdl">До 5 июня</div></div>
+  <div class="ci"><div class="cbox"></div><div>Передать скрипт переписки менеджеру / проверить что всё автоматизировано</div><div class="cdl">До 8 июня</div></div>
+</div>
+
+<!-- ОПАСЕНИЯ И РИСКИ -->
+<div class="sec"><h2>Опасения — как решать</h2></div>
+
+<div class="alert orange">
+  <strong>«Расписание расписано по секундам, нет времени»</strong>
+  Вебинар 6 мая — минимум подготовки. Нужны только тезисы, не скрипт. Продажи после вебинара — один линк, сторис, TG-пост. Это реально сделать за 2-3 часа общей подготовки.
+</div>
+
+<div class="alert orange">
+  <strong>«Люди уже покупали по одному курсу — перекрытие»</strong>
+  Решение: формулировка «Собери комплект — добери недостающие». Кто купил курс А — ему нужны Б и В. Сделать механику «если у тебя уже есть X, выбери вместо него Y».
+</div>
+
+<div class="alert green">
+  <strong>«Курс по минету нужно успеть снять за 3 недели»</strong>
+  Рабочий вариант. Главное: в первый день приезда — инвентаризация что уже снято. Снимать блоками по 2-3 видео в день. Не ждать идеала — лучше живые видео быстрее чем идеальные никогда.
+</div>
+
+</div>
+</body>
+</html>
